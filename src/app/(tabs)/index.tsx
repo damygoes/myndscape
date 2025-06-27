@@ -1,12 +1,17 @@
+import { JournalCreationDialog } from '@/features/journal-entries/components/JournalCreationDialog';
+import { JournalEntries } from '@/features/journal-entries/components/JournalEntries';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import '../../../global.css';
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function App() {
+
+export default function Home() {
+
   return (
-    <View className="items-center justify-center flex-1 p-4">
-      <Text className='text-3xl text-center text-red-400'>Home</Text>
+    <SafeAreaView className="flex-1 h-screen">
+      <JournalEntries />
+      <JournalCreationDialog />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
