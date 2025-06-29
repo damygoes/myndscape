@@ -3,7 +3,7 @@ import OpenAI from "openai";
 import { serve } from "std/server";
 
 const openai = new OpenAI({
-  // apiKey: "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"
+  // @ts-expect-error
   apiKey: Deno.env.get("EXPO_OPEN_AI_KEY"),
 });
 
