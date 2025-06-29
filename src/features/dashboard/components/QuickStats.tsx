@@ -1,14 +1,19 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/card/Card';
+import { useJournalEntriesStore } from '@/features/journal-entries/store/useJournalEntriesStore';
+import { Text } from 'react-native';
 
-
-export default function QuickStats() {
+export const QuickStats = () => {
+  const entries = useJournalEntriesStore((state) => state.entries);
+  const totalEntries = entries?.length ?? 0;
 
   return (
-    <View className="flex-1 h-screen">
-  
-  <Text>QuickStats</Text>
-
-    </View>
+    <Card>
+      <CardHeader>
+        <CardTitle>Quick Stats</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Text className="text-2xl font-semibold">{totalEntries} total entries</Text>
+      </CardContent>
+    </Card>
   );
-}
+};

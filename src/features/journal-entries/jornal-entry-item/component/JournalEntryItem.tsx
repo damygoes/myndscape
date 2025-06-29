@@ -1,3 +1,4 @@
+import { Card, CardContent, CardDescription, CardHeader } from '@/components/card/Card';
 import EditJournalModal from '@/features/journal-entries/components/EditJournalModal';
 import { useJournalEntryAnalysisStore } from '@/features/journal-entries/store/useJournalEntryAnalysisStore';
 import { JournalEntry } from '@/features/journal-entries/types';
@@ -47,28 +48,25 @@ export const JournalEntryItem = ({ entry }: Props) => {
 
   return (
     <>
-      <TouchableOpacity
-        onPress={toggleExpand}
-        activeOpacity={0.8}
-        className="gap-4 p-6 mb-4 bg-white shadow-xs rounded-3xl dark:bg-gray-800"
-      >
-        <View className="flex-row items-center justify-between">
+        <Card>
+        <CardHeader className="justify-between">
           <MoodBadge mood={entry.mood ?? 'neutral'} />
-          <Text className="text-xs text-gray-500 dark:text-gray-400">{formattedDate}</Text>
-        </View>
-        <Text
+          <CardDescription className="text-xs">{formattedDate}</CardDescription>
+        </CardHeader>
+        <CardDescription
           numberOfLines={1}
-          className="text-sm text-gray-700 dark:text-gray-300 opacity-70"
+          className="text-sm opacity-70"
         >
           {entry.content}
-        </Text>
+        </CardDescription>
 
         {isAnalyzing && (
-          <Text className="text-sm italic text-gray-500">Summarizing your mood...</Text>
+          <CardDescription className="text-sm italic">Summarizing your mood...</CardDescription>
         )}
         {showAnalysisSection && (
           <View className="my-1 border-t border-gray-200 dark:border-gray-700" />
         )}
+        <CardContent className='gap-4'>
         {showAnalysisSection&& (
           <JournalEntryAnalysisSection
             summary={expanded ? entry.summary : truncateSummary(entry.summary)}
@@ -84,8 +82,8 @@ export const JournalEntryItem = ({ entry }: Props) => {
           </TouchableOpacity>
         )}
         <JournalEntryActions entryId={entry.id} />
-      </TouchableOpacity>
-
+        </CardContent>
+        </Card>
       {/* Edit Modal */}
       <EditJournalModal id={entry.id} visible={modalVisible} onCancel={closeModal} />
     </>

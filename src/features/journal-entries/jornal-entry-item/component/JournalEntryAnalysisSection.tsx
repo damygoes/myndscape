@@ -13,7 +13,7 @@ export const JournalEntryAnalysisSection = ({ summary, themes, tip }: Props) => 
   if (!summary && !themes && !tip) return null;
 
   return (
-    <View className="gap-5 p-4 rounded-xl bg-blue-50 dark:bg-gray-700">
+    <View className="gap-5 p-4 rounded-xl bg-zinc-100/60 dark:bg-zinc-700">
       {summary && (
         <Text className="text-base font-normal text-gray-800 dark:text-gray-100">
           {summary}
