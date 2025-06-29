@@ -17,7 +17,7 @@ interface EditJournalModalProps {
   id: string;
   visible: boolean;
   onCancel: () => void;
-  onSubmit?: (content: string, mood: string) => Promise<void>;
+  onSubmit?: (content: string) => Promise<void>;
 }
 
 export default function EditJournalModal({ id, visible, onCancel, onSubmit }: EditJournalModalProps) {
@@ -25,31 +25,30 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
   const { data: entry, isLoading } = useJournalEntryById(id);
 
   const [content, setContent] = useState('');
-  const [mood, setMood] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (entry) {
       setContent(entry.content);
-      setMood(entry.mood);
     }
   }, [entry]);
 
   const handleSave = async () => {
-    if (!content.trim() || !mood.trim()) {
-      setError('Both mood and content are required.');
+    if (!content.trim()) {
+      setError('Content is required.');
       return;
     }
     setError(null);
     setSaving(true);
+    
     try {
       if (onSubmit) {
-        await onSubmit(content, mood);
+        await onSubmit(content);
       } else {
-        await updateEntry.mutateAsync({ id, content, mood });
+        await updateEntry.mutateAsync({ id, content });
       }
-      onCancel(); // close modal after save
+      onCancel();
     } catch (e) {
       setError('Failed to save. Please try again.');
     }
@@ -87,15 +86,6 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
         >
           <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ paddingBottom: 24 }}>
             <Text className="mb-4 text-2xl font-bold">Edit Journal Entry</Text>
-
-            <TextInput
-              value={mood}
-              onChangeText={setMood}
-              placeholder="Mood (e.g. happy, sad)"
-              className={`mb-3 p-3 border rounded-lg ${
-                error && !mood ? 'border-red-500' : 'border-gray-300'
-              }`}
-            />
 
             <TextInput
               value={content}

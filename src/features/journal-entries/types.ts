@@ -3,7 +3,9 @@ export type JournalEntry = {
     user_id: string;
     content: string;
     mood: string;
-    ai_summary?: string | null;
+    summary: string | null;
+    themes: string | null;
+    tip: string | null;
     created_at: string;
-};
+}
   

@@ -1,17 +1,22 @@
-import { JournalCreationDialog } from '@/features/journal-entries/components/JournalCreationDialog';
-import { JournalEntries } from '@/features/journal-entries/components/JournalEntries';
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+'use client';
 
+import AiInsights from '@/features/dashboard/components/AiInsights';
+import LastEntrySummary from '@/features/dashboard/components/LastEntrySummary';
+import MoodPrompt from '@/features/dashboard/components/MoodPrompt';
+import QuickStats from '@/features/dashboard/components/QuickStats';
+import TipCard from '@/features/dashboard/components/TipCard';
+import { SafeAreaView, ScrollView } from 'react-native';
 
-export default function Home() {
-
+export default function HomeDashboardScreen() {
   return (
     <SafeAreaView className="flex-1 h-screen">
-      <JournalEntries />
-      <JournalCreationDialog />
-      <StatusBar style="auto" />
+      <ScrollView className="gap-2 p-4">
+          <MoodPrompt />
+          <QuickStats />
+          <LastEntrySummary />
+          <AiInsights />
+          <TipCard />
+      </ScrollView>
     </SafeAreaView>
   );
 }

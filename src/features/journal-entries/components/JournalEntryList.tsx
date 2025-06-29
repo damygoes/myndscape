@@ -1,7 +1,7 @@
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { JournalEntryItem } from '../jornal-entry-item/component/JournalEntryItem';
 import { JournalEntry } from '../types';
-import { JournalEntryItem } from './JournalEntryItem';
 
 interface Props {
   entries: JournalEntry[];
@@ -10,6 +10,7 @@ interface Props {
 }
 
 export const JournalEntryList = ({ entries, isLoading, error }: Props) => {
+
   const insets = useSafeAreaInsets();
   if (isLoading) {
     return (
@@ -42,17 +43,15 @@ export const JournalEntryList = ({ entries, isLoading, error }: Props) => {
   }
 
   return (
-<FlatList
-    data={entries}
-    keyExtractor={(item) => item.id.toString()}
-    contentContainerStyle={{
-      padding: 16,
-      paddingBottom: insets.bottom + 32,  // 👈 adds device safe area + extra space
-    }}
-    ItemSeparatorComponent={() => <View className="h-4" />}
-    renderItem={({ item }) => <JournalEntryItem entry={item} />}
-  />
-
-  
+    <FlatList
+        data={entries}
+        keyExtractor={(item) => item.id.toString()}
+        contentContainerStyle={{
+          padding: 16,
+          paddingBottom: insets.bottom + 32,
+        }}
+        ItemSeparatorComponent={() => <View className="h-4" />}
+        renderItem={({ item }) => <JournalEntryItem entry={item} />}
+    />
   );
 };

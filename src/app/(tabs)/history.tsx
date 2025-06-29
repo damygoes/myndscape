@@ -1,9 +1,17 @@
-import { Text, View } from "react-native";
+import { JournalCreationDialog } from '@/features/journal-entries/components/JournalCreationDialog';
+import { JournalEntries } from '@/features/journal-entries/components/JournalEntries';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 export default function History() {
+
   return (
-    <View className="items-center justify-center flex-1 p-4">
-      <Text className="text-3xl text-center text-red-400">History</Text>
-    </View>
+    <SafeAreaView className="flex-1 h-screen">
+      <JournalEntries />
+      <JournalCreationDialog />
+      <StatusBar style="auto" />
+    </SafeAreaView>
   );
 }

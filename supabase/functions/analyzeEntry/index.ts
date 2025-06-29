@@ -3,22 +3,74 @@ import OpenAI from "openai";
 import { serve } from "std/server";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  // apiKey: "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"
+  apiKey: Deno.env.get("EXPO_OPEN_AI_KEY"),
 });
 
-serve(async (req: { json: () => PromiseLike<{ content: any; }> | { content: any; }; }) => {
-  const { content } = await req.json();
+serve(async (req: Request) => {
+  try {
+    const { content } = await req.json();
 
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o",
-    messages: [
-      { role: "system", content: "You are an empathetic mood analyzer. For each journal entry, classify the mood (e.g., Happy, Sad, Anxious, Reflective) and summarize the tone and key themes in 1-2 sentences." },
-      { role: "user", content: content },
-    ],
-  });
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        {
+          role: "system",
+          content: `
+          You are a compassionate mental wellness assistant.
 
-  return new Response(
-    JSON.stringify({ result: completion.choices[0].message.content }),
-    { headers: { "Content-Type": "application/json" } }
-  );
+          For every user journal entry:
+
+          1. Classify the mood as a single word (e.g., Happy, Sad, Anxious, Tired, Reflective, Angry, etc.)
+          2. Write a short friendly summary (1-2 sentences) of their mood/tone.
+          3. List key emotional themes (like stress, joy, frustration, etc.)
+          4. Give one short practical self-care tip relevant to the mood.
+
+          Respond ONLY as valid JSON. No markdown. No code blocks. No extra text.
+
+          Format:
+          {
+            "mood": "",
+            "summary": "",
+            "themes": "",
+            "tip": ""
+          }
+          `
+        },
+        { role: "user", content },
+      ],
+    });
+
+    const aiResponse = completion.choices[0].message.content;
+    let cleanedResponse = aiResponse?.trim() || '';
+
+    // ✅ Clean out markdown code blocks if OpenAI still adds them
+    if (cleanedResponse.startsWith('```')) {
+      cleanedResponse = cleanedResponse
+        .replace(/```(json)?/i, '')
+        .replace(/```$/, '')
+        .trim();
+    }
+
+    try {
+      const parsed = JSON.parse(cleanedResponse);
+
+      return new Response(
+        JSON.stringify({ result: parsed }),
+        { headers: { "Content-Type": "application/json" } }
+      );
+    } catch (parseError) {
+      console.error('AI response not valid JSON:', aiResponse);
+      return new Response(
+        JSON.stringify({ error: 'AI response could not be parsed.', raw: aiResponse }),
+        { status: 500 }
+      );
+    }
+  } catch (err) {
+    console.error('AI Function Error:', err);
+    return new Response(
+      JSON.stringify({ error: 'Server error during AI analysis.' }),
+      { status: 500 }
+    );
+  }
 });
