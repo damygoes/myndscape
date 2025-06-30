@@ -1,17 +1,32 @@
-import { Card, CardContent, CardDescription, CardTitle } from '@/components/card/Card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/card/Card';
+import { useJournalEntriesStore } from '@/features/journal-entries/store/useJournalEntriesStore';
 import { Ionicons } from '@expo/vector-icons';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
+import { generateMoodTipMessage } from '../utils/generateMoodTipMessage';
+import { getTipForMood } from '../utils/getTipForMood';
 
 export const TipCard = () => {
+  const { entries } = useJournalEntriesStore();
+  const lastMood = entries?.[0]?.mood;
+  const tip = getTipForMood(lastMood);
+
+  const { intro, tip: tipText } = generateMoodTipMessage(lastMood, tip);
+
   return (
-    <Card className="items-start gap-3 p-4 bg-green-100 dark:bg-green-900">
-      <View className='flex-row items-center justify-center gap-1'>
-      <Ionicons name="bulb-outline" size={18} color="#10B981" /> <CardTitle>Tip: </CardTitle>
-      </View>
+    <Card className="items-start p-4 bg-green-100 dark:bg-green-900">
+      <CardHeader>
+        <View className="flex-row items-center gap-1">
+          <Ionicons name="bulb-outline" size={18} color="#10B981" />
+          <CardTitle>Tip</CardTitle>
+        </View>
+      </CardHeader>
       <CardContent>
-      <CardDescription className="text-green-800 dark:text-green-300">
-        Take 5 minutes today to breathe deeply and reset your mood.
-      </CardDescription>
+        <CardDescription className="text-green-800">
+          <View className="flex flex-col gap-2">
+            <Text className="font-medium">{intro}</Text>
+            <Text>{tipText}</Text>
+          </View>
+        </CardDescription>
       </CardContent>
     </Card>
   );

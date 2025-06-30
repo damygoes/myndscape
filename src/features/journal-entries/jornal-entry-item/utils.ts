@@ -1,33 +1,16 @@
+import { Mood, moodColors, moodIcons } from '@/utils/moodUtils';
 import { Ionicons } from '@expo/vector-icons';
 import { formatDistanceToNow } from 'date-fns';
 import { SUMMARY_TRUNCATION_LENGTH } from './constants';
 
-export const moodIcons: Record<string, keyof typeof Ionicons.glyphMap> = {
-  happy: 'happy-outline',
-  anxious: 'alert-circle-outline',
-  neutral: 'remove-circle-outline',
-  excited: 'rocket-outline',
-  sad: 'sad-outline',
-  tired: 'bed-outline',
-  reflective: 'book-outline',
-  optimistic: 'aperture-outline'
-};
-
-
-export const moodColors: Record<string, string> = {
-  happy: 'bg-yellow-200 text-yellow-800',
-  anxious: 'bg-red-200 text-red-800',
-  neutral: 'bg-gray-300 text-gray-800',
-  excited: 'bg-green-200 text-green-800',
-  sad: 'bg-blue-200 text-blue-800',
-  tired: 'bg-purple-200 text-purple-800',
-  reflective: 'bg-indigo-200 text-indigo-800',
-  optimistic: 'bg-green-100 text-green-800'
-};
-
-export function getMoodBadgeColor(mood: string) {
-  return moodColors[mood.toLowerCase()] ?? 'bg-gray-300 text-gray-800';
+export function getMoodIcon(mood: string): keyof typeof Ionicons.glyphMap {
+  return moodIcons[mood.toLowerCase() as Mood] ?? 'help-circle-outline';
 }
+
+export function getMoodBadgeColor(mood: string): string {
+  return moodColors[mood.toLowerCase() as Mood] ?? 'bg-gray-300 text-gray-800';
+}
+
 
 
 export function extractMoodFromAISummary(summary: string): string {

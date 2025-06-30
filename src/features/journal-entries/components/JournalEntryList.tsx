@@ -1,6 +1,6 @@
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { JournalEntryItem } from '../jornal-entry-item/component/JournalEntryItem';
+import { JournalEntryItem } from '../jornal-entry-item/components/JournalEntryItem';
 import { JournalEntry } from '../types';
 
 interface Props {

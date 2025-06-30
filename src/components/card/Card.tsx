@@ -10,7 +10,7 @@ interface CardProps extends ViewProps {
 export const Card = ({ children, className, ...props }: CardProps) => {
   return (
     <View
-      className={cn('gap-2 p-5 bg-zinc-200/80 min-h-36 drop-shadow-md rounded-3xl dark:bg-gray-800', className)}
+      className={cn('gap-2 p-6 bg-zinc-200/80 min-h-36 drop-shadow-md rounded-3xl', className)}
       {...props}
     >
       {children}

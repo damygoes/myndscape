@@ -1,4 +1,5 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/card/Card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/card/Card';
+import { MoodBadge } from '@/features/journal-entries/jornal-entry-item/components/MoodBadge';
 import { formatRelativeDate } from '@/features/journal-entries/jornal-entry-item/utils';
 import { useJournalEntriesStore } from '@/features/journal-entries/store/useJournalEntriesStore';
 import { Text } from 'react-native';
@@ -11,9 +12,9 @@ export const LastEntrySummary = () => {
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className='gap-6'>
         <CardTitle>Your Last Entry</CardTitle>
-        <CardDescription>{lastEntry.mood}</CardDescription>
+        <MoodBadge mood={lastEntry.mood} displayPrefix={false} />
       </CardHeader>
       <CardContent>
         <Text numberOfLines={2}>{lastEntry.summary || lastEntry.content}</Text>
