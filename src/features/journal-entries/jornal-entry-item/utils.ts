@@ -7,9 +7,11 @@ export function getMoodIcon(mood: string): keyof typeof Ionicons.glyphMap {
   return moodIcons[mood.toLowerCase() as Mood] ?? 'help-circle-outline';
 }
 
-export function getMoodBadgeColor(mood: string): string {
-  return moodColors[mood.toLowerCase() as Mood] ?? 'bg-gray-300 text-gray-800';
+export function getMoodBadgeColor(mood: string) {
+  const moodColor = moodColors[mood.toLowerCase() as Mood];
+  return moodColor ?? '#E5E7EB'
 }
+
 
 
 

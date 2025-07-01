@@ -1,5 +1,6 @@
 import { useJournalEntryById } from '@/features/journal-entries/hooks/useJournalEntryById';
 import { useUpdateJournalEntry } from '@/features/journal-entries/hooks/useUpdateJournalEntry';
+import { colors } from '@/utils/colors';
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -60,7 +61,7 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
   if (isLoading) {
     return (
       <View className="items-center justify-center flex-1">
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color={colors.primary} />
       </View>
     );
   }
@@ -70,14 +71,14 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
       <View
         style={{
           flex: 1,
-          backgroundColor: 'rgba(0,0,0,0.5)',
+          backgroundColor: 'rgba(45, 41, 38, 0.5)', // warm overlay using textPrimary with opacity
           justifyContent: 'flex-end',
         }}
       >
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           style={{
-            backgroundColor: '#fff',
+            backgroundColor: colors.background,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
             padding: 16,
@@ -85,34 +86,60 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
           }}
         >
           <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ paddingBottom: 24 }}>
-            <Text className="mb-4 text-2xl font-bold">Edit Journal Entry</Text>
+            <Text 
+              className="mb-4 text-2xl font-bold"
+              style={{ color: colors.textPrimary }}
+            >
+              Edit Journal Entry
+            </Text>
 
             <TextInput
               value={content}
               onChangeText={setContent}
               placeholder="Describe your feelings..."
+              placeholderTextColor={colors.inputPlaceholder}
               multiline
-              className={`h-32 p-3 border rounded-lg ${
-                error && !content ? 'border-red-500' : 'border-gray-300'
-              }`}
+              style={{
+                height: 128,
+                padding: 12,
+                borderWidth: 1,
+                borderRadius: 8,
+                borderColor: error && !content ? colors.textError : colors.inputBorder,
+                backgroundColor: colors.inputBackground,
+                color: colors.textPrimary,
+                textAlignVertical: 'top',
+              }}
             />
 
-            {error && <Text className="mb-3 text-red-500">{error}</Text>}
+            {error && (
+              <Text 
+                className="mb-3"
+                style={{ color: colors.textError }}
+              >
+                {error}
+              </Text>
+            )}
 
             <View className="flex-row items-center justify-end gap-4 mt-6">
               <TouchableOpacity onPress={onCancel} className="items-center">
-                <Text className="text-gray-500">Cancel</Text>
+                <Text style={{ color: colors.textMuted }}>Cancel</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handleSave}
                 disabled={saving}
-                className="items-center px-4 py-3 bg-blue-500 rounded-full"
+                className="items-center px-4 py-3 rounded-full"
+                style={{ 
+                  backgroundColor: saving ? colors.textMuted : colors.primary,
+                  opacity: saving ? 0.7 : 1,
+                }}
               >
                 {saving ? (
-                  <ActivityIndicator color="white" />
+                  <ActivityIndicator color={colors.background} />
                 ) : (
-                  <Text className="font-bold text-white">Save</Text>
+                  <Text className="font-bold" style={{ color: colors.background }}>
+                    Save
+                  </Text>
                 )}
               </TouchableOpacity>
             </View>

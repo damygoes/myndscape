@@ -1,6 +1,6 @@
-import { DarkTheme, DefaultTheme, Theme as NavigationTheme } from '@react-navigation/native';
+import { colors } from '@/utils/colors';
+import { DefaultTheme, Theme as NavigationTheme } from '@react-navigation/native';
 import React, { useMemo } from 'react';
-import { useColorScheme } from 'react-native';
 import { AppThemeContext } from './AppThemeContext';
 
 type Props = {
@@ -8,31 +8,25 @@ type Props = {
 };
 
 export function AppThemeProvider({ children }: Props) {
-  const colorScheme = useColorScheme();
 
   const theme: NavigationTheme = useMemo(() => {
-    return colorScheme === 'dark'
-      ? {
-          ...DarkTheme,
-          colors: {
-            ...DarkTheme.colors,
-            background: '#000',
-            card: '#000',
-            primary: '#fff',
-            text: '#fff',
-          },
-        }
-      : {
-          ...DefaultTheme,
-          colors: {
-            ...DefaultTheme.colors,
-            background: '#fff',
-            card: '#fff',
-            primary: '#000',
-            text: '#000',
-          },
-        };
-  }, [colorScheme]);
+    const baseColors = {
+      background: colors.background,
+      card: colors.cardBackground,
+      border: colors.border,
+      text: colors.textPrimary,
+      primary: colors.primary,
+      notification: colors.warning,
+    };
+
+    return {
+      ...DefaultTheme,
+      colors: {
+        ...DefaultTheme.colors,
+        ...baseColors,
+      },
+    };
+  }, []);
 
   return (
     <AppThemeContext.Provider value={theme}>

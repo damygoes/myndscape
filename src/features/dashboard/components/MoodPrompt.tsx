@@ -1,5 +1,6 @@
 import { Card, CardFooter } from '@/components/card/Card';
 import { useHandleJournalEntryCreation } from '@/features/journal-entries/hooks/useHandleJournalEntryCreation';
+import { colors } from '@/utils/colors';
 import { Ionicons } from '@expo/vector-icons';
 import { useRef, useState } from 'react';
 import { ActivityIndicator, TextInput as RNTextInput, Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -26,11 +27,18 @@ export const MoodPrompt = () => {
         <TextInput
           ref={inputRef}
           placeholder="Write how you're feeling today..."
+          placeholderTextColor={colors.inputPlaceholder}
           value={content}
           onChangeText={setContent}
           editable={!createIsPending}
           multiline
-          className="p-4 pr-10 text-base text-black bg-white rounded-xl dark:text-white dark:bg-gray-700"
+          className="p-4 pr-10 text-base rounded-xl"
+          style={{
+            backgroundColor: colors.inputBackground,
+            color: colors.textPrimary,
+            borderWidth: 1,
+            borderColor: colors.inputBorder,
+          }}
         />
 
         {content.length > 0 && (
@@ -39,19 +47,28 @@ export const MoodPrompt = () => {
             className="absolute right-6 top-8"
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           >
-            <Ionicons name="close" size={24} color="#6B7280" />
+            <Ionicons name="close" size={24} color={colors.textMuted} />
           </TouchableOpacity>
         )}
       <CardFooter className='border-t-0'>
       <TouchableOpacity
         onPress={handleSubmit}
         disabled={createIsPending}
-        className="px-6 py-4 bg-blue-600 rounded-3xl"
+        className="px-6 py-4 rounded-3xl"
+        style={{
+          backgroundColor: createIsPending ? colors.textMuted : colors.primary,
+          opacity: createIsPending ? 0.7 : 1,
+        }}
       >
         {createIsPending ? (
-          <ActivityIndicator color="#fff" />
+          <ActivityIndicator color={colors.background} />
         ) : (
-          <Text className="text-center text-white">Save</Text>
+          <Text 
+            className="font-semibold text-center"
+            style={{ color: colors.background }}
+          >
+            Save
+          </Text>
         )}
       </TouchableOpacity>
       </CardFooter>

@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { colors } from './colors';
 
 export const moodKeywords = [
     'happy',
@@ -31,16 +32,16 @@ export const moodKeywords = [
   
   
 export const moodColors: Record<Mood, string> = {
-    happy: 'bg-yellow-200 text-yellow-800',
-    sad: 'bg-blue-200 text-blue-800',
-    anxious: 'bg-red-200 text-red-800',
-    excited: 'bg-green-200 text-green-800',
-    neutral: 'bg-gray-300 text-gray-800',
-    stressed: 'bg-red-300 text-red-900',
-    tired: 'bg-purple-200 text-purple-800',
-    optimistic: 'bg-green-100 text-green-800',
-    reflective: 'bg-indigo-200 text-indigo-800',
-    hopeful: 'bg-orange-200 text-orange-800',
+    happy: colors.moods.happy,
+    sad: colors.moods.sad,
+    anxious: colors.moods.anxious,
+    excited: colors.moods.excited,
+    neutral: colors.moods.neutral,
+    stressed: colors.moods.stressed,
+    tired: colors.moods.tired,
+    optimistic: colors.moods.optimistic,
+    reflective: colors.moods.reflective,
+    hopeful: colors.moods.hopeful
 };
 
 export const tipsByMood: Record<string, string> = {

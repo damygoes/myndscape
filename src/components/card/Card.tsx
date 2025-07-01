@@ -1,4 +1,5 @@
 import { cn } from '@/utils/clsx';
+import { colors } from '@/utils/colors';
 import { ReactNode } from 'react';
 import { Text, TextProps, View, ViewProps } from 'react-native';
 
@@ -10,7 +11,11 @@ interface CardProps extends ViewProps {
 export const Card = ({ children, className, ...props }: CardProps) => {
   return (
     <View
-      className={cn('gap-2 p-6 bg-zinc-200/80 min-h-36 drop-shadow-md rounded-3xl', className)}
+      className={cn('gap-2 p-6 min-h-36 drop-shadow-md rounded-3xl', className)}
+      style={{
+        backgroundColor: colors.cardBackground,
+        shadowColor: colors.shadow,
+      }}
       {...props}
     >
       {children}
@@ -32,7 +37,8 @@ export const CardHeader = ({ children, className, ...props }: CardProps) => {
 export const CardTitle = ({ children, className, ...props }: TextProps) => {
   return (
     <Text
-      className={cn('text-lg font-semibold text-zinc-500 dark:text-gray-100', className)}
+      className={cn('text-lg font-semibold', className)}
+      style={{ color: colors.textPrimary }}
       {...props}
     >
       {children}
@@ -43,7 +49,8 @@ export const CardTitle = ({ children, className, ...props }: TextProps) => {
 export const CardDescription = ({ children, className, ...props }: TextProps) => {
   return (
     <Text
-      className={cn('text-base text-zinc-800 dark:text-gray-400', className)}
+      className={cn('text-base', className)}
+      style={{ color: colors.textSecondary }}
       {...props}
     >
       {children}
@@ -65,7 +72,8 @@ export const CardContent = ({ children, className, ...props }: CardProps) => {
 export const CardFooter = ({ children, className, ...props }: CardProps) => {
   return (
     <View
-      className={cn('pt-2 mt-2 border-t border-gray-100 dark:border-gray-700', className)}
+      className={cn('pt-2 mt-2 border-t', className)}
+      style={{ borderTopColor: colors.border }}
       {...props}
     >
       {children}

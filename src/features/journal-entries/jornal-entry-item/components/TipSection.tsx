@@ -1,3 +1,4 @@
+import { colors } from '@/utils/colors';
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { Text, View } from 'react-native';
@@ -11,8 +12,8 @@ export const TipSection = ({ tip }: Props) => {
 
   return (
     <View className="flex-row items-start gap-2 pr-4">
-      <Ionicons name="bulb-outline" size={18} color="#facc15" />
-      <Text className="text-sm text-yellow-700 dark:text-yellow-400">
+      <Ionicons name="bulb-outline" size={18} color={colors.secondary} />
+      <Text className="text-base" style={{color: colors.success}}>
         {tip}
       </Text>
     </View>

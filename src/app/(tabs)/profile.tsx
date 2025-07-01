@@ -1,9 +1,10 @@
-import { Text, View } from "react-native";
+import { ThemedSafeAreaView } from '@/components/layouts/ThemedSafeAreaView';
+import { Text } from "react-native";
 
 export default function Profile() {
   return (
-    <View className="items-center justify-center flex-1 p-4">
+    <ThemedSafeAreaView>
       <Text className="text-3xl text-center text-red-400">Profile</Text>
-    </View>
+    </ThemedSafeAreaView>
   );
 }

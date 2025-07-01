@@ -1,3 +1,4 @@
+import { colors } from '@/utils/colors';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { parseThemes } from '../utils';
@@ -16,7 +17,14 @@ export const ThemesBadges = ({ themes }: Props) => {
       {themeList.map((theme, index) => (
         <Text
           key={index}
-          className="px-2 py-1 mb-1 mr-2 text-xs italic text-gray-700 bg-blue-100 rounded-full dark:bg-gray-600 dark:text-gray-300"
+          className="px-2 py-1 mr-2 text-xs italic rounded-full"
+          style={{
+            color: colors.textSecondary,
+            backgroundColor: colors.surfaceBackground,
+            borderColor: colors.border,
+            borderWidth: 1,
+            borderRadius: 9999
+          }}
         >
           {theme}
         </Text>

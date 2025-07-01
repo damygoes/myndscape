@@ -1,3 +1,4 @@
+import { colors } from '@/utils/colors';
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -66,7 +67,7 @@ export const EditJournalEntry = ({
             contentContainerStyle={{ padding: 24, flexGrow: 1 }}
             keyboardShouldPersistTaps="handled"
           >
-            <Text className="mb-4 text-xl font-bold text-black dark:text-white">
+            <Text className="mb-4 text-xl font-bold" style={{ color: colors.textPrimary}}>
               Edit Journal Entry
             </Text>
 
@@ -76,29 +77,39 @@ export const EditJournalEntry = ({
               placeholder="Describe your feelings..."
               multiline
               textAlignVertical="top"
-              className={`h-40 p-3 border rounded-lg text-black dark:text-white ${
-                error && !content ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'
-              }`}
+              className='h-40 p-3 border rounded-lg'
+              style={{
+                backgroundColor: colors.inputBackground,
+                color: colors.inputPlaceholder,
+                borderColor: error && !content ? colors.textError : colors.inputBorder,
+              }}
             />
 
             {error && (
-              <Text className="mt-2 mb-3 text-red-500">{error}</Text>
+              <Text className="mt-2 mb-3" style={{
+                color: colors.textError
+              }}>{error}</Text>
             )}
 
             <View className="flex flex-row justify-end gap-4 mt-6">
               <TouchableOpacity onPress={onCancel} className="items-center">
-                <Text className="text-gray-500 dark:text-gray-400">Cancel</Text>
+                <Text style={{
+                  color: colors.textSecondary
+                }}>Cancel</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handleSubmit}
                 disabled={saving}
-                className="items-center px-4 py-3 bg-blue-500 rounded-full"
+                className="items-center px-4 py-3 rounded-full"
+                style={{ backgroundColor: colors.primary }}
               >
                 {saving ? (
-                  <ActivityIndicator color="white" />
+                  <ActivityIndicator color={
+                      colors.background
+                  } />
                 ) : (
-                  <Text className="font-bold text-white">Save</Text>
+                  <Text className="font-bold" style={{color: colors.background}}>Save</Text>
                 )}
               </TouchableOpacity>
             </View>

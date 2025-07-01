@@ -1,5 +1,6 @@
 import EditJournalModal from '@/features/journal-entries/components/EditJournalModal';
 import { useDeleteJournalEntry } from '@/features/journal-entries/hooks/useDeleteJournalEntry';
+import { colors } from '@/utils/colors';
 import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { Alert, Text, TouchableOpacity, View } from 'react-native';
@@ -39,8 +40,10 @@ export const JournalEntryActions = ({ entryId }: Props) => {
           activeOpacity={0.7}
           className="flex-row items-center"
         >
-          <Ionicons name="create-outline" size={16} color="#2563EB" />
-          <Text className="ml-1 text-xs text-blue-600 dark:text-blue-300">Edit</Text>
+          <Ionicons name="create-outline" size={16} color={colors.textSecondary} />
+          <Text className="ml-1 text-xs" style={{
+            color: colors.textSecondary
+          }}>Edit</Text>
         </TouchableOpacity>
 
         {/* Delete */}
@@ -49,8 +52,8 @@ export const JournalEntryActions = ({ entryId }: Props) => {
           activeOpacity={0.7}
           className="flex-row items-center"
         >
-          <Ionicons name="trash-outline" size={16} color="#EF4444" />
-          <Text className="ml-1 text-xs text-red-600 dark:text-red-400">Delete</Text>
+          <Ionicons name="trash-outline" size={16} color={colors.textError}/>
+          <Text className="ml-1 text-xs" style={{color: colors.textError}}>Delete</Text>
         </TouchableOpacity>
       </View>
 

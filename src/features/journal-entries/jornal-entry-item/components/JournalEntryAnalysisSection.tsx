@@ -1,3 +1,4 @@
+import { colors } from '@/utils/colors';
 import React from 'react';
 import { Text, View } from 'react-native';
 import { ThemesBadges } from './ThemesBadges';
@@ -13,9 +14,9 @@ export const JournalEntryAnalysisSection = ({ summary, themes, tip }: Props) => 
   if (!summary && !themes && !tip) return null;
 
   return (
-    <View className="gap-5 p-4 rounded-xl bg-zinc-100/60 dark:bg-zinc-700">
+    <View className="gap-5 p-4 rounded-xl">
       {summary && (
-        <Text className="text-base font-normal text-gray-800 dark:text-gray-100">
+        <Text className="text-base font-normal" style={{color: colors.textPrimary}}>
           {summary}
         </Text>
       )}

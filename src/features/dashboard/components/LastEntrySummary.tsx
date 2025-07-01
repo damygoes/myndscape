@@ -2,6 +2,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { MoodBadge } from '@/features/journal-entries/jornal-entry-item/components/MoodBadge';
 import { formatRelativeDate } from '@/features/journal-entries/jornal-entry-item/utils';
 import { useJournalEntriesStore } from '@/features/journal-entries/store/useJournalEntriesStore';
+import { colors } from '@/utils/colors';
 import { Text } from 'react-native';
 
 export const LastEntrySummary = () => {
@@ -17,10 +18,18 @@ export const LastEntrySummary = () => {
         <MoodBadge mood={lastEntry.mood} displayPrefix={false} />
       </CardHeader>
       <CardContent>
-        <Text numberOfLines={2}>{lastEntry.summary || lastEntry.content}</Text>
+        <Text 
+          numberOfLines={2}
+          style={{ color: colors.textPrimary }}
+        >
+          {lastEntry.summary || lastEntry.content}
+        </Text>
       </CardContent>
       <CardFooter>
-        <Text className="text-xs text-gray-400">
+        <Text 
+          className="text-xs"
+          style={{ color: colors.textMuted }}
+        >
           {formatRelativeDate(lastEntry.created_at)}
         </Text>
       </CardFooter>

@@ -19,7 +19,10 @@ export const MoodBadge = ({ mood, displayPrefix = true }: MoodBadgeProps) => {
 
   return (
     <View
-      className={`flex-row items-center gap-2 px-3 py-1 rounded-full ${badgeColor}`}
+      className={`flex-row items-center gap-2 px-3 py-1 rounded-full`}
+      style={{
+        backgroundColor: badgeColor
+      }}
     >
       {displayPrefix && <View className='flex-row items-center justify-start'>
         <Ionicons name={iconName} size={12} color="black" style={{ marginRight: 4 }} />

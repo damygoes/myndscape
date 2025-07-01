@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader } from '@/components/car
 import EditJournalModal from '@/features/journal-entries/components/EditJournalModal';
 import { useJournalEntryAnalysisStore } from '@/features/journal-entries/store/useJournalEntryAnalysisStore';
 import { JournalEntry } from '@/features/journal-entries/types';
+import { colors } from '@/utils/colors';
 import React, { useState } from 'react';
 import {
   LayoutAnimation,
@@ -48,23 +49,32 @@ export const JournalEntryItem = ({ entry }: Props) => {
 
   return (
     <>
-        <Card>
+      <Card>
         <CardHeader className="justify-between">
           <MoodBadge mood={entry.mood ?? 'neutral'} />
-          <CardDescription className="text-xs">{formattedDate}</CardDescription>
+          <CardDescription className="text-xs" style={{color: colors.textMuted}}>{formattedDate}</CardDescription>
         </CardHeader>
         <CardDescription
           numberOfLines={1}
-          className="text-sm opacity-70"
+          className="text-sm"
+          style={{ opacity: 0.7, color: colors.textSecondary }}
         >
           {entry.content}
         </CardDescription>
 
         {isAnalyzing && (
-          <CardDescription className="text-sm italic">Summarizing your mood...</CardDescription>
+          <CardDescription 
+            className="text-sm italic"
+            style={{ color: colors.textMuted }}
+          >
+            Summarizing your mood...
+          </CardDescription>
         )}
         {showAnalysisSection && (
-          <View className="my-1 border-t border-gray-200 dark:border-gray-700" />
+          <View 
+            className="my-1 border-t" 
+            style={{ borderTopColor: colors.border }}
+          />
         )}
         <CardContent className='gap-4'>
         {showAnalysisSection&& (
@@ -76,17 +86,19 @@ export const JournalEntryItem = ({ entry }: Props) => {
         )}
         {shouldShowMoreToggle && (
           <TouchableOpacity onPress={toggleExpand} activeOpacity={0.7}>
-            <Text className="text-sm text-blue-600 dark:text-blue-300">
+            <Text 
+              className="text-sm"
+              style={{ color: colors.primary }}
+            >
               {expanded ? 'See less' : 'See more'}
             </Text>
           </TouchableOpacity>
         )}
         <JournalEntryActions entryId={entry.id} />
         </CardContent>
-        </Card>
+      </Card>
       {/* Edit Modal */}
       <EditJournalModal id={entry.id} visible={modalVisible} onCancel={closeModal} />
     </>
   );
 };
-

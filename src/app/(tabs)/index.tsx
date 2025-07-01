@@ -1,3 +1,4 @@
+import { ThemedSafeAreaView } from '@/components/layouts/ThemedSafeAreaView';
 import { useAuth } from '@/features/auth/components/AuthContext';
 import { AiInsights } from '@/features/dashboard/components/AiInsights';
 import { LastEntrySummary } from '@/features/dashboard/components/LastEntrySummary';
@@ -6,10 +7,12 @@ import { QuickStats } from '@/features/dashboard/components/QuickStats';
 import { TipCard } from '@/features/dashboard/components/TipCard';
 import { useJournalEntries } from '@/features/journal-entries/hooks/useJournalEntries';
 import { useJournalEntriesStore } from '@/features/journal-entries/store/useJournalEntriesStore';
-import { useEffect } from 'react';
+import { AppThemeContext } from '@/providers/theme/AppThemeContext';
+import { useContext, useEffect } from 'react';
 import { ActivityIndicator, SafeAreaView, ScrollView, Text, View } from 'react-native';
 
 export default function HomeDashboardScreen() {
+  const theme = useContext(AppThemeContext);
   const { session } = useAuth();
   const userId = session?.user.id;
   const { data: entries, isLoading, error } = useJournalEntries(userId!);
@@ -40,7 +43,7 @@ export default function HomeDashboardScreen() {
   }
 
   return (
-    <SafeAreaView className="flex-1 h-screen">
+    <ThemedSafeAreaView>
       <ScrollView className="p-6">
         <View className="flex flex-col gap-8 mb-6">
           <MoodPrompt />
@@ -50,6 +53,6 @@ export default function HomeDashboardScreen() {
           <TipCard />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </ThemedSafeAreaView>
   );
 }
