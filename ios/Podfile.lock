@@ -5,6 +5,9 @@ PODS:
     - ExpoModulesCore
   - EXConstants (17.1.6):
     - ExpoModulesCore
+  - EXImageLoader (5.1.0):
+    - ExpoModulesCore
+    - React-Core
   - Expo (53.0.13):
     - DoubleConversion
     - ExpoModulesCore
@@ -43,6 +46,8 @@ PODS:
   - ExpoFont (13.3.1):
     - ExpoModulesCore
   - ExpoHead (5.1.1):
+    - ExpoModulesCore
+  - ExpoImagePicker (16.1.4):
     - ExpoModulesCore
   - ExpoKeepAwake (14.1.4):
     - ExpoModulesCore
@@ -2010,6 +2015,7 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
+  - EXImageLoader (from `../node_modules/expo-image-loader/ios`)
   - Expo (from `../node_modules/expo`)
   - ExpoAsset (from `../node_modules/expo-asset/ios`)
   - ExpoBlur (from `../node_modules/expo-blur/ios`)
@@ -2017,6 +2023,7 @@ DEPENDENCIES:
   - ExpoFileSystem (from `../node_modules/expo-file-system/ios`)
   - ExpoFont (from `../node_modules/expo-font/ios`)
   - ExpoHead (from `../node_modules/expo-router/ios`)
+  - ExpoImagePicker (from `../node_modules/expo-image-picker/ios`)
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoLinking (from `../node_modules/expo-linking/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
@@ -2109,6 +2116,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-application/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
+  EXImageLoader:
+    :path: "../node_modules/expo-image-loader/ios"
   Expo:
     :path: "../node_modules/expo"
   ExpoAsset:
@@ -2123,6 +2132,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-font/ios"
   ExpoHead:
     :path: "../node_modules/expo-router/ios"
+  ExpoImagePicker:
+    :path: "../node_modules/expo-image-picker/ios"
   ExpoKeepAwake:
     :path: "../node_modules/expo-keep-awake/ios"
   ExpoLinking:
@@ -2282,6 +2293,7 @@ SPEC CHECKSUMS:
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   EXApplication: 63b87ca5204304007fac6b1be432f8afa3731c17
   EXConstants: 9f310f44bfedba09087042756802040e464323c0
+  EXImageLoader: 4d3d3284141f1a45006cc4d0844061c182daf7ee
   Expo: d8192e2b8d8df04a44affce7e908137a892933d1
   ExpoAsset: 3bc9adb7dbbf27ae82c18ca97eb988a3ae7e73b1
   ExpoBlur: 3c8885b9bf9eef4309041ec87adec48b5f1986a9
@@ -2289,6 +2301,7 @@ SPEC CHECKSUMS:
   ExpoFileSystem: c36eb8155eb2381c83dda7dc210e3eec332368b6
   ExpoFont: abbb91a911eb961652c2b0a22eef801860425ed6
   ExpoHead: 5fa9071821209796843730542d666f625fa36f87
+  ExpoImagePicker: 0963da31800c906e01c03e25d7c849f16ebf02a2
   ExpoKeepAwake: bf0811570c8da182bfb879169437d4de298376e7
   ExpoLinking: b85ff4eafeae6fc638c6cace60007ae521af0ef4
   ExpoModulesCore: d431ffe83c8673d02cb38425594a5f5480fd3061
