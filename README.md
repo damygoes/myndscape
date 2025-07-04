@@ -4,7 +4,7 @@ Reflect is a beautifully minimalistic mobile journaling app focused on mental cl
 
 ## ✨ Features
 
-- 🧘‍♀️ **Daily Mood Tracking** – Select from mood categories like anxious, excited, tired, and more.
+- 🧘‍♀️ **Daily Mood Tracking** – Get mood feedback like anxious, excited, tired, and more.
 - 📓 **Journaling** – Write daily entries to reflect on your thoughts, emotions, and progress.
 - 🧠 **Wellness-Oriented Colors** – Calming dark theme with mood-based palette.
 - 🔒 **Auth via Supabase** – Secure email-based login and session management.
@@ -15,9 +15,9 @@ Reflect is a beautifully minimalistic mobile journaling app focused on mental cl
 ## 📱 Screenshots
 
 <!-- You can upload screenshots here once available -->
-| Glassy UI | Mood Picker | Journal Entry |
-|-----------|-------------|---------------|
-| ![](./screenshots/glass-ui.png) | ![](./screenshots/mood-picker.png) | ![](./screenshots/journal-entry.png) |
+| Home | History | Journal Entry | Edit Journal | Profile |
+|-----------|-------------|---------------|-----------|-------------|
+| ![](./screenshots/home.png) | ![](./screenshots/history.png) | ![](./screenshots/add-journal.png) | ![](./screenshots/edit-journal.png) | ![](./screenshots/profile.png) |
 
 ## 🛠️ Tech Stack
 
@@ -35,7 +35,8 @@ Reflect is a beautifully minimalistic mobile journaling app focused on mental cl
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/reflect-app.git
+git clone https://github.com/damygoes/reflect.git
+
 cd reflect-app
 ```
 ### 2. Install dependencies
@@ -50,6 +51,7 @@ Create a .env file in the root:
 
 ```bash
 SUPABASE_URL=https://your-project.supabase.co
+
 SUPABASE_ANON_KEY=your-anon-key
 ```
 
@@ -191,8 +193,10 @@ Then scan the QR code using your device, or use Android/iOS simulator.
 ## 🚀 Deployment
 
 You can build the app with Expo:
+
 ```bash
 npx expo build:android
+
 npx expo build:ios
 ```
 Or use EAS Build for advanced workflows.
