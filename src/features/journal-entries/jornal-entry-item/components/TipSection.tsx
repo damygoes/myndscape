@@ -12,7 +12,9 @@ export const TipSection = ({ tip }: Props) => {
 
   return (
     <View className="flex-row items-start gap-2 pr-4">
-      <Ionicons name="bulb-outline" size={18} color={colors.secondary} />
+      <View className="flex flex-row items-center justify-center">
+        <Ionicons name="bulb-outline" size={18} color={colors.textPrimary} />
+      </View>
       <Text className="text-base" style={{color: colors.success}}>
         {tip}
       </Text>

@@ -50,9 +50,9 @@ export const JournalEntryItem = ({ entry }: Props) => {
   return (
     <>
       <Card>
-        <CardHeader className="justify-between">
+        <CardHeader className="justify-between mb-2">
           <MoodBadge mood={entry.mood ?? 'neutral'} />
-          <CardDescription className="text-xs" style={{color: colors.textMuted}}>{formattedDate}</CardDescription>
+          <CardDescription className="text-sm" style={{color: colors.textMuted}}>{formattedDate}</CardDescription>
         </CardHeader>
         <CardDescription
           numberOfLines={1}
@@ -72,7 +72,7 @@ export const JournalEntryItem = ({ entry }: Props) => {
         )}
         {showAnalysisSection && (
           <View 
-            className="my-1 border-t" 
+            className="my-2 border-t" 
             style={{ borderTopColor: colors.border }}
           />
         )}

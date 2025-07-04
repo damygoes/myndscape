@@ -1,55 +1,52 @@
 export const colors = {
-  // Warm, nurturing base colors
-  background: '#FEFBF7',        // warm off-white, like journal paper
-  cardBackground: '#F8F4F0',    // soft cream for cards
-  surfaceBackground: '#FDF9F5', // subtle warm tint for surfaces
-  border: '#E8DDD4',            // warm beige borders
-  
-  // Readable, approachable text
-  textPrimary: '#2D2926',       // warm charcoal instead of cold slate
-  textSecondary: '#5A544E',     // warm brown-gray
-  textMuted: '#8B7F73',         // muted warm brown
-  textError: '#D14343',         // softer red, less aggressive
-  
-  // Calming accent colors
-  primary: '#7C6F64',           // earthy brown - grounding and stable
-  primaryHover: '#6B5D52',      // deeper brown
-  secondary: '#A8956B',         // warm sage - peaceful and natural
-  
-  // Status colors with warmth
-  success: '#6B8E23',           // olive green - natural and reassuring
-  warning: '#D4A574',           // warm amber - gentle alert
-  danger: '#C17B6B',            // dusty rose red - softer than typical red
-  
-  // Input styling
-  inputBackground: '#FFFFFF',   
-  inputBorder: '#E8DDD4',       // matches border color
-  inputPlaceholder: '#A69B8F',  // warm muted text
-  
-  // Subtle shadows
-  shadow: 'rgba(61, 52, 42, 0.08)', // warm shadow instead of black
-  
-  // Mood colors - more nuanced and less saturated
+  // Base
+  background: '#0C0E10',         
+  cardBackground: 'rgba(255, 255, 255, 0.05)', 
+  surfaceBackground: 'rgba(255, 255, 255, 0.03)',
+
+  // Borders & shadows
+  border: 'rgba(255, 255, 255, 0.15)',
+  shadow: 'rgba(0, 0, 0, 0.4)',
+
+  // Text
+  textPrimary: '#F5F7FA',        
+  textSecondary: '#CBD5E1',      
+  textMuted: '#94A3B8',          
+  textError: '#EF4444',
+  success: '#22C55E',
+  warning: '#EAB308',
+  danger: '#DC2626',
+
+  // Accent
+  primary: '#38BDF8',            
+  primaryHover: '#0EA5E9',
+
+  // Input
+  inputBackground: '#1E293B',    
+  inputBorder: '#334155',
+  inputPlaceholder: '#64748B',
+
+  // Moods (unchanged or subtly tuned)
   moods: {
-    happy: '#F7E98E',           // soft golden yellow
-    sad: '#A8C5E0',             // gentle blue-gray
-    anxious: '#E8B4B8',         // muted coral pink
-    excited: '#B8E6B8',         // soft mint green
-    neutral: '#D6CFC4',         // warm neutral beige
-    tired: '#C8B8D4',           // soft lavender
-    optimistic: '#B8DDB8',      // light sage green
-    reflective: '#C4B8D4',      // gentle periwinkle
-    hopeful: '#A8D4A8',         // soft forest green
-    stressed: '#D4A8A8',        // dusty rose
-    grateful: '#E6D08A',        // warm butter yellow
-    peaceful: '#A8C8C8',        // soft teal
+    happy: '#FACC15',           
+    sad: '#60A5FA',             
+    anxious: '#F87171',         
+    excited: '#34D399',         
+    neutral: '#94A3B8',         
+    tired: '#A78BFA',           
+    optimistic: '#4ADE80',      
+    reflective: '#93C5FD',      
+    hopeful: '#5EEAD4',         
+    stressed: '#FB7185',        
+    grateful: '#FCD34D',        
+    peaceful: '#7DD3FC',        
   },
-  
-  // Additional wellness-focused colors
+
+  // Wellness
   wellness: {
-    breathe: '#B8C5D1',         // calming blue-gray
-    focus: '#A8956B',           // grounding sage
-    rest: '#C8B8D4',            // soothing lavender
-    energy: '#E6D08A',          // gentle sunshine
-  }
+    breathe: '#93C5FD',
+    focus: '#A3E635',
+    rest: '#E9D5FF',
+    energy: '#FDE68A',
+  },
 };

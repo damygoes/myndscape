@@ -1,3 +1,4 @@
+import { colors } from '@/utils/colors';
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { JournalEntryItem } from '../jornal-entry-item/components/JournalEntryItem';
@@ -16,7 +17,7 @@ export const JournalEntryList = ({ entries, isLoading, error }: Props) => {
     return (
       <View className="items-center justify-center flex-1 space-y-2">
         <ActivityIndicator size="large" />
-        <Text className="text-gray-600">Loading your journal entries...</Text>
+        <Text style={{ color: colors.textMuted}}>Loading your journal entries...</Text>
       </View>
     );
   }
@@ -25,7 +26,7 @@ export const JournalEntryList = ({ entries, isLoading, error }: Props) => {
     console.error('Journal Entries Fetch Error:', error);
     return (
       <View className="items-center justify-center flex-1 px-6">
-        <Text className="font-medium text-center text-red-500">
+        <Text className="font-medium text-center" style={{ color: colors.textError}}>
           Failed to load your journal entries.
         </Text>
       </View>
@@ -34,8 +35,8 @@ export const JournalEntryList = ({ entries, isLoading, error }: Props) => {
 
   if (entries.length === 0) {
     return (
-      <View className="items-center justify-center flex-1 px-8">
-        <Text className="text-base text-center text-gray-500">
+      <View className="items-center justify-center flex-1 px-10">
+        <Text className="text-base text-center" style={{color: colors.textMuted}}>
           You haven’t logged any mood entries yet. Tap the + button to add your first one!
         </Text>
       </View>
@@ -43,15 +44,15 @@ export const JournalEntryList = ({ entries, isLoading, error }: Props) => {
   }
 
   return (
-    <FlatList
-        data={entries}
-        keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={{
-          padding: 16,
-          paddingBottom: insets.bottom + 32,
-        }}
-        ItemSeparatorComponent={() => <View className="h-4" />}
-        renderItem={({ item }) => <JournalEntryItem entry={item} />}
-    />
+      <FlatList
+          data={entries}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={{
+            paddingHorizontal: 16,
+            paddingBottom: insets.bottom + 32,
+          }}
+          ItemSeparatorComponent={() => <View className="h-4" />}
+          renderItem={({ item }) => <JournalEntryItem entry={item} />}
+      />
   );
 };

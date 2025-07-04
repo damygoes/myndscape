@@ -1,4 +1,5 @@
 import { useAuth } from '@/features/auth/components/AuthContext';
+import { View } from 'react-native';
 import { useJournalEntries } from '../hooks/useJournalEntries';
 import { JournalEntryList } from './JournalEntryList';
 
@@ -8,8 +9,8 @@ export const JournalEntries = () => {
   const { data: entries = [], isLoading, error, refetch } = useJournalEntries(userId!);
 
   return (
-    
-    <JournalEntryList entries={entries} isLoading={isLoading} error={error} />
-    
+    <View className="mb-6">
+      <JournalEntryList entries={entries} isLoading={isLoading} error={error} />
+    </View>
   );
 };

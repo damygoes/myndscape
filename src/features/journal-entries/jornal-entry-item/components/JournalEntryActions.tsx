@@ -33,7 +33,7 @@ export const JournalEntryActions = ({ entryId }: Props) => {
 
   return (
     <>
-      <View className="flex-row justify-end gap-4 mt-2">
+      <View className="flex-row justify-start gap-8 mt-4">
         {/* Edit */}
         <TouchableOpacity
           onPress={openModal}
@@ -41,7 +41,7 @@ export const JournalEntryActions = ({ entryId }: Props) => {
           className="flex-row items-center"
         >
           <Ionicons name="create-outline" size={16} color={colors.textSecondary} />
-          <Text className="ml-1 text-xs" style={{
+          <Text className="ml-1 text-base" style={{
             color: colors.textSecondary
           }}>Edit</Text>
         </TouchableOpacity>
@@ -53,7 +53,7 @@ export const JournalEntryActions = ({ entryId }: Props) => {
           className="flex-row items-center"
         >
           <Ionicons name="trash-outline" size={16} color={colors.textError}/>
-          <Text className="ml-1 text-xs" style={{color: colors.textError}}>Delete</Text>
+          <Text className="ml-1 text-base" style={{color: colors.textError}}>Delete</Text>
         </TouchableOpacity>
       </View>
 

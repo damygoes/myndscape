@@ -1,6 +1,7 @@
 import { useJournalEntryById } from '@/features/journal-entries/hooks/useJournalEntryById';
 import { useUpdateJournalEntry } from '@/features/journal-entries/hooks/useUpdateJournalEntry';
 import { colors } from '@/utils/colors';
+import { BlurView } from 'expo-blur';
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -8,6 +9,7 @@ import {
   Modal,
   Platform,
   ScrollView,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -21,7 +23,12 @@ interface EditJournalModalProps {
   onSubmit?: (content: string) => Promise<void>;
 }
 
-export default function EditJournalModal({ id, visible, onCancel, onSubmit }: EditJournalModalProps) {
+export default function EditJournalModal({
+  id,
+  visible,
+  onCancel,
+  onSubmit,
+}: EditJournalModalProps) {
   const updateEntry = useUpdateJournalEntry();
   const { data: entry, isLoading } = useJournalEntryById(id);
 
@@ -42,7 +49,7 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
     }
     setError(null);
     setSaving(true);
-    
+
     try {
       if (onSubmit) {
         await onSubmit(content);
@@ -68,26 +75,39 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
 
   return (
     <Modal visible={visible} animationType="slide" transparent onRequestClose={onCancel}>
-      <View
+      <View style={StyleSheet.absoluteFill}>
+        {/* Background blur */}
+        <BlurView intensity={30} tint="dark" style={StyleSheet.absoluteFill} />
+
+        {/* Optional: subtle overlay on top of blur */}
+        <View
+          style={{
+            ...StyleSheet.absoluteFillObject,
+            backgroundColor: colors.surfaceBackground,
+          }}
+        />
+      </View>
+
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={{
           flex: 1,
-          backgroundColor: 'rgba(45, 41, 38, 0.5)', // warm overlay using textPrimary with opacity
           justifyContent: 'flex-end',
         }}
       >
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        <View
           style={{
             backgroundColor: colors.background,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
             padding: 16,
-            maxHeight: '80%',
+            minHeight: '50%',
+            maxHeight: '90%',
           }}
         >
           <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ paddingBottom: 24 }}>
-            <Text 
-              className="mb-4 text-2xl font-bold"
+            <Text
+              className="mb-8 text-2xl font-bold"
               style={{ color: colors.textPrimary }}
             >
               Edit Journal Entry
@@ -100,7 +120,7 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
               placeholderTextColor={colors.inputPlaceholder}
               multiline
               style={{
-                height: 128,
+                height: 300,
                 padding: 12,
                 borderWidth: 1,
                 borderRadius: 8,
@@ -112,7 +132,7 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
             />
 
             {error && (
-              <Text 
+              <Text
                 className="mb-3"
                 style={{ color: colors.textError }}
               >
@@ -120,7 +140,7 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
               </Text>
             )}
 
-            <View className="flex-row items-center justify-end gap-4 mt-6">
+            <View className="flex-row items-center justify-end gap-4 my-6">
               <TouchableOpacity onPress={onCancel} className="items-center">
                 <Text style={{ color: colors.textMuted }}>Cancel</Text>
               </TouchableOpacity>
@@ -128,8 +148,8 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
               <TouchableOpacity
                 onPress={handleSave}
                 disabled={saving}
-                className="items-center px-4 py-3 rounded-full"
-                style={{ 
+                className="items-center px-6 py-4 rounded-full"
+                style={{
                   backgroundColor: saving ? colors.textMuted : colors.primary,
                   opacity: saving ? 0.7 : 1,
                 }}
@@ -144,8 +164,8 @@ export default function EditJournalModal({ id, visible, onCancel, onSubmit }: Ed
               </TouchableOpacity>
             </View>
           </ScrollView>
-        </KeyboardAvoidingView>
-      </View>
+        </View>
+      </KeyboardAvoidingView>
     </Modal>
   );
 }

@@ -14,17 +14,7 @@ export const TipCard = () => {
   const { intro, tip: tipText } = generateMoodTipMessage(lastMood, tip);
 
   return (
-    <Card style={{
-      alignItems: 'flex-start',
-      padding: 16,
-      backgroundColor: colors.wellness.energy,
-      borderColor: colors.border,
-      shadowColor: colors.shadow,
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 1,
-      shadowRadius: 4,
-      elevation: 2,
-    }}>
+    <Card>
       <CardHeader>
         <View style={{
           flexDirection: 'row',
@@ -70,3 +60,17 @@ export const TipCard = () => {
     </Card>
   );
 };
+
+/**
+ * style={{
+      alignItems: 'flex-start',
+      padding: 16,
+      backgroundColor: colors.wellness.energy,
+      borderColor: colors.border,
+      shadowColor: colors.shadow,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 1,
+      shadowRadius: 4,
+      elevation: 2,
+    }}
+ */

@@ -1,3 +1,4 @@
+import { colors } from '@/utils/colors';
 import { moodIcons } from '@/utils/moodUtils';
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
@@ -19,18 +20,18 @@ export const MoodBadge = ({ mood, displayPrefix = true }: MoodBadgeProps) => {
 
   return (
     <View
-      className={`flex-row items-center gap-2 px-3 py-1 rounded-full`}
+      className={`flex-row items-center gap-1 p-2 rounded-full`}
       style={{
         backgroundColor: badgeColor
       }}
     >
       {displayPrefix && <View className='flex-row items-center justify-start'>
-        <Ionicons name={iconName} size={12} color="black" style={{ marginRight: 4 }} />
-        <Text className="text-xs font-semibold">
+        <Ionicons name={iconName} size={12} color={colors.background} style={{ marginRight: 4 }} />
+        <Text className="text-sm">
           Mood:
         </Text>
       </View>}
-      <Text className="text-xs font-semibold">
+      <Text className="text-sm">
         {mood}
       </Text>
     </View>

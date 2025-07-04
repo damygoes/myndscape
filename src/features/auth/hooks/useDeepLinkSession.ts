@@ -9,9 +9,17 @@ export const useDeepLinkSession = () => {
 
   useEffect(() => {
     const handleDeepLink = async ({ url }: { url: string }) => {
-      console.log('Deep link URL:', url);
+    console.log('Deep link URL:', url);
 
-      if (url.includes('access_token') && url.includes('type=magiclink')) {
+    try {
+      const urlObj = new URL(url);
+      const fragment = urlObj.hash.substring(1); // remove leading '#'
+      const params = new URLSearchParams(fragment);
+
+      const accessToken = params.get('access_token');
+      const type = params.get('type');
+
+      if (accessToken && (type === 'magiclink' || type === 'signup')) {
         const session = await createSessionFromUrl(url);
 
         if (session) {
@@ -19,7 +27,11 @@ export const useDeepLinkSession = () => {
           router.replace('/');
         }
       }
-    };
+    } catch (err) {
+      console.error('Failed to parse deep link URL:', err);
+    }
+  };
+
 
     const subscription = Linking.addEventListener('url', handleDeepLink);
 

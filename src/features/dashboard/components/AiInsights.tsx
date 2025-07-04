@@ -29,8 +29,6 @@ export const AiInsights = () => {
 
   return (
     <Card 
-      className=""
-      style={{ backgroundColor: colors.wellness.energy }}
     >
       <CardHeader>
         <CardTitle>AI Insights</CardTitle>

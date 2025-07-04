@@ -2,7 +2,7 @@ import { supabase } from '@/services/supabase';
 import { colors } from '@/utils/colors';
 import * as ImagePicker from 'expo-image-picker';
 import React, { useState } from 'react';
-import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 type Props = {
   avatarUrl: string | null;
@@ -22,19 +22,15 @@ export function ProfileAvatar({
   const [uploading, setUploading] = useState(false);
 
   const handlePickAvatar = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ['images'],
-        allowsEditing: true,
-        quality: 0.7,
-      });
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      allowsEditing: true,
+      quality: 0.7,
+    });
 
-      if (!result.canceled && result.assets.length > 0) {
-        const file = result.assets[0];
-        await uploadAvatar(file.uri);
-      }
-    } catch (error) {
-      console.error('Image picking error:', error);
+    if (!result.canceled && result.assets.length > 0) {
+      const file = result.assets[0];
+      await uploadAvatar(file.uri);
     }
   };
 
@@ -42,30 +38,63 @@ export function ProfileAvatar({
     try {
       setUploading(true);
 
-      const fileName = `avatars/${userId}-${Date.now()}.jpg`;
-      const response = await fetch(uri);
-      const blob = await response.blob();
+      const { data: userData } = await supabase.auth.getUser();
 
-      const { error: uploadError } = await supabase.storage
+      if (!userData?.user?.id) {
+        throw new Error('No logged in user found. Cannot update avatar.');
+      }
+
+      const fileName = `${userId}-${Date.now()}.jpg`;
+
+      const testImageUri = 'https://dummyimage.com/300x300/cccccc/000000&text=Logo';
+
+
+      const response = await fetch(testImageUri);
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch image from URI');
+      }
+
+      const blob = await response.blob();
+      console.log("Blob size:", blob.size);
+
+      if (blob.size === 0) {
+        throw new Error('Blob is empty');
+      }
+
+      // Upload to Supabase Storage
+      const {error: uploadError} = await supabase.storage
         .from('avatars')
         .upload(fileName, blob, { upsert: true });
 
-      if (uploadError) throw uploadError;
-
-      const { data: publicUrl } = supabase.storage
-        .from('avatars')
-        .getPublicUrl(fileName);
-
-      if (publicUrl?.publicUrl) {
-        await supabase.auth.updateUser({
-          data: { avatar_url: publicUrl.publicUrl },
-        });
-
-        onAvatarUpdate(publicUrl.publicUrl);
+      if (uploadError) {
+        console.error("Upload error:", uploadError);
+        throw uploadError;
       }
+
+      // Create a signed URL for the uploaded avatar
+     const { data, error } = await supabase.storage
+      .from('avatars')
+      .createSignedUrl(fileName, 60 * 60);
+
+      if (error) throw error;
+
+      const signedUrl = data.signedUrl;
+      console.log("signed URL:", signedUrl);
+
+
+      // Update avatar_url in users table
+      const { error: updateError } = await supabase
+        .from('users')
+        .update({ avatar_url: signedUrl })
+        .eq('id', userId);
+
+      if (updateError) throw updateError;
+
+      onAvatarUpdate(signedUrl);
     } catch (error) {
       console.error('Avatar upload failed:', error);
-      Alert.alert('Upload Failed', 'Could not upload avatar. Try again.');
+      Alert.alert('Avatar Upload Failed', 'Could not upload avatar. Please try again.');
     } finally {
       setUploading(false);
     }
@@ -74,7 +103,12 @@ export function ProfileAvatar({
   const getInitials = () => {
     if (!userEmail) return '';
     const namePart = userEmail.split('@')[0];
-    return namePart.slice(0, 2).toUpperCase();
+    return namePart
+      .split(/[\W_]+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((part) => part.charAt(0).toUpperCase())
+      .join('');
   };
 
   const containerStyle = {
@@ -83,15 +117,23 @@ export function ProfileAvatar({
     borderWidth: 2,
     borderColor: colors.border,
     borderRadius: shape === 'circle' ? 999 : 12,
-    backgroundColor: colors.surfaceBackground,
+    backgroundColor: colors.background,
     alignItems: 'center' as const,
     justifyContent: 'center' as const,
     overflow: 'hidden' as const,
-    opacity: uploading ? 0.6 : 1,  // Slight fade during upload
+  };
+
+  const initialsStyle = {
+    color: colors.textMuted,
+    fontSize: 36,
+    fontWeight: 'bold' as const,
   };
 
   return (
-    <TouchableOpacity onPress={uploading ? undefined : handlePickAvatar} activeOpacity={0.7}>
+    <TouchableOpacity
+      onPress={uploading ? undefined : handlePickAvatar}
+      activeOpacity={0.7}
+    >
       <View style={containerStyle}>
         {avatarUrl ? (
           <Image
@@ -101,10 +143,33 @@ export function ProfileAvatar({
               height: '100%',
               resizeMode: 'cover',
             }}
+             onError={(e) => console.log('Image load error:', e.nativeEvent)}
           />
         ) : (
-          <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-            <Text style={{ color: colors.textMuted, fontSize: 24 }}>{getInitials()}</Text>
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              flex: 1,
+              backgroundColor: colors.cardBackground,
+              width: '100%',
+              height: '100%',
+            }}
+          >
+            <Text style={initialsStyle}>{getInitials() || '?'}</Text>
+          </View>
+        )}
+
+        {uploading && (
+          <View
+            style={{
+              ...StyleSheet.absoluteFillObject,
+              backgroundColor: colors.shadow,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Text style={{ color: colors.background }}>Uploading...</Text>
           </View>
         )}
       </View>

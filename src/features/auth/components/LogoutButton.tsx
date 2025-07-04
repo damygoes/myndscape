@@ -26,13 +26,12 @@ export function LogoutButton() {
         disabled={loading}
         style={{
           backgroundColor: colors.danger,
-          paddingVertical: 10,
-          paddingHorizontal: 16,
-          borderRadius: 6,
+          padding: 16,
+          borderRadius: 999,
           opacity: loading ? 0.6 : 1,
         }}
       >
-        <Text style={{ color: colors.background, fontWeight: 'bold', textAlign: 'center' }}>
+        <Text style={{ color: colors.textPrimary, fontWeight: 'bold', textAlign: 'center' }}>
           {loading ? 'Logging out...' : 'Logout'}
         </Text>
       </TouchableOpacity>

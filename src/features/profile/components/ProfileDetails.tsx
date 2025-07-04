@@ -1,29 +1,43 @@
 import { Card, CardContent } from '@/components/card/Card';
-import { supabase } from '@/services/supabase';
 import { colors } from '@/utils/colors';
 import React, { useState } from 'react';
-import { Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useUpdateUserProfile } from '../hooks/useUpdateUserProfile';
 
 type Props = {
+  userId: string;
   email: string;
-  initialDisplayName: string;
+  fullname?: string | null;
+  bio?: string | null;
+  initialDisplayName: string | null;
+  onProfileUpdate: () => void;
 };
 
-export function ProfileDetails({ email, initialDisplayName }: Props) {
-  const [displayName, setDisplayName] = useState(initialDisplayName);
+export function ProfileDetails({
+  userId,
+  email,
+  fullname,
+  bio,
+  initialDisplayName,
+  onProfileUpdate,
+}: Props) {
+  const [displayName, setDisplayName] = useState(initialDisplayName || '');
+  const [fullName, setFullName] = useState(fullname || '');
+  const [userBio, setUserBio] = useState(bio || '');
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const handleSave = async () => {
     try {
       setSaving(true);
-      const { error } = await supabase.auth.updateUser({
-        data: { display_name: displayName },
+      await useUpdateUserProfile(userId, {
+        display_name: displayName,
+        fullname: fullName,
+        bio: userBio,
       });
 
-      if (error) throw error;
-
       Alert.alert('Profile updated');
+      await onProfileUpdate();
       setEditing(false);
     } catch (error) {
       console.error('Error updating profile:', error);
@@ -34,36 +48,84 @@ export function ProfileDetails({ email, initialDisplayName }: Props) {
   };
 
   return (
-    <Card style={{ width: '100%' }}>
+    <Card>
       <CardContent className="gap-4">
         <View className="gap-2">
-          <Text style={{ color: colors.textMuted }}>Display Name:</Text>
+          <Text style={{ color: colors.textMuted }}>Full Name:</Text>
           {editing ? (
             <TextInput
-              value={displayName}
-              onChangeText={setDisplayName}
-              placeholder="Enter your name"
+              value={fullName}
+              onChangeText={setFullName}
+              placeholder="Enter your full name"
               style={{
                 borderColor: colors.border,
                 borderWidth: 1,
                 padding: 8,
                 borderRadius: 6,
                 backgroundColor: colors.inputBackground,
+                color: colors.textPrimary,
               }}
             />
           ) : (
-            <Text className="text-lg font-medium">{displayName || 'Not set'}</Text>
+            <Text className="text-lg" style={{ color: colors.textPrimary }}>{fullName || 'Not set'}</Text>
           )}
         </View>
 
-        {/* Email */}
+        <View className="gap-2">
+          <Text style={{ color: colors.textMuted }}>Display Name (username):</Text>
+          {editing ? (
+            <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              value={displayName}
+              onChangeText={setDisplayName}
+              placeholder="Enter your username"
+              style={{
+                borderColor: colors.border,
+                borderWidth: 1,
+                padding: 8,
+                borderRadius: 6,
+                backgroundColor: colors.inputBackground,
+                color: colors.textPrimary,
+              }}
+            />
+          ) : (
+            <Text className="text-lg" style={{ color: colors.textPrimary}} >{displayName || 'Not set'}</Text>
+          )}
+        </View>
+
+        <View className="gap-2">
+          <Text style={{ color: colors.textMuted }}>Bio:</Text>
+          {editing ? (
+            <TextInput
+              multiline
+              numberOfLines={3}
+              value={userBio}
+              onChangeText={setUserBio}
+              placeholder="Tell us about yourself"
+              style={{
+                borderColor: colors.border,
+                borderWidth: 1,
+                padding: 8,
+                borderRadius: 6,
+                backgroundColor: colors.inputBackground,
+                textAlignVertical: 'top', // ensures multiline starts at the top
+                color: colors.textPrimary,
+              }}
+            />
+          ) : (
+            <Text className="text-base" style={{ color: colors.textPrimary }}>{userBio || 'Not set'}</Text>
+          )}
+        </View>
+
+        {/* Email (read-only) */}
         <View className="gap-2">
           <Text style={{ color: colors.textMuted }}>Email:</Text>
-          <Text className="text-lg font-medium">{email}</Text>
+          <Text className="text-lg" style={{ color: colors.textPrimary }}>{email}</Text>
         </View>
 
         {/* Action Buttons */}
-        <View className="flex-row-reverse justify-start gap-4 mt-4">
+        <View className="flex-row-reverse justify-start gap-6 mt-8">
           {editing ? (
             <>
               <TouchableOpacity
@@ -71,41 +133,41 @@ export function ProfileDetails({ email, initialDisplayName }: Props) {
                 disabled={saving}
                 style={{
                   backgroundColor: colors.primary,
-                  paddingVertical: 8,
+                  paddingVertical: 10,
                   paddingHorizontal: 16,
                   borderRadius: 6,
-                  opacity: saving ? 0.6 : 1,
                 }}
               >
-                <Text style={{ color: colors.background, fontWeight: 'bold' }}>
-                  {saving ? 'Saving...' : 'Save'}
-                </Text>
+                {saving ? (
+                  <ActivityIndicator color={colors.textPrimary} />
+                ) : (
+                  <Text style={{ color: colors.textPrimary, textAlign: 'center' }}>Save</Text>
+                )}
               </TouchableOpacity>
+
               <TouchableOpacity
                 onPress={() => setEditing(false)}
                 style={{
-                  paddingVertical: 8,
+                  backgroundColor: colors.cardBackground,
+                  paddingVertical: 10,
                   paddingHorizontal: 16,
                   borderRadius: 6,
-                  backgroundColor: colors.cardBackground,
-                  borderWidth: 1,
-                  borderColor: colors.border,
                 }}
               >
-                <Text style={{ color: colors.textPrimary }}>Cancel</Text>
+                <Text style={{ color: colors.textPrimary, textAlign: 'center' }}>Cancel</Text>
               </TouchableOpacity>
             </>
           ) : (
             <TouchableOpacity
               onPress={() => setEditing(true)}
               style={{
-                paddingVertical: 8,
+                backgroundColor: colors.primary,
+                paddingVertical: 10,
                 paddingHorizontal: 16,
                 borderRadius: 6,
-                backgroundColor: colors.primary,
               }}
             >
-              <Text style={{ color: '#fff', fontWeight: 'bold' }}>Edit Profile</Text>
+              <Text style={{ color: colors.textPrimary, textAlign: 'center' }}>Edit Profile</Text>
             </TouchableOpacity>
           )}
         </View>
