@@ -9,29 +9,26 @@ export const useDeepLinkSession = () => {
 
   useEffect(() => {
     const handleDeepLink = async ({ url }: { url: string }) => {
-    console.log('Deep link URL:', url);
 
-    try {
-      const urlObj = new URL(url);
-      const fragment = urlObj.hash.substring(1); // remove leading '#'
-      const params = new URLSearchParams(fragment);
+      try {
+        const urlObj = new URL(url);
+        const fragmentParams = new URLSearchParams(urlObj.hash.substring(1));
+        const queryParams = new URLSearchParams(urlObj.search.substring(1));
 
-      const accessToken = params.get('access_token');
-      const type = params.get('type');
+        const accessToken = fragmentParams.get('access_token') || queryParams.get('access_token');
+        const type = fragmentParams.get('type') || queryParams.get('type');
 
-      if (accessToken && (type === 'magiclink' || type === 'signup')) {
-        const session = await createSessionFromUrl(url);
-
-        if (session) {
-          console.log('✅ Session established, redirecting to dashboard');
-          router.replace('/');
+        if (accessToken && (type === 'magiclink' || type === 'signup')) {
+          const session = await createSessionFromUrl(url);
+          if (session) {
+            console.log('✅ Session established');
+            router.replace('/');
+          }
         }
+      } catch (err) {
+        console.error('❌ Failed to parse deep link URL:', err);
       }
-    } catch (err) {
-      console.error('Failed to parse deep link URL:', err);
-    }
-  };
-
+    };
 
     const subscription = Linking.addEventListener('url', handleDeepLink);
 

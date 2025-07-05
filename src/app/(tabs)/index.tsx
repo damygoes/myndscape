@@ -9,7 +9,8 @@ import { TipCard } from '@/features/dashboard/components/TipCard';
 import { useJournalEntries } from '@/features/journal-entries/hooks/useJournalEntries';
 import { useJournalEntriesStore } from '@/features/journal-entries/store/useJournalEntriesStore';
 import { useEffect } from 'react';
-import { ActivityIndicator, SafeAreaView, Text, View } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeDashboardScreen() {
   const { session } = useAuth();

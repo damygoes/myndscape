@@ -4,7 +4,7 @@ import { useAuth } from '@/features/auth/components/AuthContext';
 import { LogoutButton } from '@/features/auth/components/LogoutButton';
 import { ProfileDetailsWithAvatar } from '@/features/profile/components/ProfileDetailsWithAvatar';
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default function ProfileScreen() {
   const { session, loading } = useAuth();
@@ -13,7 +13,9 @@ export default function ProfileScreen() {
   if (loading) {
     return (
       <ThemedSafeAreaView>
-        <Text>Loading...</Text>
+        <View className="items-center justify-start w-full min-h-full">
+          <Text>Loading...</Text>
+        </View>
       </ThemedSafeAreaView>
     );
   }
@@ -21,16 +23,20 @@ export default function ProfileScreen() {
   if (!user) {
     return (
       <ThemedSafeAreaView>
-        <Text>You are not logged in.</Text>
+        <View className="items-center justify-center flex-1 px-10">
+          <Text>You are not logged in.</Text>
+        </View>
       </ThemedSafeAreaView>
     );
   }
 
   return (
     <ThemedSafeAreaView>
-      <SafeScrollView className="mb-6">
-        <ProfileDetailsWithAvatar userId={user.id} />
-        <LogoutButton />
+      <SafeScrollView className="flex-1 mb-6">
+        <View className="items-center justify-start w-full min-h-full">
+          <ProfileDetailsWithAvatar userId={user.id} />
+          <LogoutButton className='w-full' />
+        </View>
       </SafeScrollView>
     </ThemedSafeAreaView>
   );

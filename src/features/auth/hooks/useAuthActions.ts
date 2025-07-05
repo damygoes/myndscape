@@ -5,8 +5,12 @@ import * as WebBrowser from 'expo-web-browser';
 
 WebBrowser.maybeCompleteAuthSession();
 
-const redirectTo = makeRedirectUri();
-console.log("redirect to:", redirectTo)
+const redirectTo =
+  process.env.NODE_ENV === 'development'
+    ? makeRedirectUri({ native: 'ai.reflect://auth/callback' })
+    : 'ai.reflect://auth/callback';
+
+console.log('🔗 Redirect URI:', redirectTo);
 
 export const useAuthActions = () => {
   const sendMagicLink = async (email: string) => {
@@ -35,22 +39,21 @@ export const useAuthActions = () => {
     });
 
     if (error) throw error;
-    console.log('✅ Supabase session established:', data.session);
     return data.session;
   };
 
-  const performOAuth = async (provider: 'github' | 'google' | 'twitter' /* etc */) => {
+  const performOAuth = async (
+    provider: 'github' | 'google' | 'twitter' // etc
+  ) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
         redirectTo,
-        skipBrowserRedirect: true, // Important for Expo + mobile flow
+        skipBrowserRedirect: true,
       },
     });
 
     if (error) throw error;
-
-    console.log('✅ Open browser for OAuth:', data?.url);
 
     const res = await WebBrowser.openAuthSessionAsync(data?.url ?? '', redirectTo);
 

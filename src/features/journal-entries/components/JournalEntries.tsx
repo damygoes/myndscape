@@ -9,7 +9,7 @@ export const JournalEntries = () => {
   const { data: entries = [], isLoading, error, refetch } = useJournalEntries(userId!);
 
   return (
-    <View className="mb-6">
+    <View className="flex-1 mb-6">
       <JournalEntryList entries={entries} isLoading={isLoading} error={error} />
     </View>
   );

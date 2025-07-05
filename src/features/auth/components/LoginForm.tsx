@@ -33,12 +33,14 @@ export function LoginForm() {
         onChangeText={setEmail}
         keyboardType="email-address"
         autoCapitalize="none"
+        placeholderTextColor={colors.textSecondary}
         style={{
           borderColor: colors.border,
           borderWidth: 1,
           borderRadius: 8,
           padding: 12,
           backgroundColor: colors.inputBackground,
+          color: colors.textPrimary,
         }}
       />
 
@@ -53,9 +55,9 @@ export function LoginForm() {
         }}
       >
         {loading ? (
-          <ActivityIndicator color="#fff" />
+          <ActivityIndicator color={colors.textPrimary} />
         ) : (
-          <Text style={{ color: '#fff', fontWeight: 'bold' }}>Send Magic Link</Text>
+          <Text style={{ color: colors.textPrimary, fontWeight: 'bold' }}>Send Magic Link</Text>
         )}
       </TouchableOpacity>
     </View>

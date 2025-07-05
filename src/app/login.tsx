@@ -15,16 +15,16 @@ export default function LandingScreen() {
         <View className="flex flex-col items-center justify-center w-full h-full gap-8" >
           <View className="flex flex-col items-center justify-center flex-1 w-full gap-10" >
             {/* Header */}
-            <View className="items-center">
-              <Text className="text-5xl font-bold text-center">Welcome to VibeLog</Text>
-              <Text style={{ color: colors.textMuted }}>Your daily mood & productivity tracker</Text>
+            <View className="items-center gap-2">
+              <Text className="text-5xl font-bold text-center" style={{color: colors.textPrimary}}>Reflect</Text>
+              <Text style={{ color: colors.textSecondary }}>Notice the patterns. Nurture the change.</Text>
             </View>
             {/* Form */}
             <LoginForm />
           </View>
           {/* Footer */}
           <View className="mt-8">
-            <Text style={{ color: colors.textMuted, fontSize: 12 }}>© 2025 VibeLog Inc.</Text>
+            <Text style={{ color: colors.textMuted, fontSize: 12 }}>© 2025 Reflect AI.</Text>
           </View>
         </View>
       </KeyboardAvoidingView>

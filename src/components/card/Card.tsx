@@ -26,7 +26,6 @@ export const Card = ({
         {
           backgroundColor: colors.cardBackground,
           borderRadius: 24,
-          // borderWidth: 1,
           overflow: 'hidden',
           shadowColor: colors.shadow,
           shadowOpacity: 0.05,

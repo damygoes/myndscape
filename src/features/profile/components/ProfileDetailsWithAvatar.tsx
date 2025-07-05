@@ -24,7 +24,7 @@ export function ProfileDetailsWithAvatar({ userId }: Props) {
   if (error || !user) return <Text>Error loading profile.</Text>;
 
   return (
-    <Card>
+    <Card style={{ width: '100%' }}>
       <CardContent className="flex flex-col items-center gap-4">
         <ProfileAvatar
           avatarUrl={user.avatar_url}

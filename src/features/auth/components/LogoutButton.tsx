@@ -3,7 +3,7 @@ import { colors } from '@/utils/colors';
 import React, { useState } from 'react';
 import { Alert, Text, TouchableOpacity, View } from 'react-native';
 
-export function LogoutButton() {
+export function LogoutButton({className}: {className?: string}) {
   const [loading, setLoading] = useState(false);
 
   const handleLogout = async () => {
@@ -20,7 +20,7 @@ export function LogoutButton() {
   };
 
   return (
-    <View className="mt-8">
+    <View className={`mt-8 ${className}`}>
       <TouchableOpacity
         onPress={handleLogout}
         disabled={loading}

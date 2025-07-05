@@ -48,7 +48,7 @@ export function ProfileDetails({
   };
 
   return (
-    <Card>
+    <Card style={{ width: '100%' }}>
       <CardContent className="gap-4">
         <View className="gap-2">
           <Text style={{ color: colors.textMuted }}>Full Name:</Text>

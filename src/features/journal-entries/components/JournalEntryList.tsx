@@ -33,15 +33,16 @@ export const JournalEntryList = ({ entries, isLoading, error }: Props) => {
     );
   }
 
-  if (entries.length === 0) {
+  if (!entries || entries.length === 0) {
     return (
       <View className="items-center justify-center flex-1 px-10">
-        <Text className="text-base text-center" style={{color: colors.textMuted}}>
+        <Text className="text-lg text-center" style={{color: colors.textPrimary}}>
           You haven’t logged any mood entries yet. Tap the + button to add your first one!
         </Text>
       </View>
     );
   }
+
 
   return (
       <FlatList
