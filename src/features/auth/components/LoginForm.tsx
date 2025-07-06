@@ -57,7 +57,7 @@ export function LoginForm() {
         {loading ? (
           <ActivityIndicator color={colors.textPrimary} />
         ) : (
-          <Text style={{ color: colors.textPrimary, fontWeight: 'bold' }}>Send Magic Link</Text>
+          <Text style={{ fontWeight: 'bold' }}>Send Magic Link</Text>
         )}
       </TouchableOpacity>
     </View>

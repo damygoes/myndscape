@@ -167,7 +167,7 @@ export function ProfileDetails({
                 borderRadius: 6,
               }}
             >
-              <Text style={{ color: colors.textPrimary, textAlign: 'center' }}>Edit Profile</Text>
+              <Text style={{ textAlign: 'center' }}>Edit Profile</Text>
             </TouchableOpacity>
           )}
         </View>

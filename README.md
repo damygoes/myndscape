@@ -15,9 +15,9 @@ Reflect is a beautifully minimalistic mobile journaling app focused on mental cl
 ## 📱 Screenshots
 
 <!-- You can upload screenshots here once available -->
-| Home | History | Journal Entry | Edit Journal | Profile |
-|-----------|-------------|---------------|-----------|-------------|
-| ![](./screenshots/home.png) | ![](./screenshots/history.png) | ![](./screenshots/add-journal.png) | ![](./screenshots/edit-journal.png) | ![](./screenshots/profile.png) |
+| Login | Home | History | Journal Entry | Edit Journal | Profile |
+|-----------|-----------|-------------|---------------|-----------|-------------|
+| ![](./screenshots/login.png) | ![](./screenshots/home.png) | ![](./screenshots/history.png) | ![](./screenshots/add-journal.png) | ![](./screenshots/edit-journal.png) | ![](./screenshots/profile.png) |
 
 ## 🛠️ Tech Stack
 
