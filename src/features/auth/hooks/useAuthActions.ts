@@ -1,16 +1,21 @@
 import { supabase } from '@/services/supabase';
 import * as QueryParams from 'expo-auth-session/build/QueryParams';
+import Constants from 'expo-constants';
 import * as WebBrowser from 'expo-web-browser';
 
 WebBrowser.maybeCompleteAuthSession();
 
-const isDev = process.env.APP_ENV === 'development';
+const appEnv = Constants.expoConfig?.extra?.APP_ENV;
+if (!appEnv) {
+  throw new Error('APP_ENV is not defined in the app configuration');
+}
+const isDev = appEnv === 'development';
 
 const redirectTo = isDev
-  ? 'ai.reflect-dev://auth/callback' // match dev scheme in your app.json
-  : 'ai.reflect://auth/callback'; // match prod scheme
+  ? 'ai.reflect-dev://auth/callback'
+  : 'ai.reflect://auth/callback';
 
-console.log('🔗 Redirect URI:', redirectTo);
+console.log('🔗 Redirect URI:', redirectTo)
 
 export const useAuthActions = () => {
   const sendMagicLink = async (email: string) => {

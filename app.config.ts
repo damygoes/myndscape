@@ -16,59 +16,66 @@ const ADAPTIVE_ICON = "./assets/adaptive-icon.png";
 const SCHEME = "ai.reflect";
 
 export default ({ config }: ConfigContext): ExpoConfig => {
-  console.log("⚙️ Building app for environment:", process.env.APP_ENV);
-  const { name, bundleIdentifier, icon, adaptiveIcon, packageName, scheme } =
-    getDynamicAppConfig(
-      (process.env.APP_ENV as "development" | "preview" | "production") ||
-        "development"
-    );
+  const environment =
+    (process.env.APP_ENV as 'development' | 'preview' | 'production') ??
+    'development';
+
+  console.log('⚙️ Building app for environment:', environment);
+
+  const {
+    name,
+    bundleIdentifier,
+    icon,
+    adaptiveIcon,
+    packageName,
+    scheme,
+  } = getDynamicAppConfig(environment);
 
   return {
     ...config,
-    name: name,
-    version, // Automatically bump your project version with `npm version patch`, `npm version minor` or `npm version major`.
-    slug: PROJECT_SLUG, // Must be consistent across all environments.
-    orientation: "portrait",
-    userInterfaceStyle: "automatic",
+    name,
+    version,
+    slug: PROJECT_SLUG,
+    orientation: 'portrait',
+    userInterfaceStyle: 'automatic',
     newArchEnabled: true,
-    icon: icon,
-    scheme: scheme,
+    icon,
+    scheme,
     ios: {
       supportsTablet: true,
-      bundleIdentifier: bundleIdentifier,
+      bundleIdentifier,
     },
     android: {
       adaptiveIcon: {
         foregroundImage: adaptiveIcon,
-        backgroundColor: "#ffffff",
+        backgroundColor: '#ffffff',
       },
       package: packageName,
     },
     updates: {
       url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
     },
-    runtimeVersion: {
-      policy: "appVersion",
-    },
+    runtimeVersion: '1.0.0',
     extra: {
       eas: {
         projectId: EAS_PROJECT_ID,
       },
+      APP_ENV: environment,
     },
     web: {
-      bundler: "metro",
-      output: "static",
-      favicon: "./assets/favicon.png",
+      bundler: 'metro',
+      output: 'static',
+      favicon: './assets/favicon.png',
     },
     plugins: [
-      "expo-router",
+      'expo-router',
       [
-        "expo-splash-screen",
+        'expo-splash-screen',
         {
-          image: "./assets/splash-icon.png",
+          image: './assets/splash-icon.png',
           imageWidth: 200,
-          resizeMode: "contain",
-          backgroundColor: "#ffffff",
+          resizeMode: 'contain',
+          backgroundColor: '#ffffff',
         },
       ],
     ],
@@ -78,6 +85,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     owner: OWNER,
   };
 };
+
 
 // Dynamically configure the app based on the environment.
 // Update these placeholders with your actual values.

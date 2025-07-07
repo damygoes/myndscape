@@ -9,7 +9,6 @@ export const useDeepLinkSession = () => {
 
   useEffect(() => {
     const handleDeepLink = async ({ url }: { url: string }) => {
-      console.log("URL received from deep link:", url);
 
       try {
         const urlObj = new URL(url);
