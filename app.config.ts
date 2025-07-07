@@ -1,3 +1,4 @@
+import Constants from 'expo-constants';
 import { ConfigContext, ExpoConfig } from "expo/config";
 import { version } from "./package.json";
 
@@ -17,7 +18,7 @@ const SCHEME = "ai.reflect";
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   const environment =
-    (process.env.APP_ENV as 'development' | 'preview' | 'production') ??
+    (Constants.expoConfig?.extra?.APP_ENV as 'development' | 'preview' | 'production') ??
     'development';
 
   console.log('⚙️ Building app for environment:', environment);
