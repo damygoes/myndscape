@@ -32,7 +32,10 @@
             "host": "auth",
             "pathPrefix": "/callback"
           },
-          "category": ["BROWSABLE", "DEFAULT"]
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
         }
       ]
     },

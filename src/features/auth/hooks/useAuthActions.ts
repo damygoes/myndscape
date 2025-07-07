@@ -1,14 +1,14 @@
 import { supabase } from '@/services/supabase';
-import { makeRedirectUri } from 'expo-auth-session';
 import * as QueryParams from 'expo-auth-session/build/QueryParams';
 import * as WebBrowser from 'expo-web-browser';
 
 WebBrowser.maybeCompleteAuthSession();
 
-const redirectTo =
-  process.env.NODE_ENV === 'development'
-    ? makeRedirectUri({ native: 'ai.reflect://auth/callback' })
-    : 'ai.reflect://auth/callback';
+const isDev = process.env.APP_ENV === 'development';
+
+const redirectTo = isDev
+  ? 'ai.reflect-dev://auth/callback' // match dev scheme in your app.json
+  : 'ai.reflect://auth/callback'; // match prod scheme
 
 console.log('🔗 Redirect URI:', redirectTo);
 
