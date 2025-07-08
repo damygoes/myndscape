@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.damilolabada.reflect",
+      "bundleIdentifier": "com.damilolabada.reflect-app",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -49,6 +49,12 @@
     "plugins": [
       "expo-router",
       "expo-web-browser"
-    ]
+    ],
+    "extra": {
+      "EXPO_PUBLIC_APP_ENV": "production",
+      "eas": {
+        "projectId": "7fa827f2-a108-4a46-88b4-99e22aa03fc8"
+      }
+    }
   }
 }

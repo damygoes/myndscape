@@ -6,22 +6,57 @@ const PROJECT_SLUG = "reflect-ai";
 const OWNER = "damygoes";
 
 const APP_NAME = "Reflect AI";
-const BUNDLE_IDENTIFIER = "com.damilolabada.reflect";
-const PACKAGE_NAME = "com.damilolabada.reflect";
+const BUNDLE_IDENTIFIER = "com.damilolabada.reflect-app";
+const PACKAGE_NAME = "com.damilolabada.reflect-app";
 const ICON = "./assets/icon.png";
 const ADAPTIVE_ICON = "./assets/adaptive-icon.png";
 const SCHEME = "ai.reflect";
 
+type AppEnv = "development" | "preview" | "production";
+
+
+export const getDynamicAppConfig = (
+  environment: "development" | "preview" | "production"
+) => {
+  if (environment === "production") {
+    return {
+      name: APP_NAME,
+      bundleIdentifier: BUNDLE_IDENTIFIER,
+      packageName: PACKAGE_NAME,
+      icon: ICON,
+      adaptiveIcon: ADAPTIVE_ICON,
+      scheme: SCHEME,
+    };
+  }
+
+  if (environment === "preview") {
+    return {
+      name: `${APP_NAME} Preview`,
+      bundleIdentifier: `${BUNDLE_IDENTIFIER}.preview`,
+      packageName: `${PACKAGE_NAME}.preview`,
+      icon: ICON,
+      adaptiveIcon: ADAPTIVE_ICON,
+      scheme: `${SCHEME}-prev`,
+    };
+  }
+
+  return {
+    name: `${APP_NAME} Development`,
+    bundleIdentifier: `${BUNDLE_IDENTIFIER}.dev`,
+    packageName: `${PACKAGE_NAME}.dev`,
+    icon: ICON,
+    adaptiveIcon: ADAPTIVE_ICON,
+    scheme: `${SCHEME}-dev`,
+  };
+};
+
 export default ({ config }: ConfigContext): ExpoConfig => {
 
-  const environment =
-  process.env.EXPO_PUBLIC_APP_ENV === 'production'
-    ? 'production'
-    : process.env.EXPO_PUBLIC_APP_ENV === 'preview'
-    ? 'preview'
-    : 'development';
+  // manually set the environment for now as eas is not loading the .env file
+  // const appEnv: AppEnv = 'development';
+  const appEnv: AppEnv = 'production';
 
-  console.log('⚙️ BUILD - EXPO_PUBLIC_APP_ENV:', environment);
+  console.log("🌍 BUILDING FOR ENV:", appEnv)
 
   const {
     name,
@@ -30,7 +65,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     adaptiveIcon,
     packageName,
     scheme,
-  } = getDynamicAppConfig(environment);
+  } = getDynamicAppConfig(appEnv);
 
   return {
     ...config,
@@ -61,10 +96,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     runtimeVersion: "1.0.0",
     extra: {
+      appEnv,
+      EXPO_PUBLIC_APP_ENV: appEnv,
       eas: {
         projectId: EAS_PROJECT_ID,
       },
-      APP_ENV: environment,
     },
     web: {
       bundler: "metro",
@@ -87,40 +123,5 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       typedRoutes: true,
     },
     owner: OWNER,
-  };
-};
-
-export const getDynamicAppConfig = (
-  environment: "development" | "preview" | "production"
-) => {
-  if (environment === "production") {
-    return {
-      name: APP_NAME,
-      bundleIdentifier: BUNDLE_IDENTIFIER,
-      packageName: PACKAGE_NAME,
-      icon: ICON,
-      adaptiveIcon: ADAPTIVE_ICON,
-      scheme: SCHEME,
-    };
-  }
-
-  if (environment === "preview") {
-    return {
-      name: `${APP_NAME} Preview`,
-      bundleIdentifier: `${BUNDLE_IDENTIFIER}.preview`,
-      packageName: `${PACKAGE_NAME}.preview`,
-      icon: ICON,
-      adaptiveIcon: ADAPTIVE_ICON,
-      scheme: `${SCHEME}-prev`,
-    };
-  }
-
-  return {
-    name: `${APP_NAME} Dev`,
-    bundleIdentifier: `${BUNDLE_IDENTIFIER}.dev`,
-    packageName: `${PACKAGE_NAME}.dev`,
-    icon: ICON,
-    adaptiveIcon: ADAPTIVE_ICON,
-    scheme: `${SCHEME}-dev`,
   };
 };

@@ -5,7 +5,10 @@ import * as WebBrowser from 'expo-web-browser';
 
 WebBrowser.maybeCompleteAuthSession();
 
-const appEnv = Constants.expoConfig?.extra?.APP_ENV;
+const appEnv = Constants.expoConfig?.extra?.EXPO_PUBLIC_APP_ENV;
+
+console.log("🌍 APP_ENV in useAuthActions:", appEnv);
+
 if (!appEnv) {
   throw new Error('APP_ENV is not defined in the app configuration');
 }
