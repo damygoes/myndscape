@@ -1,58 +1,51 @@
-import { SafeScrollView } from '@/components/layouts/SafeScrollView';
-import { ThemedSafeAreaView } from '@/components/layouts/ThemedSafeAreaView';
-import { useAuth } from '@/features/auth/components/AuthContext';
+import { LoadingState } from '@/components/LoadingState';
+import { Image } from 'expo-image';
+import { StyleSheet } from 'react-native';
+
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { COLORS } from '@/constants/colors';
 import { AiInsights } from '@/features/dashboard/components/AiInsights';
 import { LastEntrySummary } from '@/features/dashboard/components/LastEntrySummary';
 import { MoodPrompt } from '@/features/dashboard/components/MoodPrompt';
 import { QuickStats } from '@/features/dashboard/components/QuickStats';
 import { TipCard } from '@/features/dashboard/components/TipCard';
-import { useJournalEntries } from '@/features/journal-entries/hooks/useJournalEntries';
-import { useJournalEntriesStore } from '@/features/journal-entries/store/useJournalEntriesStore';
-import { useEffect } from 'react';
-import { ActivityIndicator, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
 
 export default function HomeDashboardScreen() {
-  const { session } = useAuth();
-  const userId = session?.user.id;
-  const { data: entries, isLoading, error } = useJournalEntries(userId!);
-  const { setEntries, clearEntries } = useJournalEntriesStore();
+  const { session, loading } = useSupabaseSession();
 
-  useEffect(() => {
-    if (entries) {
-      setEntries(entries);
-    } else {
-      clearEntries();
-    }
-  }, [entries]);
-
-  if (isLoading) {
-    return (
-      <SafeAreaView className="items-center justify-center flex-1">
-        <ActivityIndicator size="large" />
-      </SafeAreaView>
-    );
-  }
-
-  if (error) {
-    return (
-      <SafeAreaView className="items-center justify-center flex-1">
-        <Text>Error loading entries.</Text>
-      </SafeAreaView>
-    );
-  }
+  if (loading) return <LoadingState />;
+  if (!session) return null;
 
   return (
-    <ThemedSafeAreaView>
-      <SafeScrollView className='mb-6'>
-        <View className="flex flex-col gap-8">
-          <MoodPrompt />
-          <QuickStats />
-          <LastEntrySummary />
-          <AiInsights />
-          <TipCard />
-        </View>
-      </SafeScrollView>
-    </ThemedSafeAreaView>
+    <ParallaxScrollView
+      headerBackgroundColor={{
+        light: COLORS.light.background,
+        dark: COLORS.dark.background,
+      }}
+      headerImage={
+        <Image
+          source={require('../../../assets/images/hero-1.jpg')}
+          style={styles.headerImage}
+          contentFit="cover"
+          cachePolicy="memory-disk"
+          transition={300}
+          priority="high"
+        />
+      }
+    >
+        <MoodPrompt />
+        <LastEntrySummary />
+        <QuickStats />
+        <AiInsights />
+        <TipCard />
+    </ParallaxScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  headerImage: {
+    width: '100%',
+    height: '100%',
+  },
+});

@@ -1,33 +1,40 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/card/Card';
-import { useJournalEntriesStore } from '@/features/journal-entries/store/useJournalEntriesStore';
-import { colors } from '@/utils/colors';
-import { Text } from 'react-native';
+import { COLORS } from '@/constants/colors';
+import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
+import { useCurrentUserEntries } from '@/features/journal-entries/hooks/useCurrentUserEntries';
+import { Text, View, useColorScheme } from 'react-native';
 
 export const QuickStats = () => {
-  const entries = useJournalEntriesStore((state) => state.entries);
+  const { data: entries = [] } = useCurrentUserEntries();
   const totalEntries = entries?.length ?? 0;
 
+  const theme = useColorScheme() ?? 'light';
+  const colors = COLORS[theme];
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle style={{
-          color: colors.textPrimary,
-          fontSize: 18,
-          fontWeight: '600',
-        }}>
+    <DashboardSection>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+        <Text
+          style={{
+            color: colors.textPrimary,
+            fontSize: 18,
+            fontWeight: '600',
+          }}
+        >
           Quick Stats
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Text style={{
-          color: colors.primary,
-          fontSize: 24,
-          fontWeight: '600',
-          marginTop: 8,
-        }}>
+        </Text>
+      </View>
+      <View style={{ paddingVertical: 8 }}>
+        <Text
+          style={{
+            color: colors.primary,
+            fontSize: 24,
+            fontWeight: '600',
+            marginTop: 8,
+          }}
+        >
           {totalEntries} total entries
         </Text>
-      </CardContent>
-    </Card>
+      </View>
+    </DashboardSection>
   );
 };

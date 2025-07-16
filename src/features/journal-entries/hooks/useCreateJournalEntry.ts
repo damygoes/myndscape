@@ -21,9 +21,9 @@ export const useCreateJournalEntry = () => {
           mood,
           content,
         })
-        .select('id, user_id, content, mood, summary, themes, tip, created_at')  // 👈 Explicit columns
+        .select('id, user_id, content, mood, summary, themes, tip, created_at') // 👈 Explicit columns
         .single();
-  
+
       if (error) throw error;
       return data as JournalEntry;
     },

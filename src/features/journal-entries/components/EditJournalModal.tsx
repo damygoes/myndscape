@@ -1,6 +1,6 @@
+import { COLORS } from '@/constants/colors';
 import { useJournalEntryById } from '@/features/journal-entries/hooks/useJournalEntryById';
 import { useUpdateJournalEntry } from '@/features/journal-entries/hooks/useUpdateJournalEntry';
-import { colors } from '@/utils/colors';
 import { BlurView } from 'expo-blur';
 import React, { useEffect, useState } from 'react';
 import {
@@ -13,9 +13,9 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  useColorScheme,
   View,
 } from 'react-native';
-
 interface EditJournalModalProps {
   id: string;
   visible: boolean;
@@ -29,6 +29,9 @@ export default function EditJournalModal({
   onCancel,
   onSubmit,
 }: EditJournalModalProps) {
+  const theme = useColorScheme() ?? 'light';
+  const colors = COLORS[theme];
+
   const updateEntry = useUpdateJournalEntry();
   const { data: entry, isLoading } = useJournalEntryById(id);
 
@@ -74,7 +77,12 @@ export default function EditJournalModal({
   }
 
   return (
-    <Modal visible={visible} animationType="slide" transparent onRequestClose={onCancel}>
+    <Modal
+      visible={visible}
+      animationType="slide"
+      transparent
+      onRequestClose={onCancel}
+    >
       <View style={StyleSheet.absoluteFill}>
         {/* Background blur */}
         <BlurView intensity={30} tint="dark" style={StyleSheet.absoluteFill} />
@@ -83,7 +91,7 @@ export default function EditJournalModal({
         <View
           style={{
             ...StyleSheet.absoluteFillObject,
-            backgroundColor: colors.surfaceBackground,
+            backgroundColor: colors.background,
           }}
         />
       </View>
@@ -105,7 +113,10 @@ export default function EditJournalModal({
             maxHeight: '90%',
           }}
         >
-          <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ paddingBottom: 24 }}>
+          <ScrollView
+            keyboardShouldPersistTaps="handled"
+            contentContainerStyle={{ paddingBottom: 24 }}
+          >
             <Text
               className="mb-8 text-2xl font-bold"
               style={{ color: colors.textPrimary }}
@@ -124,7 +135,8 @@ export default function EditJournalModal({
                 padding: 12,
                 borderWidth: 1,
                 borderRadius: 8,
-                borderColor: error && !content ? colors.textError : colors.inputBorder,
+                borderColor:
+                  error && !content ? colors.textError : colors.inputBorder,
                 backgroundColor: colors.inputBackground,
                 color: colors.textPrimary,
                 textAlignVertical: 'top',
@@ -132,10 +144,7 @@ export default function EditJournalModal({
             />
 
             {error && (
-              <Text
-                className="mb-3"
-                style={{ color: colors.textError }}
-              >
+              <Text className="mb-3" style={{ color: colors.textError }}>
                 {error}
               </Text>
             )}
@@ -157,7 +166,10 @@ export default function EditJournalModal({
                 {saving ? (
                   <ActivityIndicator color={colors.background} />
                 ) : (
-                  <Text className="font-bold" style={{ color: colors.background }}>
+                  <Text
+                    className="font-bold"
+                    style={{ color: colors.background }}
+                  >
                     Save
                   </Text>
                 )}

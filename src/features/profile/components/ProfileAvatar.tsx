@@ -1,9 +1,16 @@
+import { COLORS } from '@/constants/colors';
 import { supabase } from '@/services/supabase';
-import { colors } from '@/utils/colors';
 import * as ImagePicker from 'expo-image-picker';
 import React, { useState } from 'react';
-import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  useColorScheme,
+  View,
+} from 'react-native';
 type Props = {
   avatarUrl: string | null;
   userId: string;
@@ -19,6 +26,9 @@ export function ProfileAvatar({
   onAvatarUpdate,
   shape = 'circle',
 }: Props) {
+  const theme = useColorScheme() ?? 'light';
+  const colors = COLORS[theme];
+
   const [uploading, setUploading] = useState(false);
 
   const handlePickAvatar = async () => {
@@ -46,8 +56,8 @@ export function ProfileAvatar({
 
       const fileName = `${userId}-${Date.now()}.jpg`;
 
-      const testImageUri = 'https://dummyimage.com/300x300/cccccc/000000&text=Logo';
-
+      const testImageUri =
+        'https://dummyimage.com/300x300/cccccc/000000&text=Logo';
 
       const response = await fetch(testImageUri);
 
@@ -56,32 +66,31 @@ export function ProfileAvatar({
       }
 
       const blob = await response.blob();
-      console.log("Blob size:", blob.size);
+      console.log('Blob size:', blob.size);
 
       if (blob.size === 0) {
         throw new Error('Blob is empty');
       }
 
       // Upload to Supabase Storage
-      const {error: uploadError} = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from('avatars')
         .upload(fileName, blob, { upsert: true });
 
       if (uploadError) {
-        console.error("Upload error:", uploadError);
+        console.error('Upload error:', uploadError);
         throw uploadError;
       }
 
       // Create a signed URL for the uploaded avatar
-     const { data, error } = await supabase.storage
-      .from('avatars')
-      .createSignedUrl(fileName, 60 * 60);
+      const { data, error } = await supabase.storage
+        .from('avatars')
+        .createSignedUrl(fileName, 60 * 60);
 
       if (error) throw error;
 
       const signedUrl = data.signedUrl;
-      console.log("signed URL:", signedUrl);
-
+      console.log('signed URL:', signedUrl);
 
       // Update avatar_url in users table
       const { error: updateError } = await supabase
@@ -94,7 +103,10 @@ export function ProfileAvatar({
       onAvatarUpdate(signedUrl);
     } catch (error) {
       console.error('Avatar upload failed:', error);
-      Alert.alert('Avatar Upload Failed', 'Could not upload avatar. Please try again.');
+      Alert.alert(
+        'Avatar Upload Failed',
+        'Could not upload avatar. Please try again.'
+      );
     } finally {
       setUploading(false);
     }
@@ -143,7 +155,7 @@ export function ProfileAvatar({
               height: '100%',
               resizeMode: 'cover',
             }}
-             onError={(e) => console.log('Image load error:', e.nativeEvent)}
+            onError={(e) => console.log('Image load error:', e.nativeEvent)}
           />
         ) : (
           <View

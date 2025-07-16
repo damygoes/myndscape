@@ -1,4 +1,4 @@
-# 🌿 Reflect — A Wellness & Journaling Mobile App
+# 🌿 Reflekt — A Wellness & Journaling Mobile App
 
 Reflect is a beautifully minimalistic mobile journaling app focused on mental clarity, self-reflection, and emotional tracking. Built using **React Native**, **Expo**, and **Supabase**, it provides a glassy, soothing UI with real-time authentication and storage.
 
@@ -15,20 +15,21 @@ Reflect is a beautifully minimalistic mobile journaling app focused on mental cl
 ## 📱 Screenshots
 
 <!-- You can upload screenshots here once available -->
-| Login | Home | History | Journal Entry | Edit Journal | Profile |
-|-----------|-----------|-------------|---------------|-----------|-------------|
+
+| Login                        | Home                        | History                        | Journal Entry                      | Edit Journal                        | Profile                        |
+| ---------------------------- | --------------------------- | ------------------------------ | ---------------------------------- | ----------------------------------- | ------------------------------ |
 | ![](./screenshots/login.png) | ![](./screenshots/home.png) | ![](./screenshots/history.png) | ![](./screenshots/add-journal.png) | ![](./screenshots/edit-journal.png) | ![](./screenshots/profile.png) |
 
 ## 🛠️ Tech Stack
 
-| Tech | Purpose |
-|------|---------|
-| [Expo](https://expo.dev/) | App scaffolding, build, and deployment |
-| [React Native](https://reactnative.dev/) | Core framework for native UI |
-| [Expo Router](https://expo.github.io/router/docs) | File-based routing system |
-| [Supabase](https://supabase.com/) | Backend as a service (Auth, DB, Storage) |
-| [Expo Blur](https://docs.expo.dev/versions/latest/sdk/blur-view/) | Glass UI / blur effects |
-| [clsx](https://www.npmjs.com/package/clsx) | Utility for conditional styling |
+| Tech                                                              | Purpose                                  |
+| ----------------------------------------------------------------- | ---------------------------------------- |
+| [Expo](https://expo.dev/)                                         | App scaffolding, build, and deployment   |
+| [React Native](https://reactnative.dev/)                          | Core framework for native UI             |
+| [Expo Router](https://expo.github.io/router/docs)                 | File-based routing system                |
+| [Supabase](https://supabase.com/)                                 | Backend as a service (Auth, DB, Storage) |
+| [Expo Blur](https://docs.expo.dev/versions/latest/sdk/blur-view/) | Glass UI / blur effects                  |
+| [clsx](https://www.npmjs.com/package/clsx)                        | Utility for conditional styling          |
 
 ## ⚙️ Installation
 
@@ -39,6 +40,7 @@ git clone https://github.com/damygoes/reflect.git
 
 cd reflect-app
 ```
+
 ### 2. Install dependencies
 
 ```bash
@@ -60,6 +62,7 @@ SUPABASE_ANON_KEY=your-anon-key
 ```bash
 npx expo start
 ```
+
 Then scan the QR code using your device, or use Android/iOS simulator.
 
 ## 📂 Folder Structure
@@ -199,6 +202,7 @@ npx expo build:android
 
 npx expo build:ios
 ```
+
 Or use EAS Build for advanced workflows.
 
 ## 🤝 Contributing

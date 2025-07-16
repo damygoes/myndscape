@@ -1,12 +1,12 @@
-import { useAuth } from '@/features/auth/components/AuthContext';
 import { useUpdateJournalEntry } from '@/features/journal-entries/hooks/useUpdateJournalEntry';
 import { useJournalEntryAnalysisStore } from '@/features/journal-entries/store/useJournalEntryAnalysisStore';
+import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
 import { Alert } from 'react-native';
 import { callAnalyzeEntryFunction } from '../api/callAnalyzeEntryFunction';
 import { useCreateJournalEntry } from './useCreateJournalEntry';
 
 export const useHandleJournalEntryCreation = () => {
-  const { session } = useAuth();
+  const { session } = useSupabaseSession();
   const userId = session?.user.id;
 
   const createEntryMutation = useCreateJournalEntry();
@@ -41,22 +41,27 @@ export const useHandleJournalEntryCreation = () => {
           themes: aiData.themes,
           tip: aiData.tip,
         });
-
       } catch (aiError) {
         console.error('AI analysis failed:', aiError);
-        Alert.alert('AI Summary Error', 'We couldn’t generate an AI summary for this entry.');
+        Alert.alert(
+          'AI Summary Error',
+          'We couldn’t generate an AI summary for this entry.'
+        );
       } finally {
         stopAnalyzing(createdEntry.id);
       }
-
     } catch (error) {
       console.error('Error creating journal entry:', error);
-      Alert.alert('Creation Error', 'Failed to create journal entry. Please try again.');
+      Alert.alert(
+        'Creation Error',
+        'Failed to create journal entry. Please try again.'
+      );
     }
   };
 
   return {
     handleCreateEntry,
-    createIsPending: createEntryMutation.isPending || updateEntryMutation.isPending,
+    createIsPending:
+      createEntryMutation.isPending || updateEntryMutation.isPending,
   };
 };

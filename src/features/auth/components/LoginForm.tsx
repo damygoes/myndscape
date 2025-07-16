@@ -1,13 +1,25 @@
+import { COLORS } from '@/constants/colors';
 import { useAuthActions } from '@/features/auth/hooks/useAuthActions';
 import { useDeepLinkSession } from '@/features/auth/hooks/useDeepLinkSession';
-import { colors } from '@/utils/colors';
+import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { ActivityIndicator, Alert, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Alert,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  useColorScheme,
+} from 'react-native';
 
 export function LoginForm() {
   const { sendMagicLink } = useAuthActions();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const theme = useColorScheme() ?? 'light';
+  const colors = COLORS[theme];
 
   useDeepLinkSession(); // ✅ Listens for magic link redirects
 
@@ -18,7 +30,8 @@ export function LoginForm() {
       Alert.alert('Check Your Email', 'We sent you a magic link to log in.');
     } catch (err) {
       console.error('Magic link error:', err);
-      const message = err instanceof Error ? err.message : 'An unknown error occurred.';
+      const message =
+        err instanceof Error ? err.message : 'An unknown error occurred.';
       Alert.alert('Login Error', message);
     } finally {
       setLoading(false);
@@ -26,7 +39,7 @@ export function LoginForm() {
   };
 
   return (
-    <View className="w-full gap-8 p-8">
+    <View className="w-full gap-8 px-8 py-4">
       <TextInput
         placeholder="Your email"
         value={email}
@@ -37,8 +50,8 @@ export function LoginForm() {
         style={{
           borderColor: colors.border,
           borderWidth: 1,
-          borderRadius: 8,
-          padding: 12,
+          borderRadius: 16,
+          padding: 18,
           backgroundColor: colors.inputBackground,
           color: colors.textPrimary,
         }}
@@ -49,15 +62,20 @@ export function LoginForm() {
         disabled={loading}
         style={{
           backgroundColor: colors.primary,
-          padding: 12,
-          borderRadius: 8,
+          padding: 18,
+          borderRadius: 999,
           alignItems: 'center',
         }}
       >
         {loading ? (
           <ActivityIndicator color={colors.textPrimary} />
         ) : (
-          <Text style={{ fontWeight: 'bold' }}>Send Magic Link</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <Ionicons name="mail-outline" size={20} color={colors.white} />
+          <Text style={{ fontWeight: 'bold', color: colors.white, fontSize: 18 }}>
+            Send Magic Link
+          </Text>
+          </View>
         )}
       </TouchableOpacity>
     </View>

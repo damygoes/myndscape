@@ -35,10 +35,7 @@
             "host": "auth",
             "pathPrefix": "/callback"
           },
-          "category": [
-            "BROWSABLE",
-            "DEFAULT"
-          ]
+          "category": ["BROWSABLE", "DEFAULT"]
         }
       ]
     },
@@ -46,10 +43,7 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "plugins": [
-      "expo-router",
-      "expo-web-browser"
-    ],
+    "plugins": ["expo-router", "expo-web-browser"],
     "extra": {
       "EXPO_PUBLIC_APP_ENV": "production",
       "eas": {

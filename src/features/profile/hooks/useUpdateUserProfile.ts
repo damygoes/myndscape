@@ -6,7 +6,10 @@ type UserProfileUpdate = {
   bio?: string;
 };
 
-export async function useUpdateUserProfile(userId: string, updates: UserProfileUpdate) {
+export async function useUpdateUserProfile(
+  userId: string,
+  updates: UserProfileUpdate
+) {
   const { error } = await supabase
     .from('users')
     .update(updates)

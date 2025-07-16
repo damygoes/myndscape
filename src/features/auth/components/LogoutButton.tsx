@@ -1,9 +1,9 @@
+import { COLORS } from '@/constants/colors';
 import { supabase } from '@/services/supabase';
-import { colors } from '@/utils/colors';
 import React, { useState } from 'react';
-import { Alert, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 
-export function LogoutButton({className}: {className?: string}) {
+export function LogoutButton({ style }: { style?: ViewStyle }) {
   const [loading, setLoading] = useState(false);
 
   const handleLogout = async () => {
@@ -20,18 +20,25 @@ export function LogoutButton({className}: {className?: string}) {
   };
 
   return (
-    <View className={`mt-8 ${className}`}>
+    <View style={{ ...style }}>
       <TouchableOpacity
         onPress={handleLogout}
         disabled={loading}
         style={{
-          backgroundColor: colors.danger,
+          backgroundColor: COLORS.dark.danger,
           padding: 16,
           borderRadius: 999,
           opacity: loading ? 0.6 : 1,
         }}
       >
-        <Text style={{ color: colors.textPrimary, fontWeight: 'bold', textAlign: 'center' }}>
+        <Text
+          style={{
+            color: COLORS.dark.white,
+            fontWeight: '500',
+            textAlign: 'center',
+            fontSize: 18,
+          }}
+        >
           {loading ? 'Logging out...' : 'Logout'}
         </Text>
       </TouchableOpacity>

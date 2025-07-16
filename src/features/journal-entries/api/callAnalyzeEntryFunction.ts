@@ -10,6 +10,6 @@ export async function callAnalyzeEntryFunction(content: string) {
     throw new Error('Failed to analyze journal entry');
   }
 
-  return response.data.result;  // will be { mood, summary, themes, tip }
+  return response.data.result; // will be { mood, summary, themes, tip }
 }
-3
+3;

@@ -1,19 +1,17 @@
-import { AuthProvider } from '@/features/auth/components/AuthContext';
-import { AppThemeProvider } from '@/providers/theme/AppThemeProvider';
+import { RootLayoutContent } from '@/components/layouts/RootLayoutContent';
+import { SupabaseAuthProvider } from '@/services/SupabaseAuthProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Slot } from 'expo-router';
 import '../../global.css';
+import '../../polyfills';
 
 const queryClient = new QueryClient();
 
 export default function RootLayout() {
   return (
-    <AuthProvider>
-      <AppThemeProvider>
-        <QueryClientProvider client={queryClient}>
-          <Slot />
-        </QueryClientProvider>
-      </AppThemeProvider>
-    </AuthProvider>
+    <SupabaseAuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <RootLayoutContent />
+      </QueryClientProvider>
+    </SupabaseAuthProvider>
   );
 }

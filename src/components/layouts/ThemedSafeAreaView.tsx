@@ -1,23 +1,27 @@
-import { AppThemeContext } from '@/providers/theme/AppThemeContext';
-import React, { useContext } from 'react';
-import { StatusBar, StyleSheet } from 'react-native';
+import { COLORS } from '@/constants/colors';
+import React from 'react';
+import { StatusBar, StyleSheet, useColorScheme } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type ThemedSafeAreaViewProps = React.ComponentProps<typeof SafeAreaView>;
 
-export function ThemedSafeAreaView({ style, ...props }: ThemedSafeAreaViewProps) {
-  const theme = useContext(AppThemeContext);
+export function ThemedSafeAreaView({
+  style,
+  ...props
+}: ThemedSafeAreaViewProps) {
+  const theme = useColorScheme() ?? 'light';
+  const colors = COLORS[theme];
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: theme?.colors.background }, style]}
+      style={[styles.container, { backgroundColor: colors.background }, style]}
       edges={['top', 'bottom', 'left', 'right']}
       {...props}
     >
       <StatusBar
         translucent={false}
         backgroundColor="transparent"
-        barStyle="light-content"
+        barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
       />
       {props.children}
     </SafeAreaView>

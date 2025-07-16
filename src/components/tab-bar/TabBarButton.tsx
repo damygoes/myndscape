@@ -48,7 +48,6 @@ const TabBarButton: React.FC<TabBarButtonProps> = ({
     opacity: 1,
   }));
 
-
   return (
     <Pressable
       onPress={onPress}

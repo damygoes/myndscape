@@ -1,10 +1,10 @@
-import OpenAI from "openai";
+import OpenAI from 'openai';
 // @ts-ignore
-import { serve } from "std/server";
+import { serve } from 'std/server';
 
 const openai = new OpenAI({
   // @ts-expect-error
-  apiKey: Deno.env.get("EXPO_OPEN_AI_KEY"),
+  apiKey: Deno.env.get('EXPO_OPEN_AI_KEY'),
 });
 
 serve(async (req: Request) => {
@@ -12,10 +12,10 @@ serve(async (req: Request) => {
     const { content } = await req.json();
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: 'gpt-4o',
       messages: [
         {
-          role: "system",
+          role: 'system',
           content: `
           You are a compassionate mental wellness assistant.
 
@@ -35,9 +35,9 @@ serve(async (req: Request) => {
             "themes": "",
             "tip": ""
           }
-          `
+          `,
         },
-        { role: "user", content },
+        { role: 'user', content },
       ],
     });
 
@@ -55,14 +55,16 @@ serve(async (req: Request) => {
     try {
       const parsed = JSON.parse(cleanedResponse);
 
-      return new Response(
-        JSON.stringify({ result: parsed }),
-        { headers: { "Content-Type": "application/json" } }
-      );
+      return new Response(JSON.stringify({ result: parsed }), {
+        headers: { 'Content-Type': 'application/json' },
+      });
     } catch (parseError) {
       console.error('AI response not valid JSON:', aiResponse);
       return new Response(
-        JSON.stringify({ error: 'AI response could not be parsed.', raw: aiResponse }),
+        JSON.stringify({
+          error: 'AI response could not be parsed.',
+          raw: aiResponse,
+        }),
         { status: 500 }
       );
     }

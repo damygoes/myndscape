@@ -1,38 +1,102 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/card/Card';
-import { MoodBadge } from '@/features/journal-entries/jornal-entry-item/components/MoodBadge';
-import { formatRelativeDate } from '@/features/journal-entries/jornal-entry-item/utils';
-import { useJournalEntriesStore } from '@/features/journal-entries/store/useJournalEntriesStore';
-import { colors } from '@/utils/colors';
-import { Text } from 'react-native';
+import { COLORS } from '@/constants/colors';
+import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
+import { useCurrentUserEntries } from '@/features/journal-entries/hooks/useCurrentUserEntries';
+import { MoodBadge } from '@/features/journal-entries/journal-entry-item/components/MoodBadge';
+import { prepareJournalEntry } from '@/features/journal-entries/journal-entry-item/utils';
+import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 
 export const LastEntrySummary = () => {
-  const entries = useJournalEntriesStore((state) => state.entries);
-  const lastEntry = entries?.[0];
+  const { data: entries = [], isLoading } = useCurrentUserEntries();
+  const theme = useColorScheme() ?? 'light';
+  const colors = COLORS[theme];
 
-  if (!lastEntry) return null;
+  if (isLoading || entries.length === 0) return null;
+
+  const latestEntry = prepareJournalEntry(entries[0]);
 
   return (
-    <Card>
-      <CardHeader className='gap-6'>
-        <CardTitle>Your Last Entry</CardTitle>
-        <MoodBadge mood={lastEntry.mood} displayPrefix={false} />
-      </CardHeader>
-      <CardContent>
-        <Text 
-          numberOfLines={2}
-          style={{ color: colors.textPrimary }}
-        >
-          {lastEntry.summary || lastEntry.content}
+    <DashboardSection>
+      <View style={styles.wrapper}>
+        <Text style={[styles.title, { color: colors.textPrimary }]}>
+          Your Last Reflection
         </Text>
-      </CardContent>
-      <CardFooter>
-        <Text 
-          className="text-xs"
-          style={{ color: colors.textMuted }}
-        >
-          {formatRelativeDate(lastEntry.created_at)}
-        </Text>
-      </CardFooter>
-    </Card>
+
+        {latestEntry.hasSummary && (
+          <View style={styles.section}>
+            <Text style={[styles.sectionLabel, { color: colors.textMuted }]}>
+              Summary
+            </Text>
+            <Text style={[styles.sectionText, { color: colors.textPrimary }]}>
+              {latestEntry.summary}
+            </Text>
+          </View>
+        )}
+
+        {latestEntry.hasTip && (
+          <View style={styles.section}>
+            <View style={styles.tipHeader}>
+              <Ionicons
+                name="bulb-outline"
+                size={18}
+                color={colors.textMuted}
+              />
+              <Text style={[styles.sectionLabel, { color: colors.textMuted }]}>
+                Tip
+              </Text>
+            </View>
+            <Text style={[styles.tipText, { color: colors.textPrimary }]}>
+              {latestEntry.tip}
+            </Text>
+          </View>
+        )}
+
+        <View style={styles.moodDateRow}>
+          <MoodBadge mood={latestEntry.mood ?? 'neutral'} />
+          <Text style={[styles.dateText, { color: colors.textMuted }]}>
+            {latestEntry.formattedDate}
+          </Text>
+        </View>
+      </View>
+    </DashboardSection>
   );
 };
+
+const styles = StyleSheet.create({
+  wrapper: {
+    gap: 20,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  section: {
+    gap: 8,
+  },
+  sectionLabel: {
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  sectionText: {
+    fontSize: 16,
+    lineHeight: 22,
+  },
+  tipHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  tipText: {
+    fontSize: 16,
+    lineHeight: 22,
+  },
+  moodDateRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  dateText: {
+    fontSize: 14,
+  },
+});

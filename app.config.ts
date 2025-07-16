@@ -1,24 +1,23 @@
-import { ConfigContext, ExpoConfig } from "expo/config";
-import { version } from "./package.json";
+import { ConfigContext, ExpoConfig } from 'expo/config';
+import { version } from './package.json';
 
-const EAS_PROJECT_ID = "7fa827f2-a108-4a46-88b4-99e22aa03fc8";
-const PROJECT_SLUG = "reflect-ai";
-const OWNER = "damygoes";
+const EAS_PROJECT_ID = '7fa827f2-a108-4a46-88b4-99e22aa03fc8';
+const PROJECT_SLUG = 'reflect-ai';
+const OWNER = 'damygoes';
 
-const APP_NAME = "Reflect AI";
-const BUNDLE_IDENTIFIER = "com.damilolabada.reflect-app";
-const PACKAGE_NAME = "com.damilolabada.reflect-app";
-const ICON = "./assets/icon.png";
-const ADAPTIVE_ICON = "./assets/adaptive-icon.png";
-const SCHEME = "ai.reflect";
+const APP_NAME = 'Reflect AI';
+const BUNDLE_IDENTIFIER = 'com.damilolabada.reflect-app';
+const PACKAGE_NAME = 'com.damilolabada.reflect-app';
+const ICON = './assets/icon.png';
+const ADAPTIVE_ICON = './assets/adaptive-icon.png';
+const SCHEME = 'ai.reflect';
 
-type AppEnv = "development" | "preview" | "production";
-
+type AppEnv = 'development' | 'preview' | 'production';
 
 export const getDynamicAppConfig = (
-  environment: "development" | "preview" | "production"
+  environment: 'development' | 'preview' | 'production'
 ) => {
-  if (environment === "production") {
+  if (environment === 'production') {
     return {
       name: APP_NAME,
       bundleIdentifier: BUNDLE_IDENTIFIER,
@@ -29,7 +28,7 @@ export const getDynamicAppConfig = (
     };
   }
 
-  if (environment === "preview") {
+  if (environment === 'preview') {
     return {
       name: `${APP_NAME} Preview`,
       bundleIdentifier: `${BUNDLE_IDENTIFIER}.preview`,
@@ -51,29 +50,22 @@ export const getDynamicAppConfig = (
 };
 
 export default ({ config }: ConfigContext): ExpoConfig => {
-
   // manually set the environment for now as eas is not loading the .env file
-  // const appEnv: AppEnv = 'development';
-  const appEnv: AppEnv = 'production';
+  const appEnv: AppEnv = 'development';
+  // const appEnv: AppEnv = 'production';
 
-  console.log("🌍 BUILDING FOR ENV:", appEnv)
+  console.log('🌍 BUILDING FOR ENV:', appEnv);
 
-  const {
-    name,
-    bundleIdentifier,
-    icon,
-    adaptiveIcon,
-    packageName,
-    scheme,
-  } = getDynamicAppConfig(appEnv);
+  const { name, bundleIdentifier, icon, adaptiveIcon, packageName, scheme } =
+    getDynamicAppConfig(appEnv);
 
   return {
     ...config,
     name,
     version,
     slug: PROJECT_SLUG,
-    orientation: "portrait",
-    userInterfaceStyle: "automatic",
+    orientation: 'portrait',
+    userInterfaceStyle: 'automatic',
     newArchEnabled: true,
     icon,
     scheme,
@@ -87,14 +79,14 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     android: {
       adaptiveIcon: {
         foregroundImage: adaptiveIcon,
-        backgroundColor: "#ffffff",
+        backgroundColor: '#ffffff',
       },
       package: packageName,
     },
     updates: {
       url: `https://u.expo.dev/${EAS_PROJECT_ID}`,
     },
-    runtimeVersion: "1.0.0",
+    runtimeVersion: '1.0.0',
     extra: {
       appEnv,
       EXPO_PUBLIC_APP_ENV: appEnv,
@@ -103,21 +95,22 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       },
     },
     web: {
-      bundler: "metro",
-      output: "static",
-      favicon: "./assets/favicon.png",
+      bundler: 'metro',
+      output: 'static',
+      favicon: './assets/favicon.png',
     },
     plugins: [
-      "expo-router",
+      'expo-router',
       [
-        "expo-splash-screen",
+        'expo-splash-screen',
         {
-          image: "./assets/splash-icon.png",
+          image: './assets/splash-icon.png',
           imageWidth: 200,
-          resizeMode: "contain",
-          backgroundColor: "#ffffff",
+          resizeMode: 'contain',
+          backgroundColor: '#ffffff',
         },
       ],
+      'expo-font',
     ],
     experiments: {
       typedRoutes: true,

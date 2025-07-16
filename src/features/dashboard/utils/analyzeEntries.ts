@@ -16,7 +16,9 @@ export function countKeywordMentions({
       entry.content,
       entry.summary ?? '',
       entry.themes ?? '',
-    ].join(' ').toLowerCase();
+    ]
+      .join(' ')
+      .toLowerCase();
 
     return createdAt >= since && textToSearch.includes(lowerKeyword);
   }).length;
@@ -38,7 +40,9 @@ export function countMultipleKeywordMentions({
   for (const keyword of lowerKeywords) {
     result[keyword] = entries.filter((entry) => {
       const createdAt = new Date(entry.created_at);
-      const text = [entry.content, entry.summary ?? '', entry.themes ?? ''].join(' ').toLowerCase();
+      const text = [entry.content, entry.summary ?? '', entry.themes ?? '']
+        .join(' ')
+        .toLowerCase();
       return createdAt >= since && text.includes(keyword);
     }).length;
   }

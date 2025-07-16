@@ -6,12 +6,14 @@ interface JournalEntryAnalysisState {
   stopAnalyzing: (id: string) => void;
 }
 
-export const useJournalEntryAnalysisStore = create<JournalEntryAnalysisState>((set) => ({
-  analyzingIds: [],
-  startAnalyzing: (id) =>
-    set((state) => ({ analyzingIds: [...state.analyzingIds, id] })),
-  stopAnalyzing: (id) =>
-    set((state) => ({
-      analyzingIds: state.analyzingIds.filter((entryId) => entryId !== id),
-    })),
-}));
+export const useJournalEntryAnalysisStore = create<JournalEntryAnalysisState>(
+  (set) => ({
+    analyzingIds: [],
+    startAnalyzing: (id) =>
+      set((state) => ({ analyzingIds: [...state.analyzingIds, id] })),
+    stopAnalyzing: (id) =>
+      set((state) => ({
+        analyzingIds: state.analyzingIds.filter((entryId) => entryId !== id),
+      })),
+  })
+);

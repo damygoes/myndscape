@@ -1,0 +1,1 @@
+export const SUMMARY_TRUNCATION_LENGTH = 150;

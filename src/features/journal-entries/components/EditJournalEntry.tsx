@@ -1,4 +1,4 @@
-import { colors } from '@/utils/colors';
+import { COLORS } from '@/constants/colors';
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  useColorScheme,
 } from 'react-native';
 import Modal from 'react-native-modal';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -33,6 +34,9 @@ export const EditJournalEntry = ({
   const [content, setContent] = useState(initialContent);
   const [error, setError] = useState<string | null>(null);
 
+  const theme = useColorScheme() ?? 'light';
+  const colors = COLORS[theme];
+
   useEffect(() => {
     setContent(initialContent);
   }, [initialContent]);
@@ -56,9 +60,9 @@ export const EditJournalEntry = ({
       isVisible={isVisible}
       onBackdropPress={onCancel}
       avoidKeyboard
-      style={{ margin: 0, height: "30%" }}
+      style={{ margin: 0 }}
     >
-      <SafeAreaView className="flex-1 bg-red-500 dark:bg-gray-900">
+      <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
           style={{ flex: 1 }}
@@ -67,7 +71,10 @@ export const EditJournalEntry = ({
             contentContainerStyle={{ padding: 24, flexGrow: 1 }}
             keyboardShouldPersistTaps="handled"
           >
-            <Text className="mb-4 text-xl font-bold" style={{ color: colors.textPrimary}}>
+            <Text
+              className="mb-4 text-xl font-bold"
+              style={{ color: colors.textPrimary }}
+            >
               Edit Journal Entry
             </Text>
 
@@ -75,41 +82,47 @@ export const EditJournalEntry = ({
               value={content}
               onChangeText={handleContentChange}
               placeholder="Describe your feelings..."
+              placeholderTextColor={colors.inputPlaceholder}
               multiline
               textAlignVertical="top"
-              className='h-40 p-3 border rounded-lg'
+              className="h-40 p-3 border rounded-lg"
               style={{
                 backgroundColor: colors.inputBackground,
-                color: colors.inputPlaceholder,
-                borderColor: error && !content ? colors.textError : colors.inputBorder,
+                color: colors.textPrimary,
+                borderColor:
+                  error && !content ? colors.textError : colors.inputBorder,
               }}
             />
 
             {error && (
-              <Text className="mt-2 mb-3" style={{
-                color: colors.textError
-              }}>{error}</Text>
+              <Text className="mt-2 mb-3" style={{ color: colors.textError }}>
+                {error}
+              </Text>
             )}
 
             <View className="flex flex-row justify-end gap-4 mt-6">
               <TouchableOpacity onPress={onCancel} className="items-center">
-                <Text style={{
-                  color: colors.textSecondary
-                }}>Cancel</Text>
+                <Text style={{ color: colors.textSecondary }}>Cancel</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handleSubmit}
                 disabled={saving}
                 className="items-center px-4 py-3 rounded-full"
-                style={{ backgroundColor: colors.primary }}
+                style={{
+                  backgroundColor: colors.primary,
+                  opacity: saving ? 0.7 : 1,
+                }}
               >
                 {saving ? (
-                  <ActivityIndicator color={
-                      colors.background
-                  } />
+                  <ActivityIndicator color={colors.background} />
                 ) : (
-                  <Text className="font-bold" style={{color: colors.background}}>Save</Text>
+                  <Text
+                    className="font-bold"
+                    style={{ color: colors.background }}
+                  >
+                    Save
+                  </Text>
                 )}
               </TouchableOpacity>
             </View>

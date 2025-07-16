@@ -9,13 +9,13 @@ export const useDeepLinkSession = () => {
 
   useEffect(() => {
     const handleDeepLink = async ({ url }: { url: string }) => {
-
       try {
         const urlObj = new URL(url);
         const fragmentParams = new URLSearchParams(urlObj.hash.substring(1));
         const queryParams = new URLSearchParams(urlObj.search.substring(1));
 
-        const accessToken = fragmentParams.get('access_token') || queryParams.get('access_token');
+        const accessToken =
+          fragmentParams.get('access_token') || queryParams.get('access_token');
         const type = fragmentParams.get('type') || queryParams.get('type');
 
         if (accessToken && (type === 'magiclink' || type === 'signup')) {
@@ -37,5 +37,6 @@ export const useDeepLinkSession = () => {
     });
 
     return () => subscription.remove();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
