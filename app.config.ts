@@ -1,8 +1,8 @@
 import { ConfigContext, ExpoConfig } from 'expo/config';
 import { version } from './package.json';
 
-const EAS_PROJECT_ID = '7fa827f2-a108-4a46-88b4-99e22aa03fc8';
-const PROJECT_SLUG = 'reflect-ai';
+const EAS_PROJECT_ID = '087d70be-5ada-40ee-b226-76fb8582031d';
+const PROJECT_SLUG = 'myndscape';
 const OWNER = 'damygoes';
 
 const APP_NAME = 'myndscape';
@@ -17,6 +17,8 @@ type AppEnv = 'development' | 'preview' | 'production';
 export const getDynamicAppConfig = (
   environment: 'development' | 'preview' | 'production'
 ) => {
+
+  console.log("env here:", environment);
   if (environment === 'production') {
     return {
       name: APP_NAME,
@@ -51,13 +53,20 @@ export const getDynamicAppConfig = (
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   // manually set the environment for now as eas is not loading the .env file
-  const appEnv: AppEnv = 'development';
-  // const appEnv: AppEnv = 'production';
+  // const appEnv: AppEnv = 'development';
+  const appEnv: AppEnv = 'production';
 
   console.log('🌍 BUILDING FOR ENV:', appEnv);
 
   const { name, bundleIdentifier, icon, adaptiveIcon, packageName, scheme } =
     getDynamicAppConfig(appEnv);
+
+    console.log("Variables:", {
+      name,
+      bundleIdentifier,
+      packageName,
+      scheme
+    });
 
   return {
     ...config,
@@ -97,7 +106,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     web: {
       bundler: 'metro',
       output: 'static',
-      favicon: './assets/favicon.png',
+      favicon: './assets/icon.png',
     },
     plugins: [
       'expo-router',
@@ -105,8 +114,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         'expo-splash-screen',
         {
           image: './assets/splash-icon.png',
-          imageWidth: 200,
-          resizeMode: 'contain',
+          imageWidth: '100%',
+          resizeMode: 'cover',
           backgroundColor: '#ffffff',
         },
       ],

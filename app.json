@@ -35,7 +35,10 @@
             "host": "auth",
             "pathPrefix": "/callback"
           },
-          "category": ["BROWSABLE", "DEFAULT"]
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
         }
       ]
     },
@@ -43,11 +46,14 @@
       "favicon": "./assets/icon.png",
       "bundler": "metro"
     },
-    "plugins": ["expo-router", "expo-web-browser"],
+    "plugins": [
+      "expo-router",
+      "expo-web-browser"
+    ],
     "extra": {
       "EXPO_PUBLIC_APP_ENV": "production",
       "eas": {
-        "projectId": "7fa827f2-a108-4a46-88b4-99e22aa03fc8"
+        "projectId": "087d70be-5ada-40ee-b226-76fb8582031d"
       }
     }
   }
