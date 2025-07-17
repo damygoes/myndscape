@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "reflect",
-    "slug": "reflect",
-    "scheme": "ai.reflect",
+    "name": "myndscape",
+    "slug": "myndscape",
+    "scheme": "ai.myndscape",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,7 +15,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.damilolabada.reflect-app",
+      "bundleIdentifier": "com.damilolabada.myndscape",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -26,12 +26,12 @@
         "backgroundColor": "#0C0E10"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.damilolabada.reflect",
+      "package": "com.damilolabada.myndscape",
       "intentFilters": [
         {
           "action": "VIEW",
           "data": {
-            "scheme": "ai.reflect",
+            "scheme": "ai.myndscape",
             "host": "auth",
             "pathPrefix": "/callback"
           },
@@ -40,7 +40,7 @@
       ]
     },
     "web": {
-      "favicon": "./assets/favicon.png",
+      "favicon": "./assets/icon.png",
       "bundler": "metro"
     },
     "plugins": ["expo-router", "expo-web-browser"],

@@ -68,13 +68,15 @@ export function LoginForm() {
         }}
       >
         {loading ? (
-          <ActivityIndicator color={colors.textPrimary} />
+          <ActivityIndicator color={colors.white} />
         ) : (
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-          <Ionicons name="mail-outline" size={20} color={colors.white} />
-          <Text style={{ fontWeight: 'bold', color: colors.white, fontSize: 18 }}>
-            Send Magic Link
-          </Text>
+            <Ionicons name="mail-outline" size={20} color={colors.white} />
+            <Text
+              style={{ fontWeight: 'bold', color: colors.white, fontSize: 18 }}
+            >
+              Send Magic Link
+            </Text>
           </View>
         )}
       </TouchableOpacity>

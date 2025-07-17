@@ -34,11 +34,11 @@ export default function HomeDashboardScreen() {
         />
       }
     >
-        <MoodPrompt />
-        <LastEntrySummary />
-        <QuickStats />
-        <AiInsights />
-        <TipCard />
+      <MoodPrompt />
+      <LastEntrySummary />
+      <QuickStats />
+      <AiInsights />
+      <TipCard />
     </ParallaxScrollView>
   );
 }

@@ -5,12 +5,12 @@ const EAS_PROJECT_ID = '7fa827f2-a108-4a46-88b4-99e22aa03fc8';
 const PROJECT_SLUG = 'reflect-ai';
 const OWNER = 'damygoes';
 
-const APP_NAME = 'Reflect AI';
-const BUNDLE_IDENTIFIER = 'com.damilolabada.reflect-app';
-const PACKAGE_NAME = 'com.damilolabada.reflect-app';
+const APP_NAME = 'myndscape';
+const BUNDLE_IDENTIFIER = 'com.damilolabada.myndscape';
+const PACKAGE_NAME = 'com.damilolabada.myndscape';
 const ICON = './assets/icon.png';
 const ADAPTIVE_ICON = './assets/adaptive-icon.png';
-const SCHEME = 'ai.reflect';
+const SCHEME = 'ai.myndscape';
 
 type AppEnv = 'development' | 'preview' | 'production';
 

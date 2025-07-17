@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		073E3FB602631A7869668DC4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C90790CEECA3236BD4850F20 /* PrivacyInfo.xcprivacy */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		7400277B6F03BF9861A83214 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D19680CC9B182119871277B7 /* PrivacyInfo.xcprivacy */; };
-		8D87FABE2674A38FC81E975B /* libPods-ReflectAIDevelopment.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E7EFFCF266D7124CCE8106 /* libPods-ReflectAIDevelopment.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C44CBA4D4A5DB716B63A8358 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCE51C0B98C9C9422C2CDD /* ExpoModulesProvider.swift */; };
+		C9781B9A07A5626C760AFC72 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38BDDE9B45A1C96E3A1EBE2 /* ExpoModulesProvider.swift */; };
+		DB2890DCE7B108661D36EFE8 /* libPods-myndscapeDevelopment.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EFD4D8AE3496B7A247E2536 /* libPods-myndscapeDevelopment.a */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0971A544FD78E48EB0132119 /* Pods-ReflectAIDevelopment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReflectAIDevelopment.debug.xcconfig"; path = "Target Support Files/Pods-ReflectAIDevelopment/Pods-ReflectAIDevelopment.debug.xcconfig"; sourceTree = "<group>"; };
-		0BBCE51C0B98C9C9422C2CDD /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-ReflectAIDevelopment/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* ReflectAIDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReflectAIDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ReflectAIDevelopment/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ReflectAIDevelopment/Info.plist; sourceTree = "<group>"; };
-		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = ReflectAIDevelopment/SplashScreen.storyboard; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* myndscapeDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myndscapeDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = myndscapeDevelopment/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = myndscapeDevelopment/Info.plist; sourceTree = "<group>"; };
+		6EFD4D8AE3496B7A247E2536 /* libPods-myndscapeDevelopment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myndscapeDevelopment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E066D63DDBAD7628A13851D /* Pods-myndscapeDevelopment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myndscapeDevelopment.debug.xcconfig"; path = "Target Support Files/Pods-myndscapeDevelopment/Pods-myndscapeDevelopment.debug.xcconfig"; sourceTree = "<group>"; };
+		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = myndscapeDevelopment/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		D19680CC9B182119871277B7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = ReflectAIDevelopment/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		E0E7EFFCF266D7124CCE8106 /* libPods-ReflectAIDevelopment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReflectAIDevelopment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90790CEECA3236BD4850F20 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = myndscapeDevelopment/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		DF39FD45DF0E6268517829A5 /* Pods-myndscapeDevelopment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myndscapeDevelopment.release.xcconfig"; path = "Target Support Files/Pods-myndscapeDevelopment/Pods-myndscapeDevelopment.release.xcconfig"; sourceTree = "<group>"; };
+		E38BDDE9B45A1C96E3A1EBE2 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-myndscapeDevelopment/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ReflectAIDevelopment/AppDelegate.swift; sourceTree = "<group>"; };
-		F11748442D0722820044C1D9 /* ReflectAIDevelopment-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ReflectAIDevelopment-Bridging-Header.h"; path = "ReflectAIDevelopment/ReflectAIDevelopment-Bridging-Header.h"; sourceTree = "<group>"; };
-		F630D82329307B7B3DD49A50 /* Pods-ReflectAIDevelopment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReflectAIDevelopment.release.xcconfig"; path = "Target Support Files/Pods-ReflectAIDevelopment/Pods-ReflectAIDevelopment.release.xcconfig"; sourceTree = "<group>"; };
+		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = myndscapeDevelopment/AppDelegate.swift; sourceTree = "<group>"; };
+		F11748442D0722820044C1D9 /* myndscapeDevelopment-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "myndscapeDevelopment-Bridging-Header.h"; path = "myndscapeDevelopment/myndscapeDevelopment-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,40 +37,50 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D87FABE2674A38FC81E975B /* libPods-ReflectAIDevelopment.a in Frameworks */,
+				DB2890DCE7B108661D36EFE8 /* libPods-myndscapeDevelopment.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* ReflectAIDevelopment */ = {
+		13B07FAE1A68108700A75B9A /* myndscapeDevelopment */ = {
 			isa = PBXGroup;
 			children = (
 				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
-				F11748442D0722820044C1D9 /* ReflectAIDevelopment-Bridging-Header.h */,
+				F11748442D0722820044C1D9 /* myndscapeDevelopment-Bridging-Header.h */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				D19680CC9B182119871277B7 /* PrivacyInfo.xcprivacy */,
+				C90790CEECA3236BD4850F20 /* PrivacyInfo.xcprivacy */,
 			);
-			name = ReflectAIDevelopment;
+			name = myndscapeDevelopment;
+			sourceTree = "<group>";
+		};
+		1B24F83D8980EC9533630D89 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E066D63DDBAD7628A13851D /* Pods-myndscapeDevelopment.debug.xcconfig */,
+				DF39FD45DF0E6268517829A5 /* Pods-myndscapeDevelopment.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				E0E7EFFCF266D7124CCE8106 /* libPods-ReflectAIDevelopment.a */,
+				6EFD4D8AE3496B7A247E2536 /* libPods-myndscapeDevelopment.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7C73E5C2AE890300DFDE8458 /* ExpoModulesProviders */ = {
+		562F797DA3F1225134240B37 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				D4D35C55F767B62465FE24CA /* ReflectAIDevelopment */,
+				CE852A6E5E8B995B401E4190 /* myndscapeDevelopment */,
 			);
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
@@ -85,12 +95,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* ReflectAIDevelopment */,
+				13B07FAE1A68108700A75B9A /* myndscapeDevelopment */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				FDC3F870C2EDA332ACA66E4E /* Pods */,
-				7C73E5C2AE890300DFDE8458 /* ExpoModulesProviders */,
+				1B24F83D8980EC9533630D89 /* Pods */,
+				562F797DA3F1225134240B37 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -100,7 +110,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* ReflectAIDevelopment.app */,
+				13B07F961A680F5B00A75B9A /* myndscapeDevelopment.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,50 +121,40 @@
 				BB2F792C24A3F905000567C9 /* Expo.plist */,
 			);
 			name = Supporting;
-			path = ReflectAIDevelopment/Supporting;
+			path = myndscapeDevelopment/Supporting;
 			sourceTree = "<group>";
 		};
-		D4D35C55F767B62465FE24CA /* ReflectAIDevelopment */ = {
+		CE852A6E5E8B995B401E4190 /* myndscapeDevelopment */ = {
 			isa = PBXGroup;
 			children = (
-				0BBCE51C0B98C9C9422C2CDD /* ExpoModulesProvider.swift */,
+				E38BDDE9B45A1C96E3A1EBE2 /* ExpoModulesProvider.swift */,
 			);
-			name = ReflectAIDevelopment;
-			sourceTree = "<group>";
-		};
-		FDC3F870C2EDA332ACA66E4E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0971A544FD78E48EB0132119 /* Pods-ReflectAIDevelopment.debug.xcconfig */,
-				F630D82329307B7B3DD49A50 /* Pods-ReflectAIDevelopment.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
+			name = myndscapeDevelopment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* ReflectAIDevelopment */ = {
+		13B07F861A680F5B00A75B9A /* myndscapeDevelopment */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReflectAIDevelopment" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "myndscapeDevelopment" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				647282A3F3AF1A5EED42E36D /* [Expo] Configure project */,
+				34CC43E4E3845002A4FF9ED7 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				71800BD217E88D00CC54B27C /* [CP] Embed Pods Frameworks */,
+				7177C9D0FA233DE76AAAFBD9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ReflectAIDevelopment;
-			productName = ReflectAIDevelopment;
-			productReference = 13B07F961A680F5B00A75B9A /* ReflectAIDevelopment.app */;
+			name = myndscapeDevelopment;
+			productName = myndscapeDevelopment;
+			productReference = 13B07F961A680F5B00A75B9A /* myndscapeDevelopment.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +170,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ReflectAIDevelopment" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "myndscapeDevelopment" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -183,7 +183,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* ReflectAIDevelopment */,
+				13B07F861A680F5B00A75B9A /* myndscapeDevelopment */,
 			);
 		};
 /* End PBXProject section */
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				7400277B6F03BF9861A83214 /* PrivacyInfo.xcprivacy in Resources */,
+				073E3FB602631A7869668DC4 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,14 +233,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ReflectAIDevelopment-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-myndscapeDevelopment-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		647282A3F3AF1A5EED42E36D /* [Expo] Configure project */ = {
+		34CC43E4E3845002A4FF9ED7 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -257,15 +257,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-ReflectAIDevelopment/expo-configure-project.sh\"\n";
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-myndscapeDevelopment/expo-configure-project.sh\"\n";
 		};
-		71800BD217E88D00CC54B27C /* [CP] Embed Pods Frameworks */ = {
+		7177C9D0FA233DE76AAAFBD9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReflectAIDevelopment/Pods-ReflectAIDevelopment-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-myndscapeDevelopment/Pods-myndscapeDevelopment-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -274,7 +274,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReflectAIDevelopment/Pods-ReflectAIDevelopment-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myndscapeDevelopment/Pods-myndscapeDevelopment-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
@@ -283,7 +283,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReflectAIDevelopment/Pods-ReflectAIDevelopment-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-myndscapeDevelopment/Pods-myndscapeDevelopment-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
@@ -324,7 +324,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReflectAIDevelopment/Pods-ReflectAIDevelopment-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myndscapeDevelopment/Pods-myndscapeDevelopment-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -335,7 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				C44CBA4D4A5DB716B63A8358 /* ExpoModulesProvider.swift in Sources */,
+				C9781B9A07A5626C760AFC72 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,18 +344,18 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0971A544FD78E48EB0132119 /* Pods-ReflectAIDevelopment.debug.xcconfig */;
+			baseConfigurationReference = 8E066D63DDBAD7628A13851D /* Pods-myndscapeDevelopment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = ReflectAIDevelopment/ReflectAIDevelopment.entitlements;
+				CODE_SIGN_ENTITLEMENTS = myndscapeDevelopment/myndscapeDevelopment.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = ReflectAIDevelopment/Info.plist;
+				INFOPLIST_FILE = myndscapeDevelopment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -368,9 +368,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.damilolabada.reflect-app.dev";
-				PRODUCT_NAME = ReflectAIDevelopment;
-				SWIFT_OBJC_BRIDGING_HEADER = "ReflectAIDevelopment/ReflectAIDevelopment-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.damilolabada.myndscape.dev;
+				PRODUCT_NAME = myndscapeDevelopment;
+				SWIFT_OBJC_BRIDGING_HEADER = "myndscapeDevelopment/myndscapeDevelopment-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -380,13 +380,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F630D82329307B7B3DD49A50 /* Pods-ReflectAIDevelopment.release.xcconfig */;
+			baseConfigurationReference = DF39FD45DF0E6268517829A5 /* Pods-myndscapeDevelopment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = ReflectAIDevelopment/ReflectAIDevelopment.entitlements;
+				CODE_SIGN_ENTITLEMENTS = myndscapeDevelopment/myndscapeDevelopment.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = ReflectAIDevelopment/Info.plist;
+				INFOPLIST_FILE = myndscapeDevelopment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -399,9 +399,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.damilolabada.reflect-app.dev";
-				PRODUCT_NAME = ReflectAIDevelopment;
-				SWIFT_OBJC_BRIDGING_HEADER = "ReflectAIDevelopment/ReflectAIDevelopment-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.damilolabada.myndscape.dev;
+				PRODUCT_NAME = myndscapeDevelopment;
+				SWIFT_OBJC_BRIDGING_HEADER = "myndscapeDevelopment/myndscapeDevelopment-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -535,7 +535,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ReflectAIDevelopment" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "myndscapeDevelopment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -544,7 +544,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ReflectAIDevelopment" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "myndscapeDevelopment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
