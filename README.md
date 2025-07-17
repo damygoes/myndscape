@@ -1,6 +1,6 @@
 # 🌿 Myndscape — A Wellness & Journaling Mobile App
 
-**Myndscape** is a beautifully minimalistic mobile journaling app designed to help you gain mental clarity, build self-awareness, and track your emotional well-being. Built using **React Native**, **Expo**, and **Supabase**, it features a calm, glassy UI with secure authentication and real-time storage.
+**Myndscape** is a beautiful minimalistic mobile journaling app designed to help you gain mental clarity, build self-awareness, and track your emotional well-being. Built using **React Native**, **Expo**, and **Supabase**, it features a calm, glassy UI with secure authentication and real-time storage.
 
 ## ✨ Features
 
