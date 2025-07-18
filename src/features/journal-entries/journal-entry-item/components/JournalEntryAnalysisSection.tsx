@@ -24,6 +24,7 @@ export const JournalEntryAnalysisSection = ({
       style={{
         display: 'flex',
         flexDirection: 'column',
+        width: '100%',
         backgroundColor: colors.background,
         gap: 26,
         borderColor: colors.border,

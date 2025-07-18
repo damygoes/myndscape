@@ -116,5 +116,6 @@ const styles = StyleSheet.create({
     gap: 16,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   },
 });
