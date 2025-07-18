@@ -17,8 +17,7 @@ type AppEnv = 'development' | 'preview' | 'production';
 export const getDynamicAppConfig = (
   environment: 'development' | 'preview' | 'production'
 ) => {
-
-  console.log("env here:", environment);
+  console.log('env here:', environment);
   if (environment === 'production') {
     return {
       name: APP_NAME,
@@ -61,12 +60,12 @@ export default ({ config }: ConfigContext): ExpoConfig => {
   const { name, bundleIdentifier, icon, adaptiveIcon, packageName, scheme } =
     getDynamicAppConfig(appEnv);
 
-    console.log("Variables:", {
-      name,
-      bundleIdentifier,
-      packageName,
-      scheme
-    });
+  console.log('Variables:', {
+    name,
+    bundleIdentifier,
+    packageName,
+    scheme,
+  });
 
   return {
     ...config,

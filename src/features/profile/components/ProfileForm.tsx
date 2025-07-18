@@ -94,7 +94,7 @@ export function ProfileForm({
               {saving ? (
                 <ActivityIndicator color={colors.textPrimary} />
               ) : (
-                <Text style={{ color: colors.textPrimary }}>Save</Text>
+                <Text style={{ color: colors.white }}>Save</Text>
               )}
             </TouchableOpacity>
             <TouchableOpacity

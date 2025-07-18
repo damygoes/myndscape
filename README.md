@@ -16,8 +16,8 @@
 
 <!-- You can upload screenshots here once available -->
 
-| Login                        | 
-| ![](./screenshots/login.png) | 
+| Login |
+| ![](./screenshots/login.png) |
 
 <!-- | Login                        | Home                        | History                        | Journal Entry                      | Edit Journal                        | Profile                        |
 | ---------------------------- | --------------------------- | ------------------------------ | ---------------------------------- | ----------------------------------- | ------------------------------ |

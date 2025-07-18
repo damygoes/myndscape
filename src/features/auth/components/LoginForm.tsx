@@ -17,6 +17,7 @@ export function LoginForm() {
   const { sendMagicLink } = useAuthActions();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
@@ -25,8 +26,18 @@ export function LoginForm() {
 
   const handleSendLink = async () => {
     setLoading(true);
+
+    const trimmedEmail = email.trim();
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail);
+
+    if (!trimmedEmail || !isValidEmail) {
+      setError('Please enter a valid email address');
+      setLoading(false);
+      return;
+    }
+
     try {
-      await sendMagicLink(email);
+      await sendMagicLink(trimmedEmail);
       Alert.alert('Check Your Email', 'We sent you a magic link to log in.');
     } catch (err) {
       console.error('Magic link error:', err);
@@ -38,24 +49,44 @@ export function LoginForm() {
     }
   };
 
+  const handleEmailChange = (text: string) => {
+    setEmail(text);
+    if (error) setError(null); // Clear error when user starts typing
+  };
+
   return (
     <View className="w-full gap-8 px-8 py-4">
-      <TextInput
-        placeholder="Your email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
-        placeholderTextColor={colors.textSecondary}
-        style={{
-          borderColor: colors.border,
-          borderWidth: 1,
-          borderRadius: 16,
-          padding: 18,
-          backgroundColor: colors.inputBackground,
-          color: colors.textPrimary,
-        }}
-      />
+      <View>
+        <TextInput
+          placeholder="Your email"
+          value={email}
+          onChangeText={handleEmailChange}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          placeholderTextColor={colors.textSecondary}
+          style={{
+            borderColor: colors.border,
+            borderWidth: 1,
+            borderRadius: 16,
+            padding: 18,
+            backgroundColor: colors.inputBackground,
+            color: colors.textPrimary,
+          }}
+        />
+
+        {error && (
+          <Text
+            style={{
+              color: colors.danger,
+              fontSize: 14,
+              fontWeight: '400',
+              marginVertical: 12,
+            }}
+          >
+            {error}
+          </Text>
+        )}
+      </View>
 
       <TouchableOpacity
         onPress={handleSendLink}
