@@ -48,7 +48,7 @@ export default function LandingScreen() {
               </Text>
             </View>
             {/* Form */}
-            <View className="w-full">
+            <View className="w-full p-12">
               <LoginForm />
             </View>
           </View>
