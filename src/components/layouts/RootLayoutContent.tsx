@@ -21,10 +21,8 @@ export function RootLayoutContent() {
   const colorScheme = useColorScheme();
   const insets = useSafeAreaInsets();
 
-     const backgroundColor =
-      colorScheme === 'dark'
-        ? COLORS.dark.background
-        : COLORS.light.background;
+  const backgroundColor =
+    colorScheme === 'dark' ? COLORS.dark.background : COLORS.light.background;
 
   const [fontsLoaded] = useFonts({
     SpaceMono: require('../../../assets/fonts/SpaceMono-Regular.ttf'),
@@ -42,13 +40,15 @@ export function RootLayoutContent() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <View
-              style={{
-                height: insets.top || (Platform.OS === 'android' ? StatusBar.currentHeight : 44),
-                backgroundColor,
-                zIndex: 10,
-              }}
-            />
+      <View
+        style={{
+          height:
+            insets.top ||
+            (Platform.OS === 'android' ? StatusBar.currentHeight : 44),
+          backgroundColor,
+          zIndex: 10,
+        }}
+      />
       <Slot />
       <ExpoStatusBar
         translucent={false}
