@@ -1,6 +1,5 @@
 import { COLORS } from '@/constants/colors';
 import { useAuthActions } from '@/features/auth/hooks/useAuthActions';
-import { useDeepLinkSession } from '@/features/auth/hooks/useDeepLinkSession';
 import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import {
@@ -21,8 +20,6 @@ export function LoginForm() {
 
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
-
-  useDeepLinkSession(); // ✅ Listens for magic link redirects
 
   const handleSendLink = async () => {
     setLoading(true);

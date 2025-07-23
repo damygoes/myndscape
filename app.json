@@ -3,6 +3,7 @@
     "name": "myndscape",
     "slug": "myndscape",
     "scheme": "ai.myndscape",
+    "deepLinking": true,
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,6 +17,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.damilolabada.myndscape",
+      "associatedDomains": ["applinks:zcdffliliytbpivqkavn.supabase.co"],
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }

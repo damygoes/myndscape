@@ -5,7 +5,9 @@ import * as WebBrowser from 'expo-web-browser';
 
 WebBrowser.maybeCompleteAuthSession();
 
-const redirectTo = makeRedirectUri();
+const redirectTo = makeRedirectUri({
+  scheme: 'ai.myndscape',
+});
 
 console.log('🔗 Redirect URI:', redirectTo);
 

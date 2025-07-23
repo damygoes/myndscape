@@ -9,6 +9,7 @@ import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { COLORS } from '@/constants/colors';
+import { useDeepLinkSession } from '@/features/auth/hooks/useDeepLinkSession';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
 import { useEffect } from 'react';
@@ -17,6 +18,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LoadingState } from '../LoadingState';
 
 export function RootLayoutContent() {
+  useDeepLinkSession();
+
   const { loading: authLoading, session } = useSupabaseSession();
   const colorScheme = useColorScheme();
   const insets = useSafeAreaInsets();
