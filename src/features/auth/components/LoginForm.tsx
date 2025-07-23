@@ -52,7 +52,7 @@ export function LoginForm() {
   };
 
   return (
-    <View className="w-full gap-8 px-8 py-4">
+    <View className="w-full gap-8 px-2 py-4">
       <View>
         <TextInput
           placeholder="Your email"

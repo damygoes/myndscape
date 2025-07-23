@@ -12,7 +12,7 @@ export default function History() {
   return (
     <SafeAreaView
       style={{ marginBottom: 24, height: '100%' }}
-      edges={['top', 'bottom', 'left', 'right']}
+      edges={['bottom', 'left', 'right']}
     >
       <FloatingButton
         onPress={handleNavigateToAddEntry}
