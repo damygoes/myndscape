@@ -14,39 +14,74 @@ const SCHEME = 'ai.myndscape';
 
 type AppEnv = 'development' | 'preview' | 'production';
 
+// export const getDynamicAppConfig = (
+//   environment: 'development' | 'preview' | 'production'
+// ) => {
+//   console.log('env here:', environment);
+//   if (environment === 'production') {
+//     return {
+//       name: APP_NAME,
+//       bundleIdentifier: BUNDLE_IDENTIFIER,
+//       packageName: PACKAGE_NAME,
+//       icon: ICON,
+//       adaptiveIcon: ADAPTIVE_ICON,
+//       scheme: SCHEME,
+//     };
+//   }
+
+//   if (environment === 'preview') {
+//     return {
+//       name: `${APP_NAME} Preview`,
+//       bundleIdentifier: `${BUNDLE_IDENTIFIER}.preview`,
+//       packageName: `${PACKAGE_NAME}.preview`,
+//       icon: ICON,
+//       adaptiveIcon: ADAPTIVE_ICON,
+//       scheme: `${SCHEME}-prev`,
+//     };
+//   }
+
+//   return {
+//     name: `${APP_NAME} Development`,
+//     bundleIdentifier: `${BUNDLE_IDENTIFIER}.dev`,
+//     packageName: `${PACKAGE_NAME}.dev`,
+//     icon: ICON,
+//     adaptiveIcon: ADAPTIVE_ICON,
+//     scheme: `${SCHEME}-dev`,
+//   };
+// };
+
 export const getDynamicAppConfig = (
-  environment: 'development' | 'preview' | 'production'
+  environment: AppEnv
 ) => {
-  console.log('env here:', environment);
+  const baseConfig = {
+    icon: ICON,
+    adaptiveIcon: ADAPTIVE_ICON,
+    scheme: SCHEME,
+  };
+
   if (environment === 'production') {
     return {
+      ...baseConfig,
       name: APP_NAME,
       bundleIdentifier: BUNDLE_IDENTIFIER,
       packageName: PACKAGE_NAME,
-      icon: ICON,
-      adaptiveIcon: ADAPTIVE_ICON,
-      scheme: SCHEME,
     };
   }
 
   if (environment === 'preview') {
     return {
+      ...baseConfig,
       name: `${APP_NAME} Preview`,
       bundleIdentifier: `${BUNDLE_IDENTIFIER}.preview`,
       packageName: `${PACKAGE_NAME}.preview`,
-      icon: ICON,
-      adaptiveIcon: ADAPTIVE_ICON,
-      scheme: `${SCHEME}-prev`,
     };
   }
 
   return {
+    ...baseConfig,
     name: `${APP_NAME} Development`,
     bundleIdentifier: `${BUNDLE_IDENTIFIER}.dev`,
     packageName: `${PACKAGE_NAME}.dev`,
-    icon: ICON,
-    adaptiveIcon: ADAPTIVE_ICON,
-    scheme: `${SCHEME}-dev`,
   };
 };
 
