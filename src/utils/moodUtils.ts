@@ -21,6 +21,7 @@ export const moodKeywords = [
   'craving',
   'frustrated',
   'joyful',
+  'mixed'
 ] as const;
 
 export type Mood = (typeof moodKeywords)[number];
@@ -45,6 +46,7 @@ export const moodIcons: Record<Mood, keyof typeof Ionicons.glyphMap> = {
   craving: 'fast-food-outline',
   frustrated: 'close-circle-outline',
   joyful: 'happy-outline',
+  mixed: 'shuffle-outline',
 };
 
 export const moodColors: Record<Mood, string> = {
@@ -67,6 +69,7 @@ export const moodColors: Record<Mood, string> = {
   craving: COLORS.moods.craving,
   frustrated: COLORS.moods.frustrated,
   joyful: COLORS.moods.joyful,
+  mixed: COLORS.moods.mixed,
 };
 
 export const tipsByMood: Record<string, string> = {
@@ -92,5 +95,6 @@ export const tipsByMood: Record<string, string> = {
   craving: 'Satisfy your craving with a healthy alternative or a small treat.',
   frustrated: 'Take a break and do something you enjoy to reset your mood.',
   joyful: 'Share your joy with others—spread the positivity!',
+  mixed: 'Embrace the complexity of your feelings—try journaling about them.',
   default: 'Take 5 minutes today to breathe deeply and reset your mood.',
 };

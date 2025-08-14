@@ -10,7 +10,7 @@ export function getMoodIcon(mood: string): keyof typeof Ionicons.glyphMap {
 
 export function getMoodBadgeColor(mood: string) {
   const moodColor = moodColors[mood.toLowerCase() as Mood];
-  return moodColor ?? '#E5E7EB';
+  return moodColor ?? '#7d8aa3ff';
 }
 
 export function extractMoodFromAISummary(summary: string): string {

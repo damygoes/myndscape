@@ -24,10 +24,6 @@ export const JournalEntryActions = ({ entryId }: Props) => {
     router.push(`/history/edit-entry/${entryId}`);
   };
 
-  // const handleNavigateToEntryDetails = () => {
-  //   router.push(`/history/entry-details/${entryId}`);
-  // };
-
   const handleDelete = () => {
     Alert.alert(
       'Delete Entry',
@@ -79,8 +75,6 @@ export const JournalEntryActions = ({ entryId }: Props) => {
           </Text>
         </TouchableOpacity>
       </View>
-
-      {/* <EditJournalModal id={entryId} visible={modalVisible} onCancel={closeModal} /> */}
     </>
   );
 };

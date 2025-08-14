@@ -79,6 +79,7 @@ export const COLORS = {
     craving: '#264653', // Deep muted blue
     frustrated: '#E76F51', // Warm coral red
     joyful: '#F9C74F', // Bright yellow
+    mixed: '#90BE6D', // Soft green
   },
 
   wellness: {

@@ -55,7 +55,7 @@ export const JournalEntryItem = ({ entry }: Props) => {
         overflow: 'hidden',
       }}
     >
-      <GlassCard style={styles.card}>
+      <GlassCard>
         <View style={styles.header}>
           <MoodBadge mood={entry.mood ?? 'neutral'} />
           <Text style={[styles.dateText, { color: colors.textMuted }]}>
@@ -88,9 +88,6 @@ export const JournalEntryItem = ({ entry }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  card: {
-    paddingHorizontal: 10,
-  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -98,7 +95,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dateText: {
-    fontSize: 14,
+    fontSize: 12,
   },
   contentText: {
     fontSize: 14,

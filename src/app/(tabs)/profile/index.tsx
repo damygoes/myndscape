@@ -2,6 +2,7 @@ import { ErrorState } from '@/components/ErrorState';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { COLORS } from '@/constants/colors';
 import { LogoutButton } from '@/features/auth/components/LogoutButton';
+import { AccountDeletionCard } from '@/features/account-deletion/AccountDeletionCard';
 import { ProfileDetailsWithForm } from '@/features/profile/components/ProfileDetailsWithForm';
 import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
 import { Image } from 'expo-image';
@@ -34,6 +35,7 @@ export default function ProfileScreen() {
     >
       <ProfileDetailsWithForm userId={session.user.id} />
       <LogoutButton style={styles.logout} />
+      <AccountDeletionCard userId={session.user.id} />
     </ParallaxScrollView>
   );
 }

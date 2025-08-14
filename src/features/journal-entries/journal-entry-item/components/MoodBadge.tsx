@@ -22,7 +22,7 @@ export const MoodBadge = ({ mood, displayPrefix = true }: MoodBadgeProps) => {
 
   return (
     <View
-      className="flex-row items-center gap-1 px-4 py-3 rounded-full"
+      className="flex-row items-center gap-1 px-2 py-1 rounded-full"
       style={{
         backgroundColor: badgeColor,
       }}
