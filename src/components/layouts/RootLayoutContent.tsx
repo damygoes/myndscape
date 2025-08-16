@@ -33,7 +33,7 @@ export function RootLayoutContent() {
 
   useEffect(() => {
     if (!authLoading && !session) {
-      router.replace('/login');
+      router.replace('/welcome');
     }
   }, [authLoading, session]);
 

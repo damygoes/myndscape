@@ -1,62 +1,42 @@
 import { ThemedSafeAreaView } from '@/components/layouts/ThemedSafeAreaView';
+import { COLORS } from '@/constants/colors';
 import { LoginForm } from '@/features/auth/components/LoginForm';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { Image } from 'expo-image';
 import React from 'react';
-import { KeyboardAvoidingView, Platform, Text, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, Text, TouchableOpacity, useColorScheme, View } from 'react-native';
 
 export default function LandingScreen() {
-  const textPrimary = useThemeColor({}, 'textPrimary');
-  const textSecondary = useThemeColor({}, 'textSecondary');
-  const textMuted = useThemeColor({}, 'textMuted');
+  const theme = useColorScheme() ?? 'light';
+  const colors = COLORS[theme];
 
   return (
-    <ThemedSafeAreaView>
+    <ThemedSafeAreaView style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 16 }}>
       <KeyboardAvoidingView
-        style={{ flex: 1 }}
+        style={{ flex: 1, width: '100%' }}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 60 : 0}
       >
-        <View className="flex flex-col items-center justify-center w-full h-full">
-          {/* Header */}
-          <View className="flex flex-col items-center justify-center flex-1 w-full gap-10">
-            {/* Header */}
-            <View className="items-center gap-1 mb-8">
-              <Image
-                source={require('../../assets/icon-transparent.png')}
-                contentFit="contain"
-                cachePolicy="memory-disk"
-                transition={300}
-                priority="high"
-                style={{ width: 100, height: 100 }}
-              />
+        <View className="flex flex-col items-center justify-center gap-12 w-full h-full">
+          <View className='flex flex-col items-center justify-center w-full gap-4'>
+            <Image
+              source={require('../../assets/icon-transparent.png')}
+              contentFit="contain"
+              cachePolicy="memory-disk"
+              transition={300}
+              priority="high"
+              style={{ width: 80, height: 80 }}
+            />
 
-              <Text
-                className="text-6xl font-bold text-center"
-                style={{ color: textPrimary }}
-              >
-                myndscape
-              </Text>
-              <Text
-                style={{
-                  color: textSecondary,
-                  fontSize: 14,
-                  textTransform: 'uppercase',
-                }}
-              >
-                Reflect. Understand. Evolve.
-              </Text>
-            </View>
-            {/* Form */}
-            <View className="w-full p-12">
-              <LoginForm />
-            </View>
-          </View>
-          {/* Footer */}
-          <View className="flex flex-row items-center justify-center w-full py-4 mt-8">
-            <Text style={{ color: textMuted, fontSize: 14 }}>
-              Myndscape. {new Date().getFullYear()}
+            <Text
+              className="text-2xl font-bold text-center"
+              style={{ color: colors.textPrimary }}
+            >
+              Log in or Sign Up
             </Text>
+          </View>
+          <View className="w-full">
+            <LoginForm />
           </View>
         </View>
       </KeyboardAvoidingView>
