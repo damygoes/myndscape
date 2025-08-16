@@ -1,12 +1,9 @@
 import { ThemedSafeAreaView } from '@/components/layouts/ThemedSafeAreaView';
 import { COLORS } from '@/constants/colors';
-import { LoginForm } from '@/features/auth/components/LoginForm';
-import { useThemeColor } from '@/hooks/useThemeColor';
-import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import React from 'react';
-import { KeyboardAvoidingView, Platform, Text, TouchableOpacity, useColorScheme, View } from 'react-native';
+import { Text, TouchableOpacity, useColorScheme, View } from 'react-native';
 
 export default function LandingScreen() {
     const colors = COLORS[useColorScheme() ?? 'light'];
