@@ -5,6 +5,8 @@ import { moodKeywords } from '@/utils/moodUtils';
 import { Ionicons } from '@expo/vector-icons';
 import { Text, View, useColorScheme } from 'react-native';
 import { countMultipleKeywordMentions } from '../utils/analyzeEntries';
+import { PaywallGate } from '@/features/paywall/components/PaywallGate';
+import { Plan } from '@/features/paywall/types';
 
 export const AiInsights = () => {
   const { data: entries = [] } = useCurrentUserEntries();
@@ -84,33 +86,35 @@ export const AiInsights = () => {
           AI Insights
         </Text>
       </View>
-      <View style={{ gap: 8, paddingVertical: 8 }}>
-        <Text style={{ color: colors.textSecondary, marginBottom: 8 }}>
-          Here's what we noticed this week:
-        </Text>
-        <View style={{ flexDirection: 'column', gap: 8 }}>
-          {relevantInsights.map(([keyword, count]) => (
-            <View
-              key={keyword}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
-            >
-              <Ionicons name="arrow-forward" size={18} color={colors.primary} />
-              <Text style={{ color: colors.textPrimary, flexShrink: 1 }}>
-                <Text
-                  style={{
-                    fontWeight: '700',
-                    textTransform: 'capitalize',
-                    color: colors.textPrimary,
-                  }}
-                >
-                  {keyword}
-                </Text>{' '}
-                mentioned {count} {count === 1 ? 'time' : 'times'}
-              </Text>
-            </View>
-          ))}
+      <PaywallGate require={Plan.PREMIUM}>
+        <View style={{ gap: 8, paddingVertical: 8 }}>
+          <Text style={{ color: colors.textSecondary, marginBottom: 8 }}>
+            Here's what we noticed this week:
+          </Text>
+          <View style={{ flexDirection: 'column', gap: 8 }}>
+            {relevantInsights.map(([keyword, count]) => (
+              <View
+                key={keyword}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
+              >
+                <Ionicons name="arrow-forward" size={18} color={colors.primary} />
+                <Text style={{ color: colors.textPrimary, flexShrink: 1 }}>
+                  <Text
+                    style={{
+                      fontWeight: '700',
+                      textTransform: 'capitalize',
+                      color: colors.textPrimary,
+                    }}
+                  >
+                    {keyword}
+                  </Text>{' '}
+                  mentioned {count} {count === 1 ? 'time' : 'times'}
+                </Text>
+              </View>
+            ))}
+          </View>
         </View>
-      </View>
+      </PaywallGate>
     </DashboardSection>
   );
 };
