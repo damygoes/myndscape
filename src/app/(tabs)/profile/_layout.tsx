@@ -18,6 +18,7 @@ export default function ProfileStackLayout() {
           fontSize: 20,
           fontWeight: 'bold',
         },
+        gestureEnabled: true, // enable swipe back gestures
       }}
     >
       <Stack.Screen
@@ -26,14 +27,14 @@ export default function ProfileStackLayout() {
           headerTransparent: true,
           headerTitle: '',
           headerShadowVisible: false,
-          headerShown: false,
+          headerShown: false, // no header for main profile
         }}
       />
       <Stack.Screen
         name="edit-profile"
         options={{
           title: 'Edit Profile',
-          presentation: 'modal',
+          presentation: 'modal', // modal style
         }}
       />
     </Stack>

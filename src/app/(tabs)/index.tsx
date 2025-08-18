@@ -1,6 +1,6 @@
 import { LoadingState } from '@/components/LoadingState';
 import { Image } from 'expo-image';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { COLORS } from '@/constants/colors';
@@ -11,13 +11,17 @@ import { QuickStats } from '@/features/dashboard/components/QuickStats';
 import { TipCard } from '@/features/dashboard/components/TipCard';
 import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
 import { useUserUsageContext } from '@/features/user/contexts/UserUsageContext';
+import { router } from 'expo-router';
 
 export default function HomeDashboardScreen() {
   const { session, loading } = useSupabaseSession();
 
-
   if (loading) return <LoadingState />;
   if (!session) return null;
+
+  const goToPaywall = () => {
+    router.push('/paywall');
+  };
 
   return (
     <ParallaxScrollView
@@ -36,6 +40,9 @@ export default function HomeDashboardScreen() {
         />
       }
     >
+      <TouchableOpacity className='flex-row items-center' onPress={goToPaywall}>
+        <Text className='text-lg font-semibold'>Goto Paywall Screen</Text>
+      </TouchableOpacity>
       <MoodPrompt />
       <LastEntrySummary />
       <QuickStats />

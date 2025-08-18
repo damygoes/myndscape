@@ -1,3 +1,5 @@
+import type { Features, PlanType } from "../paywall/types";
+
 export type UserProfile = {
   email: string;
   display_name?: string | null;
@@ -8,9 +10,9 @@ export type UserProfile = {
 };
 
 export type UserUsage = {
-  plan_id: string;
+  plan_id: PlanType;
   entries_used: number;
   monthly_limit: number;
   entries_remaining: number;
-  features: { ai: { summary: boolean; themes: boolean; tips: boolean } };
+  features: Features;
 };

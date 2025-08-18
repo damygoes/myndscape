@@ -8,7 +8,7 @@ export function useUserUsage() {
         queryFn: async () => {
             const { data, error } = await supabase.rpc("get_my_usage");
             if (error) throw error;
-            return data as UserUsage;
+            return data[0] as UserUsage; // extracted the first item because Supabase rpc calls always return an array of rows, even if the function returns a single row.
         },
     });
 }
