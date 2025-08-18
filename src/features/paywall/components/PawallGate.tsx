@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
 import { useUserUsageContext } from "@/features/user/contexts/UserUsageContext";
-import { Plan, type PlanType } from "./types";
+import { Plan, type PlanType } from "../types";
 
 type PaywallGateProps = {
     require: PlanType;
@@ -32,7 +32,7 @@ export function PaywallGate({ require, fallback, children }: PaywallGateProps) {
 
     // Default fallback → lock + upgrade button
     return (
-        <View className="flex items-center justify-center p-6">
+        <View className="flex items-center justify-center p-2">
             <Text className="text-lg mb-3">
                 This feature requires a <Text className="capitalize font-semibold">{require}</Text> plan
             </Text>

@@ -19,10 +19,6 @@ export default function HomeDashboardScreen() {
   if (loading) return <LoadingState />;
   if (!session) return null;
 
-  const goToPaywall = () => {
-    router.push('/paywall');
-  };
-
   return (
     <ParallaxScrollView
       headerBackgroundColor={{
@@ -40,9 +36,6 @@ export default function HomeDashboardScreen() {
         />
       }
     >
-      <TouchableOpacity className='flex-row items-center' onPress={goToPaywall}>
-        <Text className='text-lg font-semibold'>Goto Paywall Screen</Text>
-      </TouchableOpacity>
       <MoodPrompt />
       <LastEntrySummary />
       <QuickStats />

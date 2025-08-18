@@ -3,8 +3,8 @@ import React from 'react';
 import { Text, useColorScheme, View } from 'react-native';
 import { ThemesBadges } from './ThemesBadges';
 import { TipSection } from './TipSection';
-import { PaywallGate } from '@/features/paywall/PawallGate';
 import { Plan } from '@/features/paywall/types';
+import { PaywallGate } from '@/features/paywall/components/PawallGate';
 interface Props {
   summary: string | null;
   themes: string | null;
