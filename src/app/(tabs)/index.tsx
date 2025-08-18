@@ -10,9 +10,11 @@ import { MoodPrompt } from '@/features/dashboard/components/MoodPrompt';
 import { QuickStats } from '@/features/dashboard/components/QuickStats';
 import { TipCard } from '@/features/dashboard/components/TipCard';
 import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
+import { useUserUsageContext } from '@/features/user/contexts/UserUsageContext';
 
 export default function HomeDashboardScreen() {
   const { session, loading } = useSupabaseSession();
+
 
   if (loading) return <LoadingState />;
   if (!session) return null;

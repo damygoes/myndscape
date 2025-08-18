@@ -1,0 +1,14 @@
+import { supabase } from "@/services/supabase";
+import { useQuery } from "@tanstack/react-query";
+import { UserUsage } from "../types";
+
+export function useUserUsage() {
+    return useQuery({
+        queryKey: ["userUsage"],
+        queryFn: async () => {
+            const { data, error } = await supabase.rpc("get_my_usage");
+            if (error) throw error;
+            return data as UserUsage;
+        },
+    });
+}

@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import { Platform, StatusBar, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LoadingState } from '../LoadingState';
+import { UserUsageProvider } from '@/features/user/contexts/UserUsageContext';
 
 export function RootLayoutContent() {
   useDeepLinkSession();
@@ -43,25 +44,27 @@ export function RootLayoutContent() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <View
-        style={{
-          height:
-            insets.top ||
-            (Platform.OS === 'android' ? StatusBar.currentHeight : 44),
-          backgroundColor,
-          zIndex: 10,
-        }}
-      />
-      <Slot />
-      <ExpoStatusBar
-        translucent={false}
-        backgroundColor={
-          colorScheme === 'dark'
-            ? COLORS.dark.background
-            : COLORS.light.background
-        }
-        style={colorScheme === 'dark' ? 'light' : 'dark'}
-      />
+      <UserUsageProvider>
+        <View
+          style={{
+            height:
+              insets.top ||
+              (Platform.OS === 'android' ? StatusBar.currentHeight : 44),
+            backgroundColor,
+            zIndex: 10,
+          }}
+        />
+        <Slot />
+        <ExpoStatusBar
+          translucent={false}
+          backgroundColor={
+            colorScheme === 'dark'
+              ? COLORS.dark.background
+              : COLORS.light.background
+          }
+          style={colorScheme === 'dark' ? 'light' : 'dark'}
+        />
+      </UserUsageProvider>
     </ThemeProvider>
   );
 }
