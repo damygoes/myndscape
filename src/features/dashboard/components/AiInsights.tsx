@@ -97,7 +97,11 @@ export const AiInsights = () => {
                 key={keyword}
                 style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
               >
-                <Ionicons name="arrow-forward" size={18} color={colors.primary} />
+                <Ionicons
+                  name="arrow-forward"
+                  size={18}
+                  color={colors.primary}
+                />
                 <Text style={{ color: colors.textPrimary, flexShrink: 1 }}>
                   <Text
                     style={{

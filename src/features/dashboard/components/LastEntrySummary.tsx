@@ -45,7 +45,9 @@ export const LastEntrySummary = () => {
                   size={18}
                   color={colors.textMuted}
                 />
-                <Text style={[styles.sectionLabel, { color: colors.textMuted }]}>
+                <Text
+                  style={[styles.sectionLabel, { color: colors.textMuted }]}
+                >
                   Tip
                 </Text>
               </View>

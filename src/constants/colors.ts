@@ -90,5 +90,4 @@ export const COLORS = {
   },
 };
 
-
 export type ThemeColors = typeof COLORS.light;

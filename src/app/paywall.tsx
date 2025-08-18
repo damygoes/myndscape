@@ -8,15 +8,12 @@ import { Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Paywall() {
-
-
-    return (
-        <ThemedSafeAreaView
-            style={{ marginBottom: 24, height: '100%', }}
-            edges={['top', 'bottom', 'left', 'right']}
-
-        >
-            <PaywallScreen />
-        </ThemedSafeAreaView>
-    );
+  return (
+    <ThemedSafeAreaView
+      style={{ marginBottom: 24, height: '100%' }}
+      edges={['top', 'bottom', 'left', 'right']}
+    >
+      <PaywallScreen />
+    </ThemedSafeAreaView>
+  );
 }

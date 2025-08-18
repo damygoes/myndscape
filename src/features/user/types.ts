@@ -1,4 +1,4 @@
-import type { Features, PlanType } from "../paywall/types";
+import type { Features, PlanType } from '../paywall/types';
 
 export type UserProfile = {
   email: string;

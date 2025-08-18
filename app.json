@@ -17,9 +17,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.damilolabada.myndscape",
-      "associatedDomains": [
-        "applinks:zcdffliliytbpivqkavn.supabase.co"
-      ],
+      "associatedDomains": ["applinks:zcdffliliytbpivqkavn.supabase.co"],
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -39,10 +37,7 @@
             "host": "auth",
             "pathPrefix": "/callback"
           },
-          "category": [
-            "BROWSABLE",
-            "DEFAULT"
-          ]
+          "category": ["BROWSABLE", "DEFAULT"]
         }
       ]
     },
@@ -50,10 +45,7 @@
       "favicon": "./assets/icon.png",
       "bundler": "metro"
     },
-    "plugins": [
-      "expo-router",
-      "expo-web-browser"
-    ],
+    "plugins": ["expo-router", "expo-web-browser"],
     "extra": {
       "EXPO_PUBLIC_APP_ENV": "production",
       "eas": {

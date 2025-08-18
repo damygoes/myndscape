@@ -1,5 +1,9 @@
 import { router, Slot, Stack } from 'expo-router';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import { Platform, StatusBar, View } from 'react-native';
@@ -63,7 +67,10 @@ export function RootLayoutContent() {
               headerShown: false,
               headerTransparent: true,
               headerShadowVisible: false,
-              headerTintColor: colorScheme === 'dark' ? COLORS.dark.textPrimary : COLORS.light.textPrimary,
+              headerTintColor:
+                colorScheme === 'dark'
+                  ? COLORS.dark.textPrimary
+                  : COLORS.light.textPrimary,
               title: 'Paywall',
               gestureEnabled: true,
             }}

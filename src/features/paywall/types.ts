@@ -1,16 +1,25 @@
 export enum Plan {
-    FREE = "free",
-    PREMIUM = "premium",
+  FREE = 'free',
+  PREMIUM = 'premium',
 }
 
-export type PlanType = typeof Plan[keyof typeof Plan];
+export type PlanType = (typeof Plan)[keyof typeof Plan];
 
 export interface Features {
-    ai: {
-        summary: boolean;
-        themes: boolean;
-        tips: boolean;
-    };
+  ai: {
+    summary: boolean;
+    themes: boolean;
+    tips: boolean;
+  };
+}
+
+export interface PlanDefinition {
+  id: Plan;
+  name: string;
+  price: string;
+  featuresText: string[];
+  featureFlags: Features;
+  badge?: string;
 }
 
 /**

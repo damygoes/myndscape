@@ -21,7 +21,7 @@ export const moodKeywords = [
   'craving',
   'frustrated',
   'joyful',
-  'mixed'
+  'mixed',
 ] as const;
 
 export type Mood = (typeof moodKeywords)[number];
