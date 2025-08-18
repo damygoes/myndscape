@@ -7,7 +7,7 @@ import {
   parseThemes,
   prepareJournalEntry,
 } from '@/features/journal-entries/journal-entry-item/utils';
-import { PaywallGate } from '@/features/paywall/components/PawallGate';
+import { PaywallGate } from '@/features/paywall/components/PaywallGate';
 import { Plan } from '@/features/paywall/types';
 import { router, useLocalSearchParams } from 'expo-router';
 import React from 'react';

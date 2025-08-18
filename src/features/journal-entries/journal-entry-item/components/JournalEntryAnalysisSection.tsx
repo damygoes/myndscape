@@ -4,7 +4,7 @@ import { Text, useColorScheme, View } from 'react-native';
 import { ThemesBadges } from './ThemesBadges';
 import { TipSection } from './TipSection';
 import { Plan } from '@/features/paywall/types';
-import { PaywallGate } from '@/features/paywall/components/PawallGate';
+import { PaywallGate } from '@/features/paywall/components/PaywallGate';
 interface Props {
   summary: string | null;
   themes: string | null;

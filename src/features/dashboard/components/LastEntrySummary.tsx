@@ -3,7 +3,7 @@ import { DashboardSection } from '@/features/dashboard/components/DashboardSecti
 import { useCurrentUserEntries } from '@/features/journal-entries/hooks/useCurrentUserEntries';
 import { MoodBadge } from '@/features/journal-entries/journal-entry-item/components/MoodBadge';
 import { prepareJournalEntry } from '@/features/journal-entries/journal-entry-item/utils';
-import { PaywallGate } from '@/features/paywall/components/PawallGate';
+import { PaywallGate } from '@/features/paywall/components/PaywallGate';
 import { Plan } from '@/features/paywall/types';
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
