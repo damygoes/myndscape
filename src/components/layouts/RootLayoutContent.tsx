@@ -57,7 +57,7 @@ export function RootLayoutContent() {
         {/* Root stack */}
         <Stack screenOptions={{ headerShown: false }}>
           {/* normal bottom tabs */}
-          <Stack.Screen name="(tabs)/_layout" />
+          <Stack.Screen name="(tabs)" />
 
           {/* Global Paywall Modal */}
           <Stack.Screen
