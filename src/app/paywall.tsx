@@ -1,4 +1,5 @@
 import { FloatingButton } from '@/components/floating-button/FloatingButton';
+import { ThemedSafeAreaView } from '@/components/layouts/ThemedSafeAreaView';
 import { JournalEntries } from '@/features/journal-entries/components/JournalEntries';
 import { PaywallScreen } from '@/features/paywall/screens/PaywallScreen';
 import { router } from 'expo-router';
@@ -10,11 +11,12 @@ export default function Paywall() {
 
 
     return (
-        <SafeAreaView
-            style={{ marginBottom: 24, height: '100%' }}
-            edges={['bottom', 'left', 'right']}
+        <ThemedSafeAreaView
+            style={{ marginBottom: 24, height: '100%', }}
+            edges={['top', 'bottom', 'left', 'right']}
+
         >
             <PaywallScreen />
-        </SafeAreaView>
+        </ThemedSafeAreaView>
     );
 }
