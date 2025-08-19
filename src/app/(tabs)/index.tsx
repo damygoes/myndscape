@@ -1,6 +1,6 @@
 import { LoadingState } from '@/components/LoadingState';
 import { Image } from 'expo-image';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { COLORS } from '@/constants/colors';
@@ -9,15 +9,8 @@ import { LastEntrySummary } from '@/features/dashboard/components/LastEntrySumma
 import { MoodPrompt } from '@/features/dashboard/components/MoodPrompt';
 import { QuickStats } from '@/features/dashboard/components/QuickStats';
 import { TipCard } from '@/features/dashboard/components/TipCard';
-import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
-import { useUserUsageContext } from '@/features/user/contexts/UserUsageContext';
-import { router } from 'expo-router';
 
 export default function HomeDashboardScreen() {
-  const { session, loading } = useSupabaseSession();
-
-  if (loading) return <LoadingState />;
-  if (!session) return null;
 
   return (
     <ParallaxScrollView

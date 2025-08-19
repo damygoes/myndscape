@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 
 export type UserProfile = {
   email: string;
-  display_name: string;
-  avatar_url: string | null;
-  fullname: string | null;
+  username: string | null;
+  isonboarded: boolean | null;
+  created_at: string | null;
+  avatar_url?: string | null;
   bio?: string | null;
+  emotion_check: boolean | null;
 };
 
 export function useUserProfile(userId: string) {
@@ -20,13 +22,14 @@ export function useUserProfile(userId: string) {
 
     const { data, error } = await supabase
       .from('users')
-      .select('email, display_name, avatar_url, fullname, bio')
+      .select('email, avatar_url, bio, created_at, username, emotion_check, isonboarded')
       .eq('id', userId)
       .single();
 
     if (error) {
       console.error('Error fetching user:', error);
       setError('Could not load user');
+      setUser(null);
     } else {
       setUser(data);
     }
@@ -35,10 +38,10 @@ export function useUserProfile(userId: string) {
   };
 
   useEffect(() => {
-    fetchUser();
+    if (userId) {
+      fetchUser();
+    }
   }, [userId]);
 
-  const refreshUser = fetchUser;
-
-  return { user, loading, error, refreshUser };
+  return { user, loading, error, refreshUser: fetchUser };
 }

@@ -1,6 +1,6 @@
 import { COLORS } from '@/constants/colors';
 import React from 'react';
-import { StatusBar, StyleSheet, useColorScheme } from 'react-native';
+import { StyleSheet, useColorScheme } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type ThemedSafeAreaViewProps = React.ComponentProps<typeof SafeAreaView>;
@@ -18,11 +18,6 @@ export function ThemedSafeAreaView({
       edges={['top', 'bottom', 'left', 'right']}
       {...props}
     >
-      <StatusBar
-        translucent={false}
-        backgroundColor="transparent"
-        barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
-      />
       {props.children}
     </SafeAreaView>
   );
