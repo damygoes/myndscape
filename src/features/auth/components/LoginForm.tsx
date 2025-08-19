@@ -5,8 +5,10 @@ import { useAuthActions } from '@/features/auth/hooks/useAuthActions';
 import React, { useState } from 'react';
 import { Alert, View } from 'react-native';
 import { router } from 'expo-router';
+import { useDeepLinkSession } from '../hooks/useDeepLinkSession';
 
 export function LoginForm() {
+
   const { sendMagicLink } = useAuthActions();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);

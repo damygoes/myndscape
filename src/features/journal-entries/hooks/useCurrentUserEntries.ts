@@ -5,6 +5,8 @@ export const useCurrentUserEntries = () => {
   const { session } = useSupabaseSession();
   const userId = session?.user.id;
 
+  console.log("user id here:", userId);
+
   const result = useJournalEntries(userId ?? '');
 
   return {

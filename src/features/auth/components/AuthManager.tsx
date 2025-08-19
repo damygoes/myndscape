@@ -2,8 +2,10 @@ import { useSupabaseSession } from "@/services/SupabaseAuthProvider";
 import { router } from "expo-router";
 import { useUserProfile } from "@/features/profile/hooks/useUserProfile";
 import { useEffect } from "react";
+import { useDeepLinkSession } from "../hooks/useDeepLinkSession";
 
 export function AuthManager({ children }: { children: React.ReactNode }) {
+    useDeepLinkSession();
     const { loading: authLoading, session } = useSupabaseSession();
     const { user, loading: profileLoading } = useUserProfile(session?.user.id ?? '');
 
