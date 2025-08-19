@@ -1,10 +1,30 @@
 export const COLORS = {
   dark: {
+    // New Theme Colors
+    // Element Colors
+    primary: '#DC560E',
+    secondary: '#5F5E5F',
+    success: '#0B8600',
+    error: '#C40000',
+    white: '#FFFFFF',
+    black: '#1D1D1D',
+    offwhite: '#F8F8F8',
+    grey: '#E4E7EC',
+
+    // Text Colors
+    'body-text': '#3B3B3B',
+    'body-text-disabled': '#A0A0A0',
+    'body-text-reversed': '#fafafae0',
+    'body-text-reversed-disabled': '#fafafa52',
+
+    // Background Colors
+    'primary-background': '#FCFCFC',
+    'background-stroke': '#E5E7EB',
+    ///////////
+    /**DELETE THE BELOW COLORS LATER */
     // Base
     background: '#1F1E1D', // Dark charcoal warm grey
     cardBackground: 'rgba(255, 255, 255, 0.08)',
-    white: '#FFFFFF',
-    black: '#000000',
 
     // Borders & shadows
     border: 'rgba(255, 255, 255, 0.18)',
@@ -15,12 +35,10 @@ export const COLORS = {
     textSecondary: '#D6C6C2', // Dusty blush
     textMuted: '#A39894', // Warm grey
     textError: '#E07A5F', // Muted terracotta red
-    success: '#D8A48F', // Soft peachy apricot
     warning: '#E7B68A', // Warm beige
     danger: '#C94C3D', // Deep muted red
 
     // Accent
-    primary: '#D67D72', // Muted coral
     primaryHover: '#B56057', // Darker muted coral
 
     // Input
@@ -30,11 +48,31 @@ export const COLORS = {
   },
 
   light: {
+    // New Theme Colors
+    // Element Colors
+    primary: '#DC560E',
+    secondary: '#5F5E5F',
+    success: '#0B8600',
+    error: '#C40000',
+    white: '#FFFFFF',
+    black: '#1D1D1D',
+    offwhite: '#F8F8F8',
+    grey: '#E4E7EC',
+
+    // Text Colors
+    'body-text': '#3B3B3B',
+    'body-text-disabled': '#A0A0A0',
+    'body-text-reversed': '#fafafae0',
+    'body-text-reversed-disabled': '#fafafa52',
+
+    // Background Colors
+    'primary-background': '#FCFCFC',
+    'background-stroke': '#E5E7EB',
+    ///////////
+    /**DELETE THE BELOW COLORS LATER */
     // Base
     background: '#FAF6F2', // Creamy warm off-white
     cardBackground: 'rgba(0, 0, 0, 0.04)',
-    white: '#FFFFFF',
-    black: '#000000',
 
     // Borders & shadows
     border: 'rgba(0, 0, 0, 0.12)',
@@ -45,12 +83,10 @@ export const COLORS = {
     textSecondary: '#7C6B66', // Dusty warm grey
     textMuted: '#B2AAA5', // Light warm grey
     textError: '#D96E5B', // Warm terracotta
-    success: '#E1BFAF', // Pale peach
     warning: '#DDBB9D', // Warm beige
     danger: '#AA3F36', // Muted deep red
 
     // Accent
-    primary: '#C87160', // Muted coral
     primaryHover: '#A2574C', // Darker muted coral
 
     // Input
