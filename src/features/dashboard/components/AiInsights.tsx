@@ -1,14 +1,14 @@
 import { COLORS } from '@/constants/colors';
 import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
-import { useCurrentUserEntries } from '@/features/journal-entries/hooks/useCurrentUserEntries';
 import { moodKeywords } from '@/utils/moodUtils';
 import { Ionicons } from '@expo/vector-icons';
 import { Text, View, useColorScheme } from 'react-native';
 import { countMultipleKeywordMentions } from '../utils/analyzeEntries';
 import { Plan } from '@/features/paywall/types';
+import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
 
 export const AiInsights = () => {
-  const { data: entries = [] } = useCurrentUserEntries();
+  const { data: entries = [] } = useCurrentUserJournalEntries();
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
 

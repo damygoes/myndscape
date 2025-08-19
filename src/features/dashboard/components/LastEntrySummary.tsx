@@ -1,6 +1,6 @@
 import { COLORS } from '@/constants/colors';
 import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
-import { useCurrentUserEntries } from '@/features/journal-entries/hooks/useCurrentUserEntries';
+import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
 import { MoodBadge } from '@/features/journal-entries/journal-entry-item/components/MoodBadge';
 import { prepareJournalEntry } from '@/features/journal-entries/journal-entry-item/utils';
 import { Plan } from '@/features/paywall/types';
@@ -9,7 +9,7 @@ import React from 'react';
 import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 
 export const LastEntrySummary = () => {
-  const { data: entries = [], isLoading } = useCurrentUserEntries();
+  const { data: entries = [], isLoading } = useCurrentUserJournalEntries();
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
 
