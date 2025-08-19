@@ -52,8 +52,8 @@ export default function LandingScreen() {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            gap: 6,
-            padding: 12,
+            gap: 12,
+            padding: 24,
           }}
         >
           <Text

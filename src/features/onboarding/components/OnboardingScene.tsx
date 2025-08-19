@@ -167,7 +167,7 @@ export default function OnboardingScene({
                             key={idx}
                             style={{
                                 width: isActive ? 6 : 8,
-                                height: isActive ? 25 : 8,
+                                height: isActive ? 18 : 8,
                                 borderRadius: isActive ? 20 : 999,
                                 backgroundColor: isActive
                                     ? APP_COLORS.primary

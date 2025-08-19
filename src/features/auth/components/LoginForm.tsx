@@ -68,7 +68,7 @@ export function LoginForm() {
         />
 
         <Button
-          title="Back to Onboarding"
+          title="Tell me about Myndscape"
           onPress={handleBackToOnboarding}
           disabled={loading}
           variant="link"

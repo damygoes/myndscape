@@ -1,40 +1,27 @@
-import { LoadingState } from "@/components/LoadingState";
 import { useSupabaseSession } from "@/services/SupabaseAuthProvider";
 import { router } from "expo-router";
 import { useUserProfile } from "@/features/profile/hooks/useUserProfile";
 import { useEffect } from "react";
-import { useDeepLinkSession } from "../hooks/useDeepLinkSession";
-import { useFonts } from "expo-font";
-import { RootStack } from "@/components/layouts/RootStack";
 
-export function AuthManager() {
-
-    useDeepLinkSession();
-
+export function AuthManager({ children }: { children: React.ReactNode }) {
     const { loading: authLoading, session } = useSupabaseSession();
-
     const { user, loading: profileLoading } = useUserProfile(session?.user.id ?? '');
 
-    const [fontsLoaded] = useFonts({
-        SpaceMono: require('../../../../assets/fonts/SpaceMono-Regular.ttf'),
-    });
-
+    // Decide redirect
     useEffect(() => {
-        if (!authLoading && !session) {
-            router.replace('/welcome');
+        if (!authLoading && !profileLoading) {
+            if (!session) {
+                router.replace('/onboarding');
+            } else if (user && !user.isonboarded) {
+                router.replace('/onboarding');
+            } else {
+                router.replace('/');
+            }
         }
-    }, [authLoading, session]);
+    }, [authLoading, profileLoading, session, user]);
 
-    useEffect(() => {
-        if (session && !profileLoading && user && !user.isonboarded) {
-            router.replace('/onboarding');
-        }
-    }, [session, user]);
+    // Only render children once auth is ready
+    if (authLoading || profileLoading) return null;
 
-    if ((authLoading || !fontsLoaded) && session) {
-        return <LoadingState />;
-    }
-
-
-    return <RootStack />;
+    return <>{children}</>; // render the Slot content
 }
