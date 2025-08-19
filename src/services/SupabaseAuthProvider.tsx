@@ -30,7 +30,6 @@ export const SupabaseAuthProvider = ({
         data: { session },
         error,
       } = await supabase.auth.getSession();
-      console.log("🚀 [SupabaseAuthProvider] Initial session:", session);
 
       if (error) {
         console.error('❌ getSession error:', error.message);
