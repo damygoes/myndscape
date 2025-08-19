@@ -26,17 +26,28 @@ export const useAuthActions = () => {
   };
 
   const createSessionFromUrl = async (url: string) => {
-    const { params, errorCode } = QueryParams.getQueryParams(url);
-    if (errorCode) throw new Error(errorCode);
-    const { access_token, refresh_token } = params;
-    if (!access_token) return;
-    const { data, error } = await supabase.auth.setSession({
-      access_token,
-      refresh_token,
-    });
-    if (error) throw error;
+    const { data, error } = await supabase.auth.exchangeCodeForSession(url);
+    if (error) {
+      console.error("❌ exchangeCodeForSession error:", error.message);
+      throw error;
+    }
+    console.log("✅ Session created:", data.session);
     return data.session;
   };
+
+
+  // const createSessionFromUrl = async (url: string) => {
+  //   const { params, errorCode } = QueryParams.getQueryParams(url);
+  //   if (errorCode) throw new Error(errorCode);
+  //   const { access_token, refresh_token } = params;
+  //   if (!access_token) return;
+  //   const { data, error } = await supabase.auth.setSession({
+  //     access_token,
+  //     refresh_token,
+  //   });
+  //   if (error) throw error;
+  //   return data.session;
+  // };
 
   const performOAuth = async (provider: 'github' | 'google' | 'twitter') => {
     const { data, error } = await supabase.auth.signInWithOAuth({
