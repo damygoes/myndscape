@@ -13,7 +13,7 @@ export function AuthManager({ children }: { children: React.ReactNode }) {
             if (!session) {
                 router.replace('/onboarding');
             } else if (user && !user.isonboarded) {
-                router.replace('/onboarding');
+                router.replace(`/profile-info?userId=${session?.user.id}`);
             } else {
                 router.replace('/');
             }
@@ -23,5 +23,5 @@ export function AuthManager({ children }: { children: React.ReactNode }) {
     // Only render children once auth is ready
     if (authLoading || profileLoading) return null;
 
-    return <>{children}</>; // render the Slot content
+    return <>{children}</>;
 }

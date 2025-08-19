@@ -23,9 +23,9 @@ export const useDeepLinkSession = () => {
           const session = await createSessionFromUrl(url);
           if (session) {
             console.log('✅ Session established');
-            setTimeout(() => {
-              router.replace('/');
-            }, 300); // 300ms works well in most cases
+            // setTimeout(() => {
+            //   router.replace('/');
+            // }, 300); // 300ms works well in most cases
           } else {
             console.error('❌ Failed to create session from URL');
           }

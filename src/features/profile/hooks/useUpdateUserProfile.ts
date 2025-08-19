@@ -1,9 +1,10 @@
 import { supabase } from '@/services/supabase';
 
 type UserProfileUpdate = {
-  display_name?: string;
-  fullname?: string;
+  username?: string;
+  emotion_check?: string;
   bio?: string;
+  isonboarded?: boolean;
 };
 
 export async function useUpdateUserProfile(
