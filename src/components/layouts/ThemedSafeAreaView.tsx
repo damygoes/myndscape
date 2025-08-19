@@ -1,4 +1,4 @@
-import { COLORS } from '@/constants/colors';
+import { APP_COLORS, COLORS } from '@/constants/colors';
 import React from 'react';
 import { StyleSheet, useColorScheme } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,12 +9,10 @@ export function ThemedSafeAreaView({
   style,
   ...props
 }: ThemedSafeAreaViewProps) {
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background }, style]}
+      style={[styles.container, { backgroundColor: APP_COLORS['primary-background'] }, style]}
       edges={['top', 'bottom', 'left', 'right']}
       {...props}
     >
