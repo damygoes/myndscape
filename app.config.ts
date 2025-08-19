@@ -50,9 +50,7 @@ type AppEnv = 'development' | 'preview' | 'production';
 //   };
 // };
 
-export const getDynamicAppConfig = (
-  environment: AppEnv
-) => {
+export const getDynamicAppConfig = (environment: AppEnv) => {
   const baseConfig = {
     icon: ICON,
     adaptiveIcon: ADAPTIVE_ICON,

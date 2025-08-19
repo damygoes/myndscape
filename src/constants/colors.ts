@@ -89,3 +89,5 @@ export const COLORS = {
     energy: '#EFC9B7', // Soft warm apricot
   },
 };
+
+export type ThemeColors = typeof COLORS.light;
