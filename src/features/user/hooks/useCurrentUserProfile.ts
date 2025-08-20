@@ -10,7 +10,7 @@ export const useCurrentUserProfile = () => {
 
   const isEnabled = !!userId && userId.trim() !== '';
 
-  const query = useQuery<UserProfile>({
+  const { data, isLoading, error } = useQuery<UserProfile>({
     queryKey: userProfileKeys.detail(userId ?? 'unknown'),
     enabled: isEnabled,
     queryFn: async () => {
@@ -26,8 +26,9 @@ export const useCurrentUserProfile = () => {
   });
 
   return {
-    session,
     userId,
-    ...query,
+    data,
+    isLoading,
+    error,
   };
 };

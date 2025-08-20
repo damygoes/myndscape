@@ -7,8 +7,8 @@ import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
 import { COLORS } from '@/constants/colors';
-import { useCurrentUserEntries } from '../hooks/useCurrentUserEntries';
 import { JournalEntryItem } from '../journal-entry-item/components/JournalEntryItem';
+import { useCurrentUserJournalEntries } from '../hooks/useCurrentUserJournalEntries';
 
 const HEADER_HEIGHT = 250;
 
@@ -18,7 +18,7 @@ export const JournalEntries = () => {
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
 
-  const { data: entries = [], isLoading, error } = useCurrentUserEntries();
+  const { data: entries, isLoading, error } = useCurrentUserJournalEntries();
 
   const renderParallaxHeader = () => {
     const scale = scrollY.interpolate({

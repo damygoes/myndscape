@@ -1,12 +1,18 @@
-import { journalEntriesKeys } from '@/lib/queryKeys';
-import { supabase } from '@/services/supabase';
 import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/services/supabase';
 import { JournalEntry } from '../types';
+import { journalEntriesKeys } from '@/lib/queryKeys';
+import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
 
-export const useJournalEntries = (userId: string) => {
+export const useCurrentUserJournalEntries = () => {
+  const { session } = useSupabaseSession();
+  const userId = session?.user.id;
+
   return useQuery<JournalEntry[]>({
     queryKey: journalEntriesKeys.list(),
     queryFn: async () => {
+      if (!userId) return [];
+
       const { data, error } = await supabase
         .from('journal_entries')
         .select('*')
@@ -16,5 +22,6 @@ export const useJournalEntries = (userId: string) => {
       if (error) throw error;
       return data ?? [];
     },
+    enabled: !!userId, // only fetch if user is logged in
   });
 };

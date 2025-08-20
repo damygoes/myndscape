@@ -1,16 +1,15 @@
 import { COLORS } from '@/constants/colors';
 import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
-import { useCurrentUserEntries } from '@/features/journal-entries/hooks/useCurrentUserEntries';
+import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
 import { MoodBadge } from '@/features/journal-entries/journal-entry-item/components/MoodBadge';
 import { prepareJournalEntry } from '@/features/journal-entries/journal-entry-item/utils';
-import { PaywallGate } from '@/features/paywall/components/PaywallGate';
 import { Plan } from '@/features/paywall/types';
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, Text, useColorScheme, View } from 'react-native';
 
 export const LastEntrySummary = () => {
-  const { data: entries = [], isLoading } = useCurrentUserEntries();
+  const { data: entries = [], isLoading } = useCurrentUserJournalEntries();
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
 
@@ -36,27 +35,25 @@ export const LastEntrySummary = () => {
           </View>
         )}
 
-        <PaywallGate require={Plan.PREMIUM}>
-          {latestEntry.hasTip && (
-            <View style={styles.section}>
-              <View style={styles.tipHeader}>
-                <Ionicons
-                  name="bulb-outline"
-                  size={18}
-                  color={colors.textMuted}
-                />
-                <Text
-                  style={[styles.sectionLabel, { color: colors.textMuted }]}
-                >
-                  Tip
-                </Text>
-              </View>
-              <Text style={[styles.tipText, { color: colors.textPrimary }]}>
-                {latestEntry.tip}
+        {latestEntry.hasTip && (
+          <View style={styles.section}>
+            <View style={styles.tipHeader}>
+              <Ionicons
+                name="bulb-outline"
+                size={18}
+                color={colors.textMuted}
+              />
+              <Text
+                style={[styles.sectionLabel, { color: colors.textMuted }]}
+              >
+                Tip
               </Text>
             </View>
-          )}
-        </PaywallGate>
+            <Text style={[styles.tipText, { color: colors.textPrimary }]}>
+              {latestEntry.tip}
+            </Text>
+          </View>
+        )}
 
         <View style={styles.moodDateRow}>
           <MoodBadge mood={latestEntry.mood ?? 'neutral'} />

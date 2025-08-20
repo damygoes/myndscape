@@ -1,3 +1,26 @@
+export const APP_COLORS = {
+  // Element Colors
+  primary: '#DC560E',
+  secondary: '#5F5E5F',
+  success: '#0B8600',
+  error: '#C40000',
+  white: '#FFFFFF',
+  black: '#1D1D1D',
+  offwhite: '#F8F8F8',
+  grey: '#E4E7EC',
+
+  // Text Colors
+  'body-text': '#3B3B3B',
+  'body-text-disabled': '#A0A0A0',
+  'body-text-reversed': '#fafafae0',
+  'body-text-reversed-disabled': '#fafafa52',
+
+  // Background Colors
+  'primary-background': '#FCFCFC',
+  'background-stroke': '#E5E7EB',
+};
+
+
 export const COLORS = {
   dark: {
     // New Theme Colors

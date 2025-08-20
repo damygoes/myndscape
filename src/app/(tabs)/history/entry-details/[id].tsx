@@ -7,7 +7,6 @@ import {
   parseThemes,
   prepareJournalEntry,
 } from '@/features/journal-entries/journal-entry-item/utils';
-import { PaywallGate } from '@/features/paywall/components/PaywallGate';
 import { Plan } from '@/features/paywall/types';
 import { router, useLocalSearchParams } from 'expo-router';
 import React from 'react';
@@ -115,35 +114,33 @@ export default function EntryDetailsScreen() {
             </Text>
           </View>
         )}
-        <PaywallGate require={Plan.PREMIUM}>
-          {/* Themes */}
-          {journalEntry.hasThemes && (
-            <View style={styles.subSection}>
-              <Text style={[styles.subTitle, { color: colors.textPrimary }]}>
-                Themes
-              </Text>
-              <View style={styles.themeBadgeContainer}>
-                {themeList.map((theme, index) => (
-                  <ThemeBadge key={index} theme={theme} />
-                ))}
-              </View>
+        {/* Themes */}
+        {journalEntry.hasThemes && (
+          <View style={styles.subSection}>
+            <Text style={[styles.subTitle, { color: colors.textPrimary }]}>
+              Themes
+            </Text>
+            <View style={styles.themeBadgeContainer}>
+              {themeList.map((theme, index) => (
+                <ThemeBadge key={index} theme={theme} />
+              ))}
             </View>
-          )}
+          </View>
+        )}
 
-          {/* Tip */}
-          {journalEntry.hasTip && (
-            <View style={styles.subSection}>
-              <Text style={[styles.subTitle, { color: colors.textPrimary }]}>
-                Tip
+        {/* Tip */}
+        {journalEntry.hasTip && (
+          <View style={styles.subSection}>
+            <Text style={[styles.subTitle, { color: colors.textPrimary }]}>
+              Tip
+            </Text>
+            <View style={styles.tipContainer}>
+              <Text style={[styles.subText, { color: colors.textPrimary }]}>
+                {journalEntry.tip}
               </Text>
-              <View style={styles.tipContainer}>
-                <Text style={[styles.subText, { color: colors.textPrimary }]}>
-                  {journalEntry.tip}
-                </Text>
-              </View>
             </View>
-          )}
-        </PaywallGate>
+          </View>
+        )}
       </View>
 
       {/* Actions */}

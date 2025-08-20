@@ -41,8 +41,7 @@ export function ProfileForm({
     try {
       setSaving(true);
       await useUpdateUserProfile(userId, {
-        display_name: displayName,
-        fullname: fullName,
+        username: displayName,
         bio: userBio,
       });
       await onProfileUpdate();

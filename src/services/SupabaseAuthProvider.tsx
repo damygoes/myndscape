@@ -5,11 +5,13 @@ import { createContext, useContext, useEffect, useState } from 'react';
 interface AuthContextType {
   session: Session | null;
   loading: boolean;
+  setSession: (session: Session | null) => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
   session: null,
   loading: true,
+  setSession: () => { },
 });
 
 export const SupabaseAuthProvider = ({
@@ -56,7 +58,7 @@ export const SupabaseAuthProvider = ({
   }, []);
 
   return (
-    <AuthContext.Provider value={{ session, loading }}>
+    <AuthContext.Provider value={{ session, loading, setSession }}>
       {children}
     </AuthContext.Provider>
   );

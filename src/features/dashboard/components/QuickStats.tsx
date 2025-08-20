@@ -1,10 +1,10 @@
 import { COLORS } from '@/constants/colors';
 import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
-import { useCurrentUserEntries } from '@/features/journal-entries/hooks/useCurrentUserEntries';
+import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
 import { Text, View, useColorScheme } from 'react-native';
 
 export const QuickStats = () => {
-  const { data: entries = [] } = useCurrentUserEntries();
+  const { data: entries = [] } = useCurrentUserJournalEntries();
   const totalEntries = entries?.length ?? 0;
 
   const theme = useColorScheme() ?? 'light';

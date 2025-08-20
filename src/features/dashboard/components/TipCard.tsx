@@ -1,13 +1,13 @@
 import { COLORS } from '@/constants/colors';
 import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
-import { useCurrentUserEntries } from '@/features/journal-entries/hooks/useCurrentUserEntries';
 import { Ionicons } from '@expo/vector-icons';
 import { Text, View, useColorScheme } from 'react-native';
 import { generateMoodTipMessage } from '../utils/generateMoodTipMessage';
 import { getTipForMood } from '../utils/getTipForMood';
+import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
 
 export const TipCard = () => {
-  const { data: entries = [] } = useCurrentUserEntries();
+  const { data: entries = [] } = useCurrentUserJournalEntries();
   const lastMood = entries?.[0]?.mood;
   const tip = getTipForMood(lastMood);
   const { intro, tip: tipText } = generateMoodTipMessage(lastMood, tip);

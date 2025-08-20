@@ -1,25 +1,18 @@
+import { Input } from '@/components/input/Input';
+import { Button } from '@/components/button/Button';
 import { COLORS } from '@/constants/colors';
 import { useAuthActions } from '@/features/auth/hooks/useAuthActions';
-import { Ionicons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import {
-  ActivityIndicator,
-  Alert,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  useColorScheme,
-} from 'react-native';
+import { Alert, View } from 'react-native';
+import { router } from 'expo-router';
+import { useDeepLinkSession } from '../hooks/useDeepLinkSession';
 
 export function LoginForm() {
+
   const { sendMagicLink } = useAuthActions();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
 
   const handleSendLink = async () => {
     setLoading(true);
@@ -46,68 +39,45 @@ export function LoginForm() {
     }
   };
 
+  const handleBackToOnboarding = () => {
+    router.replace('/onboarding');
+  };
+
   const handleEmailChange = (text: string) => {
     setEmail(text);
-    if (error) setError(null); // Clear error when user starts typing
+    if (error) setError(null);
   };
 
   return (
     <View className="w-full gap-8 px-2 py-4">
+      <Input
+        label="Email"
+        placeholder="Enter your email address"
+        value={email}
+        onChangeText={handleEmailChange}
+        keyboardType="email-address"
+        autoCapitalize="none"
+        error={error || undefined}
+      />
+
       <View>
-        <TextInput
-          placeholder="Your email"
-          value={email}
-          onChangeText={handleEmailChange}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          placeholderTextColor={colors.textSecondary}
-          style={{
-            borderColor: colors.border,
-            borderWidth: 1,
-            borderRadius: 16,
-            padding: 18,
-            backgroundColor: colors.inputBackground,
-            color: colors.textPrimary,
-          }}
+        <Button
+          title="Send Access Link"
+          onPress={handleSendLink}
+          loading={loading}
+          variant="primary"
+          size="large"
         />
 
-        {error && (
-          <Text
-            style={{
-              color: colors.danger,
-              fontSize: 14,
-              fontWeight: '400',
-              marginVertical: 12,
-            }}
-          >
-            {error}
-          </Text>
-        )}
+        <Button
+          title="Tell me about Myndscape"
+          onPress={handleBackToOnboarding}
+          disabled={loading}
+          variant="link"
+          size="small"
+          style={{ marginTop: 24 }}
+        />
       </View>
-
-      <TouchableOpacity
-        onPress={handleSendLink}
-        disabled={loading}
-        style={{
-          backgroundColor: colors.primary,
-          padding: 18,
-          borderRadius: 999,
-          alignItems: 'center',
-        }}
-      >
-        {loading ? (
-          <ActivityIndicator color={colors.white} />
-        ) : (
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-            <Ionicons name="mail-outline" size={20} color={colors.white} />
-            <Text
-              style={{ fontWeight: 'bold', color: colors.white, fontSize: 18 }}
-            >
-              Send Magic Link
-            </Text>
-          </View>
-        )}
-      </TouchableOpacity>
     </View>
   );
 }

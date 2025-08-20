@@ -21,8 +21,7 @@ export default function AddEntryScreen() {
   const { data: userProfile } = useCurrentUserProfile();
 
   const userDisplayName = useMemo(() => {
-    if (!userProfile) return 'User';
-    return userProfile.fullname || 'User';
+    return userProfile?.username || 'User';
   }, [userProfile]);
 
   const [content, setContent] = useState('');
