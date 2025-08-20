@@ -4,7 +4,7 @@ import React from 'react';
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { APP_COLORS, COLORS } from '@/constants/colors';
-import { IconSymbol } from '@/components/ui/IconSymbol.ios';
+import { CustomIcon } from '@/components/custom-icon/CustomIcon';
 
 export default function TabLayout() {
 
@@ -30,7 +30,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <IconSymbol name="home" size={28} color={color} />
+            <CustomIcon name="home" size={24} color={color} />
           )
         }}
       />
@@ -39,7 +39,7 @@ export default function TabLayout() {
         options={{
           title: 'History',
           tabBarIcon: ({ color }) => (
-            <IconSymbol name="history" size={28} color={color} />
+            <CustomIcon name="history" size={24} color={color} />
           ),
         }}
       />
@@ -48,7 +48,7 @@ export default function TabLayout() {
         options={{
           title: 'Settings',
           tabBarIcon: ({ color }) => (
-            <IconSymbol name="settings" size={28} color={color} />
+            <CustomIcon name="settings" size={24} color={color} />
           ),
         }}
       />
