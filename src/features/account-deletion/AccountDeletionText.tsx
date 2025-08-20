@@ -1,6 +1,7 @@
-import { COLORS } from '@/constants/colors';
+import { APP_COLORS, COLORS } from '@/constants/colors';
 import { Alert, ActivityIndicator, Text, View } from 'react-native';
 import { useDeleteUserAccount } from './hooks/useDeleteUserAccount';
+import { Button } from '@/components/button/Button';
 
 export function AccountDeletionText({ userId }: { userId: string }) {
   const deleteMutation = useDeleteUserAccount();
@@ -47,17 +48,19 @@ export function AccountDeletionText({ userId }: { userId: string }) {
   }
 
   return (
-    <Text
-      style={{
-        color: COLORS.dark.danger,
-        fontWeight: '400',
-        textAlign: 'center',
-        fontSize: 14,
-        textDecorationLine: 'underline',
-      }}
+    <Button
+      title='Delete My Account'
       onPress={handleDeleteAccount}
-    >
-      Delete My Account
-    </Text>
+      variant='ghost'
+      style={{
+        backgroundColor: 'transparent',
+        paddingVertical: 0,
+        paddingHorizontal: 0,
+      }}
+      textStyle={{
+        fontSize: 14,
+        color: APP_COLORS.error,
+      }}
+    />
   );
 }

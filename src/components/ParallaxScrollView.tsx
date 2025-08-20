@@ -59,6 +59,7 @@ export default function ParallaxScrollView({
         scrollEventThrottle={16}
         scrollIndicatorInsets={{ bottom }}
         contentContainerStyle={{ paddingBottom: bottom }} // only bottom padding here
+        keyboardShouldPersistTaps="handled"
       >
         <Animated.View
           style={[
@@ -73,7 +74,6 @@ export default function ParallaxScrollView({
           {headerImage}
         </Animated.View>
 
-        {/* ✅ Apply your contentStyle here instead */}
         <ThemedView style={[styles.content, contentStyle]}>
           {children}
         </ThemedView>

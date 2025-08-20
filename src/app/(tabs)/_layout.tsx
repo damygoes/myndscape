@@ -2,18 +2,16 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
-import { COLORS } from '@/constants/colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { APP_COLORS, COLORS } from '@/constants/colors';
+import { IconSymbol } from '@/components/ui/IconSymbol.ios';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: COLORS[colorScheme ?? 'light'].primary,
+        tabBarActiveTintColor: APP_COLORS.primary,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -33,7 +31,7 @@ export default function TabLayout() {
           title: 'Home',
           tabBarIcon: ({ color }) => (
             <IconSymbol name="home" size={28} color={color} />
-          ),
+          )
         }}
       />
       <Tabs.Screen
@@ -48,9 +46,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
+          title: 'Settings',
           tabBarIcon: ({ color }) => (
-            <IconSymbol name="profile" size={28} color={color} />
+            <IconSymbol name="settings" size={28} color={color} />
           ),
         }}
       />

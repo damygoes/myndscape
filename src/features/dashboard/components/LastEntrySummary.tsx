@@ -1,17 +1,14 @@
-import { COLORS } from '@/constants/colors';
+import { IconSymbol } from '@/components/ui/IconSymbol.ios';
+import { APP_COLORS } from '@/constants/colors';
 import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
 import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
 import { MoodBadge } from '@/features/journal-entries/journal-entry-item/components/MoodBadge';
 import { prepareJournalEntry } from '@/features/journal-entries/journal-entry-item/utils';
-import { Plan } from '@/features/paywall/types';
-import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export const LastEntrySummary = () => {
   const { data: entries = [], isLoading } = useCurrentUserJournalEntries();
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
 
   if (isLoading || entries.length === 0) return null;
 
@@ -20,16 +17,16 @@ export const LastEntrySummary = () => {
   return (
     <DashboardSection>
       <View style={styles.wrapper}>
-        <Text style={[styles.title, { color: colors.textPrimary }]}>
+        <Text style={[styles.title, { color: APP_COLORS['body-text'] }]}>
           Your Last Reflection
         </Text>
 
         {latestEntry.hasSummary && (
           <View style={styles.section}>
-            <Text style={[styles.sectionLabel, { color: colors.textMuted }]}>
+            <Text style={[styles.sectionLabel, { color: APP_COLORS['body-text-disabled'] }]}>
               Summary
             </Text>
-            <Text style={[styles.sectionText, { color: colors.textPrimary }]}>
+            <Text style={[styles.sectionText, { color: APP_COLORS['body-text'] }]}>
               {latestEntry.summary}
             </Text>
           </View>
@@ -38,18 +35,17 @@ export const LastEntrySummary = () => {
         {latestEntry.hasTip && (
           <View style={styles.section}>
             <View style={styles.tipHeader}>
-              <Ionicons
-                name="bulb-outline"
-                size={18}
-                color={colors.textMuted}
+              <IconSymbol
+                name="tip-bulb"
+                color={APP_COLORS.success}
               />
               <Text
-                style={[styles.sectionLabel, { color: colors.textMuted }]}
+                style={[styles.sectionLabel, { color: APP_COLORS['body-text-disabled'] }]}
               >
                 Tip
               </Text>
             </View>
-            <Text style={[styles.tipText, { color: colors.textPrimary }]}>
+            <Text style={[styles.tipText, { color: APP_COLORS['body-text'] }]}>
               {latestEntry.tip}
             </Text>
           </View>
@@ -57,7 +53,7 @@ export const LastEntrySummary = () => {
 
         <View style={styles.moodDateRow}>
           <MoodBadge mood={latestEntry.mood ?? 'neutral'} />
-          <Text style={[styles.dateText, { color: colors.textMuted }]}>
+          <Text style={[styles.dateText, { color: APP_COLORS['body-text-disabled'] }]}>
             {latestEntry.formattedDate}
           </Text>
         </View>
@@ -73,6 +69,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: '600',
+    fontFamily: 'Manrope',
   },
   section: {
     gap: 8,
@@ -80,19 +77,23 @@ const styles = StyleSheet.create({
   sectionLabel: {
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: 'Manrope',
   },
   sectionText: {
     fontSize: 16,
     lineHeight: 22,
+    fontFamily: 'Manrope',
   },
   tipHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
+    fontFamily: 'Manrope',
   },
   tipText: {
     fontSize: 16,
     lineHeight: 22,
+    fontFamily: 'Manrope',
   },
   moodDateRow: {
     flexDirection: 'row',
@@ -101,5 +102,6 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontSize: 14,
+    fontFamily: 'Manrope',
   },
 });

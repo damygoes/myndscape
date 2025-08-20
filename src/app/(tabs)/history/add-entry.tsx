@@ -1,4 +1,6 @@
-import { COLORS } from '@/constants/colors';
+import { Button } from '@/components/button/Button';
+import { Input } from '@/components/input/Input';
+import { APP_COLORS, COLORS } from '@/constants/colors';
 import { useHandleJournalEntryCreation } from '@/features/journal-entries/hooks/useHandleJournalEntryCreation';
 import { useCurrentUserProfile } from '@/features/user/hooks/useCurrentUserProfile';
 import { router } from 'expo-router';
@@ -15,8 +17,6 @@ import {
 } from 'react-native';
 
 export default function AddEntryScreen() {
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
 
   const { data: userProfile } = useCurrentUserProfile();
 
@@ -59,55 +59,42 @@ export default function AddEntryScreen() {
       contentContainerStyle={{ padding: 24, flexGrow: 1 }}
       keyboardShouldPersistTaps="handled"
     >
-      <View style={styles(colors).container}>
-        <Text style={styles(colors).title}>
+      <View style={styles.container}>
+        <Text style={styles.title}>
           How are you feeling today, {userDisplayName}?
         </Text>
 
-        <TextInput
+        <Input
           value={content}
           onChangeText={handleChange}
           placeholder="A penny for your thoughts..."
-          placeholderTextColor={colors.inputPlaceholder}
+          placeholderTextColor={APP_COLORS['body-text-disabled']}
           multiline
-          style={[
-            styles(colors).textInput,
-            error && !content && { borderColor: colors.textError },
-          ]}
+          style={{ minHeight: 160 }}
+          error={error ?? undefined}
         />
 
-        {error && <Text style={styles(colors).errorText}>{error}</Text>}
-
         {isSubmitting && (
-          <View style={styles(colors).analyzingContainer}>
-            <ActivityIndicator color={colors.textMuted} size="large" />
-            <Text style={styles(colors).analyzingText}>
+          <View style={styles.analyzingContainer}>
+            <ActivityIndicator color={APP_COLORS['body-text-disabled']} size="large" />
+            <Text style={styles.analyzingText}>
               Your thoughts matter — reflecting on what you shared...
             </Text>
           </View>
         )}
 
-        <TouchableOpacity
+        <Button
+          title='Add Entry'
           onPress={handleSubmit}
           disabled={shouldDisableSubmit}
-          style={[
-            styles(colors).submitButton,
-            {
-              backgroundColor: shouldDisableSubmit
-                ? colors.textMuted
-                : colors.primary,
-              opacity: shouldDisableSubmit ? 0.7 : 1,
-            },
-          ]}
-        >
-          <Text style={styles(colors).submitText}>Add Entry</Text>
-        </TouchableOpacity>
+          loading={isSubmitting}
+        />
       </View>
     </ScrollView>
   );
 }
 
-const styles = (colors: typeof COLORS.light | typeof COLORS.dark) =>
+const styles =
   StyleSheet.create({
     container: {
       flex: 1,
@@ -115,40 +102,10 @@ const styles = (colors: typeof COLORS.light | typeof COLORS.dark) =>
       gap: 12,
     },
     title: {
-      color: colors.textPrimary,
+      color: APP_COLORS['body-text'],
       fontSize: 22,
       fontWeight: '600',
       marginBottom: 12,
-    },
-    textInput: {
-      padding: 24,
-      borderRadius: 12,
-      minHeight: 160,
-      backgroundColor: colors.inputBackground,
-      color: colors.textPrimary,
-      borderWidth: 1,
-      borderColor: colors.inputBorder,
-      fontSize: 16,
-      lineHeight: 22,
-      textAlignVertical: 'top',
-    },
-    errorText: {
-      fontSize: 14,
-      color: colors.textError,
-      marginBottom: 24,
-      marginLeft: 4,
-    },
-    submitButton: {
-      alignItems: 'center',
-      paddingVertical: 14,
-      paddingHorizontal: 24,
-      borderRadius: 24,
-      backgroundColor: colors.primary,
-      opacity: 1,
-    },
-    submitText: {
-      fontSize: 16,
-      fontWeight: '500',
     },
     analyzingContainer: {
       marginVertical: 16,
@@ -158,7 +115,7 @@ const styles = (colors: typeof COLORS.light | typeof COLORS.dark) =>
       padding: 12,
     },
     analyzingText: {
-      color: colors.textSecondary,
+      color: APP_COLORS.secondary,
       fontSize: 14,
       fontStyle: 'italic',
       textAlign: 'center',

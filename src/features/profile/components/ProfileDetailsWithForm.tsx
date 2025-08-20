@@ -20,9 +20,8 @@ export function ProfileDetailsWithForm({ userId }: Props) {
     <ProfileForm
       userId={userId}
       email={user.email}
-      fullname={user.username}
+      username={user.username}
       bio={user.bio}
-      initialDisplayName={user.username}
       onProfileUpdate={refreshUser}
     />
   );

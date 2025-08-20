@@ -7,7 +7,7 @@ import { StyleSheet, useColorScheme, ViewStyle } from 'react-native';
 type Props = {
   children: ReactNode;
   style?: ViewStyle;
-  glassCardProps?: React.ComponentProps<typeof GlassCard>;
+  glassCardProps?: Partial<React.ComponentProps<typeof GlassCard>>;
   wrapInCard?: boolean;
 };
 
@@ -46,5 +46,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 24,
     width: '100%',
+    fontFamily: 'Manrope',
   },
 });

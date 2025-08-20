@@ -1,19 +1,17 @@
-import { COLORS } from '@/constants/colors';
+import { APP_COLORS } from '@/constants/colors';
 import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
 import { Ionicons } from '@expo/vector-icons';
 import { Text, View, useColorScheme } from 'react-native';
 import { generateMoodTipMessage } from '../utils/generateMoodTipMessage';
 import { getTipForMood } from '../utils/getTipForMood';
 import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
+import { IconSymbol } from '@/components/ui/IconSymbol.ios';
 
 export const TipCard = () => {
   const { data: entries = [] } = useCurrentUserJournalEntries();
   const lastMood = entries?.[0]?.mood;
   const tip = getTipForMood(lastMood);
   const { intro, tip: tipText } = generateMoodTipMessage(lastMood, tip);
-
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
 
   return (
     <DashboardSection style={{ marginBottom: 24 }}>
@@ -26,12 +24,13 @@ export const TipCard = () => {
           marginBottom: 12,
         }}
       >
-        <Ionicons name="bulb-outline" size={18} color={colors.success} />
+        <IconSymbol name="tip-bulb" color={APP_COLORS.success} />
         <Text
           style={{
-            color: colors.textPrimary,
+            color: APP_COLORS['body-text'],
             fontSize: 18,
             fontWeight: '600',
+            fontFamily: 'Manrope',
           }}
         >
           Tip
@@ -43,13 +42,14 @@ export const TipCard = () => {
         <Text
           style={{
             fontWeight: '500',
-            color: colors.textPrimary,
+            color: APP_COLORS['body-text'],
             lineHeight: 20,
+            fontFamily: 'Manrope',
           }}
         >
           {intro}
         </Text>
-        <Text style={{ color: colors.textSecondary, lineHeight: 20 }}>
+        <Text style={{ color: APP_COLORS.secondary, lineHeight: 20, fontFamily: 'Manrope' }}>
           {tipText}
         </Text>
       </View>

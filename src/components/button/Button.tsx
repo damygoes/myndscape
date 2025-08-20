@@ -7,10 +7,10 @@ import {
     ViewStyle,
     TextStyle,
 } from 'react-native';
-import { IconSymbol, IconSymbolName } from '../ui/IconSymbol';
 import { APP_COLORS } from '@/constants/colors';
+import { IconSymbol, IconSymbolName } from '../ui/IconSymbol.ios';
 
-type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'outline' | 'link';
+type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'outline' | 'link' | 'ghost';
 type ButtonSize = 'small' | 'medium' | 'large';
 type IconPosition = 'left' | 'right';
 
@@ -58,6 +58,7 @@ export const Button: React.FC<ButtonProps> = ({
                 return APP_COLORS.error;
             case 'outline':
             case 'link':
+            case 'ghost':
                 return 'transparent';
             default:
                 return APP_COLORS.primary;
@@ -77,6 +78,8 @@ export const Button: React.FC<ButtonProps> = ({
                 return APP_COLORS.primary;
             case 'link':
                 return APP_COLORS.primary;
+            case 'ghost':
+                return APP_COLORS['body-text'];
             default:
                 return APP_COLORS.white;
         }
@@ -86,6 +89,9 @@ export const Button: React.FC<ButtonProps> = ({
         if (variant === 'outline') {
             return { borderWidth: 1.5, borderColor: APP_COLORS.primary };
         }
+        if (variant === 'ghost') {
+            return { borderWidth: 0 };
+        }
         return {};
     };
 
@@ -94,9 +100,9 @@ export const Button: React.FC<ButtonProps> = ({
         return (
             <IconSymbol
                 name={icon}
-                size={20}
+                size={14}
                 color={getTextColor()}
-                style={{ marginHorizontal: 8 }}
+                style={{ marginRight: iconPosition === 'left' ? 8 : 0, marginLeft: iconPosition === 'right' ? 8 : 0 }}
             />
         );
     };
@@ -123,7 +129,17 @@ export const Button: React.FC<ButtonProps> = ({
                 <ActivityIndicator color={getTextColor()} style={{ marginRight: 8 }} />
             )}
             {!loading && icon && iconPosition === 'left' && renderIcon()}
-            <Text style={[{ color: getTextColor(), fontSize: 16, textDecorationLine: variant === 'link' ? 'underline' : 'none' }, textStyle]}>
+            <Text
+                style={[
+                    {
+                        color: getTextColor(),
+                        fontSize: 16,
+                        textDecorationLine: variant === 'link' ? 'underline' : 'none',
+                        fontFamily: "Manrope"
+                    },
+                    textStyle
+                ]}
+            >
                 {title}
             </Text>
             {!loading && icon && iconPosition === 'right' && renderIcon()}

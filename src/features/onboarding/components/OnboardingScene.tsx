@@ -80,6 +80,7 @@ export default function OnboardingScene({
                                     color: APP_COLORS["body-text"],
                                     fontSize: 12,
                                     fontWeight: "400",
+                                    fontFamily: "Manrope"
                                 }}
                             >
                                 {callout.content}
@@ -134,6 +135,7 @@ export default function OnboardingScene({
                         color: APP_COLORS["body-text"],
                         fontSize: 24,
                         fontWeight: "600",
+                        fontFamily: "Manrope"
                     }}
                 >
                     {title}
@@ -145,6 +147,7 @@ export default function OnboardingScene({
                         fontWeight: "400",
                         textAlign: "center",
                         fontStyle: "normal",
+                        fontFamily: "Manrope"
                     }}
                 >
                     {subtitle}

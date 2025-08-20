@@ -93,19 +93,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 24,
     alignItems: 'center',
+    fontFamily: 'Manrope',
   },
   dateText: {
     fontSize: 12,
+    fontFamily: 'Manrope',
   },
   contentText: {
     fontSize: 14,
     opacity: 0.7,
     marginBottom: 8,
+    fontFamily: 'Manrope',
   },
   analyzingText: {
     fontSize: 14,
     fontStyle: 'italic',
     marginBottom: 8,
+    fontFamily: 'Manrope',
   },
   analysisContainer: {
     display: 'flex',
@@ -114,5 +118,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
+    fontFamily: 'Manrope',
   },
 });

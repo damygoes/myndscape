@@ -1,13 +1,19 @@
 import { SymbolView, SymbolViewProps, SymbolWeight } from 'expo-symbols';
 import { StyleProp, ViewStyle } from 'react-native';
 
-type IconSymbolName = 'home' | 'history' | 'profile';
+export type IconSymbolName = 'close' | 'dot' | 'home' | 'history' | 'profile' | 'settings' | 'tip-bulb' | 'visibility' | 'visibilityOff';
 
 // Map generic names to SF Symbols names
 const SF_SYMBOLS_MAPPING: Record<IconSymbolName, SymbolViewProps['name']> = {
+  close: 'xmark',
+  dot: 'circle.fill',
   home: 'house',
-  history: 'clock',
+  history: 'list.dash',
   profile: 'person',
+  settings: 'gearshape',
+  'tip-bulb': 'lightbulb.circle',
+  visibility: 'eye',
+  visibilityOff: 'eye.slash',
 };
 
 export function IconSymbol({
