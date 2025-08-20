@@ -1,3 +1,4 @@
+import { Button } from '@/components/button/Button';
 import { COLORS } from '@/constants/colors';
 import { supabase } from '@/services/supabase';
 import React, { useState } from 'react';
@@ -21,27 +22,12 @@ export function LogoutButton({ style }: { style?: ViewStyle }) {
 
   return (
     <View style={{ ...style }}>
-      <TouchableOpacity
+      <Button
+        title='Logout'
+        variant='danger'
         onPress={handleLogout}
         disabled={loading}
-        style={{
-          backgroundColor: COLORS.dark.danger,
-          padding: 16,
-          borderRadius: 999,
-          opacity: loading ? 0.6 : 1,
-        }}
-      >
-        <Text
-          style={{
-            color: COLORS.dark.white,
-            fontWeight: '500',
-            textAlign: 'center',
-            fontSize: 18,
-          }}
-        >
-          {loading ? 'Logging out...' : 'Logout'}
-        </Text>
-      </TouchableOpacity>
+      />
     </View>
   );
 }

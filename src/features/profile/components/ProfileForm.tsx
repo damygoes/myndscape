@@ -1,38 +1,31 @@
-import { COLORS } from '@/constants/colors';
+import { APP_COLORS } from '@/constants/colors';
 import React, { useState } from 'react';
 import {
-  ActivityIndicator,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  useColorScheme,
   View,
 } from 'react-native';
 import { useUpdateUserProfile } from '../hooks/useUpdateUserProfile';
 import { renderField } from '../utils/renderField';
+import { Button } from '@/components/button/Button';
 
 type Props = {
   userId: string;
   email: string;
-  fullname?: string | null;
   bio?: string | null;
-  initialDisplayName: string | null;
+  username: string | null;
   onProfileUpdate: () => void;
 };
 
 export function ProfileForm({
   userId,
   email,
-  fullname,
   bio,
-  initialDisplayName,
+  username,
   onProfileUpdate,
 }: Props) {
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
 
-  const [displayName, setDisplayName] = useState(initialDisplayName || '');
-  const [fullName, setFullName] = useState(fullname || '');
+  const [displayName, setDisplayName] = useState(username || '');
   const [userBio, setUserBio] = useState(bio || '');
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -57,15 +50,14 @@ export function ProfileForm({
     <View
       style={[
         styles.card,
-        { backgroundColor: colors.cardBackground, shadowColor: colors.shadow },
+        { backgroundColor: APP_COLORS['primary-background'], shadowColor: APP_COLORS['background-stroke'] },
       ]}
     >
       {renderField({
-        label: 'Display Name (username)',
+        label: 'Username',
         value: displayName,
         setValue: setDisplayName,
         editing,
-        colors,
       })}
 
       {renderField({
@@ -73,45 +65,36 @@ export function ProfileForm({
         value: userBio,
         setValue: setUserBio,
         editing,
-        colors,
         multiline: true,
       })}
 
-      <Text style={[styles.label, { color: colors.textMuted }]}>Email</Text>
-      <Text style={[styles.staticText, { color: colors.textPrimary }]}>
+      <Text style={[styles.label, { color: APP_COLORS['body-text-disabled'] }]}>Email</Text>
+      <Text style={[styles.staticText, { color: APP_COLORS['body-text'] }]}>
         {email}
       </Text>
 
       <View style={styles.actions}>
         {editing ? (
           <>
-            <TouchableOpacity
+            <Button
+              title='Save'
               onPress={handleSave}
-              disabled={saving}
-              style={[styles.button, { backgroundColor: colors.primary }]}
-            >
-              {saving ? (
-                <ActivityIndicator color={colors.textPrimary} />
-              ) : (
-                <Text style={{ color: colors.white }}>Save</Text>
-              )}
-            </TouchableOpacity>
-            <TouchableOpacity
+              loading={saving}
+              size='small'
+            />
+            <Button
+              title='Cancel'
               onPress={() => setEditing(false)}
-              style={styles.button}
-            >
-              <Text style={{ color: colors.textPrimary }}>Cancel</Text>
-            </TouchableOpacity>
+              variant='outline'
+              size='small'
+              disabled={saving}
+            />
           </>
         ) : (
-          <TouchableOpacity
+          <Button
+            title='Edit Profile'
             onPress={() => setEditing(true)}
-            style={[styles.button, { backgroundColor: colors.primary }]}
-          >
-            <Text style={{ color: colors.white, fontWeight: '500' }}>
-              Edit Profile
-            </Text>
-          </TouchableOpacity>
+          />
         )}
       </View>
     </View>
@@ -136,10 +119,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
     gap: 12,
     marginTop: 24,
-  },
-  button: {
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 6,
   },
 });

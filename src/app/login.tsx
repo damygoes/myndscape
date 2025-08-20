@@ -57,12 +57,12 @@ export default function LandingScreen() {
           }}
         >
           <Text
-            style={{ color: APP_COLORS['body-text'], fontWeight: 'semibold', fontSize: 24 }}
+            style={{ color: APP_COLORS['body-text'], fontWeight: 'semibold', fontSize: 24, fontFamily: "Manrope" }}
           >
             Sign Up or Login
           </Text>
           <Text
-            style={{ color: APP_COLORS['body-text'], fontWeight: '400', fontSize: 16, textAlign: 'center' }}
+            style={{ color: APP_COLORS['body-text'], fontWeight: '400', fontSize: 14, textAlign: 'center', fontFamily: "Manrope" }}
           >
             Please enter your email address to get started.
           </Text>

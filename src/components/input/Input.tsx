@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import {
-    TextInput,
+    TextInput as RNTextInput,
     View,
     Text,
     StyleSheet,
@@ -9,11 +9,10 @@ import {
     TextInputProps,
     Pressable,
 } from 'react-native';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { IconSymbol, IconSymbolName } from '../ui/IconSymbol';
 import { APP_COLORS } from '@/constants/colors';
+import { IconSymbol, IconSymbolName } from '../ui/IconSymbol.ios';
 
-type IconPosition = 'left' | 'right';
+type IconPosition = 'left' | 'right' | 'top-right' | 'top-left';
 
 interface InputProps extends TextInputProps {
     label?: string;
@@ -21,12 +20,14 @@ interface InputProps extends TextInputProps {
     disabled?: boolean;
     icon?: IconSymbolName;
     iconPosition?: IconPosition;
+    onIconPress?: () => void;
     containerStyle?: ViewStyle;
     inputStyle?: TextStyle;
     labelStyle?: TextStyle;
+    floatingIconStyle?: ViewStyle;
 }
 
-export const Input: React.FC<InputProps> = ({
+export const Input = forwardRef<RNTextInput, InputProps>(({
     label,
     error,
     disabled = false,
@@ -36,28 +37,41 @@ export const Input: React.FC<InputProps> = ({
     inputStyle,
     labelStyle,
     secureTextEntry,
+    onFocus,
+    onBlur,
+    onIconPress,
+    floatingIconStyle,
     ...textInputProps
-}) => {
+}, ref) => {
     const [focused, setFocused] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
     const borderColor = error
         ? APP_COLORS.error
         : focused
-            ? APP_COLORS.primary
+            ? APP_COLORS.secondary
             : APP_COLORS.grey;
 
     const textColor = disabled ? APP_COLORS['body-text-disabled'] : APP_COLORS['body-text'];
 
-    const renderIcon = () =>
-        icon ? (
+    const renderIcon = () => {
+        if (!icon) return null;
+
+        const iconElement = (
             <IconSymbol
                 name={icon}
                 size={20}
                 color={disabled ? APP_COLORS['body-text-disabled'] : APP_COLORS['body-text']}
                 style={{ marginHorizontal: 8 }}
             />
-        ) : null;
+        );
+
+        return onIconPress ? (
+            <Pressable onPress={onIconPress}>{iconElement}</Pressable>
+        ) : (
+            iconElement
+        );
+    };
 
     return (
         <View style={[styles.container, containerStyle]}>
@@ -69,48 +83,61 @@ export const Input: React.FC<InputProps> = ({
                     { borderColor, backgroundColor: disabled ? APP_COLORS['body-text-disabled'] : APP_COLORS.offwhite },
                 ]}
             >
+                {/* Inline left */}
                 {icon && iconPosition === 'left' && renderIcon()}
 
-                <TextInput
+                <RNTextInput
+                    ref={ref}
                     style={[styles.input, { color: textColor }, inputStyle]}
                     editable={!disabled}
                     placeholderTextColor={APP_COLORS['body-text-disabled']}
                     secureTextEntry={secureTextEntry && !showPassword}
-                    onFocus={() => setFocused(true)}
-                    onBlur={() => setFocused(false)}
+                    onFocus={(e) => { setFocused(true); onFocus?.(e); }}
+                    onBlur={(e) => { setFocused(false); onBlur?.(e); }}
                     {...textInputProps}
                 />
 
-                {/* If secureTextEntry, show password toggle instead of custom right icon */}
-                {secureTextEntry ? (
-                    <Pressable onPress={() => setShowPassword(!showPassword)}>
-                        <MaterialIcons
-                            name={showPassword ? 'visibility' : 'visibility-off'}
+                {/* Inline right */}
+                {icon && iconPosition === 'right' && renderIcon()}
+
+                {/* Absolute positions */}
+                {icon && (iconPosition === 'top-right' || iconPosition === 'top-left') && (
+                    <View
+                        style={[
+                            styles.iconFloating,
+                            floatingIconStyle,
+                            iconPosition === 'top-right' ? { right: 0 } : { left: 0 }
+                        ]}
+                    >
+                        {renderIcon()}
+                    </View>
+                )}
+
+                {/* Password toggle stays inline on the right */}
+                {secureTextEntry && (
+                    <Pressable onPress={() => setShowPassword(!showPassword)} style={styles.iconFloating}>
+                        <IconSymbol
+                            name={showPassword ? 'visibility' : 'visibilityOff'}
                             size={22}
                             color={APP_COLORS['body-text']}
-                            style={{ marginHorizontal: 8 }}
                         />
                     </Pressable>
-                ) : (
-                    icon && iconPosition === 'right' && renderIcon()
                 )}
             </View>
 
             {error && <Text style={styles.error}>{error}</Text>}
         </View>
     );
-};
+});
 
 const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        marginBottom: 16,
-    },
+    container: { width: '100%', marginBottom: 6 },
     label: {
         marginBottom: 4,
         fontSize: 14,
         fontWeight: '500',
-        color: APP_COLORS['body-text']
+        color: APP_COLORS['body-text'],
+        fontFamily: 'Manrope',
     },
     inputWrapper: {
         flexDirection: 'row',
@@ -124,11 +151,19 @@ const styles = StyleSheet.create({
         fontSize: 16,
         paddingVertical: 12,
         paddingHorizontal: 8,
-        borderRadius: 12
+        borderRadius: 12,
+        fontFamily: 'Manrope',
     },
     error: {
         marginTop: 4,
         color: APP_COLORS.error,
         fontSize: 13,
+        fontFamily: 'Manrope',
+    },
+    iconFloating: {
+        position: 'absolute',
+        top: 4,
+        padding: 2,
+        zIndex: 1
     },
 });
