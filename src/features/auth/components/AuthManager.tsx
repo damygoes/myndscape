@@ -9,17 +9,17 @@ export function AuthManager({ children }: { children: React.ReactNode }) {
     useDeepLinkSession();
     const { loading: authLoading, session } = useSupabaseSession();
     const { user, loading: profileLoading } = useUserProfile(session?.user.id ?? '');
-    
+
     // Check if navigation is ready
     const rootNavigationState = useRootNavigationState();
     const isNavigationReady = rootNavigationState?.key != null;
-    
+
     useEffect(() => {
         // Don't navigate until navigation is ready and auth/profile data is loaded
-        if (authLoading || !isNavigationReady || profileLoading) {
+        if (authLoading || !isNavigationReady) {
             return;
         }
-       
+
 
         if (!session) {
             router.replace('/onboarding');
@@ -31,7 +31,7 @@ export function AuthManager({ children }: { children: React.ReactNode }) {
     }, [isNavigationReady, authLoading, profileLoading, session, user]);
 
     // Only render children once everything is ready
-    if (authLoading || !isNavigationReady || profileLoading) {
+    if (authLoading || !isNavigationReady) {
         return <LoadingState message="Loading..." />;
     }
 
