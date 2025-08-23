@@ -34,7 +34,42 @@ export default function ProfileStackLayout() {
         name="edit-profile"
         options={{
           title: 'Edit Profile',
-          presentation: 'modal', // modal style
+          presentation: 'modal',
+        }}
+      />
+      <Stack.Screen
+        name="general"
+        options={{
+          title: 'General',
+          gestureEnabled: true,
+        }}
+      />
+      <Stack.Screen
+        name="account"
+        options={{
+          title: 'Account',
+          gestureEnabled: true,
+        }}
+      />
+      <Stack.Screen
+        name="wellness"
+        options={{
+          title: 'Wellness',
+          gestureEnabled: true,
+        }}
+      />
+      <Stack.Screen
+        name="support"
+        options={{
+          title: 'Support',
+          gestureEnabled: true,
+        }}
+      />
+      <Stack.Screen
+        name="delete-account"
+        options={{
+          title: 'Delete Account',
+          presentation: 'modal',
         }}
       />
     </Stack>

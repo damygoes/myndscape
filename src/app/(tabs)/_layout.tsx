@@ -3,11 +3,10 @@ import React from 'react';
 
 import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
-import { APP_COLORS, COLORS } from '@/constants/colors';
+import { APP_COLORS } from '@/constants/colors';
 import { CustomIcon } from '@/components/custom-icon/CustomIcon';
 
 export default function TabLayout() {
-
   return (
     <Tabs
       screenOptions={{
@@ -31,7 +30,7 @@ export default function TabLayout() {
           title: 'Home',
           tabBarIcon: ({ color }) => (
             <CustomIcon name="home" size={24} color={color} />
-          )
+          ),
         }}
       />
       <Tabs.Screen
@@ -44,7 +43,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="settings"
         options={{
           title: 'Settings',
           tabBarIcon: ({ color }) => (

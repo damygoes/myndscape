@@ -20,15 +20,24 @@ export function renderField({
 }: RenderFieldParams) {
   return (
     <View style={styles.field}>
-      <Text style={[styles.label, { color: APP_COLORS['body-text-disabled'] }]}>{label}</Text>
+      <Text
+        style={[
+          styles.label,
+          { color: APP_COLORS['body-text-disabled'], fontFamily: 'Manrope' },
+        ]}
+      >
+        {label}
+      </Text>
       {editing ? (
-        <Input
-          value={value}
-          onChangeText={setValue}
-          multiline={multiline}
-        />
+        <Input value={value} onChangeText={setValue} multiline={multiline} />
       ) : (
-        <Text style={{ fontSize: 18, color: APP_COLORS['body-text'] }}>
+        <Text
+          style={{
+            fontSize: 16,
+            color: APP_COLORS['body-text'],
+            fontFamily: 'Manrope',
+          }}
+        >
           {value || 'Not set'}
         </Text>
       )}
@@ -38,5 +47,5 @@ export function renderField({
 
 const styles = StyleSheet.create({
   field: { marginBottom: 16 },
-  label: { fontSize: 14, marginBottom: 4 },
+  label: { fontSize: 12, marginBottom: 4 },
 });

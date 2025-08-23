@@ -10,8 +10,7 @@ import Animated, {
 import { ThemedView } from '@/components/ThemedView';
 import { useBottomTabOverflow } from '@/components/ui/TabBarBackground';
 import { useColorScheme } from '@/hooks/useColorScheme';
-
-
+import { APP_COLORS } from '@/constants/colors';
 
 type Props = PropsWithChildren<{
   headerImage: ReactElement;
@@ -82,10 +81,10 @@ export default function ParallaxScrollView({
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: APP_COLORS['primary-background'],
   },
   header: {
     overflow: 'hidden',
@@ -99,5 +98,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+    backgroundColor: APP_COLORS['primary-background'],
   },
 });

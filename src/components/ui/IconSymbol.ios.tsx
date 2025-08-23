@@ -1,7 +1,16 @@
 import { SymbolView, SymbolViewProps, SymbolWeight } from 'expo-symbols';
 import { StyleProp, ViewStyle } from 'react-native';
 
-export type IconSymbolName = 'close' | 'dot' | 'home' | 'history' | 'profile' | 'settings' | 'tip-bulb' | 'visibility' | 'visibilityOff';
+export type IconSymbolName =
+  | 'close'
+  | 'dot'
+  | 'home'
+  | 'history'
+  | 'profile'
+  | 'settings'
+  | 'tip-bulb'
+  | 'visibility'
+  | 'visibilityOff';
 
 // Map generic names to SF Symbols names
 const SF_SYMBOLS_MAPPING: Record<IconSymbolName, SymbolViewProps['name']> = {

@@ -3,16 +3,9 @@ import { APP_COLORS, COLORS } from '@/constants/colors';
 import { LoginForm } from '@/features/auth/components/LoginForm';
 import { Image } from 'expo-image';
 import React from 'react';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  Text,
-  View,
-} from 'react-native';
+import { KeyboardAvoidingView, Platform, Text, View } from 'react-native';
 
 export default function LandingScreen() {
-
-
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, width: '100%' }}
@@ -25,7 +18,15 @@ export default function LandingScreen() {
           dark: APP_COLORS['primary-background'],
         }}
         headerImage={
-          <View style={{ width: '100%', height: 300, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(220, 86, 14, 0.1)' }}>
+          <View
+            style={{
+              width: '100%',
+              height: 300,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'rgba(220, 86, 14, 0.1)',
+            }}
+          >
             <Image
               source={require('../../assets/icon.png')}
               style={{ width: 100, height: 100 }}
@@ -34,7 +35,15 @@ export default function LandingScreen() {
               transition={300}
               priority="high"
             />
-            <Text style={{ color: APP_COLORS.primary, fontWeight: '300', fontSize: 24 }}>Myndscape</Text>
+            <Text
+              style={{
+                color: APP_COLORS.primary,
+                fontWeight: '300',
+                fontSize: 24,
+              }}
+            >
+              Myndscape
+            </Text>
           </View>
         }
         headerHeight={300}
@@ -45,7 +54,6 @@ export default function LandingScreen() {
           gap: 0,
         }}
       >
-
         <View
           style={{
             display: 'flex',
@@ -57,12 +65,23 @@ export default function LandingScreen() {
           }}
         >
           <Text
-            style={{ color: APP_COLORS['body-text'], fontWeight: 'semibold', fontSize: 24, fontFamily: "Manrope" }}
+            style={{
+              color: APP_COLORS['body-text'],
+              fontWeight: 'semibold',
+              fontSize: 24,
+              fontFamily: 'Manrope',
+            }}
           >
             Sign Up or Login
           </Text>
           <Text
-            style={{ color: APP_COLORS['body-text'], fontWeight: '400', fontSize: 14, textAlign: 'center', fontFamily: "Manrope" }}
+            style={{
+              color: APP_COLORS['body-text'],
+              fontWeight: '400',
+              fontSize: 14,
+              textAlign: 'center',
+              fontFamily: 'Manrope',
+            }}
           >
             Please enter your email address to get started.
           </Text>
@@ -70,6 +89,5 @@ export default function LandingScreen() {
         <LoginForm />
       </ParallaxScrollView>
     </KeyboardAvoidingView>
-
   );
 }

@@ -1,7 +1,6 @@
 import { APP_COLORS } from '@/constants/colors';
 import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
-import { Ionicons } from '@expo/vector-icons';
-import { Text, View, useColorScheme } from 'react-native';
+import { Text, View } from 'react-native';
 import { generateMoodTipMessage } from '../utils/generateMoodTipMessage';
 import { getTipForMood } from '../utils/getTipForMood';
 import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
@@ -49,7 +48,13 @@ export const TipCard = () => {
         >
           {intro}
         </Text>
-        <Text style={{ color: APP_COLORS.secondary, lineHeight: 20, fontFamily: 'Manrope' }}>
+        <Text
+          style={{
+            color: APP_COLORS.secondary,
+            lineHeight: 20,
+            fontFamily: 'Manrope',
+          }}
+        >
           {tipText}
         </Text>
       </View>

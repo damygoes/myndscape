@@ -10,7 +10,6 @@ import { QuickStats } from '@/features/dashboard/components/QuickStats';
 import { TipCard } from '@/features/dashboard/components/TipCard';
 
 export default function HomeDashboardScreen() {
-
   return (
     <ParallaxScrollView
       headerBackgroundColor={{

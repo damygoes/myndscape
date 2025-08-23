@@ -19,7 +19,6 @@ import {
 } from 'react-native';
 
 export const MoodPrompt = () => {
-
   const [content, setContent] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -68,10 +67,12 @@ export const MoodPrompt = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <DashboardSection glassCardProps={{
-          padding: 8,
-          borderRadius: 12,
-        }}>
+        <DashboardSection
+          glassCardProps={{
+            padding: 8,
+            borderRadius: 12,
+          }}
+        >
           <Input
             ref={inputRef}
             value={content}
@@ -81,7 +82,7 @@ export const MoodPrompt = () => {
             }}
             disabled={createIsPending}
             multiline
-            placeholder='Have you got something on your mind?'
+            placeholder="Have you got something on your mind?"
             style={{ minHeight: 80 }}
             error={error ?? undefined}
           />
@@ -96,21 +97,33 @@ export const MoodPrompt = () => {
           )}
 
           {/* Footer */}
-          <View style={{ width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', gap: 10, marginTop: 12 }}>
-            {content.length > 0 && <Button
-              variant='outline'
-              title="Clear"
-              onPress={handleClear}
-              disabled={shouldDisableSubmit}
-              size='small'
-              icon='close'
-            />}
+          <View
+            style={{
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              gap: 10,
+              marginTop: 12,
+            }}
+          >
+            {content.length > 0 && (
+              <Button
+                variant="outline"
+                title="Clear"
+                onPress={handleClear}
+                disabled={shouldDisableSubmit}
+                size="small"
+                icon="close"
+              />
+            )}
             <Button
               title="Add Entry"
               onPress={handleSubmit}
               loading={shouldDisableSubmit}
+              style={{ width: content.length > 0 ? 'auto' : '100%' }}
             />
-
           </View>
         </DashboardSection>
       </TouchableWithoutFeedback>

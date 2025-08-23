@@ -23,10 +23,17 @@ export const LastEntrySummary = () => {
 
         {latestEntry.hasSummary && (
           <View style={styles.section}>
-            <Text style={[styles.sectionLabel, { color: APP_COLORS['body-text-disabled'] }]}>
+            <Text
+              style={[
+                styles.sectionLabel,
+                { color: APP_COLORS['body-text-disabled'] },
+              ]}
+            >
               Summary
             </Text>
-            <Text style={[styles.sectionText, { color: APP_COLORS['body-text'] }]}>
+            <Text
+              style={[styles.sectionText, { color: APP_COLORS['body-text'] }]}
+            >
               {latestEntry.summary}
             </Text>
           </View>
@@ -35,12 +42,12 @@ export const LastEntrySummary = () => {
         {latestEntry.hasTip && (
           <View style={styles.section}>
             <View style={styles.tipHeader}>
-              <IconSymbol
-                name="tip-bulb"
-                color={APP_COLORS.success}
-              />
+              <IconSymbol name="tip-bulb" color={APP_COLORS.success} />
               <Text
-                style={[styles.sectionLabel, { color: APP_COLORS['body-text-disabled'] }]}
+                style={[
+                  styles.sectionLabel,
+                  { color: APP_COLORS['body-text-disabled'] },
+                ]}
               >
                 Tip
               </Text>
@@ -53,7 +60,12 @@ export const LastEntrySummary = () => {
 
         <View style={styles.moodDateRow}>
           <MoodBadge mood={latestEntry.mood ?? 'neutral'} />
-          <Text style={[styles.dateText, { color: APP_COLORS['body-text-disabled'] }]}>
+          <Text
+            style={[
+              styles.dateText,
+              { color: APP_COLORS['body-text-disabled'] },
+            ]}
+          >
             {latestEntry.formattedDate}
           </Text>
         </View>

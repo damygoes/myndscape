@@ -88,7 +88,13 @@ export const AiInsights = () => {
         </Text>
       </View>
       <View style={{ gap: 8, paddingVertical: 8 }}>
-        <Text style={{ color: APP_COLORS.secondary, marginBottom: 8, fontFamily: 'Manrope' }}>
+        <Text
+          style={{
+            color: APP_COLORS.secondary,
+            marginBottom: 8,
+            fontFamily: 'Manrope',
+          }}
+        >
           Here's what we noticed this week:
         </Text>
         <View style={{ flexDirection: 'column', gap: 8 }}>
@@ -97,11 +103,7 @@ export const AiInsights = () => {
               key={keyword}
               style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
             >
-              <IconSymbol
-                name="dot"
-                size={10}
-                color={APP_COLORS.primary}
-              />
+              <IconSymbol name="dot" size={10} color={APP_COLORS.primary} />
               <Text style={{ color: APP_COLORS['body-text'], flexShrink: 1 }}>
                 <Text
                   style={{

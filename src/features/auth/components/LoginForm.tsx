@@ -8,7 +8,6 @@ import { router } from 'expo-router';
 import { useDeepLinkSession } from '../hooks/useDeepLinkSession';
 
 export function LoginForm() {
-
   const { sendMagicLink } = useAuthActions();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);

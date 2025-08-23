@@ -32,12 +32,15 @@ export const useAuthActions = () => {
 
       // Check for OAuth callback (has code and code_verifier)
       const code = fragmentParams.get('code') || queryParams.get('code');
-      const codeVerifier = fragmentParams.get('code_verifier') || queryParams.get('code_verifier');
-      
+      const codeVerifier =
+        fragmentParams.get('code_verifier') || queryParams.get('code_verifier');
+
       // Check for session callback (has access_token and refresh_token)
-      const accessToken = fragmentParams.get('access_token') || queryParams.get('access_token');
-      const refreshToken = fragmentParams.get('refresh_token') || queryParams.get('refresh_token');
-      
+      const accessToken =
+        fragmentParams.get('access_token') || queryParams.get('access_token');
+      const refreshToken =
+        fragmentParams.get('refresh_token') || queryParams.get('refresh_token');
+
       // Check for verification URL (has token and type)
       const token = fragmentParams.get('token') || queryParams.get('token');
       const type = fragmentParams.get('type') || queryParams.get('type');
@@ -47,10 +50,10 @@ export const useAuthActions = () => {
         console.log('🔄 Processing OAuth callback');
         const { data, error } = await supabase.auth.exchangeCodeForSession(url);
         if (error) {
-          console.error("❌ exchangeCodeForSession error:", error.message);
+          console.error('❌ exchangeCodeForSession error:', error.message);
           throw error;
         }
-        console.log("✅ OAuth session created:");
+        console.log('✅ OAuth session created:');
         return data.session;
       } else if (accessToken && refreshToken) {
         // Handle session callback (magic link success)
@@ -60,35 +63,35 @@ export const useAuthActions = () => {
           refresh_token: refreshToken,
         });
         if (error) {
-          console.error("❌ setSession error:", error.message);
+          console.error('❌ setSession error:', error.message);
           throw error;
         }
-        console.log("✅ Magic link session created:");
+        console.log('✅ Magic link session created:');
         return data.session;
       } else if (token && type === 'magiclink') {
         // Handle verification URL (direct token verification)
         console.log('🔄 Processing magic link verification');
         const { data, error } = await supabase.auth.verifyOtp({
           token_hash: token,
-          type: 'magiclink'
+          type: 'magiclink',
         });
         if (error) {
-          console.error("❌ verifyOtp error:", error.message);
+          console.error('❌ verifyOtp error:', error.message);
           throw error;
         }
-        console.log("✅ Magic link session created:");
+        console.log('✅ Magic link session created:');
         return data.session;
       } else {
-        console.error("❌ Unknown URL format or missing parameters", {
+        console.error('❌ Unknown URL format or missing parameters', {
           hasCode: !!code,
           hasAccessToken: !!accessToken,
           hasToken: !!token,
-          type
+          type,
         });
         return null;
       }
     } catch (err) {
-      console.error("❌ Error processing URL:", err);
+      console.error('❌ Error processing URL:', err);
       throw err;
     }
   };

@@ -11,7 +11,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({
   session: null,
   loading: true,
-  setSession: () => { },
+  setSession: () => {},
 });
 
 export const SupabaseAuthProvider = ({

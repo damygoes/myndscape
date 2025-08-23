@@ -2,33 +2,24 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { ComponentProps } from 'react';
 import { OpaqueColorValue, StyleProp, TextStyle } from 'react-native';
 
-export type IconSymbolNameUniversal =
-  | 'home'
-  | 'history'
-  | 'profile'
-  | 'visibility'
-  | 'visibilityOff'
-  | 'clear-input';
+export type IconSymbolName = 'home' | 'history' | 'profile';
 
 const MAPPING: Record<
-  IconSymbolNameUniversal,
+  IconSymbolName,
   ComponentProps<typeof MaterialIcons>['name']
 > = {
   home: 'home',
   history: 'history',
   profile: 'person',
-  visibility: 'visibility',
-  visibilityOff: 'visibility-off',
-  'clear-input': 'clear',
 };
 
-export function IconSymbolUniversal({
+export function IconSymbol({
   name,
   size = 24,
   color,
   style,
 }: {
-  name: IconSymbolNameUniversal;
+  name: IconSymbolName;
   size?: number;
   color: string | OpaqueColorValue;
   style?: StyleProp<TextStyle>;

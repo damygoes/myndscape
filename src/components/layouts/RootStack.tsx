@@ -1,8 +1,6 @@
-import { Stack } from "expo-router";
-
+import { Stack } from 'expo-router';
 
 export function RootStack() {
-
   return (
     <Stack screenOptions={{ headerShown: false }}>
       {/* normal bottom tabs */}
@@ -22,6 +20,5 @@ export function RootStack() {
         }}
       />
     </Stack>
-
   );
 }

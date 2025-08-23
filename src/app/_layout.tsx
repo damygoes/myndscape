@@ -8,17 +8,16 @@ import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
-
-
+import { UserProfileProvider } from '@/features/user/contexts/UserProfileContext';
+import { UserUsageProvider } from '@/features/user/contexts/UserUsageContext';
 
 const queryClient = new QueryClient();
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-
   const [loaded, error] = useFonts({
-    'Manrope': require('../../assets/fonts/Manrope-VariableFont_wght.ttf'),
+    Manrope: require('../../assets/fonts/Manrope-VariableFont_wght.ttf'),
   });
 
   useEffect(() => {
@@ -35,7 +34,11 @@ export default function RootLayout() {
     <SupabaseAuthProvider>
       <QueryClientProvider client={queryClient}>
         <AuthManager>
-          <Slot />
+          <UserProfileProvider>
+            <UserUsageProvider>
+              <Slot />
+            </UserUsageProvider>
+          </UserProfileProvider>
         </AuthManager>
         <StatusBar style="dark" animated={true} translucent={true} />
       </QueryClientProvider>

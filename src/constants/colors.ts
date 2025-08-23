@@ -20,7 +20,6 @@ export const APP_COLORS = {
   'background-stroke': '#E5E7EB',
 };
 
-
 export const COLORS = {
   dark: {
     // New Theme Colors

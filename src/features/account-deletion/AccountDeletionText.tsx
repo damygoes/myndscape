@@ -49,9 +49,9 @@ export function AccountDeletionText({ userId }: { userId: string }) {
 
   return (
     <Button
-      title='Delete My Account'
+      title="Delete My Account"
       onPress={handleDeleteAccount}
-      variant='ghost'
+      variant="ghost"
       style={{
         backgroundColor: 'transparent',
         paddingVertical: 0,

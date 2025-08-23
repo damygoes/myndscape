@@ -2,7 +2,7 @@ import { Button } from '@/components/button/Button';
 import { Input } from '@/components/input/Input';
 import { APP_COLORS, COLORS } from '@/constants/colors';
 import { useHandleJournalEntryCreation } from '@/features/journal-entries/hooks/useHandleJournalEntryCreation';
-import { useCurrentUserProfile } from '@/features/user/hooks/useCurrentUserProfile';
+import { useCurrentUserProfile } from '@/features/profile/hooks/useCurrentUserProfile';
 import { router } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import {
@@ -17,7 +17,6 @@ import {
 } from 'react-native';
 
 export default function AddEntryScreen() {
-
   const { data: userProfile } = useCurrentUserProfile();
 
   const userDisplayName = useMemo(() => {
@@ -76,7 +75,10 @@ export default function AddEntryScreen() {
 
         {isSubmitting && (
           <View style={styles.analyzingContainer}>
-            <ActivityIndicator color={APP_COLORS['body-text-disabled']} size="large" />
+            <ActivityIndicator
+              color={APP_COLORS['body-text-disabled']}
+              size="large"
+            />
             <Text style={styles.analyzingText}>
               Your thoughts matter — reflecting on what you shared...
             </Text>
@@ -84,7 +86,7 @@ export default function AddEntryScreen() {
         )}
 
         <Button
-          title='Add Entry'
+          title="Add Entry"
           onPress={handleSubmit}
           disabled={shouldDisableSubmit}
           loading={isSubmitting}
@@ -94,30 +96,29 @@ export default function AddEntryScreen() {
   );
 }
 
-const styles =
-  StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'flex-start',
-      gap: 12,
-    },
-    title: {
-      color: APP_COLORS['body-text'],
-      fontSize: 22,
-      fontWeight: '600',
-      marginBottom: 12,
-    },
-    analyzingContainer: {
-      marginVertical: 16,
-      gap: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: 12,
-    },
-    analyzingText: {
-      color: APP_COLORS.secondary,
-      fontSize: 14,
-      fontStyle: 'italic',
-      textAlign: 'center',
-    },
-  });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    gap: 12,
+  },
+  title: {
+    color: APP_COLORS['body-text'],
+    fontSize: 22,
+    fontWeight: '600',
+    marginBottom: 12,
+  },
+  analyzingContainer: {
+    marginVertical: 16,
+    gap: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 12,
+  },
+  analyzingText: {
+    color: APP_COLORS.secondary,
+    fontSize: 14,
+    fontStyle: 'italic',
+    textAlign: 'center',
+  },
+});
