@@ -15,8 +15,6 @@ const HEADER_HEIGHT = 250;
 export const JournalEntries = () => {
   const scrollY = useRef(new Animated.Value(0)).current;
   const insets = useSafeAreaInsets();
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
 
   const { data: entries, isLoading, error } = useCurrentUserJournalEntries();
 

@@ -1,126 +1,79 @@
-import { APP_COLORS, COLORS } from '@/constants/colors';
-import { DashboardSection } from '@/features/dashboard/components/DashboardSection';
-import { moodKeywords } from '@/utils/moodUtils';
+import { View, Text } from 'react-native';
+import { APP_COLORS } from '@/constants/colors';
 import { Ionicons } from '@expo/vector-icons';
-import { Text, View, useColorScheme } from 'react-native';
-import { countMultipleKeywordMentions } from '../utils/analyzeEntries';
-import { Plan } from '@/features/paywall/types';
-import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
-import { IconSymbol } from '@/components/ui/IconSymbol.ios';
+import { useWellnessScore } from '@/features/wellness-score/hooks/useWellnessScore';
 
-export const AiInsights = () => {
-  const { data: entries = [] } = useCurrentUserJournalEntries();
+export function AiInsights() {
+  const { data } = useWellnessScore();
 
-  const now = new Date();
-  const sevenDaysAgo = new Date(now);
-  sevenDaysAgo.setDate(now.getDate() - 7);
+  if (!data) return null;
 
-  if (!entries || entries.length === 0) {
-    return (
-      <DashboardSection>
-        <View style={{ marginBottom: 12 }}>
-          <Text
-            style={{
-              color: APP_COLORS['body-text'],
-              fontSize: 20,
-              fontWeight: '600',
-              fontFamily: 'Manrope',
-            }}
-          >
-            AI Insights
-          </Text>
-        </View>
-        <View style={{ gap: 8, paddingVertical: 8 }}>
-          <Text style={{ color: APP_COLORS.secondary }}>
-            We didn't find any significant patterns in your entries this week.
-          </Text>
-        </View>
-      </DashboardSection>
-    );
-  }
+  const { currentStreak, longestStreak, score } = data;
+  const streakDifference = longestStreak - currentStreak;
 
-  const mentions = countMultipleKeywordMentions({
-    entries,
-    keywords: [...moodKeywords],
-    since: sevenDaysAgo,
-  });
+  const streakMessage =
+    currentStreak >= longestStreak
+      ? "You're on your longest streak yet! 🔥"
+      : `You're ${streakDifference} day${streakDifference > 1 ? 's' : ''} away from your longest streak. Keep going!`;
 
-  const relevantInsights = Object.entries(mentions).filter(
-    ([, count]) => count > 0
-  );
-
-  if (relevantInsights.length === 0) {
-    return (
-      <DashboardSection>
-        <View style={{ marginBottom: 12 }}>
-          <Text
-            style={{
-              color: APP_COLORS['body-text'],
-              fontSize: 20,
-              fontWeight: '600',
-              fontFamily: 'Manrope',
-            }}
-          >
-            AI Insights
-          </Text>
-        </View>
-        <View style={{ gap: 8, paddingVertical: 8 }}>
-          <Text style={{ color: APP_COLORS.secondary }}>
-            We didn't find any significant patterns in your entries this week.
-          </Text>
-        </View>
-      </DashboardSection>
-    );
-  }
+  let moodMessage = '';
+  if (score >= 80)
+    moodMessage = "You've been journaling with a positive tone this week 🎉";
+  else if (score >= 50)
+    moodMessage = "You're doing well, try to add a few more reflections!";
+  else
+    moodMessage =
+      'Try journaling your feelings today to keep track of your mood.';
 
   return (
-    <DashboardSection>
-      <View style={{ marginBottom: 12 }}>
+    <View
+      style={{
+        padding: 16,
+        backgroundColor: APP_COLORS.offwhite,
+        borderRadius: 16,
+        marginHorizontal: 16,
+        marginBottom: 12,
+      }}
+    >
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}
+      >
+        <Ionicons
+          name="sparkles-outline"
+          size={20}
+          color={APP_COLORS.primary}
+          style={{ marginRight: 8 }}
+        />
         <Text
           style={{
-            color: APP_COLORS['body-text'],
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: '600',
+            color: APP_COLORS['body-text'],
             fontFamily: 'Manrope',
           }}
         >
           AI Insights
         </Text>
       </View>
-      <View style={{ gap: 8, paddingVertical: 8 }}>
-        <Text
-          style={{
-            color: APP_COLORS.secondary,
-            marginBottom: 8,
-            fontFamily: 'Manrope',
-          }}
-        >
-          Here's what we noticed this week:
-        </Text>
-        <View style={{ flexDirection: 'column', gap: 8 }}>
-          {relevantInsights.map(([keyword, count]) => (
-            <View
-              key={keyword}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
-            >
-              <IconSymbol name="dot" size={10} color={APP_COLORS.primary} />
-              <Text style={{ color: APP_COLORS['body-text'], flexShrink: 1 }}>
-                <Text
-                  style={{
-                    fontWeight: '700',
-                    textTransform: 'capitalize',
-                    color: APP_COLORS['body-text'],
-                    fontFamily: 'Manrope',
-                  }}
-                >
-                  {keyword}
-                </Text>{' '}
-                mentioned {count} {count === 1 ? 'time' : 'times'}
-              </Text>
-            </View>
-          ))}
-        </View>
-      </View>
-    </DashboardSection>
+      <Text
+        style={{
+          color: APP_COLORS['body-text-disabled'],
+          fontSize: 14,
+          marginBottom: 8,
+          fontFamily: 'Manrope',
+        }}
+      >
+        {moodMessage}
+      </Text>
+      <Text
+        style={{
+          color: APP_COLORS['body-text-disabled'],
+          fontSize: 14,
+          fontFamily: 'Manrope',
+        }}
+      >
+        {streakMessage}
+      </Text>
+    </View>
   );
-};
+}

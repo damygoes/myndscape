@@ -2,6 +2,7 @@ import { SymbolView, SymbolViewProps, SymbolWeight } from 'expo-symbols';
 import { StyleProp, ViewStyle } from 'react-native';
 
 export type IconSymbolName =
+  | 'add'
   | 'close'
   | 'dot'
   | 'home'
@@ -14,6 +15,7 @@ export type IconSymbolName =
 
 // Map generic names to SF Symbols names
 const SF_SYMBOLS_MAPPING: Record<IconSymbolName, SymbolViewProps['name']> = {
+  add: 'plus',
   close: 'xmark',
   dot: 'circle.fill',
   home: 'house',

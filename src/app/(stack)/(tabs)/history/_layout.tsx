@@ -30,13 +30,6 @@ export default function HistoryStackLayout() {
         }}
       />
       <Stack.Screen
-        name="add-entry"
-        options={{
-          title: 'Add Entry',
-          presentation: 'modal',
-        }}
-      />
-      <Stack.Screen
         name="edit-entry/[id]"
         options={{
           title: 'Edit Entry',

@@ -109,8 +109,8 @@ export const Button: React.FC<ButtonProps> = ({
         size={14}
         color={getTextColor()}
         style={{
-          marginRight: iconPosition === 'left' ? 8 : 0,
-          marginLeft: iconPosition === 'right' ? 8 : 0,
+          marginRight: iconPosition === 'left' ? 16 : 0,
+          marginLeft: iconPosition === 'right' ? 16 : 0,
         }}
       />
     );

@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function History() {
   const handleNavigateToAddEntry = () => {
-    router.push('/(tabs)/history/add-entry');
+    router.push('/add-entry');
   };
 
   return (
