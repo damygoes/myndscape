@@ -1,4 +1,3 @@
-// import { Image } from 'expo-image';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { COLORS } from '@/constants/colors';
 import { AiInsights } from '@/features/dashboard/components/AiInsights';
@@ -18,11 +17,6 @@ export default function HomeDashboardScreen() {
       }}
       headerImage={
         <GreetingCard />
-        // <Image
-        //   source={require('../../../../assets/images/hero-1.jpg')}
-        //   style={{ width: '100%', height: '100%' }}
-        //   contentFit="cover"
-        // />
       }
       headerHeight={350}
       contentStyle={{
@@ -32,7 +26,6 @@ export default function HomeDashboardScreen() {
         backgroundColor: APP_COLORS['primary-background'],
       }}
     >
-      {/* <GreetingCard /> */}
       <WellnessScoreCard />
       <QuickStatsGrid />
       <AiInsights />
