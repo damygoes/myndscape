@@ -65,7 +65,8 @@ export function WellnessScoreCard() {
             fontFamily: 'Manrope',
           }}
         >
-          Your score is based on your journaling consistency, mood, tone, and streaks.
+          Your score is based on your journaling consistency, mood, tone, and
+          streaks.
           {score >= 70
             ? " You're doing great this week 🎉"
             : ' Keep writing daily entries to boost your score.'}
