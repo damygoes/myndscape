@@ -1,7 +1,7 @@
 import { View, Text, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useUserProfileContext } from '@/features/user/contexts/UserProfileContext';
-import { MeshGradientView } from 'expo-mesh-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 import { APP_COLORS } from '@/constants/colors';
 import Svg, { Path } from 'react-native-svg';
 
@@ -14,21 +14,15 @@ export function GreetingCard() {
 
   return (
     <View style={{ width, height: HEADER_HEIGHT }}>
-      <MeshGradientView
-        style={{ flex: 1 }}
-        columns={2} // 2 columns for 3 colors works better
-        rows={2} // 2 rows is enough
+      <LinearGradient
+        style={{ flex: 1, padding: 40, justifyContent: 'center', alignItems: 'center' }}
         colors={[
           APP_COLORS.primary,
           APP_COLORS.offwhite,
           APP_COLORS['primary-background'],
         ]}
-        points={[
-          [0, 0],
-          [1, 0],
-          [0, 1],
-          [1, 1],
-        ]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
       >
         <SafeAreaView style={{ flex: 1 }}>
           <Text
@@ -42,11 +36,11 @@ export function GreetingCard() {
           >
             {getGreeting()},{'\n'}
             <Text style={{ fontWeight: '700', textTransform: 'uppercase' }}>
-              {userProfile?.username} 👋
+              {userProfile?.username}
             </Text>
           </Text>
         </SafeAreaView>
-      </MeshGradientView>
+      </LinearGradient>
 
       {/* Curvy bottom wave */}
       <Svg

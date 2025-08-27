@@ -54,7 +54,8 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const getBackgroundColor = () => {
-    if (isDisabled) return '#A1A1AA';
+    if (variant === 'link' && isDisabled) return 'transparent'; // No background
+    if (isDisabled) return APP_COLORS.grey;
     switch (variant) {
       case 'primary':
         return APP_COLORS.primary;
@@ -92,10 +93,11 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const getBorder = () => {
+    if (variant === 'link' && isDisabled) return { borderWidth: 0 };
     if (variant === 'outline') {
       return { borderWidth: 1.5, borderColor: APP_COLORS.primary };
     }
-    if (variant === 'ghost') {
+    if (variant === 'ghost' || variant === 'link') {
       return { borderWidth: 0 };
     }
     return {};
@@ -124,8 +126,10 @@ export const Button: React.FC<ButtonProps> = ({
         styles.button,
         {
           backgroundColor: getBackgroundColor(),
-          paddingVertical: paddingSizes[size],
-          paddingHorizontal: paddingSizes[size] * 2,
+          paddingVertical:
+            variant === 'link' && isDisabled ? 0 : paddingSizes[size],
+          paddingHorizontal:
+            variant === 'link' && isDisabled ? 0 : paddingSizes[size] * 2,
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',

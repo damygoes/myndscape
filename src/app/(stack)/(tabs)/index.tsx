@@ -18,7 +18,7 @@ export default function HomeDashboardScreen() {
       headerImage={
         <GreetingCard />
       }
-      headerHeight={350}
+      headerHeight={300}
       contentStyle={{
         paddingHorizontal: 16,
         paddingBottom: 120,
