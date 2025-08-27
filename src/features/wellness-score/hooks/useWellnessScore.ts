@@ -41,7 +41,7 @@ export function useWellnessScore() {
 
       if (!entries || entries.length === 0) {
         // No entry today = score 0, streak resets
-        const { currentStreak, longestStreak } = await calculateStreak(userId!);
+        const { currentStreak, longestStreak } = await calculateStreaks(userId!);
         return { score: 0, currentStreak: 0, longestStreak, todayEntries: 0 };
       }
 
@@ -51,7 +51,7 @@ export function useWellnessScore() {
         entries.length;
 
       // 3. Check streak
-      const { currentStreak, longestStreak } = await calculateStreak(userId!);
+      const { currentStreak, longestStreak } = await calculateStreaks(userId!);
 
       // 4. Apply bonus
       const bonus = currentStreak >= 3 ? 5 : 0; // +5% bonus for streak >= 3 days
@@ -68,71 +68,62 @@ export function useWellnessScore() {
 }
 
 // helper to calculate both current and longest streaks
-async function calculateStreak(userId: string) {
+// --- Unified streak calculation ---
+async function calculateStreaks(userId: string) {
   const { data: entries } = await supabase
     .from('journal_entries')
     .select('created_at')
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
-  if (!entries) return { currentStreak: 0, longestStreak: 0 };
+  if (!entries || entries.length === 0) {
+    return { currentStreak: 0, longestStreak: 0 };
+  }
 
+  // 1. Normalize to unique days
+  const days = Array.from(
+    new Set(
+      entries.map((e) => {
+        const d = new Date(e.created_at);
+        d.setHours(0, 0, 0, 0);
+        return d.toISOString();
+      })
+    )
+  )
+    .map((d) => new Date(d))
+    .sort((a, b) => b.getTime() - a.getTime()); // newest → oldest
+
+  // 2. Calculate current streak (starting from today)
   let currentStreak = 0;
-  let longestStreak = 0;
+  let today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  let streak = 0;
-  let currentDate = new Date();
-  currentDate.setHours(0, 0, 0, 0);
-
-  for (const e of entries) {
-    const entryDate = new Date(e.created_at);
-    entryDate.setHours(0, 0, 0, 0);
-
-    if (entryDate.getTime() === currentDate.getTime()) {
-      // entry today or consecutive day
-      streak++;
-      currentDate.setDate(currentDate.getDate() - 1);
-    } else if (entryDate.getTime() === currentDate.getTime() - 86400000) {
-      // consecutive yesterday
-      streak++;
-      currentDate.setDate(currentDate.getDate() - 1);
+  for (const day of days) {
+    if (day.getTime() === today.getTime()) {
+      currentStreak++;
+      today.setDate(today.getDate() - 1);
+    } else if (day.getTime() === today.getTime()) {
+      // already handled above
+      continue;
     } else {
-      // streak broken
-      break;
+      break; // streak broken
     }
   }
 
-  currentStreak = streak;
+  // 3. Calculate longest streak across history
+  let longestStreak = 1;
+  let streak = 1;
 
-  // Calculate longest streak across all history
-  longestStreak = calculateLongest(entries);
-
-  return { currentStreak, longestStreak };
-}
-
-// Helper to find longest streak
-function calculateLongest(entries: { created_at: string }[]) {
-  if (entries.length === 0) return 0;
-
-  let longest = 1;
-  let current = 1;
-
-  for (let i = 1; i < entries.length; i++) {
-    const prev = new Date(entries[i - 1].created_at);
-    const curr = new Date(entries[i].created_at);
-
-    prev.setHours(0, 0, 0, 0);
-    curr.setHours(0, 0, 0, 0);
-
-    const diff = (prev.getTime() - curr.getTime()) / 86400000;
+  for (let i = 1; i < days.length; i++) {
+    const diff = (days[i - 1].getTime() - days[i].getTime()) / 86400000;
 
     if (diff === 1) {
-      current++;
-      longest = Math.max(longest, current);
-    } else if (diff > 1) {
-      current = 1;
+      streak++;
+      longestStreak = Math.max(longestStreak, streak);
+    } else {
+      streak = 1; // reset
     }
   }
 
-  return longest;
+  return { currentStreak, longestStreak };
 }
