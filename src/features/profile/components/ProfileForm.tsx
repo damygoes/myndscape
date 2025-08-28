@@ -1,20 +1,16 @@
+import { Button } from '@/components/button/Button';
 import { APP_COLORS } from '@/constants/colors';
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useUpdateUserProfile } from '../hooks/useUpdateUserProfile';
 import { renderField } from '../utils/renderField';
-import { Button } from '@/components/button/Button';
 
 type Props = {
   userId: string;
   email: string;
   bio?: string | null;
   username: string | null;
-  onProfileUpdate: () => void;
+  onProfileUpdate?: () => void;
 };
 
 export function ProfileForm({
@@ -24,7 +20,6 @@ export function ProfileForm({
   username,
   onProfileUpdate,
 }: Props) {
-
   const [displayName, setDisplayName] = useState(username || '');
   const [userBio, setUserBio] = useState(bio || '');
   const [editing, setEditing] = useState(false);
@@ -37,7 +32,7 @@ export function ProfileForm({
         username: displayName,
         bio: userBio,
       });
-      await onProfileUpdate();
+      await onProfileUpdate?.();
       setEditing(false);
     } catch (err) {
       console.error(err);
@@ -50,7 +45,10 @@ export function ProfileForm({
     <View
       style={[
         styles.card,
-        { backgroundColor: APP_COLORS['primary-background'], shadowColor: APP_COLORS['background-stroke'] },
+        {
+          backgroundColor: APP_COLORS['primary-background'],
+          shadowColor: APP_COLORS['background-stroke'],
+        },
       ]}
     >
       {renderField({
@@ -68,8 +66,20 @@ export function ProfileForm({
         multiline: true,
       })}
 
-      <Text style={[styles.label, { color: APP_COLORS['body-text-disabled'] }]}>Email</Text>
-      <Text style={[styles.staticText, { color: APP_COLORS['body-text'] }]}>
+      <Text
+        style={[
+          styles.label,
+          { color: APP_COLORS['body-text-disabled'], fontFamily: 'Manrope' },
+        ]}
+      >
+        Email
+      </Text>
+      <Text
+        style={[
+          styles.staticText,
+          { color: APP_COLORS['body-text'], fontFamily: 'Manrope' },
+        ]}
+      >
         {email}
       </Text>
 
@@ -77,24 +87,21 @@ export function ProfileForm({
         {editing ? (
           <>
             <Button
-              title='Save'
+              title="Save"
               onPress={handleSave}
               loading={saving}
-              size='small'
+              size="small"
             />
             <Button
-              title='Cancel'
+              title="Cancel"
               onPress={() => setEditing(false)}
-              variant='outline'
-              size='small'
+              variant="outline"
+              size="small"
               disabled={saving}
             />
           </>
         ) : (
-          <Button
-            title='Edit Profile'
-            onPress={() => setEditing(true)}
-          />
+          <Button title="Update" onPress={() => setEditing(true)} />
         )}
       </View>
     </View>
@@ -111,9 +118,9 @@ const styles = StyleSheet.create({
     width: '100%',
     gap: 16,
   },
-  label: { fontSize: 14, marginBottom: 4 },
+  label: { fontSize: 12, marginBottom: 0 },
   staticText: {
-    fontSize: 18,
+    fontSize: 16,
   },
   actions: {
     flexDirection: 'row-reverse',

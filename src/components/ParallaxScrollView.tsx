@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactElement } from 'react';
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -7,11 +7,9 @@ import Animated, {
   useScrollViewOffset,
 } from 'react-native-reanimated';
 
-import { ThemedView } from '@/components/ThemedView';
 import { useBottomTabOverflow } from '@/components/ui/TabBarBackground';
+import { APP_COLORS } from '@/constants/colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-
-
 
 type Props = PropsWithChildren<{
   headerImage: ReactElement;
@@ -53,40 +51,33 @@ export default function ParallaxScrollView({
   }));
 
   return (
-    <ThemedView style={styles.container}>
-      <Animated.ScrollView
-        ref={scrollRef}
-        scrollEventThrottle={16}
-        scrollIndicatorInsets={{ bottom }}
-        contentContainerStyle={{ paddingBottom: bottom }} // only bottom padding here
-        keyboardShouldPersistTaps="handled"
+    <Animated.ScrollView
+      ref={scrollRef}
+      scrollEventThrottle={16}
+      scrollIndicatorInsets={{ bottom }}
+      contentContainerStyle={{ paddingBottom: bottom }} // only bottom padding here
+      keyboardShouldPersistTaps="handled"
+      style={{ backgroundColor: APP_COLORS['primary-background'] }}
+    >
+      <Animated.View
+        style={[
+          styles.header,
+          {
+            backgroundColor: headerBackgroundColor[colorScheme],
+            // height: HEADER_HEIGHT,
+          },
+          headerAnimatedStyle,
+        ]}
       >
-        <Animated.View
-          style={[
-            styles.header,
-            {
-              backgroundColor: headerBackgroundColor[colorScheme],
-              height: HEADER_HEIGHT,
-            },
-            headerAnimatedStyle,
-          ]}
-        >
-          {headerImage}
-        </Animated.View>
+        {headerImage}
+      </Animated.View>
 
-        <ThemedView style={[styles.content, contentStyle]}>
-          {children}
-        </ThemedView>
-      </Animated.ScrollView>
-    </ThemedView>
+      <View style={[styles.content, contentStyle]}>{children}</View>
+    </Animated.ScrollView>
   );
 }
 
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   header: {
     overflow: 'hidden',
   },
@@ -99,5 +90,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+    backgroundColor: APP_COLORS['primary-background'],
+    padding: 16,
   },
 });

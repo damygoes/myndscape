@@ -3,7 +3,6 @@ import React from 'react';
 import { Text, useColorScheme, View } from 'react-native';
 import { ThemesBadges } from './ThemesBadges';
 import { TipSection } from './TipSection';
-import { Plan } from '@/features/paywall/types';
 
 interface Props {
   summary: string | null;

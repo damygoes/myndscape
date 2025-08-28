@@ -9,10 +9,13 @@ export function ThemedSafeAreaView({
   style,
   ...props
 }: ThemedSafeAreaViewProps) {
-
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: APP_COLORS['primary-background'] }, style]}
+      style={[
+        styles.container,
+        { backgroundColor: APP_COLORS['primary-background'] },
+        style,
+      ]}
       edges={['top', 'bottom', 'left', 'right']}
       {...props}
     >

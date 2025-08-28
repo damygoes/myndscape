@@ -1,22 +1,19 @@
 import { Image } from 'expo-image';
 import { useRef } from 'react';
-import { Animated, StyleSheet, useColorScheme, View } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
-import { COLORS } from '@/constants/colors';
-import { JournalEntryItem } from '../journal-entry-item/components/JournalEntryItem';
 import { useCurrentUserJournalEntries } from '../hooks/useCurrentUserJournalEntries';
+import { JournalEntryItem } from '../journal-entry-item/components/JournalEntryItem';
 
 const HEADER_HEIGHT = 250;
 
 export const JournalEntries = () => {
   const scrollY = useRef(new Animated.Value(0)).current;
   const insets = useSafeAreaInsets();
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
 
   const { data: entries, isLoading, error } = useCurrentUserJournalEntries();
 

@@ -9,13 +9,15 @@ import { JournalEntry } from '../types';
 interface UpdateEntryInput {
   id: string;
   mood?: string;
+  mood_score?: number;
   content?: string;
   summary?: string;
   themes?: string;
   tip?: string;
+  localized?: Record<string, any>;
 }
 
-export const useUpdateJournalEntry = () => {
+export const useUpdateJournalEntry = ({ language }: { language: string }) => {
   const queryClient = useQueryClient();
   const { startAnalyzing, stopAnalyzing } = useJournalEntryAnalysisStore();
 
@@ -36,16 +38,19 @@ export const useUpdateJournalEntry = () => {
 
         try {
           const aiData = await callAnalyzeEntryFunction(
-            fields.content ?? updatedEntry.content
+            fields.content ?? updatedEntry.content,
+            language
           );
 
           const { error: aiUpdateError } = await supabase
             .from('journal_entries')
             .update({
               mood: aiData.mood,
+              mood_score: aiData.mood_score,
               summary: aiData.summary,
               themes: aiData.themes,
               tip: aiData.tip,
+              localized: aiData.localized, // ✅ store translations
             })
             .eq('id', fields.id);
 

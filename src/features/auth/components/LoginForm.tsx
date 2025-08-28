@@ -1,14 +1,11 @@
-import { Input } from '@/components/input/Input';
 import { Button } from '@/components/button/Button';
-import { COLORS } from '@/constants/colors';
+import { Input } from '@/components/input/Input';
 import { useAuthActions } from '@/features/auth/hooks/useAuthActions';
+import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, View } from 'react-native';
-import { router } from 'expo-router';
-import { useDeepLinkSession } from '../hooks/useDeepLinkSession';
 
 export function LoginForm() {
-
   const { sendMagicLink } = useAuthActions();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);

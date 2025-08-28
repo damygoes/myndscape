@@ -17,3 +17,12 @@ export type UserUsage = {
   entries_remaining: number;
   features: Features;
 };
+
+export type UserSettings = {
+  user_id: string;
+  allow_notifications: boolean;
+  theme: 'light' | 'dark' | 'system';
+  language: string; // 'en', 'de', 'es', etc.
+  created_at: string;
+  updated_at: string;
+};

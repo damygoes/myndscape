@@ -25,10 +25,17 @@ export const formatRelativeDate = (dateString: string) => {
   return formatDistanceToNow(new Date(dateString), { addSuffix: true });
 };
 
-export function parseThemes(themes: string | null | undefined): string[] {
+export function parseThemes(
+  themes: string | string[] | null | undefined
+): string[] {
   if (!themes) return [];
 
-  // Try parsing as JSON array
+  // Already an array
+  if (Array.isArray(themes)) {
+    return themes.map((t) => t.toString().trim());
+  }
+
+  // Try parsing as JSON array string
   if (themes.trim().startsWith('[')) {
     try {
       const parsed = JSON.parse(themes);
@@ -40,7 +47,7 @@ export function parseThemes(themes: string | null | undefined): string[] {
     }
   }
 
-  // Fallback: treat as comma-separated string
+  // Fallback: comma-separated string
   return themes.split(',').map((t) => t.trim());
 }
 

@@ -9,51 +9,62 @@ const openai = new OpenAI({
 
 serve(async (req: Request) => {
   try {
-    const { content } = await req.json();
+    const { content, language = 'en' } = await req.json(); // ISO code
+
+    const systemPrompt = `
+      You are a compassionate, friendly mental wellness assistant. Always write as if you are talking directly to the user about their feelings. Avoid referring to "the user" or "der Benutzer". Make it personal, supportive, and human-like.
+
+      Respond in ${language} for the user, but always keep mood, mood_score, and themes in English for storage.
+
+      For every journal entry:
+
+      1. Classify the mood as a single word in English for storage (Happy, Sad, Anxious, etc.).
+      2. Write a short friendly summary **directly addressing the user**. For example, "It seems you are feeling excited about your trip!" instead of "The user is excited."
+      3. List key emotional themes in English.
+      4. Give one short practical self-care tip in English.
+      5. Provide a numeric wellness score between 0–100 (0 = extremely negative, 50 = neutral, 100 = extremely positive).
+      6. If the language is not "en", also provide localized translations for mood, themes, summary, and tip.
+
+      Respond ONLY as valid JSON, no markdown, no code blocks.
+
+      Format:
+      {
+        "mood": "",
+        "mood_score": 0,
+        "themes": [],
+        "summary": "",
+        "tip": "",
+        "localized": {
+          "${language}": {
+            "mood": "",
+            "themes": [],
+            "summary": "",
+            "tip": ""
+          }
+        }
+      }
+    `;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o',
       messages: [
-        {
-          role: 'system',
-          content: `
-          You are a compassionate mental wellness assistant.
-
-          For every user journal entry:
-
-          1. Classify the mood as a single word (e.g., Happy, Sad, Anxious, Tired, Reflective, Angry, etc.)
-          2. Write a short friendly summary (1-2 sentences) of their mood/tone.
-          3. List key emotional themes (like stress, joy, frustration, etc.)
-          4. Give one short practical self-care tip relevant to the mood.
-
-          Respond ONLY as valid JSON. No markdown. No code blocks. No extra text.
-
-          Format:
-          {
-            "mood": "",
-            "summary": "",
-            "themes": "",
-            "tip": ""
-          }
-          `,
-        },
+        { role: 'system', content: systemPrompt },
         { role: 'user', content },
       ],
     });
 
-    const aiResponse = completion.choices[0].message.content;
-    let cleanedResponse = aiResponse?.trim() || '';
+    let aiResponse = completion.choices[0].message.content?.trim() || '';
 
-    // ✅ Clean out markdown code blocks if OpenAI still adds them
-    if (cleanedResponse.startsWith('```')) {
-      cleanedResponse = cleanedResponse
+    // Remove code block formatting
+    if (aiResponse.startsWith('```')) {
+      aiResponse = aiResponse
         .replace(/```(json)?/i, '')
         .replace(/```$/, '')
         .trim();
     }
 
     try {
-      const parsed = JSON.parse(cleanedResponse);
+      const parsed = JSON.parse(aiResponse);
 
       return new Response(JSON.stringify({ result: parsed }), {
         headers: { 'Content-Type': 'application/json' },

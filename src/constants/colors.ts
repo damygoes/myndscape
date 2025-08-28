@@ -1,6 +1,7 @@
 export const APP_COLORS = {
   // Element Colors
   primary: '#DC560E',
+  'primary-subtle': '#f5c3a94d',
   secondary: '#5F5E5F',
   success: '#0B8600',
   error: '#C40000',
@@ -19,7 +20,6 @@ export const APP_COLORS = {
   'primary-background': '#FCFCFC',
   'background-stroke': '#E5E7EB',
 };
-
 
 export const COLORS = {
   dark: {

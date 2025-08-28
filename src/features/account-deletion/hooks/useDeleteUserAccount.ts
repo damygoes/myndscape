@@ -1,7 +1,6 @@
+import { journalEntriesKeys, userProfileKeys } from '@/lib/queryKeys';
 import { supabase } from '@/services/supabase';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { journalEntriesKeys } from '@/lib/queryKeys';
-import { userProfileKeys } from '@/lib/queryKeys';
 import { router } from 'expo-router';
 
 interface DeleteUserAccountInput {
@@ -13,7 +12,7 @@ export const useDeleteUserAccount = () => {
 
   return useMutation<void, Error, DeleteUserAccountInput>({
     mutationFn: async ({ id }) => {
-      const { data, error } = await supabase.functions.invoke('delete-user', {
+      const { error } = await supabase.functions.invoke('delete-user', {
         body: { userId: id },
       });
 
@@ -22,15 +21,15 @@ export const useDeleteUserAccount = () => {
         throw error;
       }
 
-      // Optional: Sign out immediately after delete
+      // Sign out immediately after delete
       await supabase.auth.signOut();
     },
     onSuccess: (_, { id }) => {
       queryClient.invalidateQueries({ queryKey: journalEntriesKeys.list() });
       queryClient.invalidateQueries({ queryKey: userProfileKeys.detail(id) });
 
-      // Redirect to login
-      router.replace('/login');
+      // Redirect to onboarding
+      router.replace('/onboarding');
     },
   });
 };
