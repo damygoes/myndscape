@@ -1,7 +1,7 @@
 import { useUpdateJournalEntry } from '@/features/journal-entries/hooks/useUpdateJournalEntry';
 import { useJournalEntryAnalysisStore } from '@/features/journal-entries/store/useJournalEntryAnalysisStore';
 import { wellnessScoreKeys } from '@/lib/queryKeys';
-import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
+import { useSupabaseSession } from '@/services/supabase/SupabaseAuthProvider';
 import { useQueryClient } from '@tanstack/react-query';
 import { Alert } from 'react-native';
 import { callAnalyzeEntryFunction } from '../api/callAnalyzeEntryFunction';

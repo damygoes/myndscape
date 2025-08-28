@@ -1,5 +1,5 @@
 import { journalEntriesKeys } from '@/lib/queryKeys';
-import { supabase } from '@/services/supabase';
+import { supabase } from '@/services/supabase/supabase';
 import { useQuery } from '@tanstack/react-query';
 import { JournalEntry } from '../types';
 

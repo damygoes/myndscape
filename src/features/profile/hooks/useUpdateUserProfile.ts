@@ -1,5 +1,5 @@
 import { userProfileKeys } from '@/lib/queryKeys';
-import { supabase } from '@/services/supabase';
+import { supabase } from '@/services/supabase/supabase';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export type UserProfileUpdate = {

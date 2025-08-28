@@ -1,4 +1,4 @@
-import { supabase } from '@/services/supabase';
+import { supabase } from '@/services/supabase/supabase';
 import { LocalisedAnalysedEntry } from '../types';
 
 export async function callAnalyzeEntryFunction(

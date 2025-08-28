@@ -1,4 +1,4 @@
-import { supabase } from '@/services/supabase';
+import { supabase } from '@/services/supabase/supabase';
 import { useState } from 'react';
 import { Alert } from 'react-native';
 

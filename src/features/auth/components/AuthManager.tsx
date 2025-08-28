@@ -1,6 +1,6 @@
 import { LoadingState } from '@/components/LoadingState';
 import { useCurrentUserProfile } from '@/features/profile/hooks/useCurrentUserProfile';
-import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
+import { useSupabaseSession } from '@/services/supabase/SupabaseAuthProvider';
 import { router, useRootNavigationState } from 'expo-router';
 import { useEffect } from 'react';
 import { useDeepLinkSession } from '../hooks/useDeepLinkSession';

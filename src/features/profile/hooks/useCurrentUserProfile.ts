@@ -1,7 +1,7 @@
 import { UserProfile } from '@/features/user/types';
 import { userProfileKeys } from '@/lib/queryKeys';
-import { supabase } from '@/services/supabase';
-import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
+import { supabase } from '@/services/supabase/supabase';
+import { useSupabaseSession } from '@/services/supabase/SupabaseAuthProvider';
 import { useQuery } from '@tanstack/react-query';
 
 export const useCurrentUserProfile = () => {

@@ -1,6 +1,6 @@
 import { Button } from '@/components/button/Button';
 import { COLORS } from '@/constants/colors';
-import { supabase } from '@/services/supabase';
+import { supabase } from '@/services/supabase/supabase';
 import React, { useState } from 'react';
 import { Alert, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { useLogout } from '../hooks/useLogout';

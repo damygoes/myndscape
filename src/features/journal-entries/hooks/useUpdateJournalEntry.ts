@@ -1,5 +1,5 @@
 import { journalEntriesKeys } from '@/lib/queryKeys';
-import { supabase } from '@/services/supabase';
+import { supabase } from '@/services/supabase/supabase';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Alert } from 'react-native';
 import { callAnalyzeEntryFunction } from '../api/callAnalyzeEntryFunction';

@@ -1,6 +1,6 @@
 import { userSettingsKeys } from '@/lib/queryKeys';
-import { supabase } from '@/services/supabase';
-import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
+import { supabase } from '@/services/supabase/supabase';
+import { useSupabaseSession } from '@/services/supabase/SupabaseAuthProvider';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import type { UserSettings } from '../types';
 
