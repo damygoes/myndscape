@@ -6,6 +6,7 @@ import { GreetingCard } from '@/features/dashboard/components/GreetingCard';
 import { QuickStatsGrid } from '@/features/dashboard/components/QuickStatsGrid';
 import { TipCard } from '@/features/dashboard/components/TipCard';
 import { WellnessScoreCard } from '@/features/wellness-score/components/WellnessScoreCard';
+import { Text, View } from 'react-native';
 
 export default function HomeDashboardScreen() {
   return (
@@ -22,6 +23,11 @@ export default function HomeDashboardScreen() {
         backgroundColor: APP_COLORS['primary-background'],
       }}
     >
+      <View style={{ marginBottom: 16 }}>
+        <Text style={{ fontSize: 20, fontWeight: '400', color: APP_COLORS['body-text'], fontFamily: 'Manrope' }}>
+          Welcome to <Text style={{ fontWeight: '600', fontFamily: 'Manrope', color: APP_COLORS.primary }}>Myndscape</Text> 😊
+        </Text>
+      </View>
       <WellnessScoreCard />
       <QuickStatsGrid />
       <AiInsights />

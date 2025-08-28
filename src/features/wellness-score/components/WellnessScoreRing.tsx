@@ -1,16 +1,16 @@
-import { View, Text, StyleSheet } from 'react-native';
-import Svg, { Circle } from 'react-native-svg';
 import { APP_COLORS } from '@/constants/colors';
+import { StyleSheet, Text, View } from 'react-native';
+import Svg, { Circle } from 'react-native-svg';
 
 function getScoreColor(score: number) {
-  if (score <= 40) return '#E53935';
-  if (score <= 70) return '#FB8C00';
-  return '#43A047';
+  if (score <= 40) return APP_COLORS.error;
+  if (score <= 70) return APP_COLORS.primary;
+  return APP_COLORS.success;
 }
 
 export function WellnessScoreRing({ score }: { score: number }) {
-  const radius = 80;
-  const strokeWidth = 12;
+  const radius = 45;
+  const strokeWidth = 8;
   const circumference = 2 * Math.PI * radius;
   const progress = (score / 100) * circumference;
   const color = getScoreColor(score);
@@ -20,7 +20,7 @@ export function WellnessScoreRing({ score }: { score: number }) {
       <Svg width={radius * 2} height={radius * 2}>
         {/* Background circle */}
         <Circle
-          stroke={APP_COLORS['body-text-disabled']}
+          stroke={APP_COLORS.offwhite}
           fill="none"
           cx={radius}
           cy={radius}
@@ -43,10 +43,8 @@ export function WellnessScoreRing({ score }: { score: number }) {
           originY={radius}
         />
       </Svg>
-      {/* Score text in the middle */}
       <View style={styles.textContainer}>
         <Text style={styles.score}>{score}%</Text>
-        <Text style={styles.label}>Wellness</Text>
       </View>
     </View>
   );
@@ -65,14 +63,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   score: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: APP_COLORS['body-text'],
-    fontFamily: 'Manrope',
-  },
-  label: {
     fontSize: 14,
-    color: APP_COLORS['body-text-disabled'],
+    fontWeight: '500',
+    color: APP_COLORS['body-text'],
     fontFamily: 'Manrope',
   },
 });

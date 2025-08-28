@@ -1,7 +1,7 @@
-import { View, Text } from 'react-native';
+import { APP_COLORS } from '@/constants/colors';
 import { WellnessScoreRing } from '@/features/wellness-score/components/WellnessScoreRing';
 import { useWellnessScore } from '@/features/wellness-score/hooks/useWellnessScore';
-import { APP_COLORS } from '@/constants/colors';
+import { Text, View } from 'react-native';
 
 export function WellnessScoreCard() {
   const { data: wellnessData, isLoading: isLoadingWellness } =
@@ -16,61 +16,58 @@ export function WellnessScoreCard() {
     <View
       style={{
         flexDirection: 'row',
-        padding: 24,
-        borderRadius: 24,
+        padding: 16,
+        borderRadius: 12,
         marginBottom: 16,
         alignItems: 'center',
-        minHeight: 200,
-        gap: 24,
-        backgroundColor: APP_COLORS.grey,
+        gap: 8,
+        backgroundColor: APP_COLORS['primary-subtle'],
       }}
     >
-      {/* Left Column: Wellness Ring */}
-      <View
-        style={{
-          width: 150,
-          height: 150,
-        }}
-      >
-        <WellnessScoreRing score={score} />
-      </View>
-
-      {/* Right Column: Text */}
       <View
         style={{
           flex: 1,
-          marginLeft: 16,
           justifyContent: 'center',
           flexShrink: 1,
         }}
       >
         <Text
           style={{
-            fontSize: 20,
+            fontSize: 16,
             marginBottom: 12,
             flexShrink: 1,
             textAlign: 'left',
             fontFamily: 'Manrope',
+            fontWeight: '600',
+            color: APP_COLORS.primary
           }}
           numberOfLines={3}
         >
-          Your wellness score today is{' '}
-          <Text style={{ fontWeight: '700' }}>{score}%</Text>.
+          Your Daily Wellness Score
         </Text>
         <Text
           style={{
-            fontSize: 14,
+            fontSize: 12,
+            fontWeight: '400',
             color: APP_COLORS['body-text-disabled'],
             flexShrink: 1,
             fontFamily: 'Manrope',
+            maxWidth: '90%',
           }}
         >
-          Your score is based on your journaling consistency, mood, tone, and
-          streaks.
+          Score is based on consistency, mood, tone, and streaks.
           {score >= 70
-            ? " You're doing great this week 🎉"
-            : ' Keep writing daily entries to boost your score.'}
+            ? "You're doing great this week 🎉"
+            : 'Daily writing helps it grow.'}
         </Text>
+      </View>
+      <View
+        style={{
+          width: 80,
+          height: 80,
+        }}
+      >
+        <WellnessScoreRing score={score} />
       </View>
     </View>
   );
