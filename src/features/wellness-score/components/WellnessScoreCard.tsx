@@ -1,9 +1,11 @@
 import { APP_COLORS } from '@/constants/colors';
 import { WellnessScoreRing } from '@/features/wellness-score/components/WellnessScoreRing';
 import { useWellnessScore } from '@/features/wellness-score/hooks/useWellnessScore';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { Text, View } from 'react-native';
 
 export function WellnessScoreCard() {
+  const i18n = useAppLocale();
   const { data: wellnessData, isLoading: isLoadingWellness } =
     useWellnessScore();
 
@@ -36,7 +38,7 @@ export function WellnessScoreCard() {
           }}
           numberOfLines={3}
         >
-          Your Daily Wellness Score
+          {i18n.t('WellnessScoreCard.title')}
         </Text>
         <Text
           style={{
@@ -48,8 +50,7 @@ export function WellnessScoreCard() {
             maxWidth: '90%',
           }}
         >
-          This score is calculated from the tone of your latest journal entry,
-          combined with streak and consistency bonuses.
+          {i18n.t('WellnessScoreCard.description')}
         </Text>
       </View>
       <View style={{ width: 80, height: 80 }}>

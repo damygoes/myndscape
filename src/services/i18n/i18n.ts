@@ -1,15 +1,17 @@
 import { getLocales } from 'expo-localization';
 import { I18n } from 'i18n-js';
 
-// 1. Define translations
-const translations = {
-  en: { welcome: 'Hello', name: 'Charlie' },
-  fr: { welcome: 'Bonjour' },
-  de: { welcome: 'Hallo' },
-  es: { welcome: 'Hola' },
-};
+import en from '@/translations/en.json';
+import de from '@/translations/de.json';
+import fr from '@/translations/fr.json';
 
-export const i18n = new I18n(translations);
+// 1. Define translations
+export const i18n = new I18n({
+  en,
+  fr,
+  de,
+});
+
 i18n.enableFallback = true;
 
 // Device fallback

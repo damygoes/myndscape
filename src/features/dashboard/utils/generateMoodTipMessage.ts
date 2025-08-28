@@ -1,19 +1,16 @@
-export const generateMoodTipMessage = (
-  mood: string | undefined,
-  tip: string
-) => {
+import { useAppLocale } from '@/services/i18n/useAppLocale';
+
+export const generateIntro = (mood: string | undefined) => {
+  const i18n = useAppLocale();
   if (!mood) {
     return {
-      intro: 'Here’s a tip for today:',
-      tip,
+      intro: i18n.t('TipCard.noMoodIntro'),
     };
   }
 
   const lowercaseMood = mood.charAt(0).toLowerCase() + mood.slice(1);
-  // const capitalizedMood = mood.charAt(0).toUpperCase() + mood.slice(1);
 
   return {
-    intro: `Based on your last entry, you felt ${lowercaseMood}.`,
-    tip,
+    intro: i18n.t('TipCard.moodIntro', { mood: lowercaseMood }),
   };
 };

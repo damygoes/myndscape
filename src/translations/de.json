@@ -1,0 +1,57 @@
+{
+  "GreetingCard": {
+    "morning": "Guten Morgen",
+    "afternoon": "Hey, schönen Nachmittag",
+    "evening": "Guten Abend"
+  },
+  "Home": {
+    "welcomeTo": "Willkommen bei"
+  },
+  "WellnessScoreCard": {
+    "title": "Dein täglicher Wellness-Score",
+    "description": "Wir berechnen deinen Score aus dem Vibe deines letzten Tagebucheintrags plus Bonus für Streaks und Konsistenz."
+  },
+  "QuickStatsGrid": {
+    "currentStreak": {
+      "label": "Aktuelle Serie",
+      "one": "{{count}} Tag",
+      "other": "{{count}} Tage"
+    },
+    "avgWellness": "Ø Wellness",
+    "entriesToday": {
+      "label": "Einträge heute",
+      "one": "{{count}} Eintrag",
+      "other": "{{count}} Einträge"
+    },
+    "totalEntries": "Alle Einträge",
+    "consistency": "Konsistenz (letzte 30 Tage)"
+  },
+  "AiInsights": {
+    "title": "AI-Einblicke",
+    "mood": {
+      "positive": "Deine Einträge klingen mega positiv 🎉",
+      "neutral": "Du bist gut dabei – bleib dran mit dem Schreiben, damit deine Serie wächst!",
+      "negative": "Lass uns heute was notieren, das pusht deinen Score und deine Routine. ✍️"
+    },
+    "streak": {
+      "longest": "Du bist auf deiner längsten Serie ever! 🔥",
+      "short": "Nur noch {{count}} Tag{{count > 1 ? 'e' : ''}} bis zu deiner längsten Serie – weiter so!"
+    }
+  },
+  "TipCard": {
+    "title": "Tipp des Tages",
+    "noMoodIntro": "Keine Stimmung erkannt – hier ein allgemeiner Tipp:",
+    "moodIntro": "Dein letzter Eintrag zeigt, du warst {{mood}} drauf."
+  },
+  "AddJournalEntry": {
+    "title": "Neuen Eintrag schreiben",
+    "description": "Wie geht’s dir heute, {{username}}?",
+    "placeholder": "Was geht dir durch den Kopf?",
+    "submit": "Teilen",
+    "submitting": "Wird geteilt...",
+    "loader": "Wir reflektieren kurz über das, was du geschrieben hast...",
+    "error": {
+      "empty": "Schreib was rein – geteilte Gedanken sind halbe Gedanken."
+    }
+  }
+}

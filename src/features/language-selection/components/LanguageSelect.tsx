@@ -9,7 +9,6 @@ const languageOptions = [
   { label: 'English', value: 'en' },
   { label: 'French', value: 'fr' },
   { label: 'German', value: 'de' },
-  { label: 'Spanish', value: 'es' },
 ];
 
 export function LanguageSelect() {

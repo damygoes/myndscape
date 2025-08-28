@@ -1,16 +1,26 @@
 import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
-import { generateMoodTipMessage } from '../utils/generateMoodTipMessage';
+import { generateIntro } from '../utils/generateMoodTipMessage';
 import { getTipForMood } from '../utils/getTipForMood';
 
 import { APP_COLORS } from '@/constants/colors';
 import { Ionicons } from '@expo/vector-icons';
 import { Text, View } from 'react-native';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
+import { useUserSettingsContext } from '@/features/user/contexts/UserSettingsContext';
 
 export function TipCard() {
+  const i18n = useAppLocale();
   const { data: entries = [] } = useCurrentUserJournalEntries();
+  const { data } = useUserSettingsContext();
+
+  const userLanguage = data?.language || 'en';
+
   const lastMood = entries?.[0]?.mood;
-  const tip = getTipForMood(lastMood);
-  const { intro, tip: tipText } = generateMoodTipMessage(lastMood, tip);
+  const localizedLastEntryTip = entries?.[0]?.localized?.[userLanguage]?.tip;
+  const lastEntryTip =
+    userLanguage === 'en' ? entries?.[0]?.tip : localizedLastEntryTip;
+
+  const { intro } = generateIntro(lastMood);
 
   return (
     <View
@@ -39,7 +49,7 @@ export function TipCard() {
             fontFamily: 'Manrope',
           }}
         >
-          Tip of the day
+          {i18n.t('TipCard.title')}
         </Text>
       </View>
       <Text
@@ -51,7 +61,7 @@ export function TipCard() {
           lineHeight: 20,
         }}
       >
-        {intro} {tipText}
+        {intro} {lastEntryTip}
       </Text>
     </View>
   );

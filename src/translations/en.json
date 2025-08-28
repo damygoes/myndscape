@@ -1,0 +1,57 @@
+{
+  "GreetingCard": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening"
+  },
+  "Home": {
+    "welcomeTo": "Welcome to"
+  },
+  "WellnessScoreCard": {
+    "title": "Your Daily Wellness Score",
+    "description": "This score is calculated from the tone of your latest journal entry, combined with streak and consistency bonuses."
+  },
+  "QuickStatsGrid": {
+    "currentStreak": {
+      "label": "Current Streak",
+      "one": "{{count}} day",
+      "other": "{{count}} days"
+    },
+    "avgWellness": "Avg. Wellness",
+    "entriesToday": {
+      "label": "Entries Today",
+      "one": "{{count}} Entry",
+      "other": "{{count}} Entries"
+    },
+    "totalEntries": "Total Entries",
+    "consistency": "Consistency (Last 30 Days)"
+  },
+  "AiInsights": {
+    "title": "AI Insights",
+    "mood": {
+      "positive": "Your recent reflections show a very positive tone 🎉",
+      "neutral": "You're doing well — keep journaling to strengthen your streak!",
+      "negative": "Try writing today to boost your wellness score and build consistency."
+    },
+    "streak": {
+      "longest": "You're on your longest streak yet! 🔥",
+      "short": "You're {{count}} day{{count > 1 ? 's' : ''}} away from your longest streak. Keep going!"
+    }
+  },
+  "TipCard": {
+    "title": "Tip of the Day",
+    "noMoodIntro": "No recent mood detected. Here's a general tip:",
+    "moodIntro": "Based on your last entry, you felt {{mood}}."
+  },
+  "AddJournalEntry": {
+    "title": "Add Journal Entry",
+    "description": "How are you feeling today, {{username}}?",
+    "placeholder": "A penny for your thoughts...",
+    "submit": "Log your thoughts",
+    "submitting": "Logging your thoughts...",
+    "loader": "We're in this together! Reflecting on what you shared...",
+    "error": {
+      "empty": "A problem shared is a problem halved. Please share your thoughts."
+    }
+  }
+}

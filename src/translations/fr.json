@@ -1,0 +1,57 @@
+{
+  "GreetingCard": {
+    "morning": "Bonjour",
+    "afternoon": "Salut, bon après-midi",
+    "evening": "Bonsoir"
+  },
+  "Home": {
+    "welcomeTo": "Bienvenue sur"
+  },
+  "WellnessScoreCard": {
+    "title": "Ton score bien-être du jour",
+    "description": "On calcule ton score à partir du ton de ton dernier journal, avec des bonus pour les séries et la régularité."
+  },
+  "QuickStatsGrid": {
+    "currentStreak": {
+      "label": "Série actuelle",
+      "one": "{{count}} jour",
+      "other": "{{count}} jours"
+    },
+    "avgWellness": "Bien-être moyen",
+    "entriesToday": {
+      "label": "Entrées aujourd'hui",
+      "one": "{{count}} entrée",
+      "other": "{{count}} entrées"
+    },
+    "totalEntries": "Toutes les entrées",
+    "consistency": "Régularité (30 derniers jours)"
+  },
+  "AiInsights": {
+    "title": "Infos AI",
+    "mood": {
+      "positive": "Tes derniers écrits sont super positifs 🎉",
+      "neutral": "Tu t’en sors bien – continue à écrire pour garder ta série !",
+      "negative": "Essaie d’écrire aujourd’hui pour booster ton score et ta régularité. ✍️"
+    },
+    "streak": {
+      "longest": "C’est ta plus longue série jusqu’ici ! 🔥",
+      "short": "Il te reste {{count}} jour{{count > 1 ? 's' : ''}} pour atteindre ta plus longue série – continue !"
+    }
+  },
+  "TipCard": {
+    "title": "Astuce du jour",
+    "noMoodIntro": "Pas de humeur détectée récemment. Voici une astuce générale :",
+    "moodIntro": "D’après ton dernier journal, tu te sentais {{mood}}."
+  },
+  "AddJournalEntry": {
+    "title": "Ajouter un journal",
+    "description": "Comment te sens-tu aujourd’hui, {{username}} ?",
+    "placeholder": "Un petit mot pour tes pensées...",
+    "submit": "Partager tes pensées",
+    "submitting": "On partage tes pensées...",
+    "loader": "On est ensemble ! On réfléchit à ce que tu as partagé...",
+    "error": {
+      "empty": "Un problème partagé est un problème à moitié résolu. Partage tes pensées !"
+    }
+  }
+}

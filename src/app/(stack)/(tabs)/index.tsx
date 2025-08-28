@@ -11,6 +11,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function HomeDashboardScreen() {
   const i18n = useAppLocale();
+
   return (
     <View style={styles.container}>
       <ParallaxScrollView
@@ -35,7 +36,7 @@ export default function HomeDashboardScreen() {
               fontFamily: 'Manrope',
             }}
           >
-            Welcome to{' '}
+            {i18n.t('Home.welcomeTo')}{' '}
             <Text
               style={{
                 fontWeight: '600',
@@ -48,9 +49,6 @@ export default function HomeDashboardScreen() {
             😊
           </Text>
         </View>
-          
-
-        <View><Text>{i18n.t('welcome')}</Text></View>
         <WellnessScoreCard />
         <QuickStatsGrid />
         <AiInsights />
