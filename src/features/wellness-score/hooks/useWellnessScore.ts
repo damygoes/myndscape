@@ -41,7 +41,9 @@ export function useWellnessScore() {
 
       if (!entries || entries.length === 0) {
         // No entry today = score 0, streak resets
-        const { currentStreak, longestStreak } = await calculateStreaks(userId!);
+        const { currentStreak, longestStreak } = await calculateStreaks(
+          userId!
+        );
         return { score: 0, currentStreak: 0, longestStreak, todayEntries: 0 };
       }
 

@@ -24,6 +24,7 @@ interface InputProps extends TextInputProps {
   containerStyle?: ViewStyle;
   inputStyle?: TextStyle;
   labelStyle?: TextStyle;
+  inputWrapperStyle?: ViewStyle;
   floatingIconStyle?: ViewStyle;
 }
 
@@ -38,6 +39,7 @@ export const Input = forwardRef<RNTextInput, InputProps>(
       containerStyle,
       inputStyle,
       labelStyle,
+      inputWrapperStyle,
       secureTextEntry,
       onFocus,
       onBlur,
@@ -96,6 +98,7 @@ export const Input = forwardRef<RNTextInput, InputProps>(
                 ? APP_COLORS['body-text-disabled']
                 : APP_COLORS.offwhite,
             },
+            inputWrapperStyle,
           ]}
         >
           {/* Inline left */}

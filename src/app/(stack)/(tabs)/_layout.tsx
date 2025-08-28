@@ -2,9 +2,9 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { HapticTab } from '@/components/HapticTab';
+import { IconSymbol } from '@/components/ui/IconSymbol.ios';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { APP_COLORS } from '@/constants/colors';
-import { CustomIcon } from '@/components/custom-icon/CustomIcon';
 
 export default function TabLayout() {
   return (
@@ -29,7 +29,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <CustomIcon name="home" size={24} color={color} />
+            <IconSymbol name="home" size={24} color={color} />
           ),
         }}
       />
@@ -38,7 +38,7 @@ export default function TabLayout() {
         options={{
           title: 'History',
           tabBarIcon: ({ color }) => (
-            <CustomIcon name="history" size={24} color={color} />
+            <IconSymbol name="history" size={24} color={color} />
           ),
         }}
       />
@@ -47,7 +47,7 @@ export default function TabLayout() {
         options={{
           title: 'Settings',
           tabBarIcon: ({ color }) => (
-            <CustomIcon name="settings" size={24} color={color} />
+            <IconSymbol name="settings" size={24} color={color} />
           ),
         }}
       />
