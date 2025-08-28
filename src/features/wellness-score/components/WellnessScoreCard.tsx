@@ -39,7 +39,7 @@ export function WellnessScoreCard() {
             textAlign: 'left',
             fontFamily: 'Manrope',
             fontWeight: '600',
-            color: APP_COLORS.primary
+            color: APP_COLORS.primary,
           }}
           numberOfLines={3}
         >

@@ -1,13 +1,13 @@
 import { Image } from 'expo-image';
 import { useRef } from 'react';
-import { Animated, StyleSheet, useColorScheme, View } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
-import { JournalEntryItem } from '../journal-entry-item/components/JournalEntryItem';
 import { useCurrentUserJournalEntries } from '../hooks/useCurrentUserJournalEntries';
+import { JournalEntryItem } from '../journal-entry-item/components/JournalEntryItem';
 
 const HEADER_HEIGHT = 250;
 

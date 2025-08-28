@@ -1,13 +1,12 @@
-import { Button } from '@/components/button/Button';
+import { FloatingButton } from '@/components/floating-button/FloatingButton';
 import { router } from 'expo-router';
 
-export function AddJournalEntryButton() {
+export function AddJournalEntryButton({ style }: { style?: object }) {
   return (
-    <Button
-      title="Add Journal Entry"
+    <FloatingButton
       icon="add"
+      style={{ right: 0, zIndex: 10, top: 220, margin: 4, ...style }}
       onPress={() => router.push('/add-entry')}
-      variant="outline"
     />
   );
 }

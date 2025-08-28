@@ -17,7 +17,7 @@ export default function History() {
       <FloatingButton
         onPress={handleNavigateToAddEntry}
         icon="add"
-        className="right-0 z-10 m-4 top-28"
+        style={{ right: 0, zIndex: 10, margin: 4, top: 150 }}
       />
       <JournalEntries />
     </SafeAreaView>

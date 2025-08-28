@@ -13,7 +13,7 @@ export const useCreateJournalEntry = () => {
   const queryClient = useQueryClient();
 
   return useMutation<JournalEntry, Error, CreateEntryInput>({
-    mutationFn: async ({ userId, mood, content }) => {
+    mutationFn: async ({ userId, mood, content, localized }: CreateEntryInput & { localized?: any }) => {
       const { data, error } = await supabase
         .from('journal_entries')
         .insert({
@@ -21,7 +21,7 @@ export const useCreateJournalEntry = () => {
           mood,
           content,
         })
-        .select('id, user_id, content, mood, summary, themes, tip, created_at') // 👈 Explicit columns
+        .select('id, user_id, content, mood, summary, themes, tip, localized, created_at')
         .single();
 
       if (error) throw error;

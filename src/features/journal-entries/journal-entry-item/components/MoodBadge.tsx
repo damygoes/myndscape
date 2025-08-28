@@ -1,52 +1,45 @@
-import { COLORS } from '@/constants/colors';
-import { moodIcons } from '@/utils/moodUtils';
-import { Ionicons } from '@expo/vector-icons';
+import { APP_COLORS } from '@/constants/colors';
 import React from 'react';
-import { StyleSheet, Text, View, useColorScheme } from 'react-native';
-import { getMoodBadgeColor } from '../utils';
+import { Text, View } from 'react-native';
 
 interface MoodBadgeProps {
   mood: string;
-  displayPrefix?: boolean;
 }
 
-export const MoodBadge = ({ mood, displayPrefix = true }: MoodBadgeProps) => {
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
-
-  const badgeColor = getMoodBadgeColor(mood);
-  const moodKey = (
-    mood as keyof typeof moodIcons
-  ).toLowerCase() as keyof typeof moodIcons;
-  const iconName = moodIcons[moodKey] ?? 'help-circle-outline';
-
+export const MoodBadge = ({ mood }: MoodBadgeProps) => {
   return (
     <View
-      className="flex-row items-center gap-1 px-2 py-1 rounded-full"
       style={{
-        backgroundColor: badgeColor,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 4,
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+        borderRadius: 9999,
+        backgroundColor: APP_COLORS['primary-subtle'],
       }}
     >
-      {displayPrefix && (
-        <View className="flex-row items-center justify-start">
-          <Ionicons
-            name={iconName}
-            size={14}
-            color={colors.white}
-            style={{ marginRight: 4 }}
-          />
-          <Text className="text-sm" style={styles.text}>
-            Mood:
-          </Text>
-        </View>
-      )}
-      <Text className="text-sm" style={styles.text}>
+      <Text
+        style={{
+          fontFamily: 'Manrope',
+          fontWeight: '300',
+          color: APP_COLORS['body-text'],
+          fontSize: 12,
+        }}
+      >
+        Mood:
+      </Text>
+      <Text
+        style={{
+          fontFamily: 'Manrope',
+          fontWeight: '400',
+          color: APP_COLORS.primary,
+          fontSize: 12,
+        }}
+      >
         {mood}
       </Text>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  text: { color: COLORS.dark.white, fontWeight: '500', fontSize: 14 },
-});

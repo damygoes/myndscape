@@ -1,23 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
+import { wellnessScoreKeys } from '@/lib/queryKeys';
 import { supabase } from '@/services/supabase';
 import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
-import { wellnessScoreKeys } from '@/lib/queryKeys';
-
-type MoodScoreMap = { [key: string]: number };
-
-const moodScores: MoodScoreMap = {
-  happy: 100,
-  good: 80,
-  neutral: 60,
-  sad: 40,
-  angry: 20,
-  depressed: 0,
-};
-
-function getMoodScore(mood?: string): number {
-  if (!mood) return 50;
-  return moodScores[mood.toLowerCase()] ?? 50;
-}
+import { useQuery } from '@tanstack/react-query';
 
 export function useWellnessScore() {
   const { session } = useSupabaseSession();
@@ -27,105 +11,155 @@ export function useWellnessScore() {
     queryKey: wellnessScoreKeys.detail(userId!),
     enabled: !!userId,
     queryFn: async () => {
+      if (!userId) throw new Error('No user ID found');
+
       // 1. Fetch today’s entries
       const startOfDay = new Date();
       startOfDay.setHours(0, 0, 0, 0);
 
-      const { data: entries, error } = await supabase
+      const { data: todayEntries, error: todayError } = await supabase
         .from('journal_entries')
-        .select('mood, created_at')
+        .select('mood_score, created_at')
         .eq('user_id', userId)
         .gte('created_at', startOfDay.toISOString());
 
-      if (error) throw error;
+      if (todayError) throw todayError;
 
-      if (!entries || entries.length === 0) {
-        // No entry today = score 0, streak resets
-        const { currentStreak, longestStreak } = await calculateStreaks(
-          userId!
-        );
-        return { score: 0, currentStreak: 0, longestStreak, todayEntries: 0 };
+      // 2. Fetch last 30 days of entries
+      const startOfWindow = new Date();
+      startOfWindow.setDate(startOfWindow.getDate() - 30);
+      startOfWindow.setHours(0, 0, 0, 0);
+
+      const { data: recentEntries, error: recentError } = await supabase
+        .from('journal_entries')
+        .select('mood_score, created_at')
+        .eq('user_id', userId)
+        .gte('created_at', startOfWindow.toISOString());
+
+      if (recentError) throw recentError;
+
+      // 3. Fetch all-time entries (for milestones & total entries)
+      const { count: totalEntries, error: totalError } = await supabase
+        .from('journal_entries')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', userId);
+
+      if (totalError) throw totalError;
+
+      // --- Stats ---
+      const { currentStreak, longestStreak } = await calculateStreak(userId);
+
+      // ✅ Today’s score
+      let wellnessScore = 0;
+
+      if (todayEntries && todayEntries.length > 0) {
+        const moodAvg =
+          todayEntries.reduce((sum, e) => sum + (e.mood_score ?? 50), 0) /
+          todayEntries.length;
+
+        const bonus = currentStreak >= 3 ? 5 : 0;
+        wellnessScore = moodAvg + bonus;
       }
 
-      // 2. Calculate average mood score
-      const moodAvg =
-        entries.reduce((sum, e) => sum + getMoodScore(e.mood), 0) /
-        entries.length;
+      // 4. Fetch mood score for the latest entry
+      const { data: latestEntry } = await supabase
+        .from('journal_entries')
+        .select('mood_score')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
+        .limit(1);
 
-      // 3. Check streak
-      const { currentStreak, longestStreak } = await calculateStreaks(userId!);
-
-      // 4. Apply bonus
-      const bonus = currentStreak >= 3 ? 5 : 0; // +5% bonus for streak >= 3 days
-      const score = Math.min(Math.round(moodAvg + bonus), 100);
+      const latestEntryMoodScore = latestEntry?.[0]?.mood_score ?? 0;
 
       return {
-        score,
+        score: latestEntryMoodScore,   // Today’s score %
+        wellnessScore,                // Raw avg from today’s entries
+        todayEntries: todayEntries?.length ?? 0,
         currentStreak,
         longestStreak,
-        todayEntries: entries.length,
+        consistencyPercent: calculateConsistency(recentEntries),
+        totalEntries: totalEntries ?? 0, // ✅ all-time
       };
     },
   });
 }
 
-// helper to calculate both current and longest streaks
-// --- Unified streak calculation ---
-async function calculateStreaks(userId: string) {
+// --- Helpers ---
+function calculateConsistency(entries: { created_at: string }[]) {
+  if (!entries || entries.length === 0) return 0;
+
+  const uniqueDays = new Set(
+    entries.map((e) => {
+      const d = new Date(e.created_at);
+      d.setHours(0, 0, 0, 0);
+      return d.getTime();
+    })
+  );
+
+  return Math.round((uniqueDays.size / 30) * 100);
+}
+
+async function calculateStreak(userId: string) {
   const { data: entries } = await supabase
     .from('journal_entries')
     .select('created_at')
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
-  if (!entries || entries.length === 0) {
-    return { currentStreak: 0, longestStreak: 0 };
+  if (!entries) return { currentStreak: 0, longestStreak: 0 };
+
+  let streak = 0;
+  let currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
+
+  for (const e of entries) {
+    const entryDate = new Date(e.created_at);
+    entryDate.setHours(0, 0, 0, 0);
+
+    if (entryDate.getTime() === currentDate.getTime()) {
+      streak++;
+      currentDate.setDate(currentDate.getDate() - 1);
+    } else if (entryDate.getTime() === currentDate.getTime() - 86400000) {
+      streak++;
+      currentDate.setDate(currentDate.getDate() - 1);
+    } else {
+      break;
+    }
   }
 
-  // 1. Normalize to unique days
-  const days = Array.from(
+  return { currentStreak: streak, longestStreak: calculateLongest(entries) };
+}
+
+function calculateLongest(entries: { created_at: string }[]) {
+  if (entries.length === 0) return 0;
+
+  // Deduplicate by day
+  const uniqueDays = Array.from(
     new Set(
       entries.map((e) => {
         const d = new Date(e.created_at);
         d.setHours(0, 0, 0, 0);
-        return d.toISOString();
+        return d.getTime();
       })
     )
-  )
-    .map((d) => new Date(d))
-    .sort((a, b) => b.getTime() - a.getTime()); // newest → oldest
+  ).sort((a, b) => b - a);
 
-  // 2. Calculate current streak (starting from today)
-  let currentStreak = 0;
-  let today = new Date();
-  today.setHours(0, 0, 0, 0);
+  if (uniqueDays.length === 0) return 0;
 
-  for (const day of days) {
-    if (day.getTime() === today.getTime()) {
-      currentStreak++;
-      today.setDate(today.getDate() - 1);
-    } else if (day.getTime() === today.getTime()) {
-      // already handled above
-      continue;
-    } else {
-      break; // streak broken
-    }
-  }
+  // Walk through unique days to calculate longest streak
+  let longest = 1;
+  let current = 1;
 
-  // 3. Calculate longest streak across history
-  let longestStreak = 1;
-  let streak = 1;
-
-  for (let i = 1; i < days.length; i++) {
-    const diff = (days[i - 1].getTime() - days[i].getTime()) / 86400000;
+  for (let i = 1; i < uniqueDays.length; i++) {
+    const diff = (uniqueDays[i - 1] - uniqueDays[i]) / 86400000;
 
     if (diff === 1) {
-      streak++;
-      longestStreak = Math.max(longestStreak, streak);
-    } else {
-      streak = 1; // reset
+      current++;
+      longest = Math.max(longest, current);
+    } else if (diff > 1) {
+      current = 1;
     }
   }
 
-  return { currentStreak, longestStreak };
+  return longest;
 }

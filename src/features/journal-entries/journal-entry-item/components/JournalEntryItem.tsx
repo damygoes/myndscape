@@ -34,6 +34,12 @@ export const JournalEntryItem = ({ entry }: Props) => {
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
 
+  const userLanguage = 'de'; // ← dynamically determine from session or settings
+  const displayMood = entry.localized?.[userLanguage]?.mood || entry.mood;
+  const displayThemes = entry.localized?.[userLanguage]?.themes || entry.themes;
+  const displaySummary = entry.localized?.[userLanguage]?.summary || entry.summary;
+  const displayTip = entry.localized?.[userLanguage]?.tip || entry.tip;
+
   const { analyzingIds } = useJournalEntryAnalysisStore();
   const isAnalyzing = analyzingIds.includes(entry.id);
 
@@ -44,20 +50,10 @@ export const JournalEntryItem = ({ entry }: Props) => {
   };
 
   return (
-    <TouchableOpacity
-      onPress={goToDetails}
-      activeOpacity={0.85}
-      accessibilityRole="button"
-      accessibilityLabel={`View details for journal entry from ${formattedDate}`}
-      style={{
-        backgroundColor: 'transparent',
-        borderRadius: 32,
-        overflow: 'hidden',
-      }}
-    >
+    <TouchableOpacity onPress={goToDetails}>
       <GlassCard>
         <View style={styles.header}>
-          <MoodBadge mood={entry.mood ?? 'neutral'} />
+          <MoodBadge mood={displayMood ?? 'neutral'} />
           <Text style={[styles.dateText, { color: colors.textMuted }]}>
             {formattedDate}
           </Text>
@@ -66,10 +62,7 @@ export const JournalEntryItem = ({ entry }: Props) => {
         {isAnalyzing && (
           <View style={styles.analysisContainer}>
             <ActivityIndicator size="small" color={colors.textMuted} />
-            <Text
-              style={[styles.analyzingText, { color: colors.textMuted }]}
-              accessibilityLiveRegion="polite"
-            >
+            <Text style={[styles.analyzingText, { color: colors.textMuted }]} accessibilityLiveRegion="polite">
               Analyzing your mood...
             </Text>
           </View>
@@ -77,9 +70,9 @@ export const JournalEntryItem = ({ entry }: Props) => {
 
         <View style={styles.analysisContainer}>
           <JournalEntryAnalysisSection
-            summary={entry.summary}
-            themes={entry.themes}
-            tip={entry.tip}
+            summary={displaySummary}
+            themes={displayThemes}
+            tip={displayTip}
           />
         </View>
       </GlassCard>
@@ -98,6 +91,7 @@ const styles = StyleSheet.create({
   dateText: {
     fontSize: 12,
     fontFamily: 'Manrope',
+    fontWeight: '400',
   },
   contentText: {
     fontSize: 14,

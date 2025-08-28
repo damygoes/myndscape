@@ -1,13 +1,13 @@
+import { APP_COLORS } from '@/constants/colors';
 import React from 'react';
 import {
-  TouchableOpacity,
-  Text,
   ActivityIndicator,
   StyleSheet,
-  ViewStyle,
+  Text,
   TextStyle,
+  TouchableOpacity,
+  ViewStyle,
 } from 'react-native';
-import { APP_COLORS } from '@/constants/colors';
 import { IconSymbol, IconSymbolName } from '../ui/IconSymbol.ios';
 
 type ButtonVariant =

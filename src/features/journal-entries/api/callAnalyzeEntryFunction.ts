@@ -1,8 +1,9 @@
 import { supabase } from '@/services/supabase';
+import { LocalisedAnalysedEntry } from '../types';
 
-export async function callAnalyzeEntryFunction(content: string) {
+export async function callAnalyzeEntryFunction(content: string, language: string) {
   const response = await supabase.functions.invoke('analyzeEntry', {
-    body: { content },
+    body: { content, language },
   });
 
   if (response.error) {
@@ -10,6 +11,6 @@ export async function callAnalyzeEntryFunction(content: string) {
     throw new Error('Failed to analyze journal entry');
   }
 
-  return response.data.result; // will be { mood, summary, themes, tip }
+  return response.data.result as LocalisedAnalysedEntry;
+  // Returns: { mood, mood_score, themes, summary, tip, localized }
 }
-3;
