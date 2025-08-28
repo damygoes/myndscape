@@ -37,7 +37,10 @@ export const useUpdateJournalEntry = ({ language }: { language: string }) => {
         startAnalyzing(fields.id);
 
         try {
-          const aiData = await callAnalyzeEntryFunction(fields.content ?? updatedEntry.content, language);
+          const aiData = await callAnalyzeEntryFunction(
+            fields.content ?? updatedEntry.content,
+            language
+          );
 
           const { error: aiUpdateError } = await supabase
             .from('journal_entries')
@@ -54,7 +57,10 @@ export const useUpdateJournalEntry = ({ language }: { language: string }) => {
           if (aiUpdateError) throw aiUpdateError;
         } catch (aiError) {
           console.error('AI analysis failed during update:', aiError);
-          Alert.alert('AI Summary Error', 'We couldn’t generate an updated AI summary for this entry.');
+          Alert.alert(
+            'AI Summary Error',
+            'We couldn’t generate an updated AI summary for this entry.'
+          );
         } finally {
           stopAnalyzing(fields.id);
         }

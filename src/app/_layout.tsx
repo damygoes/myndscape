@@ -1,15 +1,16 @@
+import { AuthManager } from '@/features/auth/components/AuthManager';
+import { UserProfileProvider } from '@/features/user/contexts/UserProfileContext';
+import { UserSettingsProvider } from '@/features/user/contexts/UserSettingsContext';
+import { UserUsageProvider } from '@/features/user/contexts/UserUsageContext';
 import { SupabaseAuthProvider } from '@/services/SupabaseAuthProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import '../../global.css';
-import '../../polyfills';
-import { StatusBar } from 'expo-status-bar';
-import { AuthManager } from '@/features/auth/components/AuthManager';
+import { useFonts } from 'expo-font';
 import { Slot } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useFonts } from 'expo-font';
+import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { UserProfileProvider } from '@/features/user/contexts/UserProfileContext';
-import { UserUsageProvider } from '@/features/user/contexts/UserUsageContext';
+import '../../global.css';
+import '../../polyfills';
 
 const queryClient = new QueryClient();
 
@@ -35,9 +36,11 @@ export default function RootLayout() {
       <QueryClientProvider client={queryClient}>
         <AuthManager>
           <UserProfileProvider>
-            <UserUsageProvider>
-              <Slot />
-            </UserUsageProvider>
+            <UserSettingsProvider>
+              <UserUsageProvider>
+                <Slot />
+              </UserUsageProvider>
+            </UserSettingsProvider>
           </UserProfileProvider>
         </AuthManager>
         <StatusBar style="dark" animated={true} translucent={true} />

@@ -1,5 +1,5 @@
 import { useCurrentUserProfile } from '@/features/profile/hooks/useCurrentUserProfile';
-import { createContext, use, useContext, useMemo } from 'react';
+import { createContext, useContext, useMemo } from 'react';
 
 type UserProfileContextValue = {
   data: Awaited<ReturnType<typeof useCurrentUserProfile>>['data'];

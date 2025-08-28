@@ -1,7 +1,6 @@
+import { journalEntriesKeys, userProfileKeys } from '@/lib/queryKeys';
 import { supabase } from '@/services/supabase';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { journalEntriesKeys } from '@/lib/queryKeys';
-import { userProfileKeys } from '@/lib/queryKeys';
 import { router } from 'expo-router';
 
 interface DeleteUserAccountInput {
@@ -22,7 +21,7 @@ export const useDeleteUserAccount = () => {
         throw error;
       }
 
-      // Optional: Sign out immediately after delete
+      // Sign out immediately after delete
       await supabase.auth.signOut();
     },
     onSuccess: (_, { id }) => {

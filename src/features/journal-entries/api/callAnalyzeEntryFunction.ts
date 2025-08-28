@@ -1,7 +1,10 @@
 import { supabase } from '@/services/supabase';
 import { LocalisedAnalysedEntry } from '../types';
 
-export async function callAnalyzeEntryFunction(content: string, language: string) {
+export async function callAnalyzeEntryFunction(
+  content: string,
+  language: string
+) {
   const response = await supabase.functions.invoke('analyzeEntry', {
     body: { content, language },
   });

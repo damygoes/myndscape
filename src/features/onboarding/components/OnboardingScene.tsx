@@ -1,9 +1,9 @@
 import { APP_COLORS } from '@/constants/colors';
+import { BlurView } from 'expo-blur';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
-import { BlurView } from 'expo-blur';
-import { Text, View } from 'react-native';
 import React, { JSX } from 'react';
+import { Text, View } from 'react-native';
 
 type Callout = {
   content: string | JSX.Element;
@@ -169,8 +169,8 @@ export default function OnboardingScene({
             <View
               key={idx}
               style={{
-                width: isActive ? 6 : 8,
-                height: isActive ? 18 : 8,
+                width: isActive ? 10 : 6,
+                height: isActive ? 10 : 6,
                 borderRadius: isActive ? 20 : 999,
                 backgroundColor: isActive
                   ? APP_COLORS.primary

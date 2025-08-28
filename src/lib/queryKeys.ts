@@ -14,3 +14,9 @@ export const wellnessScoreKeys = {
   all: ['wellnessScore'] as const,
   detail: (userId: string) => [...wellnessScoreKeys.all, userId] as const,
 };
+
+export const userSettingsKeys = {
+  all: ['user_settings'] as const,
+  detail: (userId: string) =>
+    [...userSettingsKeys.all, 'detail', userId] as const,
+};

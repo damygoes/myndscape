@@ -1,22 +1,32 @@
+import { userProfileKeys } from '@/lib/queryKeys';
 import { supabase } from '@/services/supabase';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-type UserProfileUpdate = {
+export type UserProfileUpdate = {
   username?: string;
   emotion_check?: string;
   bio?: string;
   isonboarded?: boolean;
 };
 
-export async function useUpdateUserProfile(
-  userId: string,
-  updates: UserProfileUpdate
-) {
-  const { error } = await supabase
-    .from('users')
-    .update(updates)
-    .eq('id', userId);
+export function useUpdateUserProfile(userId: string) {
+  const queryClient = useQueryClient();
 
-  if (error) {
-    throw error;
-  }
+  return useMutation({
+    mutationFn: async (updates: UserProfileUpdate) => {
+      const { data, error } = await supabase
+        .from('users')
+        .update(updates)
+        .eq('id', userId)
+        .select('*')
+        .maybeSingle();
+
+      if (error) throw error;
+      return data;
+    },
+    onSuccess: (data) => {
+      if (!data) return;
+      queryClient.setQueryData(userProfileKeys.detail(userId), data);
+    },
+  });
 }

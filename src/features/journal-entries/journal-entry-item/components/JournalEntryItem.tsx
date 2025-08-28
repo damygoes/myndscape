@@ -2,6 +2,7 @@ import { GlassCard } from '@/components/card/GlassCard';
 import { COLORS } from '@/constants/colors';
 import { useJournalEntryAnalysisStore } from '@/features/journal-entries/store/useJournalEntryAnalysisStore';
 import { JournalEntry } from '@/features/journal-entries/types';
+import { useUserSettingsContext } from '@/features/user/contexts/UserSettingsContext';
 import { router } from 'expo-router';
 import React from 'react';
 import {
@@ -31,13 +32,16 @@ interface Props {
 }
 
 export const JournalEntryItem = ({ entry }: Props) => {
+  const { data } = useUserSettingsContext();
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
 
-  const userLanguage = 'de'; // ← dynamically determine from session or settings
+  const userLanguage = data?.language || 'en';
+
   const displayMood = entry.localized?.[userLanguage]?.mood || entry.mood;
   const displayThemes = entry.localized?.[userLanguage]?.themes || entry.themes;
-  const displaySummary = entry.localized?.[userLanguage]?.summary || entry.summary;
+  const displaySummary =
+    entry.localized?.[userLanguage]?.summary || entry.summary;
   const displayTip = entry.localized?.[userLanguage]?.tip || entry.tip;
 
   const { analyzingIds } = useJournalEntryAnalysisStore();
@@ -62,7 +66,10 @@ export const JournalEntryItem = ({ entry }: Props) => {
         {isAnalyzing && (
           <View style={styles.analysisContainer}>
             <ActivityIndicator size="small" color={colors.textMuted} />
-            <Text style={[styles.analyzingText, { color: colors.textMuted }]} accessibilityLiveRegion="polite">
+            <Text
+              style={[styles.analyzingText, { color: colors.textMuted }]}
+              accessibilityLiveRegion="polite"
+            >
               Analyzing your mood...
             </Text>
           </View>

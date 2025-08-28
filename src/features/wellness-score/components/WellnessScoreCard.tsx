@@ -10,7 +10,6 @@ export function WellnessScoreCard() {
   if (isLoadingWellness) return null;
 
   const score = wellnessData?.score ?? 0;
-  const currentStreak = wellnessData?.currentStreak ?? 0;
 
   return (
     <View
@@ -24,13 +23,7 @@ export function WellnessScoreCard() {
         backgroundColor: APP_COLORS['primary-subtle'],
       }}
     >
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          flexShrink: 1,
-        }}
-      >
+      <View style={{ flex: 1, justifyContent: 'center', flexShrink: 1 }}>
         <Text
           style={{
             fontSize: 16,
@@ -55,18 +48,11 @@ export function WellnessScoreCard() {
             maxWidth: '90%',
           }}
         >
-          Score is based on consistency, mood, tone, and streaks.
-          {score >= 70
-            ? "You're doing great this week 🎉"
-            : 'Daily writing helps it grow.'}
+          This score is calculated from the tone of your latest journal entry,
+          combined with streak and consistency bonuses.
         </Text>
       </View>
-      <View
-        style={{
-          width: 80,
-          height: 80,
-        }}
-      >
+      <View style={{ width: 80, height: 80 }}>
         <WellnessScoreRing score={score} />
       </View>
     </View>

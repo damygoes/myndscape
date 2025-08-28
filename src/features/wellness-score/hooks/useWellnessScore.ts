@@ -58,7 +58,7 @@ export function useWellnessScore() {
           todayEntries.length;
 
         const bonus = currentStreak >= 3 ? 5 : 0;
-        wellnessScore = moodAvg + bonus;
+        wellnessScore = Math.round((moodAvg + bonus) * 100) / 100;
       }
 
       // 4. Fetch mood score for the latest entry
@@ -72,8 +72,8 @@ export function useWellnessScore() {
       const latestEntryMoodScore = latestEntry?.[0]?.mood_score ?? 0;
 
       return {
-        score: latestEntryMoodScore,   // Today’s score %
-        wellnessScore,                // Raw avg from today’s entries
+        score: latestEntryMoodScore, // Today’s score %
+        wellnessScore, // Raw avg from today’s entries
         todayEntries: todayEntries?.length ?? 0,
         currentStreak,
         longestStreak,

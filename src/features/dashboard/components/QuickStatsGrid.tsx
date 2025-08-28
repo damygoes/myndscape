@@ -25,7 +25,13 @@ export function QuickStatsGrid() {
     );
   }
 
-  const { currentStreak, todayEntries, consistencyPercent, totalEntries, wellnessScore } = data;
+  const {
+    currentStreak,
+    todayEntries,
+    consistencyPercent,
+    totalEntries,
+    wellnessScore,
+  } = data;
 
   const stats = [
     {

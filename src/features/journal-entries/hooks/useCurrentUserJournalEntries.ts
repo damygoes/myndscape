@@ -1,8 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/services/supabase';
-import { JournalEntry } from '../types';
 import { journalEntriesKeys } from '@/lib/queryKeys';
+import { supabase } from '@/services/supabase';
 import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
+import { useQuery } from '@tanstack/react-query';
+import { JournalEntry } from '../types';
 
 export const useCurrentUserJournalEntries = () => {
   const { session } = useSupabaseSession();

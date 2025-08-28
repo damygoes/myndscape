@@ -1,9 +1,9 @@
+import { Button } from '@/components/button/Button';
 import { APP_COLORS } from '@/constants/colors';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useUpdateUserProfile } from '../hooks/useUpdateUserProfile';
 import { renderField } from '../utils/renderField';
-import { Button } from '@/components/button/Button';
 
 type Props = {
   userId: string;

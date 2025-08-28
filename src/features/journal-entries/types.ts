@@ -17,8 +17,8 @@ interface AnalysedEntry {
   themes: string;
   summary: string;
   tip: string;
-};
+}
 
 export interface LocalisedAnalysedEntry extends AnalysedEntry {
   localized: Record<string, AnalysedEntry>;
-};
+}

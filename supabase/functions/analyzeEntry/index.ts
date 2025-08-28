@@ -57,7 +57,10 @@ serve(async (req: Request) => {
 
     // Remove code block formatting
     if (aiResponse.startsWith('```')) {
-      aiResponse = aiResponse.replace(/```(json)?/i, '').replace(/```$/, '').trim();
+      aiResponse = aiResponse
+        .replace(/```(json)?/i, '')
+        .replace(/```$/, '')
+        .trim();
     }
 
     try {
@@ -69,7 +72,10 @@ serve(async (req: Request) => {
     } catch (parseError) {
       console.error('AI response not valid JSON:', aiResponse);
       return new Response(
-        JSON.stringify({ error: 'AI response could not be parsed.', raw: aiResponse }),
+        JSON.stringify({
+          error: 'AI response could not be parsed.',
+          raw: aiResponse,
+        }),
         { status: 500 }
       );
     }

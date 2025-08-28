@@ -1,17 +1,17 @@
-import { View, Text, Pressable, Alert } from 'react-native';
+import { Button } from '@/components/button/Button';
 import { APP_COLORS } from '@/constants/colors';
-import { Ionicons } from '@expo/vector-icons';
+import { Plan } from '@/features/paywall/types';
 import { useCurrentUserProfile } from '@/features/profile/hooks/useCurrentUserProfile';
 import { useUserUsageContext } from '@/features/user/contexts/UserUsageContext';
-import { Plan } from '@/features/paywall/types';
-import { Button } from '@/components/button/Button';
+import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
+import { Alert, Text, View } from 'react-native';
 import { useDeleteUserAccount } from '../hooks/useDeleteUserAccount';
 
 export default function AccountDeletionScreen() {
   const { data: userUsage } = useUserUsageContext();
   const { userId } = useCurrentUserProfile();
-  const deleteUserAccount = useDeleteUserAccount();
+  const { mutateAsync, isPending } = useDeleteUserAccount();
 
   const isPremium = userUsage?.plan_id === Plan.PREMIUM;
 
@@ -22,7 +22,7 @@ export default function AccountDeletionScreen() {
       return;
     }
     try {
-      await deleteUserAccount.mutateAsync({ id: userId });
+      await mutateAsync({ id: userId });
     } catch (error) {
       console.error('Error deleting account:', error);
     }
@@ -128,11 +128,14 @@ export default function AccountDeletionScreen() {
         style={{
           marginBottom: 16,
         }}
+        disabled={isPending}
       />
       <Button
         title="Permanently Delete Account"
         onPress={handleDelete}
         variant="outline"
+        disabled={isPending}
+        loading={isPending}
       />
     </View>
   );

@@ -1,7 +1,7 @@
-import { View, Text } from 'react-native';
 import { APP_COLORS } from '@/constants/colors';
-import { Ionicons } from '@expo/vector-icons';
 import { useWellnessScore } from '@/features/wellness-score/hooks/useWellnessScore';
+import { Ionicons } from '@expo/vector-icons';
+import { Text, View } from 'react-native';
 
 export function AiInsights() {
   const { data } = useWellnessScore();
@@ -18,12 +18,13 @@ export function AiInsights() {
 
   let moodMessage = '';
   if (score >= 80)
-    moodMessage = "You've been journaling with a positive tone this week 🎉";
+    moodMessage = 'Your recent reflections show a very positive tone 🎉';
   else if (score >= 50)
-    moodMessage = "You're doing well, try to add a few more reflections!";
+    moodMessage =
+      "You're doing well — keep journaling to strengthen your streak!";
   else
     moodMessage =
-      'Try journaling your feelings today to keep track of your mood.';
+      'Try writing today to boost your wellness score and build consistency.';
 
   return (
     <View

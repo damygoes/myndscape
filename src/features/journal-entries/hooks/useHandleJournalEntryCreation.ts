@@ -48,15 +48,23 @@ export const useHandleJournalEntryCreation = () => {
         });
       } catch (aiError) {
         console.error('AI analysis failed:', aiError);
-        Alert.alert('AI Summary Error', 'We couldn’t generate an AI summary for this entry.');
+        Alert.alert(
+          'AI Summary Error',
+          'We couldn’t generate an AI summary for this entry.'
+        );
       } finally {
         stopAnalyzing(createdEntry.id);
       }
 
-      queryClient.invalidateQueries({ queryKey: wellnessScoreKeys.detail(userId) });
+      queryClient.invalidateQueries({
+        queryKey: wellnessScoreKeys.detail(userId),
+      });
     } catch (error) {
       console.error('Error creating journal entry:', error);
-      Alert.alert('Creation Error', 'Failed to create journal entry. Please try again.');
+      Alert.alert(
+        'Creation Error',
+        'Failed to create journal entry. Please try again.'
+      );
     }
   };
 

@@ -25,7 +25,9 @@ export const formatRelativeDate = (dateString: string) => {
   return formatDistanceToNow(new Date(dateString), { addSuffix: true });
 };
 
-export function parseThemes(themes: string | string[] | null | undefined): string[] {
+export function parseThemes(
+  themes: string | string[] | null | undefined
+): string[] {
   if (!themes) return [];
 
   // Already an array

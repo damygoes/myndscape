@@ -1,14 +1,18 @@
 import { Button } from '@/components/button/Button';
-import { ErrorState } from '@/components/ErrorState';
 import { Input } from '@/components/input/Input';
 import { ThemedSafeAreaView } from '@/components/layouts/ThemedSafeAreaView';
-import { LoadingState } from '@/components/LoadingState';
 import { APP_COLORS } from '@/constants/colors';
 import { useUpdateUserProfile } from '@/features/profile/hooks/useUpdateUserProfile';
-import { useUserProfile } from '@/features/profile/hooks/useUserProfile';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Platform, ScrollView } from 'react-native';
+import {
+  Alert,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 type ProfileSectionProps = {
@@ -20,29 +24,37 @@ type ProfileSectionProps = {
   multiline?: boolean;
 };
 
-export default function ProfileInfo() {
+export default function QuickOnboardingProfileInfo() {
   const [userName, setUserName] = useState('');
   const [moodCheck, setMoodCheck] = useState('');
   const [bio, setBio] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const { userId } = useLocalSearchParams<{ userId: string }>();
 
-  const handleSubmit = async () => {
-    setLoading(true);
+  const { mutateAsync, isPending, isSuccess, error } =
+    useUpdateUserProfile(userId);
 
-    try {
-      await useUpdateUserProfile(userId, {
-        username: userName,
-        emotion_check: moodCheck,
-        bio: bio,
-        isonboarded: true,
-      });
-      setLoading(false);
-      router.push('/'); // Navigate to home after profile update
-    } catch (error) {
+  const isButtonDisabled =
+    isPending ||
+    userName.trim() === '' ||
+    moodCheck.trim() === '' ||
+    bio.trim() === '';
+
+  const handleSubmit = async () => {
+    await mutateAsync({
+      username: userName,
+      emotion_check: moodCheck,
+      bio: bio,
+      isonboarded: true,
+    });
+
+    if (error) {
       console.error('Failed to update profile:', error);
-      setLoading(false);
+      Alert.alert('Error', 'Failed to update profile. Please try again later.');
+    }
+
+    if (isSuccess) {
+      router.push('/');
     }
   };
 
@@ -51,7 +63,7 @@ export default function ProfileInfo() {
       <KeyboardAwareScrollView
         contentContainerStyle={styles.scrollContent}
         enableOnAndroid={true}
-        extraScrollHeight={Platform.OS === 'ios' ? 100 : 120} // adjust as needed
+        extraScrollHeight={Platform.OS === 'ios' ? 100 : 120}
         keyboardShouldPersistTaps="handled"
       >
         <ScrollView
@@ -60,7 +72,7 @@ export default function ProfileInfo() {
         >
           <ProfileSection
             title="Hi there! 👋"
-            description="I’m Myndscape — your little mind buddy. What’s your name or nickname? I’d love to call you something personal."
+            description="I’m Myndscape — your journaling companion. What’s your name or nickname? I’d love to call you something personal."
             value={userName}
             onChangeText={setUserName}
             placeholder="Enter your username"
@@ -87,7 +99,8 @@ export default function ProfileInfo() {
             title="Submit"
             onPress={handleSubmit}
             style={styles.button}
-            loading={loading}
+            loading={isPending}
+            disabled={isButtonDisabled}
           />
         </ScrollView>
       </KeyboardAwareScrollView>
@@ -135,12 +148,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     color: APP_COLORS['body-text'],
+    fontFamily: 'Manrope',
   },
   intro: {
     fontSize: 16,
     fontWeight: '400',
     color: APP_COLORS['body-text-disabled'],
     marginBottom: 16,
+    fontFamily: 'Manrope',
   },
   section: {
     gap: 8,
@@ -149,11 +164,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     color: APP_COLORS['body-text'],
+    fontFamily: 'Manrope',
   },
   sectionDescription: {
     fontSize: 16,
     fontWeight: '400',
     color: APP_COLORS['body-text-disabled'],
+    fontFamily: 'Manrope',
   },
   button: {
     marginTop: 24,
