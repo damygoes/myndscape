@@ -23,8 +23,7 @@ export default function AddEntryScreen() {
   const { handleCreateEntry, createIsPending } =
     useHandleJournalEntryCreation();
 
-  const shouldDisableSubmit =
-    isSubmitting || createIsPending;
+  const shouldDisableSubmit = isSubmitting || createIsPending;
 
   const handleSubmit = async () => {
     if (!content.trim()) {

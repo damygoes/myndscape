@@ -48,8 +48,10 @@ export function QuickStatsGrid() {
     },
     {
       icon: 'document-text-outline',
-      label: i18n.t('QuickStatsGrid.entriesToday.label', { count: todayEntries }),
-      value: todayEntries
+      label: i18n.t('QuickStatsGrid.entriesToday.label', {
+        count: todayEntries,
+      }),
+      value: todayEntries,
     },
     {
       icon: 'book-outline',

@@ -1,4 +1,9 @@
 {
+  "Tabs": {
+    "home": "Home",
+    "history": "Historique",
+    "settings": "Paramètres"
+  },
   "GreetingCard": {
     "morning": "Bonjour",
     "afternoon": "Salut, bon après-midi",
