@@ -1,6 +1,7 @@
 {
   "Common": {
-    "back": "Back"
+    "back": "Back",
+    "getStarted": "Get Started"
   },
   "Tabs": {
     "home": "Home",
@@ -197,6 +198,25 @@
     "Alert": {
       "errorTitle": "Error",
       "errorDescription": "There was an error saving your profile info. Please try again."
+    }
+  },
+  "LoginScreen": {
+    "title": "Sign Up or Login",
+    "description": "Please enter your email address to get started."
+  },
+  "LoginForm": {
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email address",
+    "button": "Send Access Link",
+    "infoButton": "Tell me about Myndscape",
+    "Alert": {
+      "errorTitle": "Error",
+      "errorDescription": "There was an error sending the access link. Please try again.",
+      "successTitle": "Check Your Email",
+      "successDescription": "We sent you a magic link to log in. Please check your inbox."
+    },
+    "ValidationError": {
+      "email": "Please enter a valid email address."
     }
   }
 }

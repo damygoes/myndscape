@@ -1,11 +1,14 @@
 import { Button } from '@/components/button/Button';
 import { Input } from '@/components/input/Input';
 import { useAuthActions } from '@/features/auth/hooks/useAuthActions';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, View } from 'react-native';
 
 export function LoginForm() {
+
+  const { t } = useAppLocale();
   const { sendMagicLink } = useAuthActions();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -18,19 +21,19 @@ export function LoginForm() {
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail);
 
     if (!trimmedEmail || !isValidEmail) {
-      setError('Please enter a valid email address');
+      setError(t('LoginForm.ValidationError.email'));
       setLoading(false);
       return;
     }
 
     try {
       await sendMagicLink(trimmedEmail);
-      Alert.alert('Check Your Email', 'We sent you a magic link to log in.');
+      Alert.alert(t('LoginForm.Alert.successTitle'), t('LoginForm.Alert.successDescription'));
     } catch (err) {
       console.error('Magic link error:', err);
       const message =
-        err instanceof Error ? err.message : 'An unknown error occurred.';
-      Alert.alert('Login Error', message);
+        err instanceof Error ? err.message : t('LoginForm.Alert.errorDescription');
+      Alert.alert(t('LoginForm.Alert.errorTitle'), message);
     } finally {
       setLoading(false);
     }
@@ -48,8 +51,8 @@ export function LoginForm() {
   return (
     <View className="w-full gap-8 px-2 py-4">
       <Input
-        label="Email"
-        placeholder="Enter your email address"
+        label={t('LoginForm.emailLabel')}
+        placeholder={t('LoginForm.emailPlaceholder')}
         value={email}
         onChangeText={handleEmailChange}
         keyboardType="email-address"
@@ -59,7 +62,7 @@ export function LoginForm() {
 
       <View>
         <Button
-          title="Send Access Link"
+          title={t('LoginForm.button')}
           onPress={handleSendLink}
           loading={loading}
           variant="primary"
@@ -67,7 +70,7 @@ export function LoginForm() {
         />
 
         <Button
-          title="Tell me about Myndscape"
+          title={t('LoginForm.infoButton')}
           onPress={handleBackToOnboarding}
           disabled={loading}
           variant="link"

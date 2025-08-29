@@ -8,7 +8,7 @@ import { APP_COLORS } from '@/constants/colors';
 import { useAppLocale } from '@/services/i18n/useAppLocale';
 
 export default function TabLayout() {
-  const i18n = useAppLocale();
+  const { t } = useAppLocale();
   return (
     <Tabs
       screenOptions={{
@@ -29,7 +29,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: i18n.t('Tabs.home'),
+          title: t('Tabs.home'),
           tabBarIcon: ({ color }) => (
             <IconSymbol name="home" size={24} color={color} />
           ),
@@ -38,7 +38,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="history"
         options={{
-          title: i18n.t('Tabs.history'),
+          title: t('Tabs.history'),
           tabBarIcon: ({ color }) => (
             <IconSymbol name="history" size={24} color={color} />
           ),
@@ -47,7 +47,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: i18n.t('Tabs.settings'),
+          title: t('Tabs.settings'),
           tabBarIcon: ({ color }) => (
             <IconSymbol name="settings" size={24} color={color} />
           ),

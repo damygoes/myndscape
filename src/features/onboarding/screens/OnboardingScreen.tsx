@@ -6,8 +6,12 @@ import OnboardingSceneOne from '../scenes/OnboardingSceneOne';
 import OnboardingSceneTwo from '../scenes/OnboardingSceneTwo';
 import OnboardingSceneThree from '../scenes/OnboardingSceneThree';
 import { router } from 'expo-router';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 
 export default function OnboardingScreen() {
+
+  const { t } = useAppLocale();
+
   const handleGetStarted = () => {
     router.push('/login');
   };
@@ -30,7 +34,7 @@ export default function OnboardingScreen() {
       </PagerView>
 
       <Button
-        title="Get Started"
+        title={t('Common.getStarted')}
         onPress={handleGetStarted}
         style={{ marginBottom: 24 }}
       />

@@ -1,6 +1,7 @@
 {
   "Common": {
-    "back": "Zurück"
+    "back": "Zurück",
+    "getStarted": "Loslegen"
   },
   "Tabs": {
     "home": "Home",
@@ -197,6 +198,25 @@
     "Alert": {
       "errorTitle": "Fehler",
       "errorDescription": "Beim Speichern deiner Profilinformationen ist ein Fehler aufgetreten. Bitte versuche es erneut."
+    }
+  },
+  "LoginScreen": {
+    "title": "Registrieren oder Anmelden",
+    "description": "Bitte gib deine E-Mail-Adresse ein, um zu beginnen."
+  },
+  "LoginForm": {
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "Gib deine E-Mail-Adresse ein",
+    "button": "Zugang-Link senden",
+    "infoButton": "Erzähl mir von Myndscape",
+    "Alert": {
+      "errorTitle": "Fehler",
+      "errorDescription": "Beim Senden des Zugang-Links ist ein Fehler aufgetreten. Bitte versuche es erneut.",
+      "successTitle": "Überprüfe deine E-Mail",
+      "successDescription": "Wir haben dir einen magischen Link zum Einloggen gesendet. Bitte überprüfe deinen Posteingang."
+    },
+    "ValidationError": {
+      "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
     }
   }
 }

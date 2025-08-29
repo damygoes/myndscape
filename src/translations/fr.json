@@ -1,6 +1,7 @@
 {
   "Common": {
-    "back": "Retour"
+    "back": "Retour",
+    "getStarted": "Commencer"
   },
   "Tabs": {
     "home": "Home",
@@ -197,6 +198,25 @@
     "Alert": {
       "errorTitle": "Erreur",
       "errorDescription": "Une erreur est survenue lors de l’enregistrement de ton profil. Veuillez réessayer."
+    }
+  },
+  "LoginScreen": {
+    "title": "S'inscrire ou se connecter",
+    "description": "Veuillez entrer votre adresse e-mail pour commencer."
+  },
+  "LoginForm": {
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "Entrez votre adresse e-mail",
+    "button": "Envoyer le lien d'accès",
+    "infoButton": "Parle-moi de Myndscape",
+    "Alert": {
+      "errorTitle": "Erreur",
+      "errorDescription": "Une erreur est survenue lors de l’envoi du lien d'accès. Veuillez réessayer.",
+      "successTitle": "Vérifiez votre e-mail",
+      "successDescription": "Nous vous avons envoyé un lien magique pour vous connecter. Veuillez vérifier votre boîte de réception."
+    },
+    "ValidationError": {
+      "email": "Veuillez entrer une adresse e-mail valide."
     }
   }
 }

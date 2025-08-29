@@ -1,11 +1,15 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { APP_COLORS, COLORS } from '@/constants/colors';
 import { LoginForm } from '@/features/auth/components/LoginForm';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { Image } from 'expo-image';
 import React from 'react';
 import { KeyboardAvoidingView, Platform, Text, View } from 'react-native';
 
 export default function LandingScreen() {
+
+  const {t} = useAppLocale();
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, width: '100%' }}
@@ -72,7 +76,7 @@ export default function LandingScreen() {
               fontFamily: 'Manrope',
             }}
           >
-            Sign Up or Login
+            {t('LoginScreen.title')}
           </Text>
           <Text
             style={{
@@ -83,7 +87,7 @@ export default function LandingScreen() {
               fontFamily: 'Manrope',
             }}
           >
-            Please enter your email address to get started.
+            {t('LoginScreen.description')}
           </Text>
         </View>
         <LoginForm />
