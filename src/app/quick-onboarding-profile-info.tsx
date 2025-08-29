@@ -3,6 +3,7 @@ import { Input } from '@/components/input/Input';
 import { ThemedSafeAreaView } from '@/components/layouts/ThemedSafeAreaView';
 import { APP_COLORS } from '@/constants/colors';
 import { useUpdateUserProfile } from '@/features/profile/hooks/useUpdateUserProfile';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import {
@@ -25,6 +26,7 @@ type ProfileSectionProps = {
 };
 
 export default function QuickOnboardingProfileInfo() {
+  const { t } = useAppLocale();
   const [userName, setUserName] = useState('');
   const [moodCheck, setMoodCheck] = useState('');
   const [bio, setBio] = useState('');
@@ -50,7 +52,10 @@ export default function QuickOnboardingProfileInfo() {
 
     if (error) {
       console.error('Failed to update profile:', error);
-      Alert.alert('Error', 'Failed to update profile. Please try again later.');
+      Alert.alert(
+        t('QuickOnboardingProfileInfo.Alert.errorTitle'),
+        t('QuickOnboardingProfileInfo.Alert.errorDescription')
+      );
     }
 
     if (isSuccess) {
@@ -71,32 +76,36 @@ export default function QuickOnboardingProfileInfo() {
           keyboardShouldPersistTaps="handled"
         >
           <ProfileSection
-            title="Hi there! 👋"
-            description="I’m Myndscape — your journaling companion. What’s your name or nickname? I’d love to call you something personal."
+            title={t('QuickOnboardingProfileInfo.Username.title')}
+            description={t('QuickOnboardingProfileInfo.Username.description')}
             value={userName}
             onChangeText={setUserName}
-            placeholder="Enter your username"
+            placeholder={t('QuickOnboardingProfileInfo.Username.placeholder')}
           />
 
           <ProfileSection
-            title="Emotional Check 💭"
-            description="If you had to sum up how your days usually feel, which one fits best?"
+            title={t('QuickOnboardingProfileInfo.EmotionalCheckIn.title')}
+            description={t(
+              'QuickOnboardingProfileInfo.EmotionalCheckIn.description'
+            )}
             value={moodCheck}
             onChangeText={setMoodCheck}
-            placeholder="Enter your answer"
+            placeholder={t(
+              'QuickOnboardingProfileInfo.EmotionalCheckIn.placeholder'
+            )}
           />
 
           <ProfileSection
-            title="Bio"
-            description="Share a little about yourself — who you are, what you love, or anything that feels you."
+            title={t('QuickOnboardingProfileInfo.Bio.title')}
+            description={t('QuickOnboardingProfileInfo.Bio.description')}
             value={bio}
             onChangeText={setBio}
-            placeholder="Enter your answer"
+            placeholder={t('QuickOnboardingProfileInfo.Bio.placeholder')}
             multiline
           />
 
           <Button
-            title="Submit"
+            title={t('QuickOnboardingProfileInfo.Submit.title')}
             onPress={handleSubmit}
             style={styles.button}
             loading={isPending}

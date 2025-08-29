@@ -1,4 +1,7 @@
 {
+  "Common": {
+    "back": "Back"
+  },
   "Tabs": {
     "home": "Home",
     "history": "History",
@@ -39,6 +42,7 @@
       "negative": "Try writing today to boost your wellness score and build consistency."
     },
     "streak": {
+      "writeToday": "Don't forget to write today!",
       "longest": "You're on your longest streak yet! 🔥",
       "short": "You're {{count}} day{{count > 1 ? 's' : ''}} away from your longest streak. Keep going!"
     }
@@ -57,6 +61,142 @@
     "loader": "We're in this together! Reflecting on what you shared...",
     "error": {
       "empty": "A problem shared is a problem halved. Please share your thoughts."
+    }
+  },
+  "MoodBadge": {
+    "title": "Mood"
+  },
+  "JournalEntryDetails": {
+    "title": "Entry Details",
+    "userInput": "What you wrote:",
+    "reflections": "Reflections",
+    "summary": "Summary",
+    "themes": "Themes",
+    "tip": "Tip",
+    "delete": "Delete",
+    "loadingEntries": "Loading Entries...",
+    "errorLoadingEntries": "Error loading entries.",
+    "Alert": {
+      "deleteEntryTitle": "Delete Entry",
+      "deleteEntryDescription": "Are you sure you want to delete this entry?",
+      "deleteEntry": "Delete",
+      "cancel": "Cancel",
+      "errorDeletingEntryTitle": "Error",
+      "errorDeletingEntryDescription": "Error deleting entry. Please try again."
+    }
+  },
+  "Settings": {
+    "profile": {
+      "bio": "Bio"
+    },
+    "General": {
+      "title": "General",
+      "description": "Setup notifications, theme and language preferences."
+    },
+    "Account": {
+      "title": "Account",
+      "description": "Manage your subscription and account settings."
+    },
+    "Support": {
+      "title": "Support",
+      "description": "Get help, send feedback, and learn more about Myndscape."
+    }
+  },
+  "Notifications": {
+    "title": "Notifications",
+    "description": "Reminders and journaling check-ins"
+  },
+  "Theme": {
+    "title": "Theme",
+    "description": "Choose your app theme - light, dark, or system default."
+  },
+  "Language": {
+    "title": "Language",
+    "description": "Select your preferred language for the app."
+  },
+  "ProfileDetails": {
+    "title": "Profile Details",
+    "description": "Update your profile information"
+  },
+  "Subscription": {
+    "title": "Subscription & Billing",
+    "description": "Manage your subscription plan and payment methods."
+  },
+  "Logout": {
+    "title": "Logout",
+    "description": "Sign out of your account."
+  },
+  "DeleteAccount": {
+    "title": "Delete Account",
+    "description": "Permanently delete your account and all associated data."
+  },
+  "ProfileForm": {
+    "username": "Username",
+    "bio": "Bio",
+    "email": "Email",
+    "update": "Update",
+    "save": "Save",
+    "saving": "Saving...",
+    "saved": "Profile saved!",
+    "cancel": "Cancel"
+  },
+  "Themes": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "Languages": {
+    "english": "English",
+    "german": "German",
+    "french": "French"
+  },
+  "BottomSheetModal": {
+    "cancel": "Cancel"
+  },
+  "Onboarding": {
+    "SceneOne": {
+      "title": "Your Safe space, always",
+      "description": "Share how you’re feeling — Myndscape listens without judgment.",
+      "Callouts": {
+        "one": "How are you feeling today?",
+        "two": "Today, I am feeling happy!"
+      }
+    },
+    "SceneTwo": {
+      "title": "Mood Support",
+      "description": "Get gentle tips, reflections, and activities designed to lift your mood and brighten your lifestyle, one step at a time.",
+      "Callouts": {
+        "one": "😁",
+        "two": "😔"
+      }
+    },
+    "SceneThree": {
+      "title": "Grow With Myndscape",
+      "description": "Watch your emotional patterns, build healthier habits, and discover calm — with an AI buddy that evolves with you."
+    }
+  },
+  "QuickOnboardingProfileInfo": {
+    "Username": {
+      "title": "Hi there! 👋",
+      "description": "I’m Myndscape — your journaling companion. What’s your name or nickname? I’d love to call you something personal.",
+      "placeholder": "Enter your name or nickname"
+    },
+    "EmotionalCheckIn": {
+      "title": "Emotional Check-In 💭",
+      "description": "If you had to sum up how your days usually feel, what would you say?",
+      "placeholder": "Enter your feelings..."
+    },
+    "Bio": {
+      "title": "Tell us about yourself",
+      "description": "What’s your story? Share a little about who you are, what you love, and what makes you YOU!.",
+      "placeholder": "Enter your bio..."
+    },
+    "Submit": {
+      "title": "Submit"
+    },
+    "Alert": {
+      "errorTitle": "Error",
+      "errorDescription": "There was an error saving your profile info. Please try again."
     }
   }
 }

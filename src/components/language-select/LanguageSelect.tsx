@@ -2,26 +2,29 @@ import { BottomSheetModal } from '@/components/bottom-sheet-modal/BottomSheetMod
 import { APP_COLORS } from '@/constants/colors';
 import { useUserSettingsContext } from '@/features/user/contexts/UserSettingsContext';
 import { useUpdateUserSettings } from '@/features/user/hooks/useUpdateUserSettings';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
-const languageOptions = [
-  { label: 'English', value: 'en' },
-  { label: 'French', value: 'fr' },
-  { label: 'German', value: 'de' },
-];
-
 export function LanguageSelect() {
+  const { t, changeLanguage, locale } = useAppLocale();
   const { data, refetch } = useUserSettingsContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [localValue, setLocalValue] = useState<string>(data?.language || 'en');
 
   const { mutateAsync: updateSettings } = useUpdateUserSettings();
 
-  // Sync local state when context updates (after refetch)
+  const languageOptions = [
+    { label: t('Languages.english'), value: 'en' },
+    { label: t('Languages.french'), value: 'fr' },
+    { label: t('Languages.german'), value: 'de' },
+  ];
+
+  // Sync local state when user settings change
   useEffect(() => {
     if (data?.language && data.language !== localValue) {
       setLocalValue(data.language);
+      changeLanguage(data.language); // sync i18n with DB value
     }
   }, [data?.language]);
 
@@ -35,8 +38,11 @@ export function LanguageSelect() {
     setModalVisible(false);
 
     try {
+      // update user settings in DB
       await updateSettings({ language: lang });
-      await refetch(); // fetch latest user settings
+      await refetch();
+      // update i18n immediately
+      changeLanguage(lang);
     } catch (err) {
       console.error('Failed to update language', err);
     }

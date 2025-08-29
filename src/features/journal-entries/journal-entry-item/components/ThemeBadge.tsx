@@ -1,13 +1,7 @@
 import { COLORS } from '@/constants/colors';
 import { Text, useColorScheme } from 'react-native';
 
-export default function ThemeBadge({
-  theme,
-  style,
-}: {
-  theme: string;
-  style?: any;
-}) {
+export default function ThemeBadge({ theme }: { theme: string; style?: any }) {
   const themeColor = COLORS[useColorScheme() ?? 'light'];
 
   return (

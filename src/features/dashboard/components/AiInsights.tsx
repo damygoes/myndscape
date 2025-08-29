@@ -10,18 +10,34 @@ export function AiInsights() {
 
   if (!data) return null;
 
-  const { currentStreak, longestStreak, score } = data;
-  const streakDifference = longestStreak - currentStreak;
+  const {
+    currentStreak,
+    longestStreak,
+    score,          // latest entry mood score
+    wellnessScore,  // average mood score today
+    todayEntries,   // number of entries today
+  } = data;
 
-  const streakMessage =
-    currentStreak >= longestStreak
-      ? i18n.t('AiInsights.streak.longest')
-      : i18n.t('AiInsights.streak.short', { count: streakDifference });
-
+  // --- Mood message ---
   let moodMessage = '';
-  if (score >= 80) moodMessage = i18n.t('AiInsights.mood.positive');
-  else if (score >= 50) moodMessage = i18n.t('AiInsights.mood.neutral');
+  const moodValue = todayEntries > 0 ? wellnessScore : score; // fallback if no entries today
+
+  if (moodValue >= 80) moodMessage = i18n.t('AiInsights.mood.positive');
+  else if (moodValue >= 50) moodMessage = i18n.t('AiInsights.mood.neutral');
   else moodMessage = i18n.t('AiInsights.mood.negative');
+
+  // --- Streak message ---
+  let streakMessage = '';
+
+  if (todayEntries === 0) {
+    // Encourage writing today
+    streakMessage = i18n.t('AiInsights.streak.writeToday');
+  } else if (currentStreak >= longestStreak) {
+    streakMessage = i18n.t('AiInsights.streak.longest');
+  } else {
+    const streakDifference = longestStreak - currentStreak;
+    streakMessage = i18n.t('AiInsights.streak.short', { count: streakDifference });
+  }
 
   return (
     <View
@@ -33,9 +49,7 @@ export function AiInsights() {
         marginBottom: 12,
       }}
     >
-      <View
-        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}
-      >
+      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
         <Ionicons
           name="sparkles-outline"
           size={20}
@@ -53,6 +67,7 @@ export function AiInsights() {
           {i18n.t('AiInsights.title')}
         </Text>
       </View>
+
       <Text
         style={{
           color: APP_COLORS['body-text-disabled'],
@@ -63,6 +78,7 @@ export function AiInsights() {
       >
         {moodMessage}
       </Text>
+
       <Text
         style={{
           color: APP_COLORS['body-text-disabled'],

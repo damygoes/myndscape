@@ -10,7 +10,7 @@ import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function HomeDashboardScreen() {
-  const i18n = useAppLocale();
+  const { t } = useAppLocale();
 
   return (
     <View style={styles.container}>
@@ -36,7 +36,7 @@ export default function HomeDashboardScreen() {
               fontFamily: 'Manrope',
             }}
           >
-            {i18n.t('Home.welcomeTo')}{' '}
+            {t('Home.welcomeTo')}{' '}
             <Text
               style={{
                 fontWeight: '600',

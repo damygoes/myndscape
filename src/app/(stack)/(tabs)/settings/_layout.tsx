@@ -1,8 +1,10 @@
 import { COLORS } from '@/constants/colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { Stack } from 'expo-router';
 
 export default function ProfileStackLayout() {
+  const i18n = useAppLocale();
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
 
@@ -18,6 +20,7 @@ export default function ProfileStackLayout() {
           fontSize: 20,
           fontWeight: 'bold',
         },
+        headerBackTitle: i18n.t('Common.back'),
         gestureEnabled: true, // enable swipe back gestures
       }}
     >
@@ -33,42 +36,35 @@ export default function ProfileStackLayout() {
       <Stack.Screen
         name="edit-profile"
         options={{
-          title: 'Edit Profile',
+          title: i18n.t('ProfileDetails.title'),
           presentation: 'modal',
         }}
       />
       <Stack.Screen
         name="general"
         options={{
-          title: 'General',
+          title: i18n.t('Settings.General.title'),
           gestureEnabled: true,
         }}
       />
       <Stack.Screen
         name="account"
         options={{
-          title: 'Account',
-          gestureEnabled: true,
-        }}
-      />
-      <Stack.Screen
-        name="wellness"
-        options={{
-          title: 'Wellness',
+          title: i18n.t('Settings.Account.title'),
           gestureEnabled: true,
         }}
       />
       <Stack.Screen
         name="support"
         options={{
-          title: 'Support',
+          title: i18n.t('Settings.Support.title'),
           gestureEnabled: true,
         }}
       />
       <Stack.Screen
         name="delete-account"
         options={{
-          title: 'Delete Account',
+          title: i18n.t('DeleteAccount.title'),
           presentation: 'modal',
         }}
       />

@@ -2,8 +2,10 @@ import { View, Text } from 'react-native';
 import { Image } from 'expo-image';
 import { APP_COLORS } from '@/constants/colors';
 import { useUserProfileContext } from '@/features/user/contexts/UserProfileContext';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 
 export default function UserProfileCard() {
+  const i18n = useAppLocale();
   const { data } = useUserProfileContext();
 
   const getFallbackAvatar = () => {
@@ -98,7 +100,7 @@ export default function UserProfileCard() {
               fontFamily: 'Manrope',
             }}
           >
-            Bio:
+            {i18n.t('Settings.profile.bio')}
           </Text>
           <Text
             style={{

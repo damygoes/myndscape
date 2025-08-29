@@ -4,8 +4,11 @@ import UserProfileCard from '@/features/profile/components/UserProfileCard';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import SettingsCard from '../components/SettingsCard';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 
 export default function SettingsScreen() {
+  const i18n = useAppLocale();
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{
@@ -25,30 +28,29 @@ export default function SettingsScreen() {
       contentStyle={{
         paddingHorizontal: 20,
         paddingBottom: 100,
-        // height: '100%',
       }}
     >
       <UserProfileCard />
       <SettingsCard
-        title="General"
-        subtitle="Setup notifications, theme, and preferences"
+        title={i18n.t('Settings.General.title')}
+        subtitle={i18n.t('Settings.General.description')}
         onPress={() => router.push('/settings/general')}
       />
-      <SettingsCard
-        title="Wellness"
-        subtitle="Customize reminders, AI features, and privacy options"
+      {/* <SettingsCard
+        title={i18n.t('Settings.Wellness.title')}
+        subtitle={i18n.t('Settings.Wellness.description')}
         onPress={() => router.push('/settings/wellness')}
-      />
+      /> */}
       <SettingsCard
-        title="Account"
-        subtitle="Manage your subscription, payment method, and account details"
+        title={i18n.t('Settings.Account.title')}
+        subtitle={i18n.t('Settings.Account.description')}
         onPress={() => router.push('/settings/account')}
       />
-      <SettingsCard
-        title="Support"
-        subtitle="Get help, send feedback, and learn more about Myndscape"
+      {/* <SettingsCard
+        title={i18n.t('Settings.Support.title')}
+        subtitle={i18n.t('Settings.Support.description')}
         onPress={() => router.push('/settings/support')}
-      />
+      /> */}
     </ParallaxScrollView>
   );
 }

@@ -10,9 +10,6 @@ interface Props {
 export const ThemesBadges = ({ themes }: Props) => {
   const themeList = parseThemes(themes);
 
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
-
   if (themeList.length === 0) return null;
 
   return (

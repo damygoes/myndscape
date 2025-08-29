@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useUpdateUserProfile } from '../hooks/useUpdateUserProfile';
 import { renderField } from '../utils/renderField';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 
 type Props = {
   userId: string;
@@ -20,24 +21,23 @@ export function ProfileForm({
   username,
   onProfileUpdate,
 }: Props) {
+  const i18n = useAppLocale();
   const [displayName, setDisplayName] = useState(username || '');
   const [userBio, setUserBio] = useState(bio || '');
-  const [editing, setEditing] = useState(false);
-  const [saving, setSaving] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+
+  const updateProfile = useUpdateUserProfile(userId);
 
   const handleSave = async () => {
     try {
-      setSaving(true);
-      await useUpdateUserProfile(userId, {
+      await updateProfile.mutateAsync({
         username: displayName,
         bio: userBio,
       });
       await onProfileUpdate?.();
-      setEditing(false);
+      setEditMode(false);
     } catch (err) {
       console.error(err);
-    } finally {
-      setSaving(false);
     }
   };
 
@@ -52,17 +52,17 @@ export function ProfileForm({
       ]}
     >
       {renderField({
-        label: 'Username',
+        label: i18n.t('ProfileForm.username'),
         value: displayName,
         setValue: setDisplayName,
-        editing,
+        editing: editMode,
       })}
 
       {renderField({
-        label: 'Bio',
+        label: i18n.t('ProfileForm.bio'),
         value: userBio,
         setValue: setUserBio,
-        editing,
+        editing: editMode,
         multiline: true,
       })}
 
@@ -72,7 +72,7 @@ export function ProfileForm({
           { color: APP_COLORS['body-text-disabled'], fontFamily: 'Manrope' },
         ]}
       >
-        Email
+        {i18n.t('ProfileForm.email')}
       </Text>
       <Text
         style={[
@@ -84,24 +84,27 @@ export function ProfileForm({
       </Text>
 
       <View style={styles.actions}>
-        {editing ? (
+        {editMode ? (
           <>
             <Button
-              title="Save"
+              title={i18n.t('ProfileForm.save')}
               onPress={handleSave}
-              loading={saving}
+              loading={updateProfile.isPending}
               size="small"
             />
             <Button
-              title="Cancel"
-              onPress={() => setEditing(false)}
+              title={i18n.t('ProfileForm.cancel')}
+              onPress={() => setEditMode(false)}
               variant="outline"
               size="small"
-              disabled={saving}
+              disabled={updateProfile.isPending}
             />
           </>
         ) : (
-          <Button title="Update" onPress={() => setEditing(true)} />
+          <Button
+            title={i18n.t('ProfileForm.update')}
+            onPress={() => setEditMode(true)}
+          />
         )}
       </View>
     </View>

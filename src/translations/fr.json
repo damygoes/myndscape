@@ -1,4 +1,7 @@
 {
+  "Common": {
+    "back": "Retour"
+  },
   "Tabs": {
     "home": "Home",
     "history": "Historique",
@@ -39,6 +42,7 @@
       "negative": "Essaie d’écrire aujourd’hui pour booster ton score et ta régularité. ✍️"
     },
     "streak": {
+      "writeToday": "N'oublie pas d'écrire aujourd'hui !",
       "longest": "C’est ta plus longue série jusqu’ici ! 🔥",
       "short": "Il te reste {{count}} jour{{count > 1 ? 's' : ''}} pour atteindre ta plus longue série – continue !"
     }
@@ -57,6 +61,142 @@
     "loader": "On est ensemble ! On réfléchit à ce que tu as partagé...",
     "error": {
       "empty": "Un problème partagé est un problème à moitié résolu. Partage tes pensées !"
+    }
+  },
+  "MoodBadge": {
+    "title": "Humeur"
+  },
+  "JournalEntryDetails": {
+    "title": "Détails de l’entrée",
+    "userInput": "Ce que tu as écrit :",
+    "reflections": "Réflexions",
+    "summary": "Résumé",
+    "themes": "Thèmes",
+    "tip": "Astuce",
+    "delete": "Supprimer",
+    "loadingEntries": "Chargement des entrées...",
+    "errorLoadingEntries": "Erreur lors du chargement des entrées.",
+    "Alert": {
+      "deleteEntryTitle": "Supprimer l’entrée",
+      "deleteEntryDescription": "Tu es sûr de vouloir supprimer cette entrée ?",
+      "deleteEntry": "Supprimer",
+      "cancel": "Annuler",
+      "errorDeletingEntryTitle": "Erreur",
+      "errorDeletingEntryDescription": "Impossible de supprimer l’entrée. Réessaie."
+    }
+  },
+  "Settings": {
+    "profile": {
+      "bio": "Bio"
+    },
+    "General": {
+      "title": "Général",
+      "description": "Configurer notifications, thème et langue."
+    },
+    "Account": {
+      "title": "Compte",
+      "description": "Gérer ton abonnement et tes réglages de compte."
+    },
+    "Support": {
+      "title": "Support",
+      "description": "Obtiens de l’aide, envoie ton feedback et découvre plus sur Myndscape."
+    }
+  },
+  "Notifications": {
+    "title": "Notifications",
+    "description": "Rappels et check-ins de journal"
+  },
+  "Theme": {
+    "title": "Thème",
+    "description": "Choisis ton thème d’app – clair, sombre ou par défaut du système."
+  },
+  "Language": {
+    "title": "Langue",
+    "description": "Sélectionne ta langue préférée pour l’app."
+  },
+  "ProfileDetails": {
+    "title": "Détails du profil",
+    "description": "Mets à jour tes infos de profil"
+  },
+  "Subscription": {
+    "title": "Abonnement & Paiement",
+    "description": "Gère ton plan d’abonnement et tes moyens de paiement."
+  },
+  "Logout": {
+    "title": "Déconnexion",
+    "description": "Te déconnecter de ton compte."
+  },
+  "DeleteAccount": {
+    "title": "Supprimer le compte",
+    "description": "Supprimer définitivement ton compte et toutes tes données."
+  },
+  "ProfileForm": {
+    "username": "Nom d'utilisateur",
+    "bio": "Bio",
+    "email": "E-Mail",
+    "update": "Mettre à jour",
+    "save": "Enregistrer",
+    "saving": "En cours de sauvegarde...",
+    "saved": "Profil enregistré !",
+    "cancel": "Annuler"
+  },
+  "Themes": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système"
+  },
+  "Languages": {
+    "english": "Anglais",
+    "german": "Allemand",
+    "french": "Français"
+  },
+  "BottomSheetModal": {
+    "cancel": "Annuler"
+  },
+  "Onboarding": {
+    "SceneOne": {
+      "title": "Votre espace sûr, toujours",
+      "description": "Partagez ce que vous ressentez — Myndscape écoute sans jugement.",
+      "Callouts": {
+        "one": "Comment te sens-tu aujourd’hui ?",
+        "two": "Aujourd’hui, je me sens heureux !"
+      }
+    },
+    "SceneTwo": {
+      "title": "Soutien à l’humeur",
+      "description": "Obtenez des conseils doux, des réflexions et des activités conçues pour améliorer votre humeur et égayer votre style de vie, étape par étape.",
+      "Callouts": {
+        "one": "😁",
+        "two": "😔"
+      }
+    },
+    "SceneThree": {
+      "title": "Grandir avec Myndscape",
+      "description": "Observez vos schémas émotionnels, construisez des habitudes plus saines et découvrez le calme — avec un ami IA qui évolue avec vous."
+    }
+  },
+  "QuickOnboardingProfileInfo": {
+    "Username": {
+      "title": "Salut ! 👋",
+      "description": "Je suis Myndscape — ton compagnon pour le journal. Quel est ton prénom ou ton surnom ? J’aimerais pouvoir t’appeler de façon personnelle.",
+      "placeholder": "Entrez votre prénom ou surnom"
+    },
+    "EmotionalCheckIn": {
+      "title": "Bilan émotionnel 💭",
+      "description": "Si tu devais résumer ce que ressentent généralement tes journées, que dirais-tu ?",
+      "placeholder": "Exprime tes sentiments..."
+    },
+    "Bio": {
+      "title": "Parle-nous de toi",
+      "description": "Quelle est ton histoire ? Partage un peu qui tu es, ce que tu aimes et ce qui fait de toi ce que tu es !",
+      "placeholder": "Entrez votre bio..."
+    },
+    "Submit": {
+      "title": "Envoyer"
+    },
+    "Alert": {
+      "errorTitle": "Erreur",
+      "errorDescription": "Une erreur est survenue lors de l’enregistrement de ton profil. Veuillez réessayer."
     }
   }
 }
