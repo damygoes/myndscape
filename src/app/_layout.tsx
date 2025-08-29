@@ -2,7 +2,7 @@ import { AuthManager } from '@/features/auth/components/AuthManager';
 import { UserProfileProvider } from '@/features/user/contexts/UserProfileContext';
 import { UserSettingsProvider } from '@/features/user/contexts/UserSettingsContext';
 import { UserUsageProvider } from '@/features/user/contexts/UserUsageContext';
-import { SupabaseAuthProvider } from '@/services/SupabaseAuthProvider';
+import { SupabaseAuthProvider } from '@/services/supabase/SupabaseAuthProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useFonts } from 'expo-font';
 import { Slot } from 'expo-router';

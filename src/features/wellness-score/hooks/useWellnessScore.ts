@@ -1,6 +1,6 @@
 import { wellnessScoreKeys } from '@/lib/queryKeys';
-import { supabase } from '@/services/supabase';
-import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
+import { supabase } from '@/services/supabase/supabase';
+import { useSupabaseSession } from '@/services/supabase/SupabaseAuthProvider';
 import { useQuery } from '@tanstack/react-query';
 
 export function useWellnessScore() {
@@ -59,6 +59,13 @@ export function useWellnessScore() {
 
         const bonus = currentStreak >= 3 ? 5 : 0;
         wellnessScore = Math.round((moodAvg + bonus) * 100) / 100;
+      } else if (recentEntries && recentEntries.length > 0) {
+        // fallback to average mood score over last 30 days
+        const moodAvg =
+          recentEntries.reduce((sum, e) => sum + (e.mood_score ?? 50), 0) /
+          recentEntries.length;
+
+        wellnessScore = Math.round(moodAvg * 100) / 100;
       }
 
       // 4. Fetch mood score for the latest entry
@@ -106,28 +113,42 @@ async function calculateStreak(userId: string) {
     .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
-  if (!entries) return { currentStreak: 0, longestStreak: 0 };
+  if (!entries || entries.length === 0) {
+    return { currentStreak: 0, longestStreak: 0 };
+  }
 
+  // Deduplicate entries by day
+  const uniqueDays = Array.from(
+    new Set(
+      entries.map((e) => {
+        const d = new Date(e.created_at);
+        d.setHours(0, 0, 0, 0);
+        return d.getTime();
+      })
+    )
+  ).sort((a, b) => b - a); // newest first
+
+  // Calculate current streak
   let streak = 0;
-  let currentDate = new Date();
-  currentDate.setHours(0, 0, 0, 0);
+  let today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  for (const e of entries) {
-    const entryDate = new Date(e.created_at);
-    entryDate.setHours(0, 0, 0, 0);
-
-    if (entryDate.getTime() === currentDate.getTime()) {
+  for (const day of uniqueDays) {
+    if (day === today.getTime()) {
       streak++;
-      currentDate.setDate(currentDate.getDate() - 1);
-    } else if (entryDate.getTime() === currentDate.getTime() - 86400000) {
+      today.setDate(today.getDate() - 1);
+    } else if (day === today.getTime() - 86400000) {
       streak++;
-      currentDate.setDate(currentDate.getDate() - 1);
+      today.setDate(today.getDate() - 1);
     } else {
-      break;
+      break; // gap found, stop counting
     }
   }
 
-  return { currentStreak: streak, longestStreak: calculateLongest(entries) };
+  // Calculate longest streak
+  const longestStreak = calculateLongest(entries);
+
+  return { currentStreak: streak, longestStreak };
 }
 
 function calculateLongest(entries: { created_at: string }[]) {

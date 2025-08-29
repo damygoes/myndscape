@@ -15,9 +15,10 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import { formatRelativeDate } from '../utils';
 import { JournalEntryAnalysisSection } from './JournalEntryAnalysisSection';
 import { MoodBadge } from './MoodBadge';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
+import { formatRelativeDate } from '../utils';
 
 // Enable LayoutAnimation for Android (can remove if not using toggle anymore)
 if (
@@ -32,6 +33,7 @@ interface Props {
 }
 
 export const JournalEntryItem = ({ entry }: Props) => {
+  const i18n = useAppLocale();
   const { data } = useUserSettingsContext();
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
@@ -70,7 +72,7 @@ export const JournalEntryItem = ({ entry }: Props) => {
               style={[styles.analyzingText, { color: colors.textMuted }]}
               accessibilityLiveRegion="polite"
             >
-              Analyzing your mood...
+              {i18n.t('AddJournalEntry.submitting')}
             </Text>
           </View>
         )}

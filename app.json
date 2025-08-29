@@ -45,7 +45,7 @@
       "favicon": "./assets/icon.png",
       "bundler": "metro"
     },
-    "plugins": ["expo-router", "expo-web-browser"],
+    "plugins": ["expo-router", "expo-web-browser", "expo-localization"],
     "extra": {
       "EXPO_PUBLIC_APP_ENV": "production",
       "eas": {

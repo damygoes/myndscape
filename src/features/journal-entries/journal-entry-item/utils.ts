@@ -1,8 +1,11 @@
 import { Mood, moodColors, moodIcons } from '@/utils/moodUtils';
 import { Ionicons } from '@expo/vector-icons';
-import { formatDistanceToNow } from 'date-fns';
+import { formatRelative, Locale } from 'date-fns';
+import { enUS, de, fr } from 'date-fns/locale';
 import { JournalEntry } from '../types';
 import { SUMMARY_TRUNCATION_LENGTH } from './constants';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
+import { i18n } from '@/services/i18n/i18n';
 
 export function getMoodIcon(mood: string): keyof typeof Ionicons.glyphMap {
   return moodIcons[mood.toLowerCase() as Mood] ?? 'help-circle-outline';
@@ -21,8 +24,21 @@ export function extractMoodFromAISummary(summary: string): string {
   return 'neutral'; // fallback if parsing fails
 }
 
+export const dateFnsLocales: Record<string, Locale> = {
+  en: enUS,
+  de,
+  fr,
+};
+
 export const formatRelativeDate = (dateString: string) => {
-  return formatDistanceToNow(new Date(dateString), { addSuffix: true });
+  const lang = i18n.locale || 'en';
+  const locale = dateFnsLocales[lang] ?? enUS;
+
+  const date = new Date(dateString);
+
+  return formatRelative(date, new Date(), {
+    locale,
+  });
 };
 
 export function parseThemes(

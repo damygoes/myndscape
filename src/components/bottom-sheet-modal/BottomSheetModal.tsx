@@ -1,4 +1,5 @@
 import { APP_COLORS } from '@/constants/colors';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { ReactNode } from 'react';
 import { Modal, Text, TouchableOpacity, View } from 'react-native';
 
@@ -15,6 +16,8 @@ export function BottomSheetModal({
   children,
   showCancelButton = true,
 }: BottomSheetModalProps) {
+  const i18n = useAppLocale();
+
   return (
     <Modal transparent visible={visible} animationType="slide">
       <View
@@ -52,7 +55,7 @@ export function BottomSheetModal({
                   fontWeight: '500',
                 }}
               >
-                Cancel
+                {i18n.t('BottomSheetModal.cancel')}
               </Text>
             </TouchableOpacity>
           )}

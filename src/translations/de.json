@@ -1,0 +1,202 @@
+{
+  "Common": {
+    "back": "Zurück"
+  },
+  "Tabs": {
+    "home": "Home",
+    "history": "Verlauf",
+    "settings": "Einstellungen"
+  },
+  "GreetingCard": {
+    "morning": "Guten Morgen",
+    "afternoon": "Hey, schönen Nachmittag",
+    "evening": "Guten Abend"
+  },
+  "Home": {
+    "welcomeTo": "Willkommen bei"
+  },
+  "WellnessScoreCard": {
+    "title": "Dein täglicher Wellness-Score",
+    "description": "Wir berechnen deinen Score aus dem Vibe deines letzten Tagebucheintrags plus Bonus für Streaks und Konsistenz."
+  },
+  "QuickStatsGrid": {
+    "currentStreak": {
+      "label": "Aktuelle Serie",
+      "one": "{{count}} Tag",
+      "other": "{{count}} Tage"
+    },
+    "avgWellness": "Ø Wellness",
+    "entriesToday": {
+      "label": "Einträge heute",
+      "one": "{{count}} Eintrag",
+      "other": "{{count}} Einträge"
+    },
+    "totalEntries": "Alle Einträge",
+    "consistency": "Konsistenz (letzte 30 Tage)"
+  },
+  "AiInsights": {
+    "title": "AI-Einblicke",
+    "mood": {
+      "positive": "Deine Einträge klingen mega positiv 🎉",
+      "neutral": "Du bist gut dabei – bleib dran mit dem Schreiben, damit deine Serie wächst!",
+      "negative": "Lass uns heute was notieren, das pusht deinen Score und deine Routine. ✍️"
+    },
+    "streak": {
+      "writeToday": "Vergiss nicht, heute zu schreiben!",
+      "longest": "Du bist auf deiner längsten Serie ever! 🔥",
+      "short": "Nur noch {{count}} Tag{{count > 1 ? 'e' : ''}} bis zu deiner längsten Serie – weiter so!"
+    }
+  },
+  "TipCard": {
+    "title": "Tipp des Tages",
+    "noMoodIntro": "Keine Stimmung erkannt – hier ein allgemeiner Tipp:",
+    "moodIntro": "Dein letzter Eintrag zeigt, du warst {{mood}} drauf."
+  },
+  "AddJournalEntry": {
+    "title": "Neuen Eintrag schreiben",
+    "description": "Wie geht’s dir heute, {{username}}?",
+    "placeholder": "Was geht dir durch den Kopf?",
+    "submit": "Teilen",
+    "submitting": "Wird geteilt...",
+    "loader": "Wir reflektieren kurz über das, was du geschrieben hast...",
+    "error": {
+      "empty": "Schreib was rein – geteilte Gedanken sind halbe Gedanken."
+    }
+  },
+  "MoodBadge": {
+    "title": "Stimmung"
+  },
+  "JournalEntryDetails": {
+    "title": "Eintragsdetails",
+    "userInput": "Was du geschrieben hast:",
+    "reflections": "Gedanken",
+    "summary": "Zusammenfassung",
+    "themes": "Themen",
+    "tip": "Tipp",
+    "delete": "Löschen",
+    "loadingEntries": "Einträge werden geladen...",
+    "errorLoadingEntries": "Fehler beim Laden der Einträge.",
+    "Alert": {
+      "deleteEntryTitle": "Eintrag löschen",
+      "deleteEntryDescription": "Willst du diesen Eintrag wirklich löschen?",
+      "deleteEntry": "Löschen",
+      "cancel": "Abbrechen",
+      "errorDeletingEntryTitle": "Fehler",
+      "errorDeletingEntryDescription": "Eintrag konnte nicht gelöscht werden. Versuch’s nochmal."
+    }
+  },
+  "Settings": {
+    "profile": {
+      "bio": "Über mich"
+    },
+    "General": {
+      "title": "Allgemein",
+      "description": "Benachrichtigungen, Design und Sprache einstellen."
+    },
+    "Account": {
+      "title": "Konto",
+      "description": "Abo und Kontoeinstellungen verwalten."
+    },
+    "Support": {
+      "title": "Support",
+      "description": "Hilfe bekommen, Feedback geben und mehr über Myndscape erfahren."
+    }
+  },
+  "Notifications": {
+    "title": "Benachrichtigungen",
+    "description": "Erinnerungen und Journaling-Check-ins"
+  },
+  "Theme": {
+    "title": "Design",
+    "description": "Wähle dein App-Design – hell, dunkel oder systemgesteuert."
+  },
+  "Language": {
+    "title": "Sprache",
+    "description": "Wähle deine bevorzugte Sprache für die App."
+  },
+  "ProfileDetails": {
+    "title": "Profil-Details",
+    "description": "Aktualisiere deine Profilinfos"
+  },
+  "Subscription": {
+    "title": "Abo & Bezahlung",
+    "description": "Abo-Plan und Zahlungsmethoden verwalten."
+  },
+  "Logout": {
+    "title": "Abmelden",
+    "description": "Aus deinem Konto ausloggen."
+  },
+  "DeleteAccount": {
+    "title": "Konto löschen",
+    "description": "Dein Konto und alle Daten dauerhaft löschen."
+  },
+  "ProfileForm": {
+    "username": "Benutzername",
+    "bio": "Bio",
+    "email": "E-Mail",
+    "update": "Aktualisieren",
+    "save": "Speichern",
+    "saving": "Wird gespeichert...",
+    "saved": "Profil gespeichert!",
+    "cancel": "Abbrechen"
+  },
+  "Themes": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System"
+  },
+  "Languages": {
+    "english": "Englisch",
+    "german": "Deutsch",
+    "french": "Französisch"
+  },
+  "BottomSheetModal": {
+    "cancel": "Abbrechen"
+  },
+  "Onboarding": {
+    "SceneOne": {
+      "title": "Dein sicherer Raum, immer",
+      "description": "Teile, wie du dich fühlst — Myndscape hört ohne Urteil zu.",
+      "Callouts": {
+        "one": "Wie fühlst du dich heute?",
+        "two": "Heute fühle ich mich glücklich!"
+      }
+    },
+    "SceneTwo": {
+      "title": "Stimmungsunterstützung",
+      "description": "Erhalte sanfte Tipps, Reflexionen und Aktivitäten, die darauf abzielen, deine Stimmung zu heben und deinen Lebensstil Schritt für Schritt aufzuhellen.",
+      "Callouts": {
+        "one": "😁",
+        "two": "😔"
+      }
+    },
+    "SceneThree": {
+      "title": "Wachse mit Myndscape",
+      "description": "Beobachte deine emotionalen Muster, baue gesündere Gewohnheiten auf und entdecke Ruhe — mit einem KI-Buddy, der sich mit dir weiterentwickelt."
+    }
+  },
+  "QuickOnboardingProfileInfo": {
+    "Username": {
+      "title": "Hallo! 👋",
+      "description": "Ich bin Myndscape — dein Begleiter fürs Journaling. Wie heißt du oder welchen Spitznamen hast du? Ich würde dich gerne persönlich ansprechen.",
+      "placeholder": "Gib deinen Namen oder Spitznamen ein"
+    },
+    "EmotionalCheckIn": {
+      "title": "Emotionales Check-In 💭",
+      "description": "Wenn du deine Tage zusammenfassen müsstest, wie würdest du sie beschreiben?",
+      "placeholder": "Gib deine Gefühle ein..."
+    },
+    "Bio": {
+      "title": "Erzähl uns von dir",
+      "description": "Wie ist deine Geschichte? Teile ein wenig darüber, wer du bist, was du liebst und was dich ausmacht!",
+      "placeholder": "Gib deine Bio ein..."
+    },
+    "Submit": {
+      "title": "Absenden"
+    },
+    "Alert": {
+      "errorTitle": "Fehler",
+      "errorDescription": "Beim Speichern deiner Profilinformationen ist ein Fehler aufgetreten. Bitte versuche es erneut."
+    }
+  }
+}

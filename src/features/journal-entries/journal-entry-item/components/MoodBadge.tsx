@@ -1,4 +1,5 @@
 import { APP_COLORS } from '@/constants/colors';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import React from 'react';
 import { Text, View } from 'react-native';
 
@@ -7,6 +8,8 @@ interface MoodBadgeProps {
 }
 
 export const MoodBadge = ({ mood }: MoodBadgeProps) => {
+  const i18n = useAppLocale();
+
   return (
     <View
       style={{
@@ -28,7 +31,7 @@ export const MoodBadge = ({ mood }: MoodBadgeProps) => {
           fontSize: 12,
         }}
       >
-        Mood:
+        {i18n.t('MoodBadge.title')}
       </Text>
       <Text
         style={{

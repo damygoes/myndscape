@@ -6,9 +6,12 @@ import { GreetingCard } from '@/features/dashboard/components/GreetingCard';
 import { QuickStatsGrid } from '@/features/dashboard/components/QuickStatsGrid';
 import { TipCard } from '@/features/dashboard/components/TipCard';
 import { WellnessScoreCard } from '@/features/wellness-score/components/WellnessScoreCard';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function HomeDashboardScreen() {
+  const { t } = useAppLocale();
+
   return (
     <View style={styles.container}>
       <ParallaxScrollView
@@ -33,7 +36,7 @@ export default function HomeDashboardScreen() {
               fontFamily: 'Manrope',
             }}
           >
-            Welcome to{' '}
+            {t('Home.welcomeTo')}{' '}
             <Text
               style={{
                 fontWeight: '600',

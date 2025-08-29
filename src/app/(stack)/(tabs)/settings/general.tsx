@@ -1,7 +1,8 @@
 import { ThemeSelect } from '@/components/theme-select/ThemeSelect';
 import { APP_COLORS } from '@/constants/colors';
-import { LanguageSelect } from '@/features/language-selection/components/LanguageSelect';
+import { LanguageSelect } from '@/components/language-select/LanguageSelect';
 import { NotificationsToggle } from '@/features/notifications/components/NotificationsToggle';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { Ionicons } from '@expo/vector-icons';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
@@ -65,27 +66,28 @@ function SettingsRow({
 }
 
 export default function GeneralSettings() {
+  const { t } = useAppLocale();
   return (
     <ScrollView
       style={{ flex: 1, backgroundColor: APP_COLORS['primary-background'] }}
     >
       <SettingsRow
-        title="Notifications"
-        subtitle="Reminders and journaling check-ins"
+        title={t('Notifications.title')}
+        subtitle={t('Notifications.description')}
         icon="notifications-outline"
         rightElement={<NotificationsToggle />}
       />
 
       <SettingsRow
-        title="Theme"
-        subtitle="Light, dark, or system default"
+        title={t('Theme.title')}
+        subtitle={t('Theme.description')}
         icon="color-palette-outline"
         rightElement={<ThemeSelect />}
       />
 
       <SettingsRow
-        title="Language"
-        subtitle="Select your preferred language"
+        title={t('Language.title')}
+        subtitle={t('Language.description')}
         icon="globe-outline"
         rightElement={<LanguageSelect />}
       />

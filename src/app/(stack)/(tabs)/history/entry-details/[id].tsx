@@ -8,6 +8,7 @@ import {
   prepareJournalEntry,
 } from '@/features/journal-entries/journal-entry-item/utils';
 import { Plan } from '@/features/paywall/types';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { router, useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import {
@@ -22,6 +23,7 @@ import {
 } from 'react-native';
 
 export default function EntryDetailsScreen() {
+  const i18n = useAppLocale();
   const { id } = useLocalSearchParams<{ id: string }>();
   const { data, isLoading, error } = useJournalEntryById(id);
   const deleteJournalEntry = useDeleteJournalEntry();
@@ -33,7 +35,7 @@ export default function EntryDetailsScreen() {
       <View style={styles.centered}>
         <ActivityIndicator size="large" color={colors.primary} />
         <Text style={{ marginTop: 16, color: colors.textPrimary }}>
-          Loading entry...
+          {i18n.t('JournalEntryDetails.loadingEntries')}
         </Text>
       </View>
     );
@@ -43,7 +45,7 @@ export default function EntryDetailsScreen() {
     return (
       <View style={styles.centered}>
         <Text style={{ color: colors.textPrimary }}>
-          Could not load entry. Please try again later.
+          {i18n.t('JournalEntryDetails.errorLoadingEntries')}
         </Text>
       </View>
     );
@@ -53,21 +55,28 @@ export default function EntryDetailsScreen() {
   const themeList = parseThemes(journalEntry.themes);
 
   const handleDelete = async () => {
-    Alert.alert('Delete Entry', 'Are you sure you want to delete this entry?', [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Delete',
-        style: 'destructive',
-        onPress: async () => {
-          try {
-            await deleteJournalEntry.mutateAsync({ id: journalEntry.id });
-            router.replace('/history');
-          } catch (err) {
-            Alert.alert('Error', 'Failed to delete entry.');
-          }
+    Alert.alert(
+      i18n.t('Alert.deleteEntryTitle'),
+      i18n.t('Alert.deleteEntryDescription'),
+      [
+        { text: i18n.t('Alert.cancel'), style: 'cancel' },
+        {
+          text: i18n.t('Alert.deleteEntry'),
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              await deleteJournalEntry.mutateAsync({ id: journalEntry.id });
+              router.replace('/history');
+            } catch (err) {
+              Alert.alert(
+                i18n.t('Alert.errorDeletingEntryTitle'),
+                i18n.t('Alert.errorDeletingEntryDescription')
+              );
+            }
+          },
         },
-      },
-    ]);
+      ]
+    );
   };
 
   return (
@@ -90,7 +99,7 @@ export default function EntryDetailsScreen() {
       {/* Content */}
       <View>
         <Text style={[styles.label, { color: colors.textMuted }]}>
-          What you wrote:
+          {i18n.t('JournalEntryDetails.userInput')}
         </Text>
         <Text style={[styles.content, { color: colors.textPrimary }]}>
           {journalEntry.content}
@@ -100,14 +109,14 @@ export default function EntryDetailsScreen() {
       {/* Reflections */}
       <View>
         <Text style={[styles.label, { color: colors.textMuted }]}>
-          Reflections
+          {i18n.t('JournalEntryDetails.reflections')}
         </Text>
 
         {/* Summary */}
         {journalEntry.summary && (
           <View style={styles.subSection}>
             <Text style={[styles.subTitle, { color: colors.textPrimary }]}>
-              Summary
+              {i18n.t('JournalEntryDetails.summary')}
             </Text>
             <Text style={[styles.subText, { color: colors.textPrimary }]}>
               {journalEntry.summary}
@@ -118,7 +127,7 @@ export default function EntryDetailsScreen() {
         {journalEntry.hasThemes && (
           <View style={styles.subSection}>
             <Text style={[styles.subTitle, { color: colors.textPrimary }]}>
-              Themes
+              {i18n.t('JournalEntryDetails.themes')}
             </Text>
             <View style={styles.themeBadgeContainer}>
               {themeList.map((theme, index) => (
@@ -132,7 +141,7 @@ export default function EntryDetailsScreen() {
         {journalEntry.hasTip && (
           <View style={styles.subSection}>
             <Text style={[styles.subTitle, { color: colors.textPrimary }]}>
-              Tip
+              {i18n.t('JournalEntryDetails.tip')}
             </Text>
             <View style={styles.tipContainer}>
               <Text style={[styles.subText, { color: colors.textPrimary }]}>
@@ -147,7 +156,9 @@ export default function EntryDetailsScreen() {
       <View>
         <View style={styles.actions}>
           <TouchableOpacity onPress={handleDelete} style={styles.delete}>
-            <Text style={{ color: colors.white }}>Delete</Text>
+            <Text style={{ color: colors.white }}>
+              {i18n.t('JournalEntryDetails.delete')}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

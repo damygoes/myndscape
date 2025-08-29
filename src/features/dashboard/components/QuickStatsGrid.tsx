@@ -1,10 +1,12 @@
 import { APP_COLORS } from '@/constants/colors';
 import { useWellnessScore } from '@/features/wellness-score/hooks/useWellnessScore';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ActivityIndicator, Text, View } from 'react-native';
 
 export function QuickStatsGrid() {
+  const i18n = useAppLocale();
   const { data, isLoading, isError } = useWellnessScore();
 
   if (isLoading) {
@@ -36,22 +38,24 @@ export function QuickStatsGrid() {
   const stats = [
     {
       icon: 'flame-outline',
-      label: 'Current Streak',
-      value: `${currentStreak} day${currentStreak !== 1 ? 's' : ''}`,
+      label: i18n.t('QuickStatsGrid.currentStreak.label'),
+      value: i18n.t('QuickStatsGrid.currentStreak', { count: currentStreak }),
     },
     {
       icon: 'happy-outline',
-      label: 'Avg. Wellness',
+      label: i18n.t('QuickStatsGrid.avgWellness'),
       value: `${wellnessScore}%`,
     },
     {
       icon: 'document-text-outline',
-      label: `Entr${todayEntries > 1 ? 'ies' : 'y'} Today`,
-      value: `${todayEntries ?? 0}`,
+      label: i18n.t('QuickStatsGrid.entriesToday.label', {
+        count: todayEntries,
+      }),
+      value: todayEntries,
     },
     {
       icon: 'book-outline',
-      label: 'Total Entries',
+      label: i18n.t('QuickStatsGrid.totalEntries'),
       value: `${totalEntries ?? 0}`,
     },
   ];
@@ -136,7 +140,7 @@ export function QuickStatsGrid() {
               fontFamily: 'Manrope',
             }}
           >
-            Consistency (Last 30 Days)
+            {i18n.t('QuickStatsGrid.consistency')}
           </Text>
           <Text
             style={{

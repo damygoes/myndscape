@@ -1,8 +1,10 @@
 import { COLORS } from '@/constants/colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { Stack } from 'expo-router';
 
 export default function HistoryStackLayout() {
+  const i18n = useAppLocale();
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
 
@@ -30,16 +32,9 @@ export default function HistoryStackLayout() {
         }}
       />
       <Stack.Screen
-        name="edit-entry/[id]"
-        options={{
-          title: 'Edit Entry',
-          presentation: 'modal',
-        }}
-      />
-      <Stack.Screen
         name="entry-details/[id]"
         options={{
-          title: 'Entry Details',
+          title: i18n.t('JournalEntryDetails.title'),
           presentation: 'modal',
         }}
       />

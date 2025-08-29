@@ -3,11 +3,13 @@ import { Input } from '@/components/input/Input';
 import { APP_COLORS } from '@/constants/colors';
 import { useHandleJournalEntryCreation } from '@/features/journal-entries/hooks/useHandleJournalEntryCreation';
 import { useCurrentUserProfile } from '@/features/profile/hooks/useCurrentUserProfile';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { router } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function AddEntryScreen() {
+  const i18n = useAppLocale();
   const { data: userProfile } = useCurrentUserProfile();
 
   const userDisplayName = useMemo(() => {
@@ -21,14 +23,11 @@ export default function AddEntryScreen() {
   const { handleCreateEntry, createIsPending } =
     useHandleJournalEntryCreation();
 
-  const shouldDisableSubmit =
-    isSubmitting || createIsPending || content.trim().length === 0;
+  const shouldDisableSubmit = isSubmitting || createIsPending;
 
   const handleSubmit = async () => {
     if (!content.trim()) {
-      setError(
-        'A problem shared is a problem halved. Please share your thoughts.'
-      );
+      setError(i18n.t('AddJournalEntry.error.empty'));
       return;
     }
 
@@ -52,13 +51,13 @@ export default function AddEntryScreen() {
     >
       <View style={styles.container}>
         <Text style={styles.title}>
-          How are you feeling today, {userDisplayName}?
+          {i18n.t('AddJournalEntry.description', { username: userDisplayName })}
         </Text>
 
         <Input
           value={content}
           onChangeText={handleChange}
-          placeholder="A penny for your thoughts..."
+          placeholder={i18n.t('AddJournalEntry.placeholder')}
           placeholderTextColor={APP_COLORS['body-text-disabled']}
           multiline
           style={{ minHeight: 100, padding: 16 }}
@@ -69,14 +68,16 @@ export default function AddEntryScreen() {
         {isSubmitting && (
           <View style={styles.analyzingContainer}>
             <Text style={styles.analyzingText}>
-              We're in this together! Reflecting on what you shared...
+              {i18n.t('AddJournalEntry.loader')}
             </Text>
           </View>
         )}
 
         <Button
           title={
-            isSubmitting ? 'Logging Your Thoughts...' : 'Log Your Thoughts'
+            isSubmitting
+              ? i18n.t('AddJournalEntry.submitting')
+              : i18n.t('AddJournalEntry.submit')
           }
           onPress={handleSubmit}
           disabled={shouldDisableSubmit}

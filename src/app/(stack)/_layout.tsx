@@ -1,10 +1,12 @@
 import { IconSymbol } from '@/components/ui/IconSymbol.ios';
 import { COLORS } from '@/constants/colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { router, Stack } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
 
 export default function StackLayout() {
+  const i18n = useAppLocale();
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
 
@@ -51,7 +53,7 @@ export default function StackLayout() {
                   fontSize: 18,
                 }}
               >
-                Add Journal Entry
+                {i18n.t('AddJournalEntry.title')}
               </Text>
             </View>
           ),

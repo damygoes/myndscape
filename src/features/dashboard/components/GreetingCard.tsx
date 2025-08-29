@@ -1,10 +1,12 @@
 import { APP_COLORS } from '@/constants/colors';
 import { useUserProfileContext } from '@/features/user/contexts/UserProfileContext';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { Dimensions, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Svg, { Defs, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 export function GreetingCard() {
+  const i18n = useAppLocale();
   const { data: userProfile, isLoading } = useUserProfileContext();
   const { width, height } = Dimensions.get('window');
   const HEADER_HEIGHT = height * 0.35;
@@ -59,7 +61,7 @@ export function GreetingCard() {
             fontFamily: 'Manrope',
           }}
         >
-          {getGreeting()},{'\n'}
+          {i18n.t(`GreetingCard.${getGreeting()}`)},{'\n'}
           <Text
             style={{
               fontWeight: '600',
@@ -89,7 +91,7 @@ export function GreetingCard() {
 
 function getGreeting() {
   const hour = new Date().getHours();
-  if (hour < 12) return 'Good morning';
-  if (hour < 18) return 'Good afternoon';
-  return 'Good evening';
+  if (hour < 12) return 'morning';
+  if (hour < 18) return 'afternoon';
+  return 'evening';
 }

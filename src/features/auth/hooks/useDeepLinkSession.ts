@@ -1,7 +1,7 @@
 import * as Linking from 'expo-linking';
 import { useEffect } from 'react';
 import { useAuthActions } from './useAuthActions';
-import { useSupabaseSession } from '@/services/SupabaseAuthProvider';
+import { useSupabaseSession } from '@/services/supabase/SupabaseAuthProvider';
 
 export const useDeepLinkSession = () => {
   const { createSessionFromUrl } = useAuthActions();

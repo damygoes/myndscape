@@ -2,24 +2,26 @@ import { BottomSheetModal } from '@/components/bottom-sheet-modal/BottomSheetMod
 import { APP_COLORS } from '@/constants/colors';
 import { useUserSettingsContext } from '@/features/user/contexts/UserSettingsContext';
 import { useUpdateUserSettings } from '@/features/user/hooks/useUpdateUserSettings';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 type ThemeOption = 'light' | 'dark' | 'system';
 
-const themeOptions: { label: string; value: ThemeOption }[] = [
-  { label: 'System', value: 'system' },
-  { label: 'Light', value: 'light' },
-  { label: 'Dark', value: 'dark' },
-];
-
 export function ThemeSelect() {
+  const i18n = useAppLocale();
   const { data: userSettings } = useUserSettingsContext();
   const [theme, setTheme] = useState<ThemeOption>(
     (userSettings?.theme as ThemeOption) || 'system'
   );
   const [modalVisible, setModalVisible] = useState(false);
   const { mutateAsync: updateSettings } = useUpdateUserSettings();
+
+  const themeOptions: { label: string; value: ThemeOption }[] = [
+    { label: i18n.t('Themes.system'), value: 'system' },
+    { label: i18n.t('Themes.light'), value: 'light' },
+    { label: i18n.t('Themes.dark'), value: 'dark' },
+  ];
 
   useEffect(() => {
     updateSettings({ theme });

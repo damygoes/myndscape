@@ -3,6 +3,7 @@ import { APP_COLORS } from '@/constants/colors';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useLogout } from '@/features/auth/hooks/useLogout';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 
 function SettingsRow({
   title,
@@ -68,6 +69,7 @@ function SettingsRow({
 }
 
 export default function AccountSettings() {
+  const i18n = useAppLocale();
   const router = useRouter();
   const { handleLogout } = useLogout();
 
@@ -80,26 +82,26 @@ export default function AccountSettings() {
       }}
     >
       <SettingsRow
-        title="Profile Details"
-        subtitle="Update your name, email and avatar"
+        title={i18n.t('ProfileDetails.title')}
+        subtitle={i18n.t('ProfileDetails.description')}
         icon="person-outline"
         onPress={() => router.push('/settings/edit-profile')}
       />
-      <SettingsRow
-        title="Subscription & Billing"
-        subtitle="Manage your plan and payment methods"
+      {/* <SettingsRow
+        title={i18n.t('Subscription.title')}
+        subtitle={i18n.t('Subscription.description')}
         icon="card-outline"
         // onPress={() => router.push("/settings/account/subscription")}
-      />
+      /> */}
       <SettingsRow
-        title="Logout"
+        title={i18n.t('Logout.title')}
         icon="log-out-outline"
         danger
         onPress={handleLogout}
       />
       <SettingsRow
-        title="Delete Account"
-        subtitle="Permanently remove your account"
+        title={i18n.t('DeleteAccount.title')}
+        subtitle={i18n.t('DeleteAccount.description')}
         icon="trash-outline"
         danger
         onPress={() => router.push('/settings/delete-account')}
