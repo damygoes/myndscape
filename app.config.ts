@@ -1,5 +1,5 @@
 import { ConfigContext, ExpoConfig } from 'expo/config';
-import { version } from './package.json';
+const { version } = require('./package.json');
 
 const EAS_PROJECT_ID = '087d70be-5ada-40ee-b226-76fb8582031d';
 const PROJECT_SLUG = 'myndscape';
@@ -98,6 +98,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     bundleIdentifier,
     packageName,
     scheme,
+    version
   });
 
   return {
