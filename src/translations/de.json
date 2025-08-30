@@ -218,5 +218,30 @@
     "ValidationError": {
       "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
     }
+  },
+  "DeleteAccountModal": {
+    "title": "Überlegst du zu gehen?",
+    "Description": {
+      "premium": "Du hast gerade ein Premium-Abo. Du kannst einfach auf unseren kostenlosen Plan wechseln und weiter Tagebuch schreiben, deine Stimmung tracken und Insights bekommen – ohne alles zu verlieren.",
+      "free": "Es tut uns echt leid 💔. Wenn du dein Konto löschst, werden all deine Einträge, deine Stimmungshistorie, Erinnerungen und persönlichen Insights für immer gelöscht."
+    },
+    "Warning": {
+      "title": "⚠️ Das wird gelöscht:",
+      "list": {
+        "0": "-> Alle deine Tagebucheinträge",
+        "1": "-> Deine Stimmungshistorie",
+        "2": "-> AI-Zusammenfassungen und Insights",
+        "3": "-> Deine Erinnerungen",
+        "4": "-> Deine personalisierten Insights"
+      }
+    },
+    "Actions": {
+      "deleteAccount": "Mein Konto endgültig löschen",
+      "keepAccount": "Mein Konto behalten"
+    },
+    "Alerts": {
+      "errorTitle": "Fehler",
+      "errorDescription": "Beim Löschen deines Kontos ist ein Fehler aufgetreten. Versuch es später nochmal."
+    }
   }
 }

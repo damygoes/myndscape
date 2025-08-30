@@ -218,5 +218,30 @@
     "ValidationError": {
       "email": "Please enter a valid email address."
     }
+  },
+  "DeleteAccountModal": {
+    "title": "Thinking of leaving?",
+    "Description": {
+      "premium": "You currently have a premium subscription. You can downgrade to our free plan and keep enjoying journaling, mood tracking, and insights without losing everything.",
+      "free": "We’re sad to see you go 💔. If you delete your account, all your entries, mood history, reminders, and personalized insights will be permanently deleted."
+    },
+    "Warning": {
+      "title": " ⚠️ What will be deleted:",
+      "list": {
+        "0": "-> All your journal entries",
+        "1": "-> Your mood history",
+        "2": "-> AI summaries and insights",
+        "3": "-> Your reminders",
+        "4": "-> Your personalized insights"
+      }
+    },
+    "Actions": {
+      "deleteAccount": "Delete my account permanently",
+      "keepAccount": "Keep my account"
+    },
+    "Alerts": {
+      "errorTitle": "Error",
+      "errorDescription": "There was an error deleting your account. Please try again later."
+    }
   }
 }

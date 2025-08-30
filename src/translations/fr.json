@@ -218,5 +218,30 @@
     "ValidationError": {
       "email": "Veuillez entrer une adresse e-mail valide."
     }
+  },
+  "DeleteAccountModal": {
+    "title": "Tu penses à partir ?",
+    "Description": {
+      "premium": "Tu as actuellement un abonnement premium. Tu peux passer à notre formule gratuite et continuer à écrire ton journal, suivre ton humeur et avoir des insights sans tout perdre.",
+      "free": "Ça nous rend vraiment tristes 💔. Si tu supprimes ton compte, toutes tes entrées, ton historique d’humeur, tes rappels et tes insights personnalisés seront supprimés définitivement."
+    },
+    "Warning": {
+      "title": "⚠️ Ce qui sera supprimé :",
+      "list": {
+        "0": "-> Tous tes journaux",
+        "1": "-> Ton historique d’humeur",
+        "2": "-> Les résumés et insights IA",
+        "3": "-> Tes rappels",
+        "4": "-> Tes insights personnalisés"
+      }
+    },
+    "Actions": {
+      "deleteAccount": "Supprimer mon compte définitivement",
+      "keepAccount": "Garder mon compte"
+    },
+    "Alerts": {
+      "errorTitle": "Erreur",
+      "errorDescription": "Une erreur est survenue en supprimant ton compte. Réessaie plus tard."
+    }
   }
 }

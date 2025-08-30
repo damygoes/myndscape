@@ -7,8 +7,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { Alert, Text, View } from 'react-native';
 import { useDeleteUserAccount } from '../hooks/useDeleteUserAccount';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 
 export default function AccountDeletionScreen() {
+  const { t } = useAppLocale();
   const { data: userUsage } = useUserUsageContext();
   const { userId } = useCurrentUserProfile();
   const { mutateAsync, isPending } = useDeleteUserAccount();
@@ -18,7 +20,7 @@ export default function AccountDeletionScreen() {
   const handleDelete = async () => {
     if (!userId) {
       console.error('User ID is undefined. Cannot delete account.');
-      Alert.alert('Error', 'Unable to delete account. Please try again later.');
+      Alert.alert(t('DeleteAccountModal.Alerts.errorTitle'), t('DeleteAccountModal.Alerts.errorDescription'));
       return;
     }
     try {
@@ -52,7 +54,7 @@ export default function AccountDeletionScreen() {
           marginBottom: 12,
         }}
       >
-        Thinking of leaving?
+        {t('DeleteAccountModal.title')}
       </Text>
 
       {/* Dynamic Description */}
@@ -66,10 +68,7 @@ export default function AccountDeletionScreen() {
             marginBottom: 20,
           }}
         >
-          You currently have a{' '}
-          <Text style={{ fontWeight: '600' }}>Premium subscription</Text>. You
-          can downgrade to our free plan and keep enjoying journaling, mood
-          tracking, and insights without losing everything.
+          {t('DeleteAccountModal.Description.premium')}
         </Text>
       ) : (
         <Text
@@ -81,9 +80,7 @@ export default function AccountDeletionScreen() {
             marginBottom: 20,
           }}
         >
-          We’re sad to see you go 💔. If you delete your account, all your
-          entries, mood history, reminders, and personalized insights will be
-          permanently erased.
+          {t('DeleteAccountModal.Description.free')}
         </Text>
       )}
 
@@ -105,7 +102,7 @@ export default function AccountDeletionScreen() {
             color: APP_COLORS['body-text'],
           }}
         >
-          ⚠️ What will be deleted:
+          {t('DeleteAccountModal.Warning.title')}
         </Text>
         <Text
           style={{
@@ -115,15 +112,21 @@ export default function AccountDeletionScreen() {
             marginTop: 12,
           }}
         >
-          • Your subscription (if active){'\n'}• All journal entries{'\n'}• Mood
-          tracking history{'\n'}• AI summaries & insights{'\n'}• Reminders &
-          personal settings
+          {t('DeleteAccountModal.Warning.list.0')}
+          {'\n'}
+          {t('DeleteAccountModal.Warning.list.1')}
+          {'\n'}
+          {t('DeleteAccountModal.Warning.list.2')}
+          {'\n'}
+          {t('DeleteAccountModal.Warning.list.3')}
+          {'\n'}
+          {t('DeleteAccountModal.Warning.list.4')}
         </Text>
       </View>
 
       {/* Actions */}
       <Button
-        title="Keep my account"
+        title={t('DeleteAccountModal.Actions.keepAccount')}
         onPress={() => router.back()}
         style={{
           marginBottom: 16,
@@ -131,7 +134,7 @@ export default function AccountDeletionScreen() {
         disabled={isPending}
       />
       <Button
-        title="Permanently Delete Account"
+        title={t('DeleteAccountModal.Actions.deleteAccount')}
         onPress={handleDelete}
         variant="outline"
         disabled={isPending}
