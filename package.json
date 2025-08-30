@@ -1,6 +1,6 @@
 {
   "name": "reflect",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start --dev-client",
@@ -10,7 +10,8 @@
     "build:ios": "eas build --platform ios",
     "web": "expo start --web",
     "format": "prettier --write .",
-    "seed": "ts-node src/scripts/seedDatabase.ts"
+    "seed": "ts-node src/scripts/seedDatabase.ts",
+    "bump:version": "node src/scripts/bump-version.js"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
