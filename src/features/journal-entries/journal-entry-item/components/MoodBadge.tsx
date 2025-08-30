@@ -31,7 +31,7 @@ export const MoodBadge = ({ mood }: MoodBadgeProps) => {
           fontSize: 12,
         }}
       >
-        {i18n.t('MoodBadge.title')}
+        {i18n.t('MoodBadge.title')}:
       </Text>
       <Text
         style={{

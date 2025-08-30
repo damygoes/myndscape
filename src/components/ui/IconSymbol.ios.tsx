@@ -4,6 +4,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 export type IconSymbolName =
   | 'add'
   | 'close'
+  | 'chevron-right'
   | 'dot'
   | 'home'
   | 'history'
@@ -17,6 +18,7 @@ export type IconSymbolName =
 const SF_SYMBOLS_MAPPING: Record<IconSymbolName, SymbolViewProps['name']> = {
   add: 'plus',
   close: 'xmark',
+  'chevron-right': 'chevron.right',
   dot: 'circle.fill',
   home: 'house',
   history: 'list.dash',
