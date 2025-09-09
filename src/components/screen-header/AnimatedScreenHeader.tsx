@@ -1,7 +1,7 @@
+import { APP_COLORS } from '@/constants/colors';
 import React from 'react';
 import { Animated, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { APP_COLORS } from '@/constants/colors';
 import { HeaderMenu, MenuItem } from '../header-menu/HeaderMenu';
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
   showMenu?: boolean;
   leftComponent?: React.ReactNode;
   rightComponent?: React.ReactNode;
+  bottomComponent?: React.ReactNode;
   backgroundColor?: string;
   scrollBackgroundColor?: string;
   borderColor?: string;
@@ -28,6 +29,7 @@ export function AnimatedScreenHeader({
   showMenu = true,
   leftComponent,
   rightComponent,
+  bottomComponent,
   backgroundColor = APP_COLORS['primary-background'],
   scrollBackgroundColor = APP_COLORS.offwhite,
   borderColor = APP_COLORS.grey,
@@ -65,6 +67,10 @@ export function AnimatedScreenHeader({
   return (
     <Animated.View
       style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        gap: 4,
         position: 'absolute',
         top: 0,
         left: 0,
@@ -85,9 +91,7 @@ export function AnimatedScreenHeader({
         }}
       >
         {/* Left component (optional) */}
-        {leftComponent && (
-          <View style={{ marginRight: 12 }}>{leftComponent}</View>
-        )}
+        {leftComponent && <View style={{ marginRight: 12 }}>{leftComponent}</View>}
 
         {/* Title and subtitle container */}
         <View style={{ flex: 1, paddingRight: 12 }}>
@@ -122,6 +126,9 @@ export function AnimatedScreenHeader({
         {/* Right column: menu, custom component, or nothing */}
         {rightContent()}
       </View>
+      {bottomComponent ? (
+        <View style={{ paddingHorizontal: 16, marginTop: 8 }}>{bottomComponent}</View>
+      ) : undefined}
 
       {/* Optional shadow/border line that appears on scroll */}
       <Animated.View

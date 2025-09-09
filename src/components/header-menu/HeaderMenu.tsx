@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, Pressable, StyleSheet, Animated } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { APP_COLORS } from '@/constants/colors';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 import { IconSymbol, IconSymbolName } from '../ui/IconSymbol.ios';
 
 export type MenuItem = {
@@ -72,10 +71,7 @@ export function HeaderMenu({ items = [] as MenuItem[] }) {
       <Pressable
         onPress={toggle}
         hitSlop={12}
-        style={({ pressed }) => [
-          styles.trigger,
-          pressed && styles.triggerPressed,
-        ]}
+        style={({ pressed }) => [styles.trigger, pressed && styles.triggerPressed]}
         accessibilityRole="button"
         accessibilityLabel="Open options menu"
         accessibilityState={{ expanded: open }}
@@ -142,11 +138,7 @@ export function HeaderMenu({ items = [] as MenuItem[] }) {
                       <IconSymbol
                         name={item.icon}
                         size={16}
-                        color={
-                          item.destructive
-                            ? APP_COLORS.error
-                            : APP_COLORS['body-text']
-                        }
+                        color={item.destructive ? APP_COLORS.error : APP_COLORS['body-text']}
                         style={styles.menuItemIcon}
                       />
                     )}
@@ -205,7 +197,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     elevation: 8,
     overflow: 'hidden',
-    minWidth: 200,
+    minWidth: 250,
     marginRight: 8, // Ensure menu doesn't go off screen
   },
   menuItem: {
