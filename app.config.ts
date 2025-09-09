@@ -98,7 +98,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     bundleIdentifier,
     packageName,
     scheme,
-    version
+    version,
   });
 
   return {

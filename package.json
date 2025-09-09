@@ -11,7 +11,14 @@
     "web": "expo start --web",
     "format": "prettier --write .",
     "seed": "ts-node src/scripts/seedDatabase.ts",
-    "bump:version": "node src/scripts/bump-version.js"
+    "bump:version": "node src/scripts/bump-version.js",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
@@ -68,8 +75,14 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~19.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-react": "^7.37.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3"

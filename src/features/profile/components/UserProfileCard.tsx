@@ -21,7 +21,7 @@ export default function UserProfileCard() {
       style={{
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: APP_COLORS.offwhite,
+        backgroundColor: APP_COLORS.primary + '20',
         padding: 16,
         borderRadius: 16,
         shadowColor: APP_COLORS.black,
@@ -45,7 +45,7 @@ export default function UserProfileCard() {
             height: 64,
             borderRadius: 32,
             marginRight: 16,
-            backgroundColor: APP_COLORS['body-text-disabled'],
+            backgroundColor: APP_COLORS.primary + '50',
             alignItems: 'center',
             justifyContent: 'center',
           }}
@@ -54,7 +54,7 @@ export default function UserProfileCard() {
             style={{
               fontSize: 20,
               fontWeight: '600',
-              color: APP_COLORS.white,
+              color: APP_COLORS.primary,
               fontFamily: 'Manrope',
             }}
           >
@@ -68,7 +68,7 @@ export default function UserProfileCard() {
           style={{
             fontSize: 18,
             fontWeight: '600',
-            color: APP_COLORS['body-text'],
+            color: APP_COLORS.primary,
             marginBottom: 2,
             fontFamily: 'Manrope',
           }}
@@ -96,7 +96,7 @@ export default function UserProfileCard() {
           <Text
             style={{
               fontSize: 12,
-              color: APP_COLORS['body-text-disabled'],
+              color: APP_COLORS['body-text'],
               fontFamily: 'Manrope',
             }}
           >
@@ -105,7 +105,7 @@ export default function UserProfileCard() {
           <Text
             style={{
               fontSize: 12,
-              color: APP_COLORS['body-text-disabled'],
+              color: APP_COLORS['body-text'],
               fontFamily: 'Manrope',
             }}
           >

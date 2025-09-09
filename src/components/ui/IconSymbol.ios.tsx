@@ -4,13 +4,20 @@ import { StyleProp, ViewStyle } from 'react-native';
 export type IconSymbolName =
   | 'add'
   | 'close'
+  | 'chevron-left'
   | 'chevron-right'
   | 'dot'
   | 'home'
   | 'history'
+  | 'more'
   | 'profile'
+  | 'search'
+  | 'select'
   | 'settings'
+  | 'sort-ascending'
+  | 'sort-descending'
   | 'tip-bulb'
+  | 'trash'
   | 'visibility'
   | 'visibilityOff';
 
@@ -18,13 +25,20 @@ export type IconSymbolName =
 const SF_SYMBOLS_MAPPING: Record<IconSymbolName, SymbolViewProps['name']> = {
   add: 'plus',
   close: 'xmark',
+  'chevron-left': 'chevron.left',
   'chevron-right': 'chevron.right',
   dot: 'circle.fill',
   home: 'house',
   history: 'list.dash',
+  more: 'ellipsis',
   profile: 'person',
+  search: 'magnifyingglass',
+  select: 'checkmark',
   settings: 'gearshape',
+  'sort-ascending': 'arrow.up',
+  'sort-descending': 'arrow.down',
   'tip-bulb': 'lightbulb.circle',
+  trash: 'trash',
   visibility: 'eye',
   visibilityOff: 'eye.slash',
 };

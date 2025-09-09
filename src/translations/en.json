@@ -1,7 +1,8 @@
 {
   "Common": {
     "back": "Back",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "tip": "Tip"
   },
   "Tabs": {
     "home": "Home",
@@ -96,7 +97,7 @@
     },
     "Account": {
       "title": "Account",
-      "description": "Manage your subscription and account settings."
+      "description": "Manage your profile and account-related settings."
     },
     "Support": {
       "title": "Support",
@@ -243,5 +244,19 @@
       "errorTitle": "Error",
       "errorDescription": "There was an error deleting your account. Please try again later."
     }
+  },
+  "HistoryScreenHeader": {
+    "title": "History",
+    "description": "Browse and reflect on your past entries",
+    "menu": {
+      "add-new-entry": "Add New Entry",
+      "select-entries": "Select Entries",
+      "sort-by-latest": "Sort by Latest",
+      "sort-by-oldest": "Sort by Oldest"
+    }
+  },
+  "SettingsScreenHeader": {
+    "title": "Settings",
+    "description": "Manage your app preferences"
   }
 }

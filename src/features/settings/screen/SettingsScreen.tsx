@@ -5,52 +5,74 @@ import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import SettingsCard from '../components/SettingsCard';
 import { useAppLocale } from '@/services/i18n/useAppLocale';
+import { useRef } from 'react';
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
+import { Animated, ScrollView, StyleSheet, View } from 'react-native';
+import { SettingsScreenHeader } from '../components/SettingsScreenHeader';
 
 export default function SettingsScreen() {
   const i18n = useAppLocale();
+  const scrollY = useRef(new Animated.Value(0)).current;
+  const insets = useSafeAreaInsets();
+
+  // Calculate header height (safe area top + header content)
+  const headerHeight = insets.top + 96;
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{
-        light: APP_COLORS['primary-background'],
-        dark: APP_COLORS['primary-background'],
-      }}
-      headerImage={
-        <Image
-          source={require('../../../../assets/images/hero-3.jpg')}
-          style={{ width: '100%', height: 200 }}
-          contentFit="cover"
-          cachePolicy="memory-disk"
-          transition={300}
-          priority="high"
-        />
-      }
-      contentStyle={{
-        paddingHorizontal: 20,
-        paddingBottom: 100,
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: APP_COLORS['primary-background'],
       }}
     >
-      <UserProfileCard />
-      <SettingsCard
-        title={i18n.t('Settings.General.title')}
-        subtitle={i18n.t('Settings.General.description')}
-        onPress={() => router.push('/settings/general')}
-      />
-      {/* <SettingsCard
+      <SettingsScreenHeader scrollY={scrollY} />
+      <ScrollView
+        contentContainerStyle={[
+          styles.container,
+          {
+            backgroundColor: APP_COLORS['primary-background'],
+            paddingTop: insets.top + 32,
+          },
+        ]}
+      >
+        <UserProfileCard />
+        <SettingsCard
+          title={i18n.t('Settings.General.title')}
+          subtitle={i18n.t('Settings.General.description')}
+          onPress={() => router.push('/settings/general')}
+        />
+        {/* <SettingsCard
         title={i18n.t('Settings.Wellness.title')}
         subtitle={i18n.t('Settings.Wellness.description')}
         onPress={() => router.push('/settings/wellness')}
       /> */}
-      <SettingsCard
-        title={i18n.t('Settings.Account.title')}
-        subtitle={i18n.t('Settings.Account.description')}
-        onPress={() => router.push('/settings/account')}
-      />
-      {/* <SettingsCard
+        <SettingsCard
+          title={i18n.t('Settings.Account.title')}
+          subtitle={i18n.t('Settings.Account.description')}
+          onPress={() => router.push('/settings/account')}
+        />
+      </ScrollView>
+    </SafeAreaView>
+
+    // </ParallaxScrollView>
+  );
+}
+
+{
+  /* <SettingsCard
         title={i18n.t('Settings.Support.title')}
         subtitle={i18n.t('Settings.Support.description')}
         onPress={() => router.push('/settings/support')}
-      /> */}
-    </ParallaxScrollView>
-  );
+      /> */
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 24,
+    flexGrow: 1,
+    gap: 24,
+  },
+});

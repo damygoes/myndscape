@@ -1,7 +1,8 @@
 {
   "Common": {
     "back": "Zurück",
-    "getStarted": "Loslegen"
+    "getStarted": "Loslegen",
+    "tip": "Tipp"
   },
   "Tabs": {
     "home": "Home",
@@ -96,7 +97,7 @@
     },
     "Account": {
       "title": "Konto",
-      "description": "Abo und Kontoeinstellungen verwalten."
+      "description": "Verwalte dein Profil und kontobezogene Einstellungen."
     },
     "Support": {
       "title": "Support",
@@ -243,5 +244,19 @@
       "errorTitle": "Fehler",
       "errorDescription": "Beim Löschen deines Kontos ist ein Fehler aufgetreten. Versuch es später nochmal."
     }
+  },
+    "HistoryScreenHeader": {
+    "title": "Verlauf",
+    "description": "Durchsuche und reflektiere über deine vergangenen Einträge",
+    "menu": {
+      "add-new-entry": "Neuen Eintrag hinzufügen",
+      "select-entries": "Einträge auswählen",
+      "sort-by-latest": "Nach Neueste sortieren",
+      "sort-by-oldest": "Nach Älteste sortieren"
+    }
+  },
+   "SettingsScreenHeader": {
+    "title": "Einstellungen",
+    "description": "Verwalte deine App-Präferenzen"
   }
 }

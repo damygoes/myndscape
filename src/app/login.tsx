@@ -7,8 +7,7 @@ import React from 'react';
 import { KeyboardAvoidingView, Platform, Text, View } from 'react-native';
 
 export default function LandingScreen() {
-
-  const {t} = useAppLocale();
+  const { t } = useAppLocale();
 
   return (
     <KeyboardAvoidingView

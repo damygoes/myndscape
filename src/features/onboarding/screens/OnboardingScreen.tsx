@@ -9,7 +9,6 @@ import { router } from 'expo-router';
 import { useAppLocale } from '@/services/i18n/useAppLocale';
 
 export default function OnboardingScreen() {
-
   const { t } = useAppLocale();
 
   const handleGetStarted = () => {

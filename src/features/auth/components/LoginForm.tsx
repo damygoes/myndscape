@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 import { Alert, View } from 'react-native';
 
 export function LoginForm() {
-
   const { t } = useAppLocale();
   const { sendMagicLink } = useAuthActions();
   const [email, setEmail] = useState('');
@@ -28,11 +27,16 @@ export function LoginForm() {
 
     try {
       await sendMagicLink(trimmedEmail);
-      Alert.alert(t('LoginForm.Alert.successTitle'), t('LoginForm.Alert.successDescription'));
+      Alert.alert(
+        t('LoginForm.Alert.successTitle'),
+        t('LoginForm.Alert.successDescription')
+      );
     } catch (err) {
       console.error('Magic link error:', err);
       const message =
-        err instanceof Error ? err.message : t('LoginForm.Alert.errorDescription');
+        err instanceof Error
+          ? err.message
+          : t('LoginForm.Alert.errorDescription');
       Alert.alert(t('LoginForm.Alert.errorTitle'), message);
     } finally {
       setLoading(false);

@@ -1,7 +1,8 @@
 {
   "Common": {
     "back": "Retour",
-    "getStarted": "Commencer"
+    "getStarted": "Commencer",
+    "tip": "Astuce"
   },
   "Tabs": {
     "home": "Home",
@@ -96,7 +97,7 @@
     },
     "Account": {
       "title": "Compte",
-      "description": "Gérer ton abonnement et tes réglages de compte."
+      "description": "Gérer ton profil et tes réglages de compte."
     },
     "Support": {
       "title": "Support",
@@ -243,5 +244,19 @@
       "errorTitle": "Erreur",
       "errorDescription": "Une erreur est survenue en supprimant ton compte. Réessaie plus tard."
     }
+  },
+    "HistoryScreenHeader": {
+    "title": "Historique",
+    "description": "Parcourez et réfléchissez à vos entrées passées",
+    "menu": {
+      "add-new-entry": "Ajouter une nouvelle entrée",
+      "select-entries": "Sélectionner des entrées",
+      "sort-by-latest": "Trier par les plus récentes",
+      "sort-by-oldest": "Trier par les plus anciennes"
+    }
+  },
+   "SettingsScreenHeader": {
+    "title": "Paramètres",
+    "description": "Gérez vos préférences d'application"
   }
 }
