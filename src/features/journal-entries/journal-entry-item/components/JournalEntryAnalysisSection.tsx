@@ -1,4 +1,4 @@
-import { APP_COLORS, COLORS } from '@/constants/colors';
+import { APP_COLORS } from '@/constants/colors';
 import { Text, View } from 'react-native';
 import { ThemesBadges } from './ThemesBadges';
 import { TipSection } from './TipSection';
@@ -9,11 +9,7 @@ interface Props {
   tip: string | null;
 }
 
-export const JournalEntryAnalysisSection = ({
-  summary,
-  themes,
-  tip,
-}: Props) => {
+export const JournalEntryAnalysisSection = ({ summary, themes, tip }: Props) => {
   if (!summary && !themes && !tip) return null;
 
   return (
@@ -29,10 +25,7 @@ export const JournalEntryAnalysisSection = ({
       }}
     >
       {summary && (
-        <Text
-          className="text-base font-normal"
-          style={{ color: APP_COLORS['body-text'] }}
-        >
+        <Text className="text-base font-normal" style={{ color: APP_COLORS['body-text'] }}>
           {summary}
         </Text>
       )}

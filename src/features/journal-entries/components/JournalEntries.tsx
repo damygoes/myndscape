@@ -39,11 +39,7 @@ export const JournalEntries = ({
   if (error) return <ErrorState message="Failed to load your journal entries." />;
 
   if (!entries || entries.length === 0) {
-    return (
-      <View style={{ flex: 1, paddingTop: headerHeight }}>
-        <EmptyState message="No entries found." />
-      </View>
-    );
+    return <EmptyState message="No journal entries found." />;
   }
 
   return (

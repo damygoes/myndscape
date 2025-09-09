@@ -3,6 +3,8 @@ import { StyleProp, ViewStyle } from 'react-native';
 
 export type IconSymbolName =
   | 'add'
+  | 'check-filled'
+  | 'check'
   | 'close'
   | 'chevron-left'
   | 'chevron-right'
@@ -13,6 +15,7 @@ export type IconSymbolName =
   | 'profile'
   | 'search'
   | 'select'
+  | 'send'
   | 'settings'
   | 'sort-ascending'
   | 'sort-descending'
@@ -24,6 +27,8 @@ export type IconSymbolName =
 // Map generic names to SF Symbols names
 const SF_SYMBOLS_MAPPING: Record<IconSymbolName, SymbolViewProps['name']> = {
   add: 'plus',
+  'check-filled': 'checkmark.circle.fill',
+  check: 'checkmark',
   close: 'xmark',
   'chevron-left': 'chevron.left',
   'chevron-right': 'chevron.right',
@@ -33,7 +38,8 @@ const SF_SYMBOLS_MAPPING: Record<IconSymbolName, SymbolViewProps['name']> = {
   more: 'ellipsis',
   profile: 'person',
   search: 'magnifyingglass',
-  select: 'checkmark',
+  select: 'checkmark.rectangle.stack',
+  send: 'paperplane',
   settings: 'gearshape',
   'sort-ascending': 'arrow.up',
   'sort-descending': 'arrow.down',

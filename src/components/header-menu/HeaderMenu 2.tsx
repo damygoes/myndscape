@@ -9,7 +9,6 @@ export type MenuItem = {
   onPress?: () => void;
   icon?: IconSymbolName;
   destructive?: boolean;
-  showSelectedState?: boolean;
 };
 
 export function HeaderMenu({ items = [] as MenuItem[] }) {
@@ -151,9 +150,6 @@ export function HeaderMenu({ items = [] as MenuItem[] }) {
                     >
                       {item.label}
                     </Text>
-                    {item.showSelectedState && (
-                      <IconSymbol name="check" size={18} color={APP_COLORS.success} />
-                    )}
                   </View>
                 </Pressable>
                 {/* {index < items.length - 1 && <View style={styles.separator} />} */}
@@ -201,7 +197,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     elevation: 8,
     overflow: 'hidden',
-    minWidth: 250,
+    minWidth: 200,
     marginRight: 8, // Ensure menu doesn't go off screen
   },
   menuItem: {

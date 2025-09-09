@@ -1,44 +1,34 @@
-import { Input } from '@/components/input/Input';
 import { AnimatedScreenHeader } from '@/components/screen-header/AnimatedScreenHeader';
 import { useAppLocale } from '@/services/i18n/useAppLocale';
+import { SortOrder } from '@/types';
 import { router } from 'expo-router';
 import React from 'react';
 import { Animated } from 'react-native';
+import { HeaderSearchBar } from './HeaderSearchBar';
 
 type Props = {
+  onSearchCommit: (text: string) => void;
   scrollY?: Animated.Value;
-  search?: string;
-  onSearchChange?: (text: string) => void;
+  sortOrder?: SortOrder;
   onSortLatest?: () => void;
   onSortOldest?: () => void;
 };
 
 export function HistoryScreenHeader({
   scrollY,
-  search,
-  onSearchChange,
+  onSearchCommit,
+  sortOrder,
   onSortLatest,
   onSortOldest,
 }: Props) {
   const { t } = useAppLocale();
-
-  const Searchbar = () => {
-    return (
-      <Input
-        value={search}
-        onChangeText={onSearchChange}
-        placeholder="Search entries…"
-        returnKeyType="search"
-      />
-    );
-  };
 
   return (
     <AnimatedScreenHeader
       title={t('HistoryScreenHeader.title')}
       subtitle={t('HistoryScreenHeader.description')}
       scrollY={scrollY}
-      bottomComponent={<Searchbar />}
+      bottomComponent={<HeaderSearchBar onCommit={onSearchCommit} />}
       menuItems={[
         {
           key: 'add-entry',
@@ -59,15 +49,17 @@ export function HistoryScreenHeader({
           label: t('HistoryScreenHeader.menu.sort-by-latest'),
           icon: 'sort-ascending',
           onPress: onSortLatest,
+          showSelectedState: sortOrder === 'latest',
         },
         {
           key: 'sort-by-oldest',
           label: t('HistoryScreenHeader.menu.sort-by-oldest'),
           icon: 'sort-descending',
           onPress: onSortOldest,
+          showSelectedState: sortOrder === 'oldest',
         },
       ]}
-      applyTopPadding={true}
+      applyTopPadding
       titleStyle={{ fontSize: 24 }}
     />
   );
