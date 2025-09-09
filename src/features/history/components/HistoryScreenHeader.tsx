@@ -1,9 +1,11 @@
 import { AnimatedScreenHeader } from '@/components/screen-header/AnimatedScreenHeader';
+import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
+import { useEntrySelectionStore } from '@/features/journal-entries/store/useEntrySelectionStore';
 import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { SortOrder } from '@/types';
 import { router } from 'expo-router';
 import React from 'react';
-import { Animated } from 'react-native';
+import { Animated, Text, View } from 'react-native';
 import { HeaderSearchBar } from './HeaderSearchBar';
 
 type Props = {
@@ -23,12 +25,51 @@ export function HistoryScreenHeader({
 }: Props) {
   const { t } = useAppLocale();
 
+  const { selectedIds, selectionMode, setSelectionMode, clearSelection, selectAll, isAllSelected } =
+    useEntrySelectionStore();
+
+  // Grab entries so we can do selectAll
+  const { data: entries = [] } = useCurrentUserJournalEntries();
+
+  const toggleSelectionMode = () => {
+    if (selectionMode) {
+      // exit mode: clear selections and turn off mode
+      clearSelection();
+      setSelectionMode(false);
+    } else {
+      setSelectionMode(true);
+    }
+  };
+
+  const handleSelectAll = () => {
+    if (!selectionMode) {
+      setSelectionMode(true);
+      selectAll(entries);
+    } else {
+      if (isAllSelected(entries)) {
+        clearSelection();
+      } else {
+        selectAll(entries);
+      }
+    }
+  };
+
   return (
     <AnimatedScreenHeader
       title={t('HistoryScreenHeader.title')}
       subtitle={t('HistoryScreenHeader.description')}
       scrollY={scrollY}
       bottomComponent={<HeaderSearchBar onCommit={onSearchCommit} />}
+      rightComponent={
+        <View>
+          {selectionMode ? (
+            <Text style={{ fontWeight: '400', fontSize: 14, fontFamily: 'Manrope' }}>
+              {selectedIds.size} {t('Common.selected')}
+            </Text>
+          ) : null}
+        </View>
+      }
+      showMenu
       menuItems={[
         {
           key: 'add-entry',
@@ -37,12 +78,21 @@ export function HistoryScreenHeader({
           onPress: () => router.push('/add-entry'),
         },
         {
-          key: 'select-entries',
-          label: t('HistoryScreenHeader.menu.select-entries'),
-          icon: 'select',
-          onPress: () => {
-            /* TODO */
-          },
+          key: 'toggle-selection-mode',
+          label: selectionMode
+            ? t('HistoryScreenHeader.menu.exit-selection-mode')
+            : t('HistoryScreenHeader.menu.select-mode'),
+          icon: selectionMode ? 'unselect' : 'select',
+          onPress: toggleSelectionMode,
+        },
+        {
+          key: 'select-all',
+          label: isAllSelected(entries)
+            ? t('HistoryScreenHeader.menu.deselect-all-entries')
+            : t('HistoryScreenHeader.menu.select-all-entries'),
+          icon: isAllSelected(entries) ? 'group-unselect' : 'group-select',
+          onPress: handleSelectAll,
+          // disabled: entries.length === 0,
         },
         {
           key: 'sort-by-latest',

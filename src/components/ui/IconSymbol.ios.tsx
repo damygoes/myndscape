@@ -4,11 +4,13 @@ import { StyleProp, ViewStyle } from 'react-native';
 export type IconSymbolName =
   | 'add'
   | 'check-filled'
-  | 'check'
+  | 'checkmark'
   | 'close'
   | 'chevron-left'
   | 'chevron-right'
   | 'dot'
+  | 'group-select'
+  | 'group-unselect'
   | 'home'
   | 'history'
   | 'more'
@@ -21,6 +23,7 @@ export type IconSymbolName =
   | 'sort-descending'
   | 'tip-bulb'
   | 'trash'
+  | 'unselect'
   | 'visibility'
   | 'visibilityOff';
 
@@ -28,17 +31,19 @@ export type IconSymbolName =
 const SF_SYMBOLS_MAPPING: Record<IconSymbolName, SymbolViewProps['name']> = {
   add: 'plus',
   'check-filled': 'checkmark.circle.fill',
-  check: 'checkmark',
+  checkmark: 'checkmark',
   close: 'xmark',
   'chevron-left': 'chevron.left',
   'chevron-right': 'chevron.right',
   dot: 'circle.fill',
+  'group-select': 'checkmark.rectangle.stack',
+  'group-unselect': 'square.stack',
   home: 'house',
   history: 'list.dash',
   more: 'ellipsis',
   profile: 'person',
   search: 'magnifyingglass',
-  select: 'checkmark.rectangle.stack',
+  select: 'checklist.checked',
   send: 'paperplane',
   settings: 'gearshape',
   'sort-ascending': 'arrow.up',
@@ -46,6 +51,7 @@ const SF_SYMBOLS_MAPPING: Record<IconSymbolName, SymbolViewProps['name']> = {
   'tip-bulb': 'lightbulb.circle',
   trash: 'trash',
   visibility: 'eye',
+  unselect: 'checklist.unchecked',
   visibilityOff: 'eye.slash',
 };
 

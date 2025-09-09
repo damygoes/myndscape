@@ -1,10 +1,12 @@
 import { Input } from '@/components/input/Input';
 import { IconSymbol } from '@/components/ui/IconSymbol.ios';
 import { APP_COLORS } from '@/constants/colors';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { useCallback, useRef, useState } from 'react';
 import { TextInput, TouchableOpacity, View } from 'react-native';
 
 export function HeaderSearchBar({ onCommit }: { onCommit: (value: string) => void }) {
+  const { t } = useAppLocale();
   const [text, setText] = useState('');
   const inputRef = useRef<TextInput>(null);
 
@@ -24,7 +26,7 @@ export function HeaderSearchBar({ onCommit }: { onCommit: (value: string) => voi
           ref={inputRef}
           value={text}
           onChangeText={setText}
-          placeholder="Search entries…"
+          placeholder={t('HeaderSearchBar.placeholder')}
           returnKeyType="search"
           onSubmitEditing={commit}
           icon={showClear ? 'close' : undefined}

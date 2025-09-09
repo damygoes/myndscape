@@ -2,7 +2,8 @@
   "Common": {
     "back": "Back",
     "getStarted": "Get Started",
-    "tip": "Tip"
+    "tip": "Tip",
+    "selected": "Selected"
   },
   "Tabs": {
     "home": "Home",
@@ -250,7 +251,10 @@
     "description": "Browse and reflect on your past entries",
     "menu": {
       "add-new-entry": "Add New Entry",
-      "select-entries": "Select Entries",
+      "select-mode": "Select Mode",
+      "exit-selection-mode": "Exit Selection Mode",
+      "select-all-entries": "Select All Entries",
+      "deselect-all-entries": "Deselect All Entries",
       "sort-by-latest": "Sort by Latest",
       "sort-by-oldest": "Sort by Oldest"
     }
@@ -258,5 +262,8 @@
   "SettingsScreenHeader": {
     "title": "Settings",
     "description": "Manage your app preferences"
+  },
+  "HeaderSearchBar": {
+    "placeholder": "Search entries..."
   }
 }

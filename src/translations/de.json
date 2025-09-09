@@ -2,7 +2,8 @@
   "Common": {
     "back": "Zurück",
     "getStarted": "Loslegen",
-    "tip": "Tipp"
+    "tip": "Tipp",
+    "selected": "Ausgewählt"
   },
   "Tabs": {
     "home": "Home",
@@ -250,7 +251,10 @@
     "description": "Durchsuche und reflektiere über deine vergangenen Einträge",
     "menu": {
       "add-new-entry": "Neuen Eintrag hinzufügen",
-      "select-entries": "Einträge auswählen",
+      "select-mode": "Auswahlmodus",
+      "exit-selection-mode": "Auswahlmodus beenden",
+      "select-all-entries": "Alle Einträge auswählen",
+      "deselect-all-entries": "Alle Einträge abwählen",
       "sort-by-latest": "Nach Neueste sortieren",
       "sort-by-oldest": "Nach Älteste sortieren"
     }
@@ -258,5 +262,8 @@
    "SettingsScreenHeader": {
     "title": "Einstellungen",
     "description": "Verwalte deine App-Präferenzen"
+  },
+    "HeaderSearchBar": {
+      "placeholder": "Einträge suchen..."
+    }
   }
-}

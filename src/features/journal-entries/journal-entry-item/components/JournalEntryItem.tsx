@@ -1,6 +1,9 @@
+import { IconSymbol } from '@/components/ui/IconSymbol.ios';
+import { APP_COLORS } from '@/constants/colors';
 import { useJournalEntryAnalysisStore } from '@/features/journal-entries/store/useJournalEntryAnalysisStore';
 import type { JournalEntry } from '@/features/journal-entries/types';
 import { useUserSettingsContext } from '@/features/user/contexts/UserSettingsContext';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { router } from 'expo-router';
 import {
   ActivityIndicator,
@@ -11,40 +14,30 @@ import {
   UIManager,
   View,
 } from 'react-native';
+import { useEntrySelectionStore } from '../../store/useEntrySelectionStore';
+import { formatRelativeDate } from '../utils';
 import { JournalEntryAnalysisSection } from './JournalEntryAnalysisSection';
 import { MoodBadge } from './MoodBadge';
-import { useAppLocale } from '@/services/i18n/useAppLocale';
-import { formatRelativeDate } from '../utils';
-import { APP_COLORS } from '@/constants/colors';
 
 // Enable LayoutAnimation for Android
-if (
-  Platform.OS === 'android' &&
-  UIManager.setLayoutAnimationEnabledExperimental
-) {
+if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
 interface Props {
   entry: JournalEntry;
-  selected?: boolean;
-  onSelect?: () => void;
 }
 
-export const JournalEntryItem = ({
-  entry,
-  selected = false,
-  onSelect,
-}: Props) => {
+export const JournalEntryItem = ({ entry }: Props) => {
   const i18n = useAppLocale();
   const { data } = useUserSettingsContext();
+  const { selectionMode, toggleEntry, isSelected } = useEntrySelectionStore();
 
   const userLanguage = data?.language || 'en';
 
   const displayMood = entry.localized?.[userLanguage]?.mood || entry.mood;
   const displayThemes = entry.localized?.[userLanguage]?.themes || entry.themes;
-  const displaySummary =
-    entry.localized?.[userLanguage]?.summary || entry.summary;
+  const displaySummary = entry.localized?.[userLanguage]?.summary || entry.summary;
   const displayTip = entry.localized?.[userLanguage]?.tip || entry.tip;
 
   const { analyzingIds } = useJournalEntryAnalysisStore();
@@ -57,12 +50,14 @@ export const JournalEntryItem = ({
   };
 
   const handlePress = () => {
-    if (onSelect) {
-      onSelect();
+    if (selectionMode) {
+      toggleEntry(entry); // select/unselect
     } else {
-      goToDetails();
+      goToDetails(); // normal navigation
     }
   };
+
+  const selected = isSelected(entry);
 
   return (
     <TouchableOpacity
@@ -72,10 +67,15 @@ export const JournalEntryItem = ({
       accessibilityRole="button"
       accessibilityLabel={`Journal entry from ${formattedDate}, mood: ${displayMood}${selected ? ', selected' : ''}`}
       accessibilityHint={
-        onSelect ? 'Tap to select this entry' : 'Tap to view full entry details'
+        selectionMode ? 'Tap to select or unselect this entry' : 'Tap to view full entry details'
       }
     >
       <View style={[styles.cardContainer, selected && styles.selectedCard]}>
+        {selected && (
+          <View style={styles.checkContainer}>
+            <IconSymbol name="checkmark" size={16} color={APP_COLORS.white} />
+          </View>
+        )}
         <View style={styles.header}>
           <MoodBadge mood={displayMood ?? 'neutral'} />
           <Text style={styles.dateText}>{formattedDate}</Text>
@@ -84,9 +84,7 @@ export const JournalEntryItem = ({
         {isAnalyzing && (
           <View style={styles.loadingContainer}>
             <ActivityIndicator size="small" color={APP_COLORS.primary} />
-            <Text style={styles.loadingText}>
-              {i18n.t('AddJournalEntry.submitting')}
-            </Text>
+            <Text style={styles.loadingText}>{i18n.t('AddJournalEntry.submitting')}</Text>
           </View>
         )}
 
@@ -111,25 +109,19 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 20,
     shadowColor: APP_COLORS.black,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
     shadowRadius: 3,
     elevation: 2,
   },
   selectedCard: {
-    backgroundColor: APP_COLORS.primary + '0A', // Slightly more visible tint
+    backgroundColor: APP_COLORS.primary + '0A',
     shadowColor: APP_COLORS.primary,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.12,
     shadowRadius: 6,
     elevation: 4,
-    transform: [{ scale: 1.01 }], // Subtle scale for selection feedback
+    transform: [{ scale: 1.01 }],
   },
   header: {
     flexDirection: 'row',
@@ -159,5 +151,19 @@ const styles = StyleSheet.create({
   },
   contentSection: {
     minHeight: 40,
+  },
+  checkContainer: {
+    position: 'absolute',
+    top: -12,
+    left: -8,
+    zIndex: 1,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: APP_COLORS.offwhite,
+    backgroundColor: APP_COLORS.success + 'E6',
   },
 });

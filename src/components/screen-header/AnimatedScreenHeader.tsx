@@ -57,11 +57,25 @@ export function AnimatedScreenHeader({
 
   // Determine what to show on the right side
   const rightContent = () => {
-    if (rightComponent) return rightComponent;
-    if (showMenu && menuItems.length > 0) {
-      return <HeaderMenu items={menuItems} />;
+    const items: ReactNode[] = [];
+
+    if (rightComponent) {
+      items.push(<View key="custom">{rightComponent}</View>);
     }
-    return null;
+
+    if (showMenu && menuItems.length > 0) {
+      items.push(<HeaderMenu key="menu" items={menuItems} />);
+    }
+
+    if (items.length === 0) return null;
+
+    return (
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', gap: 12 }}
+      >
+        {items}
+      </View>
+    );
   };
 
   return (

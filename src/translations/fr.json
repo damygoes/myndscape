@@ -2,7 +2,8 @@
   "Common": {
     "back": "Retour",
     "getStarted": "Commencer",
-    "tip": "Astuce"
+    "tip": "Astuce",
+    "selected": "Sélectionné"
   },
   "Tabs": {
     "home": "Home",
@@ -250,7 +251,10 @@
     "description": "Parcourez et réfléchissez à vos entrées passées",
     "menu": {
       "add-new-entry": "Ajouter une nouvelle entrée",
-      "select-entries": "Sélectionner des entrées",
+      "select-mode": "Mode de sélection",
+      "exit-selection-mode": "Quitter le mode de sélection",
+      "select-all-entries": "Sélectionner toutes les entrées",
+      "deselect-all-entries": "Désélectionner toutes les entrées",
       "sort-by-latest": "Trier par les plus récentes",
       "sort-by-oldest": "Trier par les plus anciennes"
     }
@@ -258,5 +262,8 @@
    "SettingsScreenHeader": {
     "title": "Paramètres",
     "description": "Gérez vos préférences d'application"
+  },
+    "HeaderSearchBar": {
+      "placeholder": "Rechercher des entrées..."
   }
 }

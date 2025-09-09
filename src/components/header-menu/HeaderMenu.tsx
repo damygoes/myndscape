@@ -152,7 +152,7 @@ export function HeaderMenu({ items = [] as MenuItem[] }) {
                       {item.label}
                     </Text>
                     {item.showSelectedState && (
-                      <IconSymbol name="check" size={18} color={APP_COLORS.success} />
+                      <IconSymbol name="checkmark" size={18} color={APP_COLORS.success} />
                     )}
                   </View>
                 </Pressable>
