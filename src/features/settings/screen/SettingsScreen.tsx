@@ -1,25 +1,17 @@
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { APP_COLORS } from '@/constants/colors';
 import UserProfileCard from '@/features/profile/components/UserProfileCard';
-import { Image } from 'expo-image';
-import { router } from 'expo-router';
-import SettingsCard from '../components/SettingsCard';
 import { useAppLocale } from '@/services/i18n/useAppLocale';
+import { router } from 'expo-router';
 import { useRef } from 'react';
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-import { Animated, ScrollView, StyleSheet, View } from 'react-native';
+import { Animated, ScrollView, StyleSheet } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import SettingsCard from '../components/SettingsCard';
 import { SettingsScreenHeader } from '../components/SettingsScreenHeader';
 
 export default function SettingsScreen() {
   const i18n = useAppLocale();
   const scrollY = useRef(new Animated.Value(0)).current;
   const insets = useSafeAreaInsets();
-
-  // Calculate header height (safe area top + header content)
-  const headerHeight = insets.top + 96;
 
   return (
     <SafeAreaView

@@ -1,7 +1,10 @@
 {
-  "trailingComma": "es5",
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "printWidth": 100,
+  "trailingComma": "all",
   "tabWidth": 2,
   "semi": true,
   "singleQuote": true,
-  "doubleQuote": false
+  "doubleQuote": false,
+  "plugins": ["prettier-plugin-organize-imports"]
 }

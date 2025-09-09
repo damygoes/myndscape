@@ -29,6 +29,7 @@ module.exports = {
         argsIgnorePattern: '^_', // allow `_arg`
       },
     ],
+    'unused-imports/no-unused-imports': 'error',
 
     // Your stricter TS rules
     '@typescript-eslint/no-explicit-any': 'error',
