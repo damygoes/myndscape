@@ -1,11 +1,13 @@
 import { AnimatedScreenHeader } from '@/components/screen-header/AnimatedScreenHeader';
+import { IconSymbolName } from '@/components/ui/IconSymbol.ios';
 import { useCurrentUserJournalEntries } from '@/features/journal-entries/hooks/useCurrentUserJournalEntries';
+import { useDeleteJournalEntries } from '@/features/journal-entries/hooks/useDeleteJournalEntries';
 import { useEntrySelectionStore } from '@/features/journal-entries/store/useEntrySelectionStore';
 import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { SortOrder } from '@/types';
 import { router } from 'expo-router';
 import React from 'react';
-import { Animated, Text, View } from 'react-native';
+import { Alert, Animated, Text, View } from 'react-native';
 import { HeaderSearchBar } from './HeaderSearchBar';
 
 type Props = {
@@ -27,9 +29,12 @@ export function HistoryScreenHeader({
 
   const { selectedIds, selectionMode, setSelectionMode, clearSelection, selectAll, isAllSelected } =
     useEntrySelectionStore();
+  const deleteMutation = useDeleteJournalEntries();
 
   // Grab entries so we can do selectAll
   const { data: entries = [] } = useCurrentUserJournalEntries();
+
+  const isAnySelected = selectedIds.size > 0;
 
   const toggleSelectionMode = () => {
     if (selectionMode) {
@@ -52,6 +57,33 @@ export function HistoryScreenHeader({
         selectAll(entries);
       }
     }
+  };
+
+  const handleDeleteSelected = () => {
+    Alert.alert(
+      t('JournalEntryDetails.Alert.deleteEntryTitle'),
+      t('JournalEntryDetails.Alert.deleteEntryDescription'),
+      [
+        { text: t('JournalEntryDetails.Alert.cancel'), style: 'cancel' },
+        {
+          text: t('JournalEntryDetails.Alert.deleteEntry'),
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              await deleteMutation.mutateAsync({ ids: Array.from(selectedIds) });
+              clearSelection();
+              setSelectionMode(false);
+            } catch (err) {
+              console.error('Failed to delete entries:', err);
+              Alert.alert(
+                t('JournalEntryDetails.Alert.errorDeletingEntryTitle'),
+                t('JournalEntryDetails.Alert.errorDeletingEntryDescription')!,
+              );
+            }
+          },
+        },
+      ],
+    );
   };
 
   return (
@@ -108,6 +140,17 @@ export function HistoryScreenHeader({
           onPress: onSortOldest,
           showSelectedState: sortOrder === 'oldest',
         },
+        ...(isAnySelected
+          ? [
+              {
+                key: 'delete-selected',
+                label: t('JournalEntryDetails.Alert.deleteEntryTitle'),
+                icon: 'trash' as IconSymbolName,
+                onPress: handleDeleteSelected,
+                destructive: true,
+              },
+            ]
+          : []),
       ]}
       applyTopPadding
       titleStyle={{ fontSize: 24 }}
