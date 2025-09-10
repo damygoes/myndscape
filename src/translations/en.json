@@ -325,5 +325,20 @@
         "a": "We take security seriously. All data is encrypted and stored securely in the cloud."
       }
     }
+  },
+  "Legal": {
+    "title": "Privacy & Terms",
+    "privacy": {
+      "title": "Privacy Policy",
+      "text": "We respect your privacy. Your journal entries are private and linked only to your account. Data is stored securely and is not shared or sold to third parties. AI analysis is performed only to provide you with summaries, insights, and tips."
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "text": "This app is a self-care and journaling tool. It is not a substitute for professional therapy, diagnosis, or medical treatment. If you are experiencing distress, crisis, or thoughts of self-harm, please reach out to a licensed therapist, doctor, or your local emergency hotline immediately."
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "text": "By using this app, you agree to use it only for personal, non-commercial purposes, not to misuse or distribute content, and understand that AI-generated insights may not always be accurate. Subscriptions renew automatically unless canceled."
+    }
   }
 }

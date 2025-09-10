@@ -326,5 +326,20 @@
         "a": "Oui, nous prenons la sécurité au sérieux. Toutes les données sont cryptées et stockées de manière sécurisée dans le cloud."
       }
     }
+  },
+  "Legal": {
+    "title": "Confidentialité & Conditions d’utilisation",
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "text": "Nous respectons votre vie privée. Vos entrées de journal sont privées et liées uniquement à votre compte. Les données sont stockées en toute sécurité et ne sont ni partagées ni vendues à des tiers. L’analyse par IA est uniquement utilisée pour vous fournir des résumés, des informations et des conseils."
+    },
+    "disclaimer": {
+      "title": "Avertissement",
+      "text": "Cette application est un outil de bien-être et de journal personnel. Elle ne remplace pas une thérapie, un diagnostic ou un traitement médical professionnel. Si vous traversez une crise ou avez des pensées suicidaires, contactez immédiatement un thérapeute, un médecin ou les services d’urgence locaux."
+    },
+    "terms": {
+      "title": "Conditions d’utilisation",
+      "text": "En utilisant cette application, vous acceptez de l’utiliser uniquement à des fins personnelles et non commerciales, de ne pas abuser ou distribuer son contenu, et comprenez que les analyses générées par IA peuvent ne pas toujours être exactes. Les abonnements se renouvellent automatiquement sauf annulation."
+    }
   }
 }

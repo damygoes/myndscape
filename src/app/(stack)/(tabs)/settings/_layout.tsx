@@ -79,6 +79,7 @@ export default function ProfileStackLayout() {
       <Stack.Screen
         name="(support)/legal"
         options={{
+          headerShown: false,
           title: i18n.t('Support.Legal.title'),
           presentation: 'modal',
         }}

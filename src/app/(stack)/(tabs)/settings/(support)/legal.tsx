@@ -1,9 +1,5 @@
-import { Text, View } from 'react-native';
+import { LegalScreen } from '@/features/support/screens/LegalScreen';
 
 export default function Legal() {
-  return (
-    <View>
-      <Text>Legal Screen</Text>
-    </View>
-  );
+  return <LegalScreen />;
 }

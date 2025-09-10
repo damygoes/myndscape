@@ -326,5 +326,20 @@
         "a": "Ja, wir nehmen Sicherheit ernst. Alle Daten werden verschlüsselt und sicher in der Cloud gespeichert."
       }
     }
+  },
+  "Legal": {
+    "title": "Datenschutz & Nutzungsbedingungen",
+    "privacy": {
+      "title": "Datenschutzrichtlinie",
+      "text": "Wir respektieren Ihre Privatsphäre. Ihre Tagebucheinträge sind privat und nur mit Ihrem Konto verknüpft. Daten werden sicher gespeichert und nicht an Dritte weitergegeben oder verkauft. Die KI-Analyse wird ausschließlich verwendet, um Ihnen Zusammenfassungen, Einblicke und Tipps bereitzustellen."
+    },
+    "disclaimer": {
+      "title": "Haftungsausschluss",
+      "text": "Diese App ist ein Werkzeug zur Selbstfürsorge und zum Journaling. Sie ersetzt keine professionelle Therapie, Diagnose oder medizinische Behandlung. Wenn Sie sich in einer Krise befinden oder Gedanken an Selbstverletzung haben, wenden Sie sich bitte sofort an einen Therapeuten, Arzt oder den Notruf in Ihrer Region."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "text": "Durch die Nutzung dieser App erklären Sie sich damit einverstanden, sie ausschließlich für persönliche, nicht-kommerzielle Zwecke zu verwenden, Inhalte nicht zu missbrauchen oder weiterzugeben und zu verstehen, dass KI-generierte Einblicke nicht immer korrekt sein können. Abonnements verlängern sich automatisch, sofern sie nicht gekündigt werden."
+    }
   }
 }
