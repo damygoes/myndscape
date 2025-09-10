@@ -1,9 +1,9 @@
 import { Text, View } from 'react-native';
 
-export default function SupportSettings() {
+export default function Legal() {
   return (
     <View>
-      <Text>Support Settings</Text>
+      <Text>Legal Screen</Text>
     </View>
   );
 }

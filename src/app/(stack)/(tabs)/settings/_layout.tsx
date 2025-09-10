@@ -55,7 +55,7 @@ export default function ProfileStackLayout() {
         }}
       />
       <Stack.Screen
-        name="support"
+        name="(support)/support"
         options={{
           title: i18n.t('Settings.Support.title'),
           gestureEnabled: true,
@@ -65,6 +65,13 @@ export default function ProfileStackLayout() {
         name="delete-account"
         options={{
           title: i18n.t('DeleteAccount.title'),
+          presentation: 'modal',
+        }}
+      />
+      <Stack.Screen
+        name="(support)/faqs"
+        options={{
+          title: i18n.t('FAQs.title'),
           presentation: 'modal',
         }}
       />

@@ -46,19 +46,14 @@ export default function SettingsScreen() {
           subtitle={i18n.t('Settings.Account.description')}
           onPress={() => router.push('/settings/account')}
         />
+        <SettingsCard
+          title={i18n.t('Settings.Support.title')}
+          subtitle={i18n.t('Settings.Support.description')}
+          onPress={() => router.push('/settings/support')}
+        />
       </ScrollView>
     </SafeAreaView>
-
-    // </ParallaxScrollView>
   );
-}
-
-{
-  /* <SettingsCard
-        title={i18n.t('Settings.Support.title')}
-        subtitle={i18n.t('Settings.Support.description')}
-        onPress={() => router.push('/settings/support')}
-      /> */
 }
 
 const styles = StyleSheet.create({
