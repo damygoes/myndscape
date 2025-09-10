@@ -1,9 +1,9 @@
-import { ThemeSelect } from '@/components/theme-select/ThemeSelect';
-import { APP_COLORS } from '@/constants/colors';
 import { LanguageSelect } from '@/components/language-select/LanguageSelect';
+import { APP_COLORS } from '@/constants/colors';
 import { NotificationsToggle } from '@/features/notifications/components/NotificationsToggle';
 import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { Ionicons } from '@expo/vector-icons';
+import { ReactNode } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 
 function SettingsRow({
@@ -16,7 +16,7 @@ function SettingsRow({
   title: string;
   subtitle?: string;
   icon: keyof typeof Ionicons.glyphMap;
-  rightElement?: React.ReactNode;
+  rightElement?: ReactNode;
   onPress?: () => void;
 }) {
   return (
@@ -32,12 +32,7 @@ function SettingsRow({
         borderBottomColor: APP_COLORS['body-text-disabled'] + '20',
       }}
     >
-      <Ionicons
-        name={icon}
-        size={20}
-        color={APP_COLORS['body-text']}
-        style={{ marginRight: 16 }}
-      />
+      <Ionicons name={icon} size={20} color={APP_COLORS['body-text']} style={{ marginRight: 16 }} />
       <View style={{ flex: 1 }}>
         <Text
           style={{
@@ -68,9 +63,7 @@ function SettingsRow({
 export default function GeneralSettings() {
   const { t } = useAppLocale();
   return (
-    <ScrollView
-      style={{ flex: 1, backgroundColor: APP_COLORS['primary-background'] }}
-    >
+    <ScrollView style={{ flex: 1, backgroundColor: APP_COLORS['primary-background'] }}>
       <SettingsRow
         title={t('Notifications.title')}
         subtitle={t('Notifications.description')}
@@ -78,12 +71,12 @@ export default function GeneralSettings() {
         rightElement={<NotificationsToggle />}
       />
 
-      <SettingsRow
+      {/* <SettingsRow
         title={t('Theme.title')}
         subtitle={t('Theme.description')}
         icon="color-palette-outline"
         rightElement={<ThemeSelect />}
-      />
+      /> */}
 
       <SettingsRow
         title={t('Language.title')}
