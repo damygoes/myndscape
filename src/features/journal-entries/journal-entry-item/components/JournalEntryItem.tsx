@@ -63,37 +63,53 @@ export const JournalEntryItem = ({ entry }: Props) => {
     <TouchableOpacity
       onPress={handlePress}
       style={styles.touchableContainer}
-      activeOpacity={0.8}
+      activeOpacity={0.7}
       accessibilityRole="button"
       accessibilityLabel={`Journal entry from ${formattedDate}, mood: ${displayMood}${selected ? ', selected' : ''}`}
       accessibilityHint={
         selectionMode ? 'Tap to select or unselect this entry' : 'Tap to view full entry details'
       }
     >
-      <View style={[styles.cardContainer, selected && styles.selectedCard]}>
-        {selected && (
-          <View style={styles.checkContainer}>
-            <IconSymbol name="checkmark" size={16} color={APP_COLORS.white} />
-          </View>
-        )}
-        <View style={styles.header}>
-          <MoodBadge mood={displayMood ?? 'neutral'} />
-          <Text style={styles.dateText}>{formattedDate}</Text>
-        </View>
-
-        {isAnalyzing && (
-          <View style={styles.loadingContainer}>
-            <ActivityIndicator size="small" color={APP_COLORS.primary} />
-            <Text style={styles.loadingText}>{i18n.t('AddJournalEntry.submitting')}</Text>
+      <View
+        style={[
+          styles.cardContainer,
+          selected && styles.selectedCard,
+          selectionMode && styles.selectionModeCard,
+        ]}
+      >
+        {/* Selection circle on the left side */}
+        {selectionMode && (
+          <View style={styles.selectionContainer}>
+            <View style={[styles.selectionCircle, selected && styles.selectedCircle]}>
+              {selected && <IconSymbol name="checkmark" size={14} color={APP_COLORS.white} />}
+            </View>
           </View>
         )}
 
-        <View style={styles.contentSection}>
-          <JournalEntryAnalysisSection
-            summary={displaySummary}
-            themes={displayThemes}
-            tip={displayTip}
-          />
+        {/* Main content area */}
+        <View style={[styles.contentContainer, selectionMode && styles.contentWithSelection]}>
+          {/* Header with mood and date */}
+          <View style={styles.header}>
+            <MoodBadge mood={displayMood ?? 'neutral'} />
+            <Text style={styles.dateText}>{formattedDate}</Text>
+          </View>
+
+          {/* Loading indicator */}
+          {isAnalyzing && (
+            <View style={styles.loadingContainer}>
+              <ActivityIndicator size="small" color={APP_COLORS.primary} />
+              <Text style={styles.loadingText}>{i18n.t('AddJournalEntry.submitting')}</Text>
+            </View>
+          )}
+
+          {/* Analysis content */}
+          <View style={styles.analysisSection}>
+            <JournalEntryAnalysisSection
+              summary={displaySummary}
+              themes={displayThemes}
+              tip={displayTip}
+            />
+          </View>
         </View>
       </View>
     </TouchableOpacity>
@@ -102,26 +118,63 @@ export const JournalEntryItem = ({ entry }: Props) => {
 
 const styles = StyleSheet.create({
   touchableContainer: {
-    marginBottom: 12,
+    marginBottom: 16,
+    marginHorizontal: 4,
   },
   cardContainer: {
     backgroundColor: APP_COLORS.white,
-    borderRadius: 16,
-    padding: 20,
+    borderRadius: 20,
     shadowColor: APP_COLORS.black,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3,
-    elevation: 2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 3,
+    overflow: 'hidden',
+    minHeight: 120,
   },
   selectedCard: {
-    backgroundColor: APP_COLORS.primary + '0A',
+    backgroundColor: APP_COLORS.primary + '08',
+    borderWidth: 2,
+    borderColor: APP_COLORS.primary + '40',
     shadowColor: APP_COLORS.primary,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.12,
-    shadowRadius: 6,
-    elevation: 4,
-    transform: [{ scale: 1.01 }],
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    elevation: 6,
+  },
+  selectionModeCard: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+  },
+  selectionContainer: {
+    width: 40,
+    minHeight: 120,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderTopLeftRadius: 18,
+    borderBottomLeftRadius: 18,
+    backgroundColor: APP_COLORS.offwhite + '40',
+  },
+  selectionCircle: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    borderWidth: 2,
+    borderColor: APP_COLORS['body-text-disabled'],
+    backgroundColor: APP_COLORS.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  selectedCircle: {
+    backgroundColor: APP_COLORS.primary,
+    borderColor: APP_COLORS.primary,
+  },
+  contentContainer: {
+    flex: 1,
+    padding: 20,
+  },
+  contentWithSelection: {
+    paddingLeft: 16,
   },
   header: {
     flexDirection: 'row',
@@ -132,38 +185,29 @@ const styles = StyleSheet.create({
   dateText: {
     fontSize: 13,
     fontFamily: 'Manrope',
-    fontWeight: '400',
+    fontWeight: '500',
     color: APP_COLORS['body-text-disabled'],
+    letterSpacing: 0.2,
   },
   loadingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 8,
-    marginBottom: 12,
-    gap: 8,
+    paddingVertical: 12,
+    marginBottom: 16,
+    gap: 10,
+    backgroundColor: APP_COLORS.primary + '08',
+    borderRadius: 12,
+    marginHorizontal: -4,
   },
   loadingText: {
-    fontSize: 13,
+    fontSize: 14,
     fontFamily: 'Manrope',
-    fontWeight: '400',
+    fontWeight: '500',
     color: APP_COLORS.primary,
   },
-  contentSection: {
-    minHeight: 40,
-  },
-  checkContainer: {
-    position: 'absolute',
-    top: -12,
-    left: -8,
-    zIndex: 1,
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: APP_COLORS.offwhite,
-    backgroundColor: APP_COLORS.success + 'E6',
+  analysisSection: {
+    flex: 1,
+    minHeight: 60,
   },
 });

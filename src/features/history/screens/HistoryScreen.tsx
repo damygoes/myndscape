@@ -1,4 +1,3 @@
-// HistoryScreen.tsx
 import { useMemo, useRef, useState } from 'react';
 import { Animated, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -8,7 +7,6 @@ import { HistoryScreenHeader } from '@/features/history/components/HistoryScreen
 import { JournalEntries } from '@/features/journal-entries/components/JournalEntries';
 import { SortOrder } from '@/types';
 
-// HistoryScreen.tsx
 export default function HistoryScreen() {
   const scrollY = useRef(new Animated.Value(0)).current;
   const insets = useSafeAreaInsets();
