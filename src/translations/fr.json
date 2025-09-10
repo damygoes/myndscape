@@ -263,7 +263,68 @@
     "title": "Paramètres",
     "description": "Gérez vos préférences d'application"
   },
-    "HeaderSearchBar": {
-      "placeholder": "Rechercher des entrées..."
+  "HeaderSearchBar": {
+    "placeholder": "Rechercher des entrées..."
+  },
+  "Support": {
+    "FAQs": {
+      "title": "FAQs",
+      "modalTitle": "Foire aux questions",
+      "subtitle": "Trouvez des réponses rapides aux questions courantes"
+    },
+    "Legal": {
+      "title": "Égalité",
+      "subtitle": "Lisez notre politique de confidentialité, notre clause de non-responsabilité et nos conditions d'utilisation"
+    },
+    "Contact": {
+      "title": "Contacter l'assistance",
+      "subtitle": "Contactez-nous à support@yourapp.com"
+    },
+    "AppInfo": {
+      "title": "Informations sur l'application",
+      "version": "Version",
+      "build": "Build"
+    }
+  },
+  "FAQs": {
+    "title": "Questions fréquentes",
+    "questions": {
+      "score": {
+        "q": "Comment l’application calcule-t-elle mon score de bien-être ?",
+        "a": "Votre score est basé sur l’humeur et le ton de votre dernier journal. Nous ajoutons également de petits bonus pour les séries et la régularité."
+      },
+      "privacy": {
+        "q": "Mes entrées de journal sont-elles privées ?",
+        "a": "Oui. Vos entrées sont privées et ne sont jamais partagées avec d’autres. Nous utilisons l’IA pour générer des résumés et des informations, mais vos données sont stockées en toute sécurité."
+      },
+      "missDay": {
+        "q": "Que se passe-t-il si je rate un jour ?",
+        "a": "Pas d’inquiétude ! Manquer un jour n’efface pas vos progrès. Vos séries et votre régularité peuvent être réinitialisées, mais vous pouvez toujours recommencer."
+      },
+      "export": {
+        "q": "Puis-je exporter mes journaux ?",
+        "a": "Oui, vous pouvez exporter vos entrées pour les sauvegarder ou pour un usage personnel (la disponibilité dépend de votre abonnement)."
+      },
+      "therapy": {
+        "q": "Est-ce que cette application remplace une thérapie ?",
+        "a": "Non. Cette application est conçue comme un outil de réflexion personnelle et de bien-être. Elle ne remplace pas une thérapie ou un traitement médical professionnel."
+      },
+      "offline": {
+        "q": "Puis-je utiliser l’application hors ligne ?",
+        "a": "Oui, vous pouvez écrire vos entrées hors ligne. Elles se synchroniseront dès que vous serez reconnecté à Internet."
+      },
+      "subscription": {
+        "q": "Ai-je besoin d’un abonnement ?",
+        "a": "Vous pouvez commencer gratuitement. Les abonnements débloquent des fonctionnalités supplémentaires comme l’exportation des journaux et des analyses personnalisées."
+      },
+      "resetPassword": {
+        "q": "Comment réinitialiser mon mot de passe ?",
+        "a": "Allez dans les paramètres du compte et sélectionnez 'Réinitialiser le mot de passe'. Vous recevrez un e-mail avec les instructions."
+      },
+      "security": {
+        "q": "Mes données sont-elles sécurisées ?",
+        "a": "Oui, nous prenons la sécurité au sérieux. Toutes les données sont cryptées et stockées de manière sécurisée dans le cloud."
+      }
+    }
   }
 }

@@ -263,7 +263,68 @@
     "title": "Einstellungen",
     "description": "Verwalte deine App-Präferenzen"
   },
-    "HeaderSearchBar": {
-      "placeholder": "Einträge suchen..."
+  "HeaderSearchBar": {
+    "placeholder": "Einträge suchen..."
+  },
+  "Support": {
+    "FAQs": {
+      "title": "FAQs",
+      "modalTitle": "Häufig gestellte Fragen",
+      "subtitle": "Finde schnelle Antworten auf häufige Fragen"
+    },
+    "Legal": {
+      "title": "Rechtliches",
+      "subtitle": "Lies unsere Datenschutzrichtlinie, unseren Haftungsausschluss und unsere Nutzungsbedingungen"
+    },
+    "Contact": {
+      "title": "Support kontaktieren",
+      "subtitle": "Erreiche uns unter support@yourapp.com"
+    },
+    "AppInfo": {
+    "title": "App-Info",
+    "version": "Version",
+    "build": "Build"
+    }
+  },
+  "FAQs": {
+    "title": "Häufig gestellte Fragen",
+    "questions": {
+      "score": {
+        "q": "Wie berechnet die App meinen Wellness-Score?",
+        "a": "Ihr Score basiert auf der Stimmung und dem Ton Ihres letzten Tagebucheintrags. Zusätzlich vergeben wir kleine Boni für Streaks und Konsistenz."
+      },
+      "privacy": {
+        "q": "Sind meine Tagebucheinträge privat?",
+        "a": "Ja. Ihre Einträge sind privat und werden niemals mit anderen geteilt. Wir nutzen KI, um Zusammenfassungen und Erkenntnisse zu erstellen, aber Ihre Daten werden sicher gespeichert."
+      },
+      "missDay": {
+        "q": "Was passiert, wenn ich einen Tag auslasse?",
+        "a": "Keine Sorge! Wenn Sie einen Tag verpassen, geht Ihr Fortschritt nicht verloren. Ihre Streaks und die Konsistenz können sich zurücksetzen, aber Sie können jederzeit neu beginnen."
+      },
+      "export": {
+        "q": "Kann ich meine Tagebucheinträge exportieren?",
+        "a": "Ja, Sie können Ihre Einträge für ein Backup oder zur persönlichen Nutzung exportieren (abhängig vom Abonnementplan)."
+      },
+      "therapy": {
+        "q": "Ersetzt diese App eine Therapie?",
+        "a": "Nein. Diese App ist ein Werkzeug zur Selbstreflexion und zum Wohlbefinden. Sie ersetzt keine Therapie oder professionelle medizinische Behandlung."
+      },
+      "offline": {
+        "q": "Kann ich die App offline nutzen?",
+        "a": "Ja, Sie können Einträge offline verfassen. Diese werden synchronisiert, sobald Sie wieder mit dem Internet verbunden sind."
+      },
+      "subscription": {
+        "q": "Benötige ich ein Abonnement?",
+        "a": "Sie können kostenlos starten. Abonnements schalten zusätzliche Funktionen wie den Export von Tagebüchern und personalisierte Einblicke frei."
+      },
+      "resetPassword": {
+        "q": "Wie kann ich mein Passwort zurücksetzen?",
+        "a": "Gehen Sie zu den Kontoeinstellungen und wählen Sie 'Passwort zurücksetzen'. Sie erhalten eine E-Mail mit Anweisungen."
+      },
+      "security": {
+        "q": "Sind meine Daten sicher?",
+        "a": "Ja, wir nehmen Sicherheit ernst. Alle Daten werden verschlüsselt und sicher in der Cloud gespeichert."
+      }
     }
   }
+}

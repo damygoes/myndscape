@@ -1,18 +1,17 @@
-import React, { useRef } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { LoadingState } from '@/components/LoadingState';
-import { useAppLocale } from '@/services/i18n/useAppLocale';
+import { APP_COLORS } from '@/constants/colors';
 import { useJournalEntryById } from '@/features/journal-entries/hooks/useJournalEntryById';
+import { MoodBadge } from '@/features/journal-entries/journal-entry-item/components/MoodBadge';
+import ThemeBadge from '@/features/journal-entries/journal-entry-item/components/ThemeBadge';
 import {
   parseThemes,
   prepareJournalEntry,
 } from '@/features/journal-entries/journal-entry-item/utils';
-import { MoodBadge } from '@/features/journal-entries/journal-entry-item/components/MoodBadge';
-import ThemeBadge from '@/features/journal-entries/journal-entry-item/components/ThemeBadge';
-import { APP_COLORS } from '@/constants/colors';
+import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export function EntryDetailsContent({ entryId }: { entryId: string }) {
@@ -21,16 +20,9 @@ export function EntryDetailsContent({ entryId }: { entryId: string }) {
 
   const { data, isLoading, error } = useJournalEntryById(entryId);
 
-  if (isLoading)
-    return (
-      <LoadingState message={i18n.t('JournalEntryDetails.loadingEntries')} />
-    );
-  if (error)
-    return (
-      <ErrorState message={i18n.t('JournalEntryDetails.errorLoadingEntries')} />
-    );
-  if (!data)
-    return <EmptyState message={i18n.t('JournalEntryDetails.noEntryFound')} />;
+  if (isLoading) return <LoadingState message={i18n.t('JournalEntryDetails.loadingEntries')} />;
+  if (error) return <ErrorState message={i18n.t('JournalEntryDetails.errorLoadingEntries')} />;
+  if (!data) return <EmptyState message={i18n.t('JournalEntryDetails.noEntryFound')} />;
 
   const journalEntry = prepareJournalEntry(data);
   const themeList = parseThemes(journalEntry.themes);
@@ -48,17 +40,13 @@ export function EntryDetailsContent({ entryId }: { entryId: string }) {
       {/* Mood + Date */}
       <View style={styles.header}>
         <MoodBadge mood={journalEntry.mood ?? 'neutral'} />
-        <Text
-          style={[styles.dateText, { color: APP_COLORS['body-text-disabled'] }]}
-        >
+        <Text style={[styles.dateText, { color: APP_COLORS['body-text-disabled'] }]}>
           {journalEntry.formattedDate}
         </Text>
       </View>
       {/* Content */}
       <View>
-        <Text
-          style={[styles.label, { color: APP_COLORS['body-text-disabled'] }]}
-        >
+        <Text style={[styles.label, { color: APP_COLORS['body-text-disabled'] }]}>
           {i18n.t('JournalEntryDetails.userInput')}
         </Text>
         <Text style={[styles.content, { color: APP_COLORS['body-text'] }]}>
