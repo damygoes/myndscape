@@ -1,9 +1,5 @@
-import { Text, View } from 'react-native';
+import { FAQsScreen } from '@/features/support/screens/FAQsScreen';
 
 export default function FAQs() {
-  return (
-    <View>
-      <Text>FAQs Screen</Text>
-    </View>
-  );
+  return <FAQsScreen />;
 }

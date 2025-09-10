@@ -265,5 +265,25 @@
   },
   "HeaderSearchBar": {
     "placeholder": "Search entries..."
+  },
+  
+  "Support": {
+    "FAQs": {
+      "title": "FAQs",
+      "subtitle": "Find quick answers to common questions"
+    },
+    "Legal": {
+      "title": "Legal",
+      "subtitle": "Read our privacy policy, disclaimer, and terms of service"
+    },
+    "Contact": {
+      "title": "Contact Support",
+      "subtitle": "Reach us at support@yourapp.com"
+    },
+    "AppInfo": {
+    "title": "App Info",
+    "version": "Version",
+    "build": "Build"
+    }
   }
 }

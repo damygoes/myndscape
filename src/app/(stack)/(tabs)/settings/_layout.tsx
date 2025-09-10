@@ -71,7 +71,15 @@ export default function ProfileStackLayout() {
       <Stack.Screen
         name="(support)/faqs"
         options={{
-          title: i18n.t('FAQs.title'),
+          headerShown: false,
+          title: i18n.t('Support.FAQs.title'),
+          presentation: 'modal',
+        }}
+      />
+      <Stack.Screen
+        name="(support)/legal"
+        options={{
+          title: i18n.t('Support.Legal.title'),
           presentation: 'modal',
         }}
       />

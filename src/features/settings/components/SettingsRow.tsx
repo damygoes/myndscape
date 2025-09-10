@@ -55,6 +55,7 @@ export function SettingsRow({
               fontSize: 13,
               color: APP_COLORS['body-text-disabled'],
               marginTop: 2,
+              maxWidth: '90%',
             }}
           >
             {subtitle}

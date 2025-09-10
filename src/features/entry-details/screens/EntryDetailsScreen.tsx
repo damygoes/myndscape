@@ -1,9 +1,9 @@
 import { APP_COLORS } from '@/constants/colors';
-import { Animated, Text, View } from 'react-native';
-import { EntryDetailsScreenHeader } from '../components/EntryDetailsScreenHeader';
-import { useRef } from 'react';
-import { EntryDetailsContent } from '../components/EntryDetailsContent';
 import { useLocalSearchParams } from 'expo-router';
+import { useRef } from 'react';
+import { Animated, View } from 'react-native';
+import { EntryDetailsContent } from '../components/EntryDetailsContent';
+import { EntryDetailsScreenHeader } from '../components/EntryDetailsScreenHeader';
 
 export function EntryDetailsScreen() {
   const scrollY = useRef(new Animated.Value(0)).current;
