@@ -18,6 +18,7 @@ export default function SettingsScreen() {
       style={{
         flex: 1,
         backgroundColor: APP_COLORS['primary-background'],
+        paddingTop: insets.top,
       }}
     >
       <SettingsScreenHeader scrollY={scrollY} />
