@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0FB35B1FA97F2B9BA1217770 /* libPods-myndscape.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31BF115CA72632A0716CE388 /* libPods-myndscape.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		462067B48F7A2A91C2103F82 /* libPods-myndscape.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39118D81D6B43ABAB2419688 /* libPods-myndscape.a */; };
+		ADEFF9E0026D7F343C5CD3F6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 99EA18A4557B1274465268D4 /* PrivacyInfo.xcprivacy */; };
+		B6A3A103B221ACEC652862F9 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430F7F493DDA3FA44FA0D9E6 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		BF4DC7116F5DAC55D59800CD /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 2AF89EB9DE8CA8CAA21EFF49 /* PrivacyInfo.xcprivacy */; };
-		DDBBDC94A4A1A4367783BC26 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F50D2330F8B362B0A4E66BD /* ExpoModulesProvider.swift */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,16 +20,16 @@
 		13B07F961A680F5B00A75B9A /* myndscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myndscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = myndscape/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = myndscape/Info.plist; sourceTree = "<group>"; };
-		2AF89EB9DE8CA8CAA21EFF49 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = myndscape/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		31BF115CA72632A0716CE388 /* libPods-myndscape.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myndscape.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A757FC825DD93E34A2F28E9 /* Pods-myndscape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myndscape.debug.xcconfig"; path = "Target Support Files/Pods-myndscape/Pods-myndscape.debug.xcconfig"; sourceTree = "<group>"; };
-		6F50D2330F8B362B0A4E66BD /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-myndscape/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		357F1AC04C59625FE9738D2C /* Pods-myndscape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myndscape.debug.xcconfig"; path = "Target Support Files/Pods-myndscape/Pods-myndscape.debug.xcconfig"; sourceTree = "<group>"; };
+		39118D81D6B43ABAB2419688 /* libPods-myndscape.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myndscape.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		430F7F493DDA3FA44FA0D9E6 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-myndscape/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		99EA18A4557B1274465268D4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = myndscape/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = myndscape/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		E75561697CBBB0A080AF5245 /* Pods-myndscape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myndscape.release.xcconfig"; path = "Target Support Files/Pods-myndscape/Pods-myndscape.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = myndscape/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* myndscape-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "myndscape-Bridging-Header.h"; path = "myndscape/myndscape-Bridging-Header.h"; sourceTree = "<group>"; };
+		F4222A3369D8D8ADA336084D /* Pods-myndscape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myndscape.release.xcconfig"; path = "Target Support Files/Pods-myndscape/Pods-myndscape.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,21 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FB35B1FA97F2B9BA1217770 /* libPods-myndscape.a in Frameworks */,
+				462067B48F7A2A91C2103F82 /* libPods-myndscape.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0EE16B2F9E3E42D1E9421CF2 /* Pods */ = {
+		00ACB8F041C1449FFAAB8F9D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4A757FC825DD93E34A2F28E9 /* Pods-myndscape.debug.xcconfig */,
-				E75561697CBBB0A080AF5245 /* Pods-myndscape.release.xcconfig */,
+				357F1AC04C59625FE9738D2C /* Pods-myndscape.debug.xcconfig */,
+				F4222A3369D8D8ADA336084D /* Pods-myndscape.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		07F03FBB484D0DD822A66F79 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				13A47E29A1F80129F9B9264C /* myndscape */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		13A47E29A1F80129F9B9264C /* myndscape */ = {
+			isa = PBXGroup;
+			children = (
+				430F7F493DDA3FA44FA0D9E6 /* ExpoModulesProvider.swift */,
+			);
+			name = myndscape;
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* myndscape */ = {
@@ -63,7 +79,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				2AF89EB9DE8CA8CAA21EFF49 /* PrivacyInfo.xcprivacy */,
+				99EA18A4557B1274465268D4 /* PrivacyInfo.xcprivacy */,
 			);
 			name = myndscape;
 			sourceTree = "<group>";
@@ -72,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				31BF115CA72632A0716CE388 /* libPods-myndscape.a */,
+				39118D81D6B43ABAB2419688 /* libPods-myndscape.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -91,8 +107,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				0EE16B2F9E3E42D1E9421CF2 /* Pods */,
-				BA5E9A957998D1553F0EA6F6 /* ExpoModulesProviders */,
+				07F03FBB484D0DD822A66F79 /* ExpoModulesProviders */,
+				00ACB8F041C1449FFAAB8F9D /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -107,14 +123,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BA5E9A957998D1553F0EA6F6 /* ExpoModulesProviders */ = {
-			isa = PBXGroup;
-			children = (
-				DD458E477FF710A9DFD44C23 /* myndscape */,
-			);
-			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,14 +132,6 @@
 			path = myndscape/Supporting;
 			sourceTree = "<group>";
 		};
-		DD458E477FF710A9DFD44C23 /* myndscape */ = {
-			isa = PBXGroup;
-			children = (
-				6F50D2330F8B362B0A4E66BD /* ExpoModulesProvider.swift */,
-			);
-			name = myndscape;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,14 +139,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "myndscape" */;
 			buildPhases = (
-				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				F029402DA8A0F500AF353321 /* [Expo] Configure project */,
+				76FB0B9C36851631A2ABFF0D /* [CP] Check Pods Manifest.lock */,
+				0F1A413E8289226EB6EA099C /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				59C6D237263D7EFA0393D646 /* [CP] Embed Pods Frameworks */,
+				263F45DFD44882F9C49E03FF /* [CP] Embed Pods Frameworks */,
+				18DA50470FBBE03C4F2F3F9E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				BF4DC7116F5DAC55D59800CD /* PrivacyInfo.xcprivacy in Resources */,
+				ADEFF9E0026D7F343C5CD3F6 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,47 +218,26 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n# The project root by default is one level up from the ios directory\nexport PROJECT_ROOT=\"$PROJECT_DIR\"/..\n\nif [[ \"$CONFIGURATION\" = *Debug* ]]; then\n  export SKIP_BUNDLING=1\nfi\nif [[ -z \"$ENTRY_FILE\" ]]; then\n  # Set the entry JS file using the bundler's entry resolution.\n  export ENTRY_FILE=\"$(\"$NODE_BINARY\" -e \"require('expo/scripts/resolveAppEntry')\" \"$PROJECT_ROOT\" ios absolute | tail -n 1)\"\nfi\n\nif [[ -z \"$CLI_PATH\" ]]; then\n  # Use Expo CLI\n  export CLI_PATH=\"$(\"$NODE_BINARY\" --print \"require.resolve('@expo/cli', { paths: [require.resolve('expo/package.json')] })\")\"\nfi\nif [[ -z \"$BUNDLE_COMMAND\" ]]; then\n  # Default Expo CLI command for bundling\n  export BUNDLE_COMMAND=\"export:embed\"\nfi\n\n# Source .xcode.env.updates if it exists to allow\n# SKIP_BUNDLING to be unset if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.updates\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.updates\"\nfi\n# Source local changes to allow overrides\n# if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n`\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\"`\n\n";
 		};
-		08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */ = {
+		0F1A413E8289226EB6EA099C /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[Expo] Configure project";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-myndscape-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-myndscape/expo-configure-project.sh\"\n";
 		};
-		59C6D237263D7EFA0393D646 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
+		18DA50470FBBE03C4F2F3F9E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -310,24 +289,45 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F029402DA8A0F500AF353321 /* [Expo] Configure project */ = {
+		263F45DFD44882F9C49E03FF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76FB0B9C36851631A2ABFF0D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[Expo] Configure project";
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-myndscape-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-myndscape/expo-configure-project.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -337,7 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				DDBBDC94A4A1A4367783BC26 /* ExpoModulesProvider.swift in Sources */,
+				B6A3A103B221ACEC652862F9 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +346,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A757FC825DD93E34A2F28E9 /* Pods-myndscape.debug.xcconfig */;
+			baseConfigurationReference = 357F1AC04C59625FE9738D2C /* Pods-myndscape.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -382,7 +382,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E75561697CBBB0A080AF5245 /* Pods-myndscape.release.xcconfig */;
+			baseConfigurationReference = F4222A3369D8D8ADA336084D /* Pods-myndscape.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
