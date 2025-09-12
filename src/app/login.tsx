@@ -1,5 +1,5 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { APP_COLORS, COLORS } from '@/constants/colors';
+import { APP_COLORS } from '@/constants/colors';
 import { LoginForm } from '@/features/auth/components/LoginForm';
 import { useAppLocale } from '@/services/i18n/useAppLocale';
 import { Image } from 'expo-image';
@@ -31,7 +31,7 @@ export default function LandingScreen() {
             }}
           >
             <Image
-              source={require('../../assets/icon.png')}
+              source={require('../../assets/adaptive-icon.png')}
               style={{ width: 100, height: 100 }}
               contentFit="contain"
               cachePolicy="memory-disk"
