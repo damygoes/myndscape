@@ -39,7 +39,7 @@ export default function SupportSettings() {
 
       <SettingsRow
         title={t('Support.AppInfo.title')}
-        subtitle={`${t('Support.AppInfo.version')}: 2.0.0`}
+        subtitle={`${t('Support.AppInfo.version')}: 2.1.0`}
         icon="information-circle-outline"
       />
     </ScrollView>
