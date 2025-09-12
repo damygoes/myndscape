@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		2FEA4EB85F67EFC1D034A419 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC708124876EE4FC5C43C6E /* ExpoModulesProvider.swift */; };
+		1B2FE49AC0FC53AA622C9E95 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3133F612952E1CC4BF8C3C /* ExpoModulesProvider.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		559E64990656EEED51322672 /* libPods-myndscape.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5C8ED8DF02D9EEA6F7EDC9 /* libPods-myndscape.a */; };
+		7DAB8044A0F69A03AFA20665 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A7FCC10C55DA09BFBEF7A94B /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C554D09C1A0DC472115DC00B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 344D7E3FD8789DAC17F56167 /* PrivacyInfo.xcprivacy */; };
+		E7BAF9D606F4E8277C43F557 /* libPods-myndscape.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7EA20F88DAB9D46F63951EE /* libPods-myndscape.a */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,14 +20,14 @@
 		13B07F961A680F5B00A75B9A /* myndscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myndscape.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = myndscape/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = myndscape/Info.plist; sourceTree = "<group>"; };
-		344D7E3FD8789DAC17F56167 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = myndscape/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		7BACBC91D1FD4E40F1DA8E06 /* Pods-myndscape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myndscape.release.xcconfig"; path = "Target Support Files/Pods-myndscape/Pods-myndscape.release.xcconfig"; sourceTree = "<group>"; };
-		9EC708124876EE4FC5C43C6E /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-myndscape/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		2BD87AB159B47FCFD9CF640C /* Pods-myndscape.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myndscape.release.xcconfig"; path = "Target Support Files/Pods-myndscape/Pods-myndscape.release.xcconfig"; sourceTree = "<group>"; };
+		3F3133F612952E1CC4BF8C3C /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-myndscape/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		A53EEC6A6F3D060B09BC7A5B /* Pods-myndscape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myndscape.debug.xcconfig"; path = "Target Support Files/Pods-myndscape/Pods-myndscape.debug.xcconfig"; sourceTree = "<group>"; };
+		A7FCC10C55DA09BFBEF7A94B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = myndscape/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = myndscape/SplashScreen.storyboard; sourceTree = "<group>"; };
+		B7EA20F88DAB9D46F63951EE /* libPods-myndscape.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myndscape.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		DF56A8B3FFC4663AB2162907 /* Pods-myndscape.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myndscape.debug.xcconfig"; path = "Target Support Files/Pods-myndscape/Pods-myndscape.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EE5C8ED8DF02D9EEA6F7EDC9 /* libPods-myndscape.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myndscape.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = myndscape/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* myndscape-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "myndscape-Bridging-Header.h"; path = "myndscape/myndscape-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				559E64990656EEED51322672 /* libPods-myndscape.a in Frameworks */,
+				E7BAF9D606F4E8277C43F557 /* libPods-myndscape.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				344D7E3FD8789DAC17F56167 /* PrivacyInfo.xcprivacy */,
+				A7FCC10C55DA09BFBEF7A94B /* PrivacyInfo.xcprivacy */,
 			);
 			name = myndscape;
 			sourceTree = "<group>";
@@ -62,17 +62,25 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				EE5C8ED8DF02D9EEA6F7EDC9 /* libPods-myndscape.a */,
+				B7EA20F88DAB9D46F63951EE /* libPods-myndscape.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7B421D809116B59542544480 /* myndscape */ = {
+		30C65C93F660A8BA2EC3ABC1 /* myndscape */ = {
 			isa = PBXGroup;
 			children = (
-				9EC708124876EE4FC5C43C6E /* ExpoModulesProvider.swift */,
+				3F3133F612952E1CC4BF8C3C /* ExpoModulesProvider.swift */,
 			);
 			name = myndscape;
+			sourceTree = "<group>";
+		};
+		3980E7D671DD83E878303AC4 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				30C65C93F660A8BA2EC3ABC1 /* myndscape */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -89,8 +97,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				A4B3F050509C9BD0D7ED47AC /* Pods */,
-				875DBB93B99E9208C1D19B53 /* ExpoModulesProviders */,
+				9DFF5A63D32403BDC4C740F0 /* Pods */,
+				3980E7D671DD83E878303AC4 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -105,19 +113,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		875DBB93B99E9208C1D19B53 /* ExpoModulesProviders */ = {
+		9DFF5A63D32403BDC4C740F0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7B421D809116B59542544480 /* myndscape */,
-			);
-			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
-		A4B3F050509C9BD0D7ED47AC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DF56A8B3FFC4663AB2162907 /* Pods-myndscape.debug.xcconfig */,
-				7BACBC91D1FD4E40F1DA8E06 /* Pods-myndscape.release.xcconfig */,
+				A53EEC6A6F3D060B09BC7A5B /* Pods-myndscape.debug.xcconfig */,
+				2BD87AB159B47FCFD9CF640C /* Pods-myndscape.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -140,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "myndscape" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				C0D846E3BF9A80E35C1748BF /* [Expo] Configure project */,
+				8318E78D6A0F04BF620D6A45 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				F3375EEEE0E86D4E2512EB10 /* [CP] Embed Pods Frameworks */,
+				6DAF3DD5E42C36CC6D46DB14 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				C554D09C1A0DC472115DC00B /* PrivacyInfo.xcprivacy in Resources */,
+				7DAB8044A0F69A03AFA20665 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +240,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6DAF3DD5E42C36CC6D46DB14 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,7 +265,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXUpdates/EXUpdates.bundle",
@@ -269,7 +286,6 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoApplication_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXUpdates.bundle",
@@ -294,7 +310,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C0D846E3BF9A80E35C1748BF /* [Expo] Configure project */ = {
+		8318E78D6A0F04BF620D6A45 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -313,24 +329,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-myndscape/expo-configure-project.sh\"\n";
 		};
-		F3375EEEE0E86D4E2512EB10 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myndscape/Pods-myndscape-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -339,7 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				2FEA4EB85F67EFC1D034A419 /* ExpoModulesProvider.swift in Sources */,
+				1B2FE49AC0FC53AA622C9E95 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +346,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF56A8B3FFC4663AB2162907 /* Pods-myndscape.debug.xcconfig */;
+			baseConfigurationReference = A53EEC6A6F3D060B09BC7A5B /* Pods-myndscape.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -384,7 +382,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BACBC91D1FD4E40F1DA8E06 /* Pods-myndscape.release.xcconfig */;
+			baseConfigurationReference = 2BD87AB159B47FCFD9CF640C /* Pods-myndscape.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

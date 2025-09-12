@@ -20,7 +20,10 @@ export default function AccountDeletionScreen() {
   const handleDelete = async () => {
     if (!userId) {
       console.error('User ID is undefined. Cannot delete account.');
-      Alert.alert(t('DeleteAccountModal.Alerts.errorTitle'), t('DeleteAccountModal.Alerts.errorDescription'));
+      Alert.alert(
+        t('DeleteAccountModal.Alerts.errorTitle'),
+        t('DeleteAccountModal.Alerts.errorDescription')
+      );
       return;
     }
     try {

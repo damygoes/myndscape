@@ -1,6 +1,6 @@
 import { Mood, moodColors, moodIcons } from '@/utils/moodUtils';
 import { Ionicons } from '@expo/vector-icons';
-import { formatRelative, Locale } from 'date-fns';
+import { formatDistanceToNow, formatRelative, Locale } from 'date-fns';
 import { enUS, de, fr } from 'date-fns/locale';
 import { JournalEntry } from '../types';
 import { SUMMARY_TRUNCATION_LENGTH } from './constants';
@@ -36,9 +36,7 @@ export const formatRelativeDate = (dateString: string) => {
 
   const date = new Date(dateString);
 
-  return formatRelative(date, new Date(), {
-    locale,
-  });
+  return formatDistanceToNow(date, { addSuffix: true, locale });
 };
 
 export function parseThemes(

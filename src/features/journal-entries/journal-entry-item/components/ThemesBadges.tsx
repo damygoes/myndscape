@@ -1,6 +1,5 @@
-import { COLORS } from '@/constants/colors';
 import React from 'react';
-import { useColorScheme, View } from 'react-native';
+import { View } from 'react-native';
 import { parseThemes } from '../utils';
 import ThemeBadge from './ThemeBadge';
 interface Props {
@@ -13,7 +12,7 @@ export const ThemesBadges = ({ themes }: Props) => {
   if (themeList.length === 0) return null;
 
   return (
-    <View className="flex-row flex-wrap gap-3">
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
       {themeList.map((theme, index) => (
         <ThemeBadge key={index} theme={theme} />
       ))}

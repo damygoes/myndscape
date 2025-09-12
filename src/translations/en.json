@@ -1,7 +1,9 @@
 {
   "Common": {
     "back": "Back",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "tip": "Tip",
+    "selected": "Selected"
   },
   "Tabs": {
     "home": "Home",
@@ -96,7 +98,7 @@
     },
     "Account": {
       "title": "Account",
-      "description": "Manage your subscription and account settings."
+      "description": "Manage your profile and account-related settings."
     },
     "Support": {
       "title": "Support",
@@ -242,6 +244,101 @@
     "Alerts": {
       "errorTitle": "Error",
       "errorDescription": "There was an error deleting your account. Please try again later."
+    }
+  },
+  "HistoryScreenHeader": {
+    "title": "History",
+    "description": "Browse and reflect on your past entries",
+    "menu": {
+      "add-new-entry": "Add New Entry",
+      "select-mode": "Select Mode",
+      "exit-selection-mode": "Exit Selection Mode",
+      "select-all-entries": "Select All Entries",
+      "deselect-all-entries": "Deselect All Entries",
+      "sort-by-latest": "Sort by Latest",
+      "sort-by-oldest": "Sort by Oldest"
+    }
+  },
+  "SettingsScreenHeader": {
+    "title": "Settings",
+    "description": "Manage your app preferences"
+  },
+  "HeaderSearchBar": {
+    "placeholder": "Search entries..."
+  },
+  "Support": {
+    "FAQs": {
+      "title": "FAQs",
+      "modalTitle": "Frequently Asked Questions",
+      "subtitle": "Find quick answers to common questions"
+    },
+    "Legal": {
+      "title": "Legal",
+      "subtitle": "Read our privacy policy, disclaimer, and terms of service"
+    },
+    "Contact": {
+      "title": "Contact Support",
+      "subtitle": "Reach us at support@yourapp.com"
+    },
+    "AppInfo": {
+    "title": "App Info",
+    "version": "Version",
+    "build": "Build"
+    }
+  },
+  "FAQs": {
+    "questions": {
+      "score": {
+        "q": "How does the app calculate my wellness score?",
+        "a": "Your score is based on the mood and tone of your latest journal entry. We also add small bonuses for streaks and consistency."
+      },
+      "privacy": {
+        "q": "Are my journal entries private?",
+        "a": "Yes. Your entries are private to you and never shared with others. We use AI to generate summaries and insights, but your data is stored securely."
+      },
+      "missDay": {
+        "q": "What happens if I miss a day?",
+        "a": "Don’t worry! Missing a day won’t erase your progress. Your consistency and streaks may reset, but you can always start fresh."
+      },
+      "export": {
+        "q": "Can I export my journals?",
+        "a": "Yes, you can export your entries for backup or personal use (feature availability may depend on your subscription plan)."
+      },
+      "therapy": {
+        "q": "Is this a replacement for therapy?",
+        "a": "No. This app is designed as a self-reflection and wellness tool. It should not replace therapy or professional mental health care."
+      },
+      "offline": {
+        "q": "Can I use the app offline?",
+        "a": "Yes, you can write entries offline. They will sync once you reconnect to the internet."
+      },
+      "subscription": {
+        "q": "Do I need a subscription?",
+        "a": "You can start for free. Subscriptions unlock extra features like exporting journals and personalized insights."
+      },
+      "resetPassword": {
+        "q": "How do I reset my password?",
+        "a": "Go to Account Settings and select 'Reset Password'. You’ll receive an email with instructions."
+      },
+      "security": {
+        "q": "Is my data secure?",
+        "a": "We take security seriously. All data is encrypted and stored securely in the cloud."
+      }
+    }
+  },
+  "Legal": {
+    "title": "Privacy & Terms",
+    "privacy": {
+      "title": "Privacy Policy",
+      "text": "We respect your privacy. Your journal entries are private and linked only to your account. Data is stored securely and is not shared or sold to third parties. AI analysis is performed only to provide you with summaries, insights, and tips."
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "text": "This app is a self-care and journaling tool. It is not a substitute for professional therapy, diagnosis, or medical treatment. If you are experiencing distress, crisis, or thoughts of self-harm, please reach out to a licensed therapist, doctor, or your local emergency hotline immediately."
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "text": "By using this app, you agree to use it only for personal, non-commercial purposes, not to misuse or distribute content, and understand that AI-generated insights may not always be accurate. Subscriptions renew automatically unless canceled."
     }
   }
 }

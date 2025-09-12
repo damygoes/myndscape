@@ -1,7 +1,9 @@
 {
   "Common": {
     "back": "Zurück",
-    "getStarted": "Loslegen"
+    "getStarted": "Loslegen",
+    "tip": "Tipp",
+    "selected": "Ausgewählt"
   },
   "Tabs": {
     "home": "Home",
@@ -96,7 +98,7 @@
     },
     "Account": {
       "title": "Konto",
-      "description": "Abo und Kontoeinstellungen verwalten."
+      "description": "Verwalte dein Profil und kontobezogene Einstellungen."
     },
     "Support": {
       "title": "Support",
@@ -242,6 +244,102 @@
     "Alerts": {
       "errorTitle": "Fehler",
       "errorDescription": "Beim Löschen deines Kontos ist ein Fehler aufgetreten. Versuch es später nochmal."
+    }
+  },
+    "HistoryScreenHeader": {
+    "title": "Verlauf",
+    "description": "Durchsuche und reflektiere über deine vergangenen Einträge",
+    "menu": {
+      "add-new-entry": "Neuen Eintrag hinzufügen",
+      "select-mode": "Auswahlmodus",
+      "exit-selection-mode": "Auswahlmodus beenden",
+      "select-all-entries": "Alle Einträge auswählen",
+      "deselect-all-entries": "Alle Einträge abwählen",
+      "sort-by-latest": "Nach Neueste sortieren",
+      "sort-by-oldest": "Nach Älteste sortieren"
+    }
+  },
+   "SettingsScreenHeader": {
+    "title": "Einstellungen",
+    "description": "Verwalte deine App-Präferenzen"
+  },
+  "HeaderSearchBar": {
+    "placeholder": "Einträge suchen..."
+  },
+  "Support": {
+    "FAQs": {
+      "title": "FAQs",
+      "modalTitle": "Häufig gestellte Fragen",
+      "subtitle": "Finde schnelle Antworten auf häufige Fragen"
+    },
+    "Legal": {
+      "title": "Rechtliches",
+      "subtitle": "Lies unsere Datenschutzrichtlinie, unseren Haftungsausschluss und unsere Nutzungsbedingungen"
+    },
+    "Contact": {
+      "title": "Support kontaktieren",
+      "subtitle": "Erreiche uns unter support@yourapp.com"
+    },
+    "AppInfo": {
+    "title": "App-Info",
+    "version": "Version",
+    "build": "Build"
+    }
+  },
+  "FAQs": {
+    "title": "Häufig gestellte Fragen",
+    "questions": {
+      "score": {
+        "q": "Wie berechnet die App meinen Wellness-Score?",
+        "a": "Ihr Score basiert auf der Stimmung und dem Ton Ihres letzten Tagebucheintrags. Zusätzlich vergeben wir kleine Boni für Streaks und Konsistenz."
+      },
+      "privacy": {
+        "q": "Sind meine Tagebucheinträge privat?",
+        "a": "Ja. Ihre Einträge sind privat und werden niemals mit anderen geteilt. Wir nutzen KI, um Zusammenfassungen und Erkenntnisse zu erstellen, aber Ihre Daten werden sicher gespeichert."
+      },
+      "missDay": {
+        "q": "Was passiert, wenn ich einen Tag auslasse?",
+        "a": "Keine Sorge! Wenn Sie einen Tag verpassen, geht Ihr Fortschritt nicht verloren. Ihre Streaks und die Konsistenz können sich zurücksetzen, aber Sie können jederzeit neu beginnen."
+      },
+      "export": {
+        "q": "Kann ich meine Tagebucheinträge exportieren?",
+        "a": "Ja, Sie können Ihre Einträge für ein Backup oder zur persönlichen Nutzung exportieren (abhängig vom Abonnementplan)."
+      },
+      "therapy": {
+        "q": "Ersetzt diese App eine Therapie?",
+        "a": "Nein. Diese App ist ein Werkzeug zur Selbstreflexion und zum Wohlbefinden. Sie ersetzt keine Therapie oder professionelle medizinische Behandlung."
+      },
+      "offline": {
+        "q": "Kann ich die App offline nutzen?",
+        "a": "Ja, Sie können Einträge offline verfassen. Diese werden synchronisiert, sobald Sie wieder mit dem Internet verbunden sind."
+      },
+      "subscription": {
+        "q": "Benötige ich ein Abonnement?",
+        "a": "Sie können kostenlos starten. Abonnements schalten zusätzliche Funktionen wie den Export von Tagebüchern und personalisierte Einblicke frei."
+      },
+      "resetPassword": {
+        "q": "Wie kann ich mein Passwort zurücksetzen?",
+        "a": "Gehen Sie zu den Kontoeinstellungen und wählen Sie 'Passwort zurücksetzen'. Sie erhalten eine E-Mail mit Anweisungen."
+      },
+      "security": {
+        "q": "Sind meine Daten sicher?",
+        "a": "Ja, wir nehmen Sicherheit ernst. Alle Daten werden verschlüsselt und sicher in der Cloud gespeichert."
+      }
+    }
+  },
+  "Legal": {
+    "title": "Datenschutz & Nutzungsbedingungen",
+    "privacy": {
+      "title": "Datenschutzrichtlinie",
+      "text": "Wir respektieren Ihre Privatsphäre. Ihre Tagebucheinträge sind privat und nur mit Ihrem Konto verknüpft. Daten werden sicher gespeichert und nicht an Dritte weitergegeben oder verkauft. Die KI-Analyse wird ausschließlich verwendet, um Ihnen Zusammenfassungen, Einblicke und Tipps bereitzustellen."
+    },
+    "disclaimer": {
+      "title": "Haftungsausschluss",
+      "text": "Diese App ist ein Werkzeug zur Selbstfürsorge und zum Journaling. Sie ersetzt keine professionelle Therapie, Diagnose oder medizinische Behandlung. Wenn Sie sich in einer Krise befinden oder Gedanken an Selbstverletzung haben, wenden Sie sich bitte sofort an einen Therapeuten, Arzt oder den Notruf in Ihrer Region."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "text": "Durch die Nutzung dieser App erklären Sie sich damit einverstanden, sie ausschließlich für persönliche, nicht-kommerzielle Zwecke zu verwenden, Inhalte nicht zu missbrauchen oder weiterzugeben und zu verstehen, dass KI-generierte Einblicke nicht immer korrekt sein können. Abonnements verlängern sich automatisch, sofern sie nicht gekündigt werden."
     }
   }
 }

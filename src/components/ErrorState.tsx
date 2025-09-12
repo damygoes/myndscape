@@ -12,7 +12,15 @@ export const ErrorState = ({ message = 'Something went wrong.' }: Props) => {
   const colors = COLORS[theme];
 
   return (
-    <View className="items-center justify-center flex-1 px-8 py-10 space-y-4">
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 32,
+        gap: 8,
+      }}
+    >
       <LottieAnimation
         source={require('../../assets/animations/error.json')}
         autoPlay

@@ -1,6 +1,5 @@
-import { COLORS } from '@/constants/colors';
-import React from 'react';
-import { Text, useColorScheme, View } from 'react-native';
+import { APP_COLORS } from '@/constants/colors';
+import { Text, View } from 'react-native';
 import { ThemesBadges } from './ThemesBadges';
 import { TipSection } from './TipSection';
 
@@ -10,14 +9,7 @@ interface Props {
   tip: string | null;
 }
 
-export const JournalEntryAnalysisSection = ({
-  summary,
-  themes,
-  tip,
-}: Props) => {
-  const theme = useColorScheme() ?? 'light';
-  const colors = COLORS[theme];
-
+export const JournalEntryAnalysisSection = ({ summary, themes, tip }: Props) => {
   if (!summary && !themes && !tip) return null;
 
   return (
@@ -26,19 +18,14 @@ export const JournalEntryAnalysisSection = ({
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        backgroundColor: colors.background,
-        gap: 26,
-        borderColor: colors.border,
-        borderWidth: 1,
+        backgroundColor: APP_COLORS['primary-background'],
+        gap: 20,
+        padding: 12,
         borderRadius: 12,
-        padding: 16,
       }}
     >
       {summary && (
-        <Text
-          className="text-base font-normal"
-          style={{ color: colors.textPrimary }}
-        >
+        <Text className="text-base font-normal" style={{ color: APP_COLORS['body-text'] }}>
           {summary}
         </Text>
       )}

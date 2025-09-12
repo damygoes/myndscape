@@ -13,9 +13,9 @@ export function AiInsights() {
   const {
     currentStreak,
     longestStreak,
-    score,          // latest entry mood score
-    wellnessScore,  // average mood score today
-    todayEntries,   // number of entries today
+    score, // latest entry mood score
+    wellnessScore, // average mood score today
+    todayEntries, // number of entries today
   } = data;
 
   // --- Mood message ---
@@ -36,7 +36,9 @@ export function AiInsights() {
     streakMessage = i18n.t('AiInsights.streak.longest');
   } else {
     const streakDifference = longestStreak - currentStreak;
-    streakMessage = i18n.t('AiInsights.streak.short', { count: streakDifference });
+    streakMessage = i18n.t('AiInsights.streak.short', {
+      count: streakDifference,
+    });
   }
 
   return (
@@ -49,7 +51,9 @@ export function AiInsights() {
         marginBottom: 12,
       }}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
+      <View
+        style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}
+      >
         <Ionicons
           name="sparkles-outline"
           size={20}

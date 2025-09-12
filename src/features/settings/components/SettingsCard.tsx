@@ -1,5 +1,6 @@
 import { Text, View, Pressable } from 'react-native';
 import { APP_COLORS } from '@/constants/colors';
+import { IconSymbol } from '@/components/ui/IconSymbol.ios';
 
 type SettingsCardProps = {
   title: string;
@@ -50,6 +51,7 @@ export default function SettingsCard({
           {subtitle}
         </Text>
       </View>
+      <IconSymbol name="chevron-right" size={12} color={APP_COLORS.primary} />
     </Pressable>
   );
 }
