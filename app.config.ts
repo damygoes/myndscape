@@ -153,6 +153,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         },
       ],
       'expo-font',
+      // Disable automatic Google Maps configuration that doesn't support Swift AppDelegate
+      './plugins/withoutGoogleMaps',
+      // Custom Google Maps plugin that supports Swift AppDelegate
+      // Uncomment and add your Google Maps API key when needed:
+      // ['./plugins/withGoogleMapsSwift', { apiKey: 'YOUR_GOOGLE_MAPS_API_KEY' }],
     ],
     experiments: {
       typedRoutes: true,
