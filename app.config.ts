@@ -84,9 +84,8 @@ export const getDynamicAppConfig = (environment: AppEnv) => {
 };
 
 export default ({ config }: ConfigContext): ExpoConfig => {
-  // manually set the environment for now as eas is not loading the .env file
-  // const appEnv: AppEnv = 'development';
-  const appEnv: AppEnv = 'production';
+  // Get environment from process.env.EXPO_PUBLIC_APP_ENV or default to production for EAS builds
+  const appEnv: AppEnv = (process.env.EXPO_PUBLIC_APP_ENV as AppEnv) || 'production';
 
   console.log('🌍 BUILDING FOR ENV:', appEnv);
 
