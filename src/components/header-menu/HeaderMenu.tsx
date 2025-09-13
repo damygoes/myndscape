@@ -172,19 +172,19 @@ const styles = StyleSheet.create({
     zIndex: 1000,
   },
   trigger: {
-    padding: 8,
-    borderRadius: 8,
-    backgroundColor: APP_COLORS.offwhite,
-    borderWidth: 1,
-    borderColor: APP_COLORS['background-stroke'],
-    shadowColor: APP_COLORS.black,
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    shadowOffset: { width: 0, height: 1 },
-    elevation: 1,
+    // padding: 8,
+    // borderRadius: 8,
+    // backgroundColor: APP_COLORS.offwhite,
+    // borderWidth: 1,
+    // borderColor: APP_COLORS['background-stroke'],
+    // shadowColor: APP_COLORS.black,
+    // shadowOpacity: 0.05,
+    // shadowRadius: 2,
+    // shadowOffset: { width: 0, height: 1 },
+    // elevation: 1,
   },
   triggerPressed: {
-    backgroundColor: APP_COLORS.grey,
+    // backgroundColor: APP_COLORS.grey,
     transform: [{ scale: 0.95 }],
   },
   menu: {
@@ -205,8 +205,8 @@ const styles = StyleSheet.create({
     marginRight: 8, // Ensure menu doesn't go off screen
   },
   menuItem: {
-    paddingVertical: 14,
-    paddingHorizontal: 16,
+    // paddingVertical: 14,
+    // paddingHorizontal: 16,
     backgroundColor: 'transparent',
   },
   menuItemPressed: {

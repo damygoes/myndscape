@@ -5,16 +5,18 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React, { JSX } from 'react';
 import { Text, View } from 'react-native';
 
+type CalloutPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+
 type Callout = {
   content: string | JSX.Element;
-  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  position?: CalloutPosition;
   offsetX?: number;
   offsetY?: number;
   bgColor?: string;
 };
 
 type OnboardingSceneProps = {
-  image: any; // require('../../path/to/image')
+  image: 'string | number | ImageSource | ImageSource[] | string[] | SharedRef<"image", Record<never, never>> | null | undefined';
   callouts?: Callout[];
   title: string;
   subtitle: string;
@@ -48,9 +50,28 @@ export default function OnboardingScene({
   };
 
   return (
-    <View className="w-full h-full flex-col justify-center gap-12 border-none">
+    <View
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        gap: 48,
+        borderWidth: 0,
+      }}
+    >
       {/* Image with callouts */}
-      <View className="flex justify-center items-center h-1/2 relative border-none">
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '50%',
+          position: 'relative',
+          borderWidth: 0,
+        }}
+      >
         <Image
           source={image}
           contentFit="contain"
@@ -69,10 +90,12 @@ export default function OnboardingScene({
                 padding: 16,
                 borderRadius: 24,
                 position: 'absolute',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               },
               getPositionStyle(callout),
             ]}
-            className="flex justify-center items-center"
           >
             {typeof callout.content === 'string' ? (
               <Text
@@ -105,11 +128,7 @@ export default function OnboardingScene({
           }}
         >
           <LinearGradient
-            colors={[
-              'rgba(255,255,255,0)',
-              'rgba(255,255,255,0.6)',
-              'rgba(255,255,255,1)',
-            ]}
+            colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.6)', 'rgba(255,255,255,1)']}
             locations={[0, 0.5, 1]}
             style={{
               flex: 1,
@@ -172,9 +191,7 @@ export default function OnboardingScene({
                 width: isActive ? 10 : 6,
                 height: isActive ? 10 : 6,
                 borderRadius: isActive ? 20 : 999,
-                backgroundColor: isActive
-                  ? APP_COLORS.primary
-                  : APP_COLORS.grey,
+                backgroundColor: isActive ? APP_COLORS.primary : APP_COLORS.grey,
               }}
             />
           );

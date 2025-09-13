@@ -1,3 +1,4 @@
+import { APP_COLORS } from '@/constants/colors';
 import React from 'react';
 import { Text } from 'react-native';
 
@@ -9,7 +10,7 @@ export const JournalEntryContent = ({ content }: Props) => {
   return (
     <Text
       numberOfLines={1}
-      className="mb-1 text-sm text-gray-500 dark:text-gray-400"
+      style={{ marginBottom: 4, fontSize: 12, color: APP_COLORS['body-text'] }}
     >
       {content}
     </Text>

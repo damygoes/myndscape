@@ -25,7 +25,14 @@ export const JournalEntryAnalysisSection = ({ summary, themes, tip }: Props) => 
       }}
     >
       {summary && (
-        <Text className="text-base font-normal" style={{ color: APP_COLORS['body-text'] }}>
+        <Text
+          style={{
+            color: APP_COLORS['body-text'],
+            fontSize: 16,
+            fontFamily: 'Manrope',
+            fontWeight: '300',
+          }}
+        >
           {summary}
         </Text>
       )}

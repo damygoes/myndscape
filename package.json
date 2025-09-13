@@ -53,9 +53,7 @@
     "expo-web-browser": "~14.2.0",
     "i18n-js": "^4.5.1",
     "lottie-react-native": "7.2.2",
-    "nativewind": "^4.1.23",
     "openai": "^5.8.1",
-    "prettier-plugin-tailwindcss": "^0.5.11",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.6",
@@ -69,8 +67,6 @@
     "react-native-svg-transformer": "^1.5.1",
     "react-native-web": "^0.20.0",
     "supabase": "^2.26.9",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^3.4.17",
     "zustand": "^5.0.6"
   },
   "devDependencies": {

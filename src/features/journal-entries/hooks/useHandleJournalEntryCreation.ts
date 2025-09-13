@@ -1,5 +1,6 @@
 import { useUpdateJournalEntry } from '@/features/journal-entries/hooks/useUpdateJournalEntry';
 import { useJournalEntryAnalysisStore } from '@/features/journal-entries/store/useJournalEntryAnalysisStore';
+import { useUserSettingsContext } from '@/features/user/contexts/UserSettingsContext';
 import { wellnessScoreKeys } from '@/lib/queryKeys';
 import { useSupabaseSession } from '@/services/supabase/SupabaseAuthProvider';
 import { useQueryClient } from '@tanstack/react-query';
@@ -10,9 +11,9 @@ import { useCreateJournalEntry } from './useCreateJournalEntry';
 export const useHandleJournalEntryCreation = () => {
   const { session } = useSupabaseSession();
   const userId = session?.user.id;
+  const { data } = useUserSettingsContext();
 
-  // TODO: fetch language from user settings context when implemented
-  const userLanguage = 'de';
+  const userLanguage = data?.language || 'en';
 
   const queryClient = useQueryClient();
 
@@ -48,10 +49,7 @@ export const useHandleJournalEntryCreation = () => {
         });
       } catch (aiError) {
         console.error('AI analysis failed:', aiError);
-        Alert.alert(
-          'AI Summary Error',
-          'We couldn’t generate an AI summary for this entry.'
-        );
+        Alert.alert('AI Summary Error', 'We couldn’t generate an AI summary for this entry.');
       } finally {
         stopAnalyzing(createdEntry.id);
       }
@@ -61,16 +59,12 @@ export const useHandleJournalEntryCreation = () => {
       });
     } catch (error) {
       console.error('Error creating journal entry:', error);
-      Alert.alert(
-        'Creation Error',
-        'Failed to create journal entry. Please try again.'
-      );
+      Alert.alert('Creation Error', 'Failed to create journal entry. Please try again.');
     }
   };
 
   return {
     handleCreateEntry,
-    createIsPending:
-      createEntryMutation.isPending || updateEntryMutation.isPending,
+    createIsPending: createEntryMutation.isPending || updateEntryMutation.isPending,
   };
 };

@@ -3,13 +3,7 @@ import { useDeleteJournalEntry } from '@/features/journal-entries/hooks/useDelet
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React from 'react';
-import {
-  Alert,
-  Text,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { Alert, Text, TouchableOpacity, useColorScheme, View } from 'react-native';
 interface Props {
   entryId: string;
 }
@@ -25,38 +19,31 @@ export const JournalEntryActions = ({ entryId }: Props) => {
   };
 
   const handleDelete = () => {
-    Alert.alert(
-      'Delete Entry',
-      'Are you sure you want to delete this journal entry?',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Delete',
-          style: 'destructive',
-          onPress: () => deleteMutation.mutate({ id: entryId }),
-        },
-      ]
-    );
+    Alert.alert('Delete Entry', 'Are you sure you want to delete this journal entry?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: () => deleteMutation.mutate({ id: entryId }),
+      },
+    ]);
   };
 
   return (
     <>
-      <View className="flex-row justify-start gap-8 mt-4">
+      <View style={{ flexDirection: 'row', justifyContent: 'flex-start', gap: 32, marginTop: 16 }}>
         {/* Edit */}
         <TouchableOpacity
           onPress={handleNavigateToEditEntry}
           activeOpacity={0.7}
-          className="flex-row items-center"
+          style={{ flexDirection: 'row', alignItems: 'center' }}
         >
-          <Ionicons
-            name="create-outline"
-            size={16}
-            color={colors.textSecondary}
-          />
+          <Ionicons name="create-outline" size={16} color={colors.textSecondary} />
           <Text
-            className="ml-1 text-base"
             style={{
               color: colors.textSecondary,
+              fontSize: 16,
+              marginLeft: 4,
             }}
           >
             Edit
@@ -67,12 +54,10 @@ export const JournalEntryActions = ({ entryId }: Props) => {
         <TouchableOpacity
           onPress={handleDelete}
           activeOpacity={0.7}
-          className="flex-row items-center"
+          style={{ flexDirection: 'row', alignItems: 'center' }}
         >
           <Ionicons name="trash-outline" size={16} color={colors.textError} />
-          <Text className="ml-1 text-base" style={{ color: colors.textError }}>
-            Delete
-          </Text>
+          <Text style={{ color: colors.textError, fontSize: 16, marginLeft: 4 }}>Delete</Text>
         </TouchableOpacity>
       </View>
     </>

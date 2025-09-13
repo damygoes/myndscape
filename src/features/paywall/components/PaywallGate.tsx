@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
+import { APP_COLORS } from '@/constants/colors';
 import { useUserUsageContext } from '@/features/user/contexts/UserUsageContext';
+import { useRouter } from 'expo-router';
+import React, { ReactNode } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Plan, type PlanType } from '../types';
 
 type PaywallGateProps = {
@@ -20,8 +21,7 @@ export function PaywallGate({ require, fallback, children }: PaywallGateProps) {
 
   const currentPlan = userUsage?.plan_id ?? Plan.FREE; // default to free if not available
 
-  const hasAccess =
-    PLAN_ORDER.indexOf(currentPlan) >= PLAN_ORDER.indexOf(require);
+  const hasAccess = PLAN_ORDER.indexOf(currentPlan) >= PLAN_ORDER.indexOf(require);
 
   if (hasAccess) {
     return <>{children}</>;
@@ -32,16 +32,21 @@ export function PaywallGate({ require, fallback, children }: PaywallGateProps) {
 
   // Default fallback → lock + upgrade button
   return (
-    <View className="flex items-center justify-center p-2">
-      <Text className="text-lg mb-3">
+    <View style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 8 }}>
+      <Text style={{ fontSize: 18, marginBottom: 12 }}>
         This feature requires a{' '}
-        <Text className="capitalize font-semibold">{require}</Text> plan
+        <Text style={{ textTransform: 'capitalize', fontWeight: '600' }}>{require}</Text> plan
       </Text>
       <TouchableOpacity
-        className="bg-blue-600 px-4 py-2 rounded-xl"
+        style={{
+          backgroundColor: APP_COLORS.primary,
+          paddingHorizontal: 16,
+          paddingVertical: 8,
+          borderRadius: 9999,
+        }}
         onPress={() => router.push('/paywall')}
       >
-        <Text className="text-white font-medium">Upgrade Now</Text>
+        <Text style={{ color: APP_COLORS.white, fontWeight: '500' }}>Upgrade Now</Text>
       </TouchableOpacity>
     </View>
   );

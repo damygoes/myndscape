@@ -27,16 +27,10 @@ export function LoginForm() {
 
     try {
       await sendMagicLink(trimmedEmail);
-      Alert.alert(
-        t('LoginForm.Alert.successTitle'),
-        t('LoginForm.Alert.successDescription')
-      );
+      Alert.alert(t('LoginForm.Alert.successTitle'), t('LoginForm.Alert.successDescription'));
     } catch (err) {
       console.error('Magic link error:', err);
-      const message =
-        err instanceof Error
-          ? err.message
-          : t('LoginForm.Alert.errorDescription');
+      const message = err instanceof Error ? err.message : t('LoginForm.Alert.errorDescription');
       Alert.alert(t('LoginForm.Alert.errorTitle'), message);
     } finally {
       setLoading(false);
@@ -53,7 +47,7 @@ export function LoginForm() {
   };
 
   return (
-    <View className="w-full gap-8 px-2 py-4">
+    <View style={{ width: '100%', gap: 32, paddingHorizontal: 8, paddingVertical: 16 }}>
       <Input
         label={t('LoginForm.emailLabel')}
         placeholder={t('LoginForm.emailPlaceholder')}

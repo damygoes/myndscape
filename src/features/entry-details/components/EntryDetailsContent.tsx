@@ -33,66 +33,69 @@ export function EntryDetailsContent({ entryId }: { entryId: string }) {
         styles.container,
         {
           backgroundColor: APP_COLORS['primary-background'],
-          paddingTop: insets.top + 32,
+          paddingTop: insets.top + 24,
         },
       ]}
+      showsVerticalScrollIndicator={false}
     >
-      {/* Mood + Date */}
       <View style={styles.header}>
         <MoodBadge mood={journalEntry.mood ?? 'neutral'} />
         <Text style={[styles.dateText, { color: APP_COLORS['body-text-disabled'] }]}>
           {journalEntry.formattedDate}
         </Text>
       </View>
-      {/* Content */}
-      <View>
-        <Text style={[styles.label, { color: APP_COLORS['body-text-disabled'] }]}>
+
+      <View style={styles.contentSection}>
+        <Text style={[styles.sectionLabel, { color: APP_COLORS['body-text-disabled'] }]}>
           {i18n.t('JournalEntryDetails.userInput')}
         </Text>
-        <Text style={[styles.content, { color: APP_COLORS['body-text'] }]}>
+        <Text style={[styles.mainContent, { color: APP_COLORS['body-text'] }]}>
           {journalEntry.content}
         </Text>
       </View>
-      <View style={styles.divider} />
 
-      {/* Summary */}
       {journalEntry.summary && (
-        <View>
-          <Text style={[styles.subTitle, { color: APP_COLORS['body-text'] }]}>
-            {i18n.t('JournalEntryDetails.summary')}
-          </Text>
-          <Text style={[styles.subText, { color: APP_COLORS['body-text'] }]}>
-            {journalEntry.summary}
-          </Text>
-        </View>
-      )}
-      <View style={styles.divider} />
-      {/* Themes */}
-      {journalEntry.hasThemes && (
-        <View>
-          <Text style={[styles.subTitle, { color: APP_COLORS['body-text'] }]}>
-            {i18n.t('JournalEntryDetails.themes')}
-          </Text>
-          <View style={styles.themeBadgeContainer}>
-            {themeList.map((theme, index) => (
-              <ThemeBadge key={index} theme={theme} />
-            ))}
+        <>
+          <View style={styles.sectionDivider} />
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: APP_COLORS['body-text'] }]}>
+              {i18n.t('JournalEntryDetails.summary')}
+            </Text>
+            <Text style={[styles.sectionText, { color: APP_COLORS['body-text'] }]}>
+              {journalEntry.summary}
+            </Text>
           </View>
-        </View>
+        </>
       )}
-      <View style={styles.divider} />
-      {/* Tip */}
+
+      {journalEntry.hasThemes && (
+        <>
+          <View style={styles.sectionDivider} />
+          <View style={styles.section}>
+            <Text style={[styles.sectionTitle, { color: APP_COLORS['body-text'] }]}>
+              {i18n.t('JournalEntryDetails.themes')}
+            </Text>
+            <View style={styles.themeBadgeContainer}>
+              {themeList.map((theme, index) => (
+                <ThemeBadge key={index} theme={theme} />
+              ))}
+            </View>
+          </View>
+        </>
+      )}
+
       {journalEntry.hasTip && (
-        <View>
-          <Text style={[styles.subTitle, { color: APP_COLORS['body-text'] }]}>
-            {i18n.t('JournalEntryDetails.tip')}
-          </Text>
-          <View style={styles.tipContainer}>
-            <Text style={[styles.subText, { color: APP_COLORS['body-text'] }]}>
+        <>
+          <View style={styles.sectionDivider} />
+          <View style={[styles.tipSection, { backgroundColor: APP_COLORS['primary-subtle'] }]}>
+            <Text style={[styles.tipTitle, { color: APP_COLORS.primary }]}>
+              💡 {i18n.t('JournalEntryDetails.tip')}
+            </Text>
+            <Text style={[styles.tipText, { color: APP_COLORS['body-text'] }]}>
               {journalEntry.tip}
             </Text>
           </View>
-        </View>
+        </>
       )}
     </ScrollView>
   );
@@ -102,39 +105,75 @@ const styles = StyleSheet.create({
   container: {
     padding: 24,
     flexGrow: 1,
-    gap: 24,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 32,
   },
   dateText: {
     fontSize: 14,
     fontWeight: '500',
     fontFamily: 'Manrope',
   },
-  label: {
-    fontSize: 14,
+  contentSection: {
+    marginBottom: 24,
+  },
+  sectionLabel: {
+    fontSize: 12,
     fontWeight: '500',
-    marginBottom: 6,
+    textTransform: 'uppercase',
+    letterSpacing: 0.8,
+    marginBottom: 8,
     fontFamily: 'Manrope',
   },
-  content: {
+  mainContent: {
+    fontSize: 18,
+    fontWeight: '400',
+    lineHeight: 28,
+    fontFamily: 'Manrope',
+  },
+  sectionDivider: {
+    height: 1,
+    backgroundColor: APP_COLORS['background-stroke'],
+    marginVertical: 24,
+    opacity: 0.3,
+  },
+  section: {
+    marginBottom: 8,
+  },
+  sectionTitle: {
     fontSize: 16,
-    lineHeight: 22,
-    fontFamily: 'Manrope',
-  },
-  subTitle: {
-    fontSize: 15,
     fontWeight: '600',
-    marginBottom: 6,
+    marginBottom: 12,
+    fontFamily: 'Manrope',
+    letterSpacing: 0.2,
+  },
+  sectionText: {
+    fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 24,
     fontFamily: 'Manrope',
   },
-  subText: {
-    fontSize: 15,
-    lineHeight: 21,
+  tipSection: {
+    borderRadius: 12,
+    padding: 20,
+    marginTop: 8,
+    borderLeftWidth: 3,
+    borderLeftColor: APP_COLORS.primary,
+  },
+  tipTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    fontFamily: 'Manrope',
+    marginBottom: 8,
+    letterSpacing: 0.2,
+  },
+  tipText: {
+    fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 24,
     fontFamily: 'Manrope',
   },
   themeBadgeContainer: {
@@ -143,8 +182,4 @@ const styles = StyleSheet.create({
     gap: 8,
     marginTop: 4,
   },
-  tipContainer: {
-    marginTop: 4,
-  },
-  divider: { height: 1, backgroundColor: APP_COLORS.grey, marginVertical: 2 },
 });

@@ -1,6 +1,7 @@
 import { COLORS } from '@/constants/colors';
 import { useJournalEntryById } from '@/features/journal-entries/hooks/useJournalEntryById';
 import { useUpdateJournalEntry } from '@/features/journal-entries/hooks/useUpdateJournalEntry';
+import { useUserSettingsContext } from '@/features/user/contexts/UserSettingsContext';
 import { BlurView } from 'expo-blur';
 import React, { useEffect, useState } from 'react';
 import {
@@ -31,8 +32,9 @@ export default function EditJournalModal({
 }: EditJournalModalProps) {
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
+  const { data } = useUserSettingsContext();
 
-  const updateEntry = useUpdateJournalEntry();
+  const updateEntry = useUpdateJournalEntry({ language: data?.language || 'en' });
   const { data: entry, isLoading } = useJournalEntryById(id);
 
   const [content, setContent] = useState('');
@@ -61,6 +63,7 @@ export default function EditJournalModal({
       }
       onCancel();
     } catch (e) {
+      console.error(e);
       setError('Failed to save. Please try again.');
     }
     setSaving(false);
@@ -70,19 +73,14 @@ export default function EditJournalModal({
 
   if (isLoading) {
     return (
-      <View className="items-center justify-center flex-1">
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <ActivityIndicator size="large" color={colors.primary} />
       </View>
     );
   }
 
   return (
-    <Modal
-      visible={visible}
-      animationType="slide"
-      transparent
-      onRequestClose={onCancel}
-    >
+    <Modal visible={visible} animationType="slide" transparent onRequestClose={onCancel}>
       <View style={StyleSheet.absoluteFill}>
         {/* Background blur */}
         <BlurView intensity={30} tint="dark" style={StyleSheet.absoluteFill} />
@@ -118,8 +116,12 @@ export default function EditJournalModal({
             contentContainerStyle={{ paddingBottom: 24 }}
           >
             <Text
-              className="mb-8 text-2xl font-bold"
-              style={{ color: colors.textPrimary }}
+              style={{
+                color: colors.textPrimary,
+                marginBottom: 8,
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}
             >
               Edit Journal Entry
             </Text>
@@ -135,30 +137,35 @@ export default function EditJournalModal({
                 padding: 12,
                 borderWidth: 1,
                 borderRadius: 8,
-                borderColor:
-                  error && !content ? colors.textError : colors.inputBorder,
+                borderColor: error && !content ? colors.textError : colors.inputBorder,
                 backgroundColor: colors.inputBackground,
                 color: colors.textPrimary,
                 textAlignVertical: 'top',
               }}
             />
 
-            {error && (
-              <Text className="mb-3" style={{ color: colors.textError }}>
-                {error}
-              </Text>
-            )}
+            {error && <Text style={{ color: colors.textError, marginBottom: 12 }}>{error}</Text>}
 
-            <View className="flex-row items-center justify-end gap-4 my-6">
-              <TouchableOpacity onPress={onCancel} className="items-center">
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'flex-end',
+                gap: 16,
+                marginVertical: 24,
+              }}
+            >
+              <TouchableOpacity onPress={onCancel} style={{ alignItems: 'center' }}>
                 <Text style={{ color: colors.textMuted }}>Cancel</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handleSave}
                 disabled={saving}
-                className="items-center px-6 py-4 rounded-full"
                 style={{
+                  alignItems: 'center',
+                  paddingHorizontal: 16,
+                  paddingVertical: 12,
+                  borderRadius: 999,
                   backgroundColor: saving ? colors.textMuted : colors.primary,
                   opacity: saving ? 0.7 : 1,
                 }}
@@ -166,12 +173,7 @@ export default function EditJournalModal({
                 {saving ? (
                   <ActivityIndicator color={colors.background} />
                 ) : (
-                  <Text
-                    className="font-bold"
-                    style={{ color: colors.background }}
-                  >
-                    Save
-                  </Text>
+                  <Text style={{ color: colors.background, fontWeight: 'bold' }}>Save</Text>
                 )}
               </TouchableOpacity>
             </View>

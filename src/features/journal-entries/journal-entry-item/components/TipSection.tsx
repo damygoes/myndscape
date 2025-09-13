@@ -11,9 +11,8 @@ export const TipSection = ({ tip }: Props) => {
   if (!tip) return null;
 
   return (
-    <View className="flex-col items-start gap-1 pr-4">
+    <View style={{ flexDirection: 'column', alignItems: 'flex-start', gap: 4, paddingRight: 16 }}>
       <Text
-        className="text-base"
         style={{
           color: APP_COLORS['body-text'],
           fontWeight: '400',
@@ -25,7 +24,14 @@ export const TipSection = ({ tip }: Props) => {
       >
         {t('Common.tip')}:
       </Text>
-      <Text className="text-base" style={{ color: APP_COLORS['body-text'] }}>
+      <Text
+        style={{
+          color: APP_COLORS['body-text'],
+          fontSize: 16,
+          fontFamily: 'Manrope',
+          fontWeight: '300',
+        }}
+      >
         {tip}
       </Text>
     </View>

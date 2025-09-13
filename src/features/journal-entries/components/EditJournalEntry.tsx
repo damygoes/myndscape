@@ -25,7 +25,6 @@ interface Props {
 
 export const EditJournalEntry = ({
   isVisible,
-  initialMood,
   initialContent,
   onCancel,
   onSubmit,
@@ -56,12 +55,7 @@ export const EditJournalEntry = ({
   };
 
   return (
-    <Modal
-      isVisible={isVisible}
-      onBackdropPress={onCancel}
-      avoidKeyboard
-      style={{ margin: 0 }}
-    >
+    <Modal isVisible={isVisible} onBackdropPress={onCancel} avoidKeyboard style={{ margin: 0 }}>
       <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
@@ -72,8 +66,12 @@ export const EditJournalEntry = ({
             keyboardShouldPersistTaps="handled"
           >
             <Text
-              className="mb-4 text-xl font-bold"
-              style={{ color: colors.textPrimary }}
+              style={{
+                color: colors.textPrimary,
+                fontSize: 20,
+                fontWeight: 'bold',
+                marginBottom: 16,
+              }}
             >
               Edit Journal Entry
             </Text>
@@ -85,31 +83,38 @@ export const EditJournalEntry = ({
               placeholderTextColor={colors.inputPlaceholder}
               multiline
               textAlignVertical="top"
-              className="h-40 p-3 border rounded-lg"
               style={{
+                height: 160,
+                padding: 12,
+                borderWidth: 1,
+                borderRadius: 8,
                 backgroundColor: colors.inputBackground,
                 color: colors.textPrimary,
-                borderColor:
-                  error && !content ? colors.textError : colors.inputBorder,
+                borderColor: error && !content ? colors.textError : colors.inputBorder,
               }}
             />
 
             {error && (
-              <Text className="mt-2 mb-3" style={{ color: colors.textError }}>
+              <Text style={{ color: colors.textError, marginTop: 8, marginBottom: 12 }}>
                 {error}
               </Text>
             )}
 
-            <View className="flex flex-row justify-end gap-4 mt-6">
-              <TouchableOpacity onPress={onCancel} className="items-center">
+            <View
+              style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 16, marginTop: 24 }}
+            >
+              <TouchableOpacity onPress={onCancel} style={{ alignItems: 'center' }}>
                 <Text style={{ color: colors.textSecondary }}>Cancel</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handleSubmit}
                 disabled={saving}
-                className="items-center px-4 py-3 rounded-full"
                 style={{
+                  alignItems: 'center',
+                  paddingHorizontal: 16,
+                  paddingVertical: 12,
+                  borderRadius: 24,
                   backgroundColor: colors.primary,
                   opacity: saving ? 0.7 : 1,
                 }}
@@ -117,12 +122,7 @@ export const EditJournalEntry = ({
                 {saving ? (
                   <ActivityIndicator color={colors.background} />
                 ) : (
-                  <Text
-                    className="font-bold"
-                    style={{ color: colors.background }}
-                  >
-                    Save
-                  </Text>
+                  <Text style={{ color: colors.background, fontWeight: 'bold' }}>Save</Text>
                 )}
               </TouchableOpacity>
             </View>

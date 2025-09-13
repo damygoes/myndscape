@@ -1,11 +1,6 @@
 import { COLORS } from '@/constants/colors';
-import {
-  ActivityIndicator,
-  FlatList,
-  Text,
-  View,
-  useColorScheme,
-} from 'react-native';
+import { ReactElement } from 'react';
+import { ActivityIndicator, FlatList, Text, View, useColorScheme } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { JournalEntryItem } from '../journal-entry-item/components/JournalEntryItem';
 import { JournalEntry } from '../types';
@@ -14,26 +9,19 @@ interface Props {
   entries: JournalEntry[];
   isLoading: boolean;
   error: unknown;
-  ListHeaderComponent?: React.ReactElement;
+  ListHeaderComponent?: ReactElement;
 }
 
-export const JournalEntryList = ({
-  entries,
-  isLoading,
-  error,
-  ListHeaderComponent,
-}: Props) => {
+export const JournalEntryList = ({ entries, isLoading, error, ListHeaderComponent }: Props) => {
   const theme = useColorScheme() ?? 'light';
   const colors = COLORS[theme];
   const insets = useSafeAreaInsets();
 
   if (isLoading) {
     return (
-      <View className="items-center justify-center flex-1 space-y-2">
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 8 }}>
         <ActivityIndicator size="large" />
-        <Text style={{ color: colors.textMuted }}>
-          Loading your journal entries...
-        </Text>
+        <Text style={{ color: colors.textMuted }}>Loading your journal entries...</Text>
       </View>
     );
   }
@@ -41,11 +29,10 @@ export const JournalEntryList = ({
   if (error) {
     console.error('Journal Entries Fetch Error:', error);
     return (
-      <View className="items-center justify-center flex-1 px-6">
-        <Text
-          className="font-medium text-center"
-          style={{ color: colors.textError }}
-        >
+      <View
+        style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}
+      >
+        <Text style={{ color: colors.textError, fontWeight: '500', textAlign: 'center' }}>
           Failed to load your journal entries.
         </Text>
       </View>
@@ -54,13 +41,11 @@ export const JournalEntryList = ({
 
   if (!entries || entries.length === 0) {
     return (
-      <View className="items-center justify-center flex-1 px-10">
-        <Text
-          className="text-lg text-center"
-          style={{ color: colors.textPrimary }}
-        >
-          You haven’t logged any mood entries yet. Tap the + button to add your
-          first one!
+      <View
+        style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 24 }}
+      >
+        <Text style={{ color: colors.textPrimary, fontSize: 18, textAlign: 'center' }}>
+          You haven’t logged any mood entries yet. Tap the + button to add your first one!
         </Text>
       </View>
     );
@@ -75,7 +60,7 @@ export const JournalEntryList = ({
         paddingHorizontal: 16,
         paddingBottom: insets.bottom + 32,
       }}
-      ItemSeparatorComponent={() => <View className="h-4" />}
+      ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
       renderItem={({ item }) => <JournalEntryItem entry={item} />}
     />
   );
